@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!--<TargetFramework>net481</TargetFramework>-->
+	  <TargetFramework>net10.0</TargetFramework>
+
+	  <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>14.0</LangVersion>
+    <IkvmMavenRepositories>central=http://repo1.maven.org</IkvmMavenRepositories>
+    <PackageId>ApacheMinaSSHD.NET.Wrapper</PackageId>
+    <Title>ApacheMinaSSHD.NET.Wrapper - Apache MINA SSHD .NET SFTP/SCP Server Wrapper</Title>
+    <Description>.NET and C# wrapper for Apache MINA SSHD to build SFTP server, SCP server, SSH server, and secure file transfer features without Java imports. Unofficial IKVM-based library from SERALYNX LLC.</Description>
+    <Authors>SERALYNX LLC</Authors>
+    <Company>SERALYNX LLC</Company>
+    <Copyright>Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors</Copyright>
+    <PackageTags>ssh;sshd;sftp;scp;sftp-server;scp-server;ssh-server;file-transfer;secure-file-transfer;apache-mina;apache-mina-sshd;mina-sshd;ikvm;dotnet;csharp</PackageTags>
+    <PackageReleaseNotes>Initial wrapper package for Apache MINA SSHD SFTP/SCP server features with .NET-facing APIs, production-oriented defaults, XML documentation, and third-party license notices.</PackageReleaseNotes>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591;1572;1573</NoWarn>
+
+  </PropertyGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\ApacheMinaSSHD.NET.Bindings\ApacheMinaSSHD.NET.Bindings.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="IKVM" Version="8.15.0" />
+	  <PackageReference Include="IKVM.Maven.Sdk" Version="1.11.0">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include="..\README.md" Pack="true" PackagePath="\" />
+	  <None Include="..\CONTRIBUTING.md" Pack="true" PackagePath="\" />
+	  <None Include="..\SECURITY.md" Pack="true" PackagePath="\" />
+	  <None Include="..\LICENSE" Pack="true" PackagePath="\" />
+	  <None Include="..\NOTICE" Pack="true" PackagePath="\" />
+	  <None Include="..\THIRD-PARTY-NOTICES.md" Pack="true" PackagePath="\" />
+	  <None Include="..\licenses\APACHE-2.0.txt" Pack="true" PackagePath="licenses\" />
+	  <None Include="..\licenses\SLF4J-MIT.txt" Pack="true" PackagePath="licenses\" />
+	</ItemGroup>
+</Project>

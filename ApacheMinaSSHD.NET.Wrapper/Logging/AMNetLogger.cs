@@ -1,0 +1,114 @@
+using org.slf4j;
+
+namespace ApacheMinaSSHD.NET.Wrapper.Logging
+{
+
+
+
+    /// <summary>
+    /// Default logger that writes through the SSH runtime logging backend.
+    /// </summary>
+    public class AMNetLogger : IAMNetLogger
+    {
+
+        private readonly Logger slf4JLogger;
+
+        /// <summary>
+        /// Log levels supported by <see cref="AMNetLogger"/>.
+        /// </summary>
+        public enum LogLevel
+        {
+            /// <summary>Informational logging.</summary>
+            info,
+            /// <summary>Warning logging.</summary>
+            warn,
+            /// <summary>Error logging.</summary>
+            error,
+            /// <summary>Debug logging.</summary>
+            debug,
+            /// <summary>Trace logging.</summary>
+            trace
+        }
+
+        /// <summary>
+        /// Creates a logger for the supplied source type.
+        /// </summary>
+        /// <param name="type">The source type used as the logger name.</param>
+        /// <param name="logLevel">The default log level.</param>
+        public AMNetLogger(Type type, LogLevel logLevel = LogLevel.info)
+        {
+
+            java.lang.System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", logLevel.ToString()); // log can be configured from the UI / Db
+            java.lang.System.setProperty("org.slf4j.simpleLogger.showDateTime", "true");
+            java.lang.System.setProperty("org.slf4j.simpleLogger.dateTimeFormat", "yyyy-MM-dd HH:mm:ss.SSS |");
+            java.lang.System.setProperty("org.slf4j.simpleLogger.showThreadName", "false");
+            java.lang.System.setProperty("org.slf4j.simpleLogger.showThreadId", "false");
+
+            slf4JLogger = LoggerFactory.getLogger(type.FullName);
+
+            // Force load the binding assembly to prevent "Failed to load class"
+            //_ = org.slf4j.impl.StaticLoggerBinder.getSingleton();
+
+        }
+        /// <inheritdoc />
+        public void Info(string message)
+        {
+            slf4JLogger.info(message);
+        }
+
+        /// <inheritdoc />
+        public void Error(string message, Exception? ex = null)
+        {
+            if (ex == null)
+            {
+                slf4JLogger.error(message);
+            }
+            else
+            {
+                // IKVM allows passing .NET Exceptions directly to Java methods in many cases
+                slf4JLogger.error(message, ikvm.runtime.Util.mapException(ex));
+            }
+        }
+
+        /// <inheritdoc />
+        public void Warn(string message, Exception? ex = null)
+        {
+            if (ex == null)
+            {
+                slf4JLogger.warn(message);
+            }
+            else
+            {
+                // IKVM allows passing .NET Exceptions directly to Java methods in many cases
+                slf4JLogger.warn(message, ikvm.runtime.Util.mapException(ex));
+            }
+        }
+
+        /// <inheritdoc />
+        public void Debug(string message, Exception? ex = null)
+        {
+            if (ex == null)
+            {
+                slf4JLogger.debug(message);
+            }
+            else
+            {
+                slf4JLogger.debug(message, ikvm.runtime.Util.mapException(ex));
+            }
+        }
+
+        /// <inheritdoc />
+        public void Trace(string message, Exception? ex = null)
+        {
+            if (ex == null)
+            {
+                slf4JLogger.trace(message);
+            }
+            else
+            {
+                slf4JLogger.trace(message, ikvm.runtime.Util.mapException(ex));
+            }
+        }
+
+    }
+}

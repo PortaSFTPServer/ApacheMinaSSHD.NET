@@ -1,0 +1,44 @@
+# Build output
+**/bin/
+**/obj/
+artifacts/
+
+# IDE and local user state
+.vs/
+*.suo
+*.user
+*.rsuser
+
+# Local test output and logs
+.winscp-stress-logs/
+.public-repo-staging*/
+*.log
+
+# Private keys, host keys, certificates, and local auth fixtures
+*.pfx
+*.p12
+*.snk
+*.pem
+*.key
+*.ppk
+*.ser
+Authorized_Keys/
+privatekeys/
+
+# Local publish/deployment profiles
+**/publish/
+**/PublishProfiles/
+*.pubxml
+*.pubxml.user
+
+# Local extracted third-party distributions. Maven/NuGet restore fetches these.
+apache-sshd-*/
+
+# Projects that are not part of this public library repository.
+ApacheMinaSSHD.NET.Core/
+ApacheMinaSSHD.NET.Service/
+ApacheMinaSSHD.NET.Shared/
+PortaSFTPServer/
+
+# Visual Studio upgrade reports
+UpgradeLog*.htm

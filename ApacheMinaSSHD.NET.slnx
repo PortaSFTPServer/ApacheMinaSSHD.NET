@@ -1,0 +1,14 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj" />
+  <Project Path="ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj" Id="5d73740f-0340-4b1d-a191-2d8718cfa960" />
+  <Project Path="FileSystemHelper/FileSystemHelper.csproj" Id="fde48245-31f7-4d7f-82ed-6920dd1de216" />
+  <Project Path="SimpleSSHDSever/SimpleSSHDSever.csproj">
+    <Platform Solution="*|x64" Project="x64" />
+    <Platform Solution="*|x86" Project="x86" />
+  </Project>
+</Solution>

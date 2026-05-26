@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!--<TargetFramework>net481</TargetFramework>-->
+	  <TargetFramework>net10.0-windows</TargetFramework>
+
+	  <!--<RuntimeIdentifier>win-x64</RuntimeIdentifier>-->
+	  <!--<SelfContained>false</SelfContained>-->
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <Platforms>AnyCPU;x86;x64</Platforms>
+    <LangVersion>14.0</LangVersion>
+    <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages>
+
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="IKVM" Version="8.15.0" />
+		<PackageReference Include="IKVM.Maven.Sdk" Version="1.11.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3848-prerelease" />
+		<PackageReference Include="Obfuscar" Version="2.2.50">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="WinSCP" Version="6.5.6" />
+		
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\ApacheMinaSSHD.NET.Bindings\ApacheMinaSSHD.NET.Bindings.csproj" />
+	  <ProjectReference Include="..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />
+	</ItemGroup>
+
+	<Target Name="ObfuscateAssembly" AfterTargets="AfterBuild" Condition="'$(Configuration)' == 'Release'">
+		<PropertyGroup>
+			<ObfuscarExe>$(UserProfile)\.nuget\packages\obfuscar\2.2.50\tools\Obfuscar.Console.exe</ObfuscarExe>
+		</PropertyGroup>
+		<Exec Command="$(ObfuscarExe) obfuscar.xml" />
+	</Target>
+
+
+</Project>

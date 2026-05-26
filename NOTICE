@@ -1,0 +1,22 @@
+ApacheMinaSSHD.NET
+Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors
+
+ApacheMinaSSHD.NET is created by SERALYNX LLC to help engineering firms,
+developers, and contractors add secure file transfer features to their products.
+The project follows the same Apache MINA SSHD server integration paradigm used
+by Porta SFTP Server, while exposing a .NET-facing wrapper API.
+
+This product includes IKVM-generated .NET assemblies derived from Apache MINA
+SSHD.
+
+Apache MINA SSHD
+Copyright 2008-2026 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+This product also includes SLF4J components and the JCL-over-SLF4J bridge from
+QOS.ch and SLF4J.ORG.
+
+Apache, Apache MINA, Apache SSHD, and related Apache project names are
+trademarks of The Apache Software Foundation. SLF4J is owned by QOS.ch.

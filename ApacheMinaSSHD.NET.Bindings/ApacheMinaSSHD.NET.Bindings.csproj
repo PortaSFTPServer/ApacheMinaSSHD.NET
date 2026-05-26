@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!--<TargetFramework>net481</TargetFramework>-->
+		<TargetFramework>net10.0</TargetFramework>
+
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IkvmMavenRepositories>central=http://repo1.maven.org</IkvmMavenRepositories>
+		<LangVersion>14.0</LangVersion>
+		<PackageId>ApacheMinaSSHD.NET.Bindings</PackageId>
+		<Title>ApacheMinaSSHD.NET.Bindings - IKVM Apache MINA SSHD SFTP/SCP Bindings</Title>
+		<Description>IKVM Maven bindings for Apache MINA SSHD 2.17.1 used by ApacheMinaSSHD.NET.Wrapper. Includes generated .NET assemblies for SSHD common, core, SFTP, SCP, and SLF4J support.</Description>
+		<Authors>SERALYNX LLC</Authors>
+		<Company>SERALYNX LLC</Company>
+		<Copyright>Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors</Copyright>
+		<PackageTags>ssh;sshd;sftp;scp;sftp-server;scp-server;ssh-server;apache-mina;apache-mina-sshd;mina-sshd;ikvm;ikvm-bindings;maven;dotnet;csharp;secure-file-transfer;bindings</PackageTags>
+		<PackageReleaseNotes>Initial IKVM binding package for Apache MINA SSHD SFTP/SCP server assemblies used by ApacheMinaSSHD.NET.Wrapper, including third-party license notices.</PackageReleaseNotes>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);1591;1572;1573</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+
+		<!--<IkvmReference Include="pathToLibFolder\*.jar" />-->
+		<MavenReference Include="org.apache.sshd:sshd-core" Version="2.17.1" IkvmExport="true" />
+		<MavenReference Include="org.apache.sshd:sshd-sftp" Version="2.17.1" IkvmExport="true" />
+		<MavenReference Include="org.apache.sshd:sshd-scp" Version="2.17.1" IkvmExport="true" />
+		<MavenReference Include="org.apache.sshd:sshd-common" Version="2.17.1" IkvmExport="true" />
+		<MavenReference Include="org.slf4j:slf4j-api" Version="1.7.36" />
+		<MavenReference Include="org.slf4j:slf4j-simple" Version="1.7.36" />
+		<!--<MavenReference Include="ch.qos.logback:logback-core:1.5.32" />
+        <MavenReference Include="ch.qos.logback:logback-classic:1.5.32" />-->
+
+	</ItemGroup>
+
+
+
+	<ItemGroup>
+		<PackageReference Include="IKVM" Version="8.15.0" />
+		<PackageReference Include="IKVM.Maven.Sdk" Version="1.11.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
+		<None Include="..\CONTRIBUTING.md" Pack="true" PackagePath="\" />
+		<None Include="..\SECURITY.md" Pack="true" PackagePath="\" />
+		<None Include="..\LICENSE" Pack="true" PackagePath="\" />
+		<None Include="..\NOTICE" Pack="true" PackagePath="\" />
+		<None Include="..\THIRD-PARTY-NOTICES.md" Pack="true" PackagePath="\" />
+		<None Include="..\licenses\APACHE-2.0.txt" Pack="true" PackagePath="licenses\" />
+		<None Include="..\licenses\SLF4J-MIT.txt" Pack="true" PackagePath="licenses\" />
+	</ItemGroup>
+
+	<Target Name="AddIkvmGeneratedAssembliesToPackage" BeforeTargets="_GetPackageFiles">
+		<ItemGroup>
+			<None Include="$(TargetDir)*.dll"
+				  Exclude="$(TargetPath)"
+				  Pack="true"
+				  PackagePath="lib/$(TargetFramework)/"
+				  Visible="false" />
+		</ItemGroup>
+	</Target>
+
+</Project>

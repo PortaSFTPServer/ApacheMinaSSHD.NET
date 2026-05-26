@@ -1,0 +1,35 @@
+﻿<?xml version='1.0'?>
+<Obfuscator>
+	<Var name="InPath" value=".\bin\Release\net10.0-windows\publish" />
+	<Var name="OutPath" value=".\bin\Release\net10.0-windows\publish\Obfuscated" />
+
+	<!-- CORE MAXIMUM SECURITY SETTINGS -->
+
+	<!-- Encrypts all hardcoded strings so they cannot be read via a hex editor or decompilers -->
+	<Var name="HideStrings" value="true" />
+
+	<!-- Scrambles public classes and methods. CRITICAL for maximum protection -->
+	<Var name="KeepPublicApi" value="false" />
+
+	<!-- Reuses character names (A, a, B, b) across different method signatures to confuse decompilers -->
+	<Var name="ReuseNames" value="true" />
+	<Var name="UseUnicodeNames" value="true" />
+
+	<!-- Aggressively renames properties and events instead of leaving them intact -->
+	<Var name="RenameProperties" value="true" />
+	<Var name="RenameEvents" value="true" />
+	<Var name="RenameFields" value="true" />
+
+	<Var name="RenameMethods" value="true" />
+	<Var name="RenameParameters" value="true" />
+	<!-- OPTIONAL ENHANCEMENTS -->
+	<!-- Set to true only if you do NOT want to produce debugging .pdb symbols for the obfuscated code -->
+	<Var name="HidePrivateApi" value="true" />
+	<Var name="Optimize" value="true" />
+	<Var name="SuppressReferences" value="true" />
+
+	
+	<Module file="$(InPath)\ApacheMinaSSHD.NET.Wrapper.dll" />
+	<Module file="$(InPath)\ApacheMinaSSHD.NET.Bindings.dll" />
+	<Module file="$(InPath)\SimpleSSHDSever.dll" />
+</Obfuscator>
