@@ -10,6 +10,8 @@ responsible for the final security policy used in production.
 - Hide Apache MINA and Java types from application-facing interfaces.
 - Expose .NET hooks for authentication, authorization, filesystem access,
   event handling, logging, SFTP, and SCP behavior.
+- Deny password and keyboard-interactive authentication by default unless the
+  application configures an explicit authenticator.
 - Provide conservative baseline configuration helpers for common SSH limits.
 - Keep SFTP/SCP behavior covered by real OpenSSH integration tests.
 - Add dependency and vulnerability scanning for NuGet and Maven dependencies.

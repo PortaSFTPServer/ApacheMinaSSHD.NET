@@ -1,18 +1,15 @@
-﻿using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 {
     /// <summary>
-    /// Default keyboard-interactive authenticator implementation.
+    /// Secure default keyboard-interactive authenticator implementation.
     /// </summary>
     /// <remarks>
-    /// Override this class or implement <see cref="IAMNetKeyboardInteractiveAuthenticator"/>
-    /// to enforce application-specific challenge and response validation.
+    /// This implementation sends no prompts and denies all responses. Override this
+    /// class, use <see cref="AMNetDelegateKeyboardInteractiveAuthenticator"/>, or
+    /// implement <see cref="IAMNetKeyboardInteractiveAuthenticator"/> to enforce
+    /// application-specific challenge and response validation.
     /// </remarks>
     public class AMNetKeyboardInteractiveAuthenticator : IAMNetKeyboardInteractiveAuthenticator
     {
@@ -26,19 +23,12 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <inheritdoc />
         public virtual bool Authenticate(ISshSession session, string username, IResponseList response)
         {
-
-            // do the authentication here
-
-            return true;
+            return false;
         }
 
         /// <inheritdoc />
         public virtual void GenerateChallenge(string username, ISshChallenge challenge)
         {
-
-            
-            challenge.InteractionInstruction = "Additional Security Authentication";
-            challenge.AddPrompt("2FA Code",false);
         }
     }
 }

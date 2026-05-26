@@ -4,12 +4,13 @@ using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 {
     /// <summary>
-    /// Default password authenticator implementation.
+    /// Secure default password authenticator implementation.
     /// </summary>
     /// <remarks>
-    /// Override <see cref="Authenticate(string, string, ISshSession)"/> or provide
-    /// your own <see cref="IAMNetPasswordAuthenticator"/> to enforce application
-    /// password policy.
+    /// This implementation denies all passwords. Override
+    /// <see cref="Authenticate(string, string, ISshSession)"/>, use
+    /// <see cref="AMNetDelegatePasswordAuthenticator"/>, or provide your own
+    /// <see cref="IAMNetPasswordAuthenticator"/> to enforce application password policy.
     /// </remarks>
     public class AMNetPasswordAuthenticator : IAMNetPasswordAuthenticator
     {
@@ -23,7 +24,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <inheritdoc />
         public virtual bool Authenticate(string username, string password, ISshSession session)
         {
-            return true;
+            return false;
         }
     }
 }

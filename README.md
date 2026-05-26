@@ -30,6 +30,35 @@ wrapper. Application developers normally should not reference it directly.
 `SimpleSSHDSever`, `PortaSFTPServer`, `ApacheMinaSSHD.NET.Service`, and
 `ApacheMinaSSHD.NET.Shared` are not part of the NuGet package surface.
 
+## NuGet Release Automation
+
+NuGet packages are versioned from Git tags and GitHub Actions release inputs.
+Push a tag such as `v1.0.0` or `v1.0.0-beta.1` to publish that exact package
+version. The `NuGet Release` workflow also supports manual dispatch with an
+explicit SemVer version and a `publish` toggle.
+
+Publishing requires a repository secret named `NUGET_API_KEY`. Without that
+secret, the workflow can still validate, build, test, pack, and upload package
+artifacts for review.
+
+## Authentication Modules
+
+The public authentication API stays .NET-only. Developers can implement the
+interfaces directly or compose the built-in modules:
+
+- `AMNetFixedPasswordAuthenticator` for a single username/password pair.
+- `AMNetDelegatePasswordAuthenticator` for application callbacks or identity stores.
+- `AMNetCompositePasswordAuthenticator` to try multiple password modules in order.
+- `AMNetFingerprintPublickeyAuthenticator` for database or configuration-backed key fingerprints.
+- `AMNetPublickeyAuthenticator` for the legacy `Authorized_Keys` directory pattern.
+- `AMNetAuthorizedKeysAuthenticator` for OpenSSH-style `authorized_keys` files.
+- `AMNetDelegatePublickeyAuthenticator` and `AMNetCompositePublickeyAuthenticator` for custom key policies.
+- `AMNetDelegateKeyboardInteractiveAuthenticator` and `AMNetFixedKeyboardInteractiveAuthenticator` for keyboard-interactive prompts.
+
+`AMNetPasswordAuthenticator` and `AMNetKeyboardInteractiveAuthenticator` deny by
+default. Override them or use the delegate/fixed implementations when enabling
+those authentication methods.
+
 ## Use Cases
 
 Use ApacheMinaSSHD.NET when you need:

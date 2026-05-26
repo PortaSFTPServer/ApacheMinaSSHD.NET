@@ -1,0 +1,138 @@
+name: NuGet Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "SemVer package version, for example 1.0.0 or 1.0.0-beta.1"
+        required: true
+        type: string
+      publish:
+        description: "Publish to NuGet.org after validation"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nuget-release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
+jobs:
+  pack-and-publish:
+    name: Pack and Publish NuGet Packages
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Resolve package version
+        id: version
+        shell: pwsh
+        env:
+          INPUT_VERSION: ${{ github.event.inputs.version }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          $version = $env:INPUT_VERSION
+
+          if ([string]::IsNullOrWhiteSpace($version)) {
+            if ($env:REF_NAME -notmatch '^v(?<version>\d+\.\d+\.\d+(-[0-9A-Za-z][0-9A-Za-z\.-]*)?)$') {
+              throw "Release tags must use vMAJOR.MINOR.PATCH or vMAJOR.MINOR.PATCH-prerelease, for example v1.0.0 or v1.0.0-beta.1."
+            }
+
+            $version = $Matches.version
+          }
+
+          if ($version -notmatch '^\d+\.\d+\.\d+(-[0-9A-Za-z][0-9A-Za-z\.-]*)?$') {
+            throw "Version '$version' must be SemVer, for example 1.0.0 or 1.0.0-beta.1."
+          }
+
+          "package_version=$version" >> $env:GITHUB_OUTPUT
+          Write-Host "Package version: $version"
+
+      - name: Verify OpenSSH client tools
+        shell: pwsh
+        run: |
+          Get-Command "$env:WINDIR\System32\OpenSSH\sftp.exe"
+          Get-Command "$env:WINDIR\System32\OpenSSH\scp.exe"
+          Get-Command "$env:WINDIR\System32\OpenSSH\ssh-keygen.exe"
+
+      - name: Restore
+        shell: pwsh
+        run: |
+          dotnet restore ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj
+          dotnet restore ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj
+          dotnet restore SimpleSSHDSever/SimpleSSHDSever.csproj
+
+      - name: Build
+        shell: pwsh
+        run: |
+          dotnet build ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj -c Release --no-restore /p:Version=${{ steps.version.outputs.package_version }} /p:PackageVersion=${{ steps.version.outputs.package_version }}
+          dotnet build ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj -c Release --no-restore /p:Version=${{ steps.version.outputs.package_version }} /p:PackageVersion=${{ steps.version.outputs.package_version }}
+          dotnet build SimpleSSHDSever/SimpleSSHDSever.csproj -c Release --no-restore /p:Version=${{ steps.version.outputs.package_version }} /p:PackageVersion=${{ steps.version.outputs.package_version }}
+
+      - name: Public API guard
+        shell: pwsh
+        run: ./eng/verify-public-api.ps1 -Configuration Release
+
+      - name: XML documentation guard
+        shell: pwsh
+        run: ./eng/verify-xml-docs.ps1 -Configuration Release
+
+      - name: Client integration and stress tests
+        shell: pwsh
+        run: dotnet run -c Release --no-build --project SimpleSSHDSever/SimpleSSHDSever.csproj -- --integration-tests
+
+      - name: Dependency and CVE scan
+        shell: pwsh
+        run: ./eng/security-scan.ps1
+
+      - name: Pack NuGet packages
+        shell: pwsh
+        run: |
+          dotnet pack ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj -c Release --no-restore -o artifacts/nuget /p:Version=${{ steps.version.outputs.package_version }} /p:PackageVersion=${{ steps.version.outputs.package_version }}
+          dotnet pack ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj -c Release --no-restore -o artifacts/nuget /p:Version=${{ steps.version.outputs.package_version }} /p:PackageVersion=${{ steps.version.outputs.package_version }}
+
+      - name: Upload NuGet artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-${{ steps.version.outputs.package_version }}
+          path: artifacts/nuget/*.nupkg
+          if-no-files-found: error
+
+      - name: Publish to NuGet.org
+        if: github.event_name == 'push' || github.event.inputs.publish == 'true'
+        shell: pwsh
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:NUGET_API_KEY)) {
+            throw "Repository secret NUGET_API_KEY is required to publish packages."
+          }
+
+          $packages = @(Get-ChildItem -LiteralPath "artifacts/nuget" -Filter "*.nupkg")
+          if ($packages.Count -eq 0) {
+            throw "No NuGet packages were found to publish."
+          }
+
+          foreach ($package in $packages) {
+            dotnet nuget push $package.FullName `
+              --source "https://api.nuget.org/v3/index.json" `
+              --api-key $env:NUGET_API_KEY `
+              --skip-duplicate
+          }

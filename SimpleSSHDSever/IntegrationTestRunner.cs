@@ -1,6 +1,5 @@
 using ApacheMinaSSHD.NET.Wrapper;
 using ApacheMinaSSHD.NET.Wrapper.Abstractions;
-using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 using ApacheMinaSSHD.NET.Wrapper.Factories;
 using ApacheMinaSSHD.NET.Wrapper.Logging;
 using System.Diagnostics;
@@ -359,11 +358,13 @@ namespace SimpleSSHDSever
             switch (authMode)
             {
                 case AuthMode.Password:
-                    server.setPasswordAuthenticator(new FixedPasswordAuthenticator(Username, Password));
+                    server.setPasswordAuthenticator(new AMNetCompositePasswordAuthenticator(
+                        new AMNetFixedPasswordAuthenticator(Username, Password)));
                     break;
                 case AuthMode.PublicKey:
                     ClientKeyMaterial publicKey = RequireKey(key);
-                    server.setPublickeyAuthenticator(new FingerprintPublickeyAuthenticator(Username, publicKey.Fingerprint));
+                    server.setPublickeyAuthenticator(new AMNetCompositePublickeyAuthenticator(
+                        new AMNetFingerprintPublickeyAuthenticator(Username, publicKey.Fingerprint)));
                     break;
                 case AuthMode.AuthorizedKeys:
                     ClientKeyMaterial authorizedKey = RequireKey(key);
@@ -860,40 +861,5 @@ namespace SimpleSSHDSever
             AuthorizedKeys
         }
 
-        private sealed class FixedPasswordAuthenticator : IAMNetPasswordAuthenticator
-        {
-            private readonly string username;
-            private readonly string password;
-
-            public FixedPasswordAuthenticator(string username, string password)
-            {
-                this.username = username;
-                this.password = password;
-            }
-
-            public bool Authenticate(string username, string password, ISshSession session)
-            {
-                return string.Equals(this.username, username, StringComparison.Ordinal)
-                    && string.Equals(this.password, password, StringComparison.Ordinal);
-            }
-        }
-
-        private sealed class FingerprintPublickeyAuthenticator : IAMNetPublickeyAuthenticator
-        {
-            private readonly string username;
-            private readonly string fingerprint;
-
-            public FingerprintPublickeyAuthenticator(string username, string fingerprint)
-            {
-                this.username = username;
-                this.fingerprint = fingerprint;
-            }
-
-            public bool Authenticate(string username, string incomingFingerprint, ISshSession session)
-            {
-                return string.Equals(this.username, username, StringComparison.Ordinal)
-                    && string.Equals(fingerprint, incomingFingerprint, StringComparison.OrdinalIgnoreCase);
-            }
-        }
     }
 }

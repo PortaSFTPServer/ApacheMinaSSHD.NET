@@ -24,10 +24,6 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3848-prerelease" />
-		<PackageReference Include="Obfuscar" Version="2.2.50">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
 		<PackageReference Include="WinSCP" Version="6.5.6" />
 		
 	</ItemGroup>
@@ -36,13 +32,5 @@
 	  <ProjectReference Include="..\ApacheMinaSSHD.NET.Bindings\ApacheMinaSSHD.NET.Bindings.csproj" />
 	  <ProjectReference Include="..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />
 	</ItemGroup>
-
-	<Target Name="ObfuscateAssembly" AfterTargets="AfterBuild" Condition="'$(Configuration)' == 'Release'">
-		<PropertyGroup>
-			<ObfuscarExe>$(UserProfile)\.nuget\packages\obfuscar\2.2.50\tools\Obfuscar.Console.exe</ObfuscarExe>
-		</PropertyGroup>
-		<Exec Command="$(ObfuscarExe) obfuscar.xml" />
-	</Target>
-
 
 </Project>

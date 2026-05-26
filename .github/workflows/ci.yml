@@ -35,40 +35,34 @@ jobs:
       - name: Restore
         shell: pwsh
         run: |
-          $projects = @(
-            "ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj",
-            "ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj",
-            "SimpleSSHDSever/SimpleSSHDSever.csproj"
-          )
-
-          foreach ($project in $projects) {
-            dotnet restore $project
-          }
+          dotnet restore ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj
+          dotnet restore ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj
+          dotnet restore SimpleSSHDSever/SimpleSSHDSever.csproj
 
       - name: Build
         shell: pwsh
         run: |
-          $projects = @(
-            "ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj",
-            "ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj",
-            "SimpleSSHDSever/SimpleSSHDSever.csproj"
-          )
-
-          foreach ($project in $projects) {
-            dotnet build $project --no-restore
-          }
+          dotnet build ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj -c Release --no-restore
+          dotnet build ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj -c Release --no-restore
+          dotnet build SimpleSSHDSever/SimpleSSHDSever.csproj -c Release --no-restore
 
       - name: Public API guard
         shell: pwsh
-        run: ./eng/verify-public-api.ps1
+        run: ./eng/verify-public-api.ps1 -Configuration Release
 
       - name: XML documentation guard
         shell: pwsh
-        run: ./eng/verify-xml-docs.ps1
+        run: ./eng/verify-xml-docs.ps1 -Configuration Release
+
+      - name: Pack validation
+        shell: pwsh
+        run: |
+          dotnet pack ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj -c Release --no-restore -o artifacts/nuget-ci /p:Version=0.0.0-ci.${{ github.run_number }} /p:PackageVersion=0.0.0-ci.${{ github.run_number }}
+          dotnet pack ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj -c Release --no-restore -o artifacts/nuget-ci /p:Version=0.0.0-ci.${{ github.run_number }} /p:PackageVersion=0.0.0-ci.${{ github.run_number }}
 
       - name: Client integration and stress tests
         shell: pwsh
-        run: dotnet run --no-build --project SimpleSSHDSever/SimpleSSHDSever.csproj -- --integration-tests
+        run: dotnet run -c Release --no-build --project SimpleSSHDSever/SimpleSSHDSever.csproj -- --integration-tests
 
       - name: Dependency and CVE scan
         shell: pwsh

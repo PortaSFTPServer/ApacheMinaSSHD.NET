@@ -113,9 +113,12 @@ namespace SimpleSSHDSever
 
                         sshd.setFileSystemFactory(fileSystemFactory);
 
-                        sshd.setKeyboardInteractiveAuthenticator(new AMNetKeyboardInteractiveAuthenticator());
-
-                        sshd.setPasswordAuthenticator(new AMNetPasswordAuthenticator());
+                        string? samplePassword = Environment.GetEnvironmentVariable("AMNET_SAMPLE_PASSWORD");
+                        if (!string.IsNullOrWhiteSpace(samplePassword))
+                        {
+                            string sampleUsername = Environment.GetEnvironmentVariable("AMNET_SAMPLE_USERNAME") ?? "demo";
+                            sshd.setPasswordAuthenticator(new AMNetFixedPasswordAuthenticator(sampleUsername, samplePassword));
+                        }
 
                         // The sample uses paths relative to the application output folder.
                         // AMNetPublickeyAuthenticator will look for ./Authorized_Keys under this base path.
@@ -148,8 +151,10 @@ namespace SimpleSSHDSever
                         // sshd.addSessionListener(new MyDynamicAuthListener());
 
                         // attatch the intance of the server
-                        // this is for public + interactive and password + interactive
-                        sshd.Config.AUTH_METHODS = "password,publickey,keyboard-interactive password,keyboard-interactive";
+                        // Keep the sample closed by default. Set AMNET_SAMPLE_PASSWORD to enable password auth.
+                        sshd.Config.AUTH_METHODS = string.IsNullOrWhiteSpace(samplePassword)
+                            ? "publickey"
+                            : "publickey,password";
                         sshd.Config.MAX_AUTH_REQUESTS = 10;
                         sshd.Config.AUTH_TIMEOUT = TimeSpan.FromSeconds(60); 
                         sshd.Config.IDLE_TIMEOUT = TimeSpan.FromSeconds(120);

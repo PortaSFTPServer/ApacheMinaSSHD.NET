@@ -172,6 +172,15 @@ namespace ApacheMinaSSHD.NET.Wrapper
         }
 
         /// <summary>
+        /// Enables keyboard-interactive authentication.
+        /// </summary>
+        /// <param name="keyboardInteractiveAuthenticator">The application authenticator.</param>
+        public void SetKeyboardInteractiveAuthenticator(IAMNetKeyboardInteractiveAuthenticator keyboardInteractiveAuthenticator)
+        {
+            setKeyboardInteractiveAuthenticator(keyboardInteractiveAuthenticator);
+        }
+
+        /// <summary>
         /// Enables username/password authentication.
         /// </summary>
         /// <param name="passwordAuthenticator">The application authenticator.</param>
@@ -179,6 +188,15 @@ namespace ApacheMinaSSHD.NET.Wrapper
         {
             ArgumentNullException.ThrowIfNull(passwordAuthenticator);
             server.setPasswordAuthenticator(new InternalPasswordAuthenticator(passwordAuthenticator));
+        }
+
+        /// <summary>
+        /// Enables username/password authentication.
+        /// </summary>
+        /// <param name="passwordAuthenticator">The application authenticator.</param>
+        public void SetPasswordAuthenticator(IAMNetPasswordAuthenticator passwordAuthenticator)
+        {
+            setPasswordAuthenticator(passwordAuthenticator);
         }
 
         /// <summary>
@@ -192,6 +210,24 @@ namespace ApacheMinaSSHD.NET.Wrapper
         }
 
         /// <summary>
+        /// Enables public key authentication.
+        /// </summary>
+        /// <param name="publickeyAuthenticator">The application authenticator.</param>
+        public void SetPublickeyAuthenticator(IAMNetPublickeyAuthenticator publickeyAuthenticator)
+        {
+            setPublickeyAuthenticator(publickeyAuthenticator);
+        }
+
+        /// <summary>
+        /// Enables public key authentication.
+        /// </summary>
+        /// <param name="publickeyAuthenticator">The application authenticator.</param>
+        public void SetPublicKeyAuthenticator(IAMNetPublickeyAuthenticator publickeyAuthenticator)
+        {
+            setPublickeyAuthenticator(publickeyAuthenticator);
+        }
+
+        /// <summary>
         /// Enables public key authentication backed by an authorized_keys file.
         /// </summary>
         /// <param name="authorizedKeysAuthenticator">The authorized keys configuration.</param>
@@ -199,6 +235,24 @@ namespace ApacheMinaSSHD.NET.Wrapper
         {
             ArgumentNullException.ThrowIfNull(authorizedKeysAuthenticator);
             server.setPublickeyAuthenticator(new InternalAuthorizedKeysAuthenticator(authorizedKeysAuthenticator));
+        }
+
+        /// <summary>
+        /// Enables public key authentication backed by an authorized_keys file.
+        /// </summary>
+        /// <param name="authorizedKeysAuthenticator">The authorized keys configuration.</param>
+        public void SetAuthorizedkeyAuthenticator(IAMNetAuthorizedKeysAuthenticator authorizedKeysAuthenticator)
+        {
+            setAuthorizedkeyAuthenticator(authorizedKeysAuthenticator);
+        }
+
+        /// <summary>
+        /// Enables public key authentication backed by an authorized_keys file.
+        /// </summary>
+        /// <param name="authorizedKeysAuthenticator">The authorized keys configuration.</param>
+        public void SetAuthorizedKeysAuthenticator(IAMNetAuthorizedKeysAuthenticator authorizedKeysAuthenticator)
+        {
+            setAuthorizedkeyAuthenticator(authorizedKeysAuthenticator);
         }
 
         /// <summary>

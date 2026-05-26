@@ -8,9 +8,15 @@ using System.Text;
 namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 {
     /// <summary>
-    /// Default public key authenticator that compares incoming key fingerprints
-    /// against files in an Authorized_Keys directory.
+    /// Directory-backed public key authenticator that compares incoming key fingerprints
+    /// against key files in an Authorized_Keys directory.
     /// </summary>
+    /// <remarks>
+    /// This authenticator exists for compatibility with the original directory
+    /// pattern. For new applications, prefer <see cref="AMNetAuthorizedKeysAuthenticator"/>
+    /// for OpenSSH authorized_keys files or <see cref="AMNetFingerprintPublickeyAuthenticator"/>
+    /// when fingerprints are stored in an application database.
+    /// </remarks>
     public class AMNetPublickeyAuthenticator : IAMNetPublickeyAuthenticator
     {
         private readonly string authKeysPath;
