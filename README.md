@@ -1,9 +1,9 @@
 # ApacheMinaSSHD.NET - Apache MINA SSHD .NET SFTP/SCP Server Wrapper
 
-ApacheMinaSSHD.NET is an unofficial .NET and C# wrapper around Apache MINA SSHD
-for building SFTP server, SCP server, and secure file transfer features. The
-public wrapper APIs are designed so application developers do not need to import
-Apache MINA, IKVM, or Java types in normal usage.
+ApacheMinaSSHD.NET is a .NET and C# wrapper around Apache MINA SSHD, created by
+SERALYNX LLC for building SFTP server, SCP server, and secure file transfer
+features. The public wrapper APIs are designed so application developers do not
+need to import Apache MINA, IKVM, or Java types in normal usage.
 
 ApacheMinaSSHD.NET is created by SERALYNX LLC to help engineering firms,
 developers, and contractors add secure file transfer features to their products.

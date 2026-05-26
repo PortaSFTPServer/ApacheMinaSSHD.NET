@@ -5,8 +5,8 @@ project website.
 
 ## Suggested GitHub Repository Description
 
-Unofficial .NET/C# wrapper for Apache MINA SSHD SFTP and SCP server features,
-using IKVM while hiding Java imports from application developers.
+.NET/C# wrapper created by SERALYNX LLC for Apache MINA SSHD SFTP and SCP server
+features, using IKVM while hiding Java imports from application developers.
 
 ## Suggested GitHub Topics
 
@@ -27,7 +27,7 @@ using IKVM while hiding Java imports from application developers.
 ## Naming Guidance
 
 - Keep `ApacheMinaSSHD.NET.Wrapper` as the primary package developers install.
-- Describe the project as an unofficial wrapper around Apache MINA SSHD.
+- Describe the project as a SERALYNX LLC-created wrapper around Apache MINA SSHD.
 - Avoid wording that implies Apache Software Foundation ownership,
   sponsorship, or endorsement.
 - Keep SERALYNX LLC visible in the README, package metadata, LICENSE, and

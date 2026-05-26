@@ -10,7 +10,7 @@
     <IkvmMavenRepositories>central=http://repo1.maven.org</IkvmMavenRepositories>
     <PackageId>ApacheMinaSSHD.NET.Wrapper</PackageId>
     <Title>ApacheMinaSSHD.NET.Wrapper - Apache MINA SSHD .NET SFTP/SCP Server Wrapper</Title>
-    <Description>.NET and C# wrapper for Apache MINA SSHD to build SFTP server, SCP server, SSH server, and secure file transfer features without Java imports. Unofficial IKVM-based library from SERALYNX LLC.</Description>
+    <Description>.NET and C# wrapper created by SERALYNX LLC for Apache MINA SSHD to build SFTP server, SCP server, SSH server, and secure file transfer features without Java imports. IKVM-based library.</Description>
     <Authors>SERALYNX LLC</Authors>
     <Company>SERALYNX LLC</Company>
     <Copyright>Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors</Copyright>
