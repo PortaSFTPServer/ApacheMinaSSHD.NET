@@ -117,10 +117,12 @@ namespace SimpleSSHDSever
 
                         sshd.setPasswordAuthenticator(new AMNetPasswordAuthenticator());
 
-                        // if this used, make sure that the app has permission for the path
-                        // sshd.setAuthorizedkeyAuthenticator(new AMNetAuthorizedKeysAuthenticator(".\\Authorized_Keys"));
+                        // The sample uses paths relative to the application output folder.
+                        // AMNetPublickeyAuthenticator will look for ./Authorized_Keys under this base path.
+                        // Create that folder and add user public keys when testing public-key authentication.
+                        string authorizedKeysBasePath = appPath;
 
-                        sshd.setPublickeyAuthenticator(new AMNetPublickeyAuthenticator("C:\\C#Projects\\ApacheMinaSSHD.NET\\"));
+                        sshd.setPublickeyAuthenticator(new AMNetPublickeyAuthenticator(authorizedKeysBasePath));
 
                         // this will be called right after the proxy and before the session is created
                         sshd.setIoServiceEventListener(new AMNetIoServiceEventListener());

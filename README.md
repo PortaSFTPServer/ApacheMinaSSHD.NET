@@ -62,15 +62,17 @@ hostKeys.setAlgorithm(AMNetSshAlgorithms.HostKeyAlgorithms.Rsa);
 hostKeys.setKeySize(3072);
 server.setKeyPairProvider(hostKeys);
 
+var rootPath = Path.Combine(AppContext.BaseDirectory, "sftp-root");
+
 server.setPasswordAuthenticator(new MyPasswordAuthenticator());
-server.setFileSystemFactory(new AMNetVirtualFileSystemFactory("C:\\sftp-root"));
+server.setFileSystemFactory(new AMNetVirtualFileSystemFactory(rootPath));
 
 var sftp = new AMNetSftpSubsystemFactory();
 sftp.setFileSystemAccessor(new MySftpFileSystemAccessor());
 server.setSubsystemFactories(sftp);
 
 server.setCommandFactory(new AMNetScpCommandFactory(
-    new MyScpFileOpener("C:\\sftp-root")));
+    new MyScpFileOpener(rootPath)));
 
 server.start();
 ```
