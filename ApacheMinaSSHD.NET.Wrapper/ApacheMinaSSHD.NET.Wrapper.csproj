@@ -40,6 +40,7 @@
 	  <None Include="..\LICENSE" Pack="true" PackagePath="\" />
 	  <None Include="..\NOTICE" Pack="true" PackagePath="\" />
 	  <None Include="..\THIRD-PARTY-NOTICES.md" Pack="true" PackagePath="\" />
+	  <None Include="..\docs\STANDARDS-AND-ALGORITHMS.md" Pack="true" PackagePath="docs\" />
 	  <None Include="..\licenses\APACHE-2.0.txt" Pack="true" PackagePath="licenses\" />
 	  <None Include="..\licenses\SLF4J-MIT.txt" Pack="true" PackagePath="licenses\" />
 	</ItemGroup>

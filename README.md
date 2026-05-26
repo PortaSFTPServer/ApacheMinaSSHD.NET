@@ -109,6 +109,13 @@ server.Config.SetHostKeyAlgorithms(
 algorithms supported by the current runtime. The raw string properties remain
 available for advanced scenarios.
 
+## Standards and Supported Algorithms
+
+ApacheMinaSSHD.NET cites the SSH RFC family and documents the wrapper's exposed
+algorithm constants in `docs/STANDARDS-AND-ALGORITHMS.md`. That document covers
+the core SSH RFCs, SFTP draft status, SCP protocol notes, RFC-backed algorithm
+names, and OpenSSH extension algorithm names.
+
 ## Security Boundary
 
 This is a library foundation, not a complete production server product. The
