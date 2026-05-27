@@ -23,7 +23,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3848-prerelease" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3967.48" />
 		<PackageReference Include="WinSCP" Version="6.5.6" />
 		
 	</ItemGroup>
