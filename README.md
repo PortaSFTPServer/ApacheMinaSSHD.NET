@@ -55,9 +55,29 @@ interfaces directly or compose the built-in modules:
 - `AMNetDelegatePublickeyAuthenticator` and `AMNetCompositePublickeyAuthenticator` for custom key policies.
 - `AMNetDelegateKeyboardInteractiveAuthenticator` and `AMNetFixedKeyboardInteractiveAuthenticator` for keyboard-interactive prompts.
 
+Keyboard-interactive authentication is also modular, but it is challenge-based
+rather than a single credential check. For advanced routing, use one delegate
+authenticator and dispatch to your own per-user or per-tenant modules inside
+that callback.
+
 `AMNetPasswordAuthenticator` and `AMNetKeyboardInteractiveAuthenticator` deny by
 default. Override them or use the delegate/fixed implementations when enabling
 those authentication methods.
+
+Multi-step authentication policy can also be expressed without raw SSH strings:
+
+```csharp
+server.SetAuthorizedKeysAuthenticator("authorized_keys");
+server.SetCompositePasswordAuthenticator(
+    new AMNetDelegatePasswordAuthenticator((username, password, session) => false),
+    new AMNetFixedPasswordAuthenticator("fallback", "Password-12345!"));
+
+server.SetAuthenticationMethods(
+    AMNetSshAuthenticationMethods.PublicKey,
+    AMNetSshAuthenticationMethods.RequireAll(
+        AMNetSshAuthenticationMethods.Password,
+        AMNetSshAuthenticationMethods.KeyboardInteractive));
+```
 
 ## Use Cases
 

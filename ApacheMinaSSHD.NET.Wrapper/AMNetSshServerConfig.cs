@@ -85,6 +85,53 @@ namespace ApacheMinaSSHD.NET.Wrapper
         }
 
         /// <summary>
+        /// Gets the configured authentication method chains in evaluation order.
+        /// </summary>
+        public IReadOnlyList<IReadOnlyList<string>> GetConfiguredAuthenticationMethods()
+        {
+            return AMNetSshAuthenticationMethods.Parse(AUTH_METHODS);
+        }
+
+        /// <summary>
+        /// Sets the authentication method policy using one or more pre-built method chains.
+        /// </summary>
+        /// <param name="authenticationChains">
+        /// Authentication chains such as <see cref="AMNetSshAuthenticationMethods.PublicKey"/>
+        /// or values returned by <see cref="AMNetSshAuthenticationMethods.RequireAll(string[])"/>.
+        /// </param>
+        public void SetAuthenticationMethods(params string[] authenticationChains)
+        {
+            SetAuthenticationMethods((IEnumerable<string>)authenticationChains);
+        }
+
+        /// <summary>
+        /// Sets the authentication method policy using one or more pre-built method chains.
+        /// </summary>
+        /// <param name="authenticationChains">
+        /// Authentication chains such as <see cref="AMNetSshAuthenticationMethods.PublicKey"/>
+        /// or values returned by <see cref="AMNetSshAuthenticationMethods.RequireAll(string[])"/>.
+        /// </param>
+        public void SetAuthenticationMethods(IEnumerable<string> authenticationChains)
+        {
+            AUTH_METHODS = AMNetSshAuthenticationMethods.AllowAny(authenticationChains);
+        }
+
+        /// <summary>
+        /// Sets the authentication method policy using one or more required method groups.
+        /// </summary>
+        /// <param name="authenticationMethodGroups">
+        /// Each group contains methods that must all succeed in order. The outer set
+        /// represents alternative groups.
+        /// </param>
+        public void SetAuthenticationMethodGroups(params IEnumerable<string>[] authenticationMethodGroups)
+        {
+            ArgumentNullException.ThrowIfNull(authenticationMethodGroups);
+
+            AUTH_METHODS = AMNetSshAuthenticationMethods.AllowAny(
+                authenticationMethodGroups.Select(AMNetSshAuthenticationMethods.RequireAll));
+        }
+
+        /// <summary>
         /// MAX_AUTH_REQUESTS ("max-auth-requests"): Limits authentication attempts per session.
         /// </summary>
         public int MAX_AUTH_REQUESTS

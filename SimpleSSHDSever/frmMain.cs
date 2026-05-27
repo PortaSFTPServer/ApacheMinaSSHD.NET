@@ -117,7 +117,7 @@ namespace SimpleSSHDSever
                         if (!string.IsNullOrWhiteSpace(samplePassword))
                         {
                             string sampleUsername = Environment.GetEnvironmentVariable("AMNET_SAMPLE_USERNAME") ?? "demo";
-                            sshd.setPasswordAuthenticator(new AMNetFixedPasswordAuthenticator(sampleUsername, samplePassword));
+                            sshd.SetFixedPasswordAuthenticator(sampleUsername, samplePassword);
                         }
 
                         // The sample uses paths relative to the application output folder.
@@ -152,9 +152,16 @@ namespace SimpleSSHDSever
 
                         // attatch the intance of the server
                         // Keep the sample closed by default. Set AMNET_SAMPLE_PASSWORD to enable password auth.
-                        sshd.Config.AUTH_METHODS = string.IsNullOrWhiteSpace(samplePassword)
-                            ? "publickey"
-                            : "publickey,password";
+                        if (string.IsNullOrWhiteSpace(samplePassword))
+                        {
+                            sshd.SetAuthenticationMethods(AMNetSshAuthenticationMethods.PublicKey);
+                        }
+                        else
+                        {
+                            sshd.SetAuthenticationMethods(
+                                AMNetSshAuthenticationMethods.PublicKey,
+                                AMNetSshAuthenticationMethods.Password);
+                        }
                         sshd.Config.MAX_AUTH_REQUESTS = 10;
                         sshd.Config.AUTH_TIMEOUT = TimeSpan.FromSeconds(60); 
                         sshd.Config.IDLE_TIMEOUT = TimeSpan.FromSeconds(120);

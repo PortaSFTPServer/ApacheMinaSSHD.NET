@@ -358,19 +358,20 @@ namespace SimpleSSHDSever
             switch (authMode)
             {
                 case AuthMode.Password:
-                    server.setPasswordAuthenticator(new AMNetCompositePasswordAuthenticator(
-                        new AMNetFixedPasswordAuthenticator(Username, Password)));
+                    server.SetFixedPasswordAuthenticator(Username, Password);
+                    server.SetAuthenticationMethods(AMNetSshAuthenticationMethods.Password);
                     break;
                 case AuthMode.PublicKey:
                     ClientKeyMaterial publicKey = RequireKey(key);
-                    server.setPublickeyAuthenticator(new AMNetCompositePublickeyAuthenticator(
-                        new AMNetFingerprintPublickeyAuthenticator(Username, publicKey.Fingerprint)));
+                    server.SetFingerprintPublicKeyAuthenticator(Username, publicKey.Fingerprint);
+                    server.SetAuthenticationMethods(AMNetSshAuthenticationMethods.PublicKey);
                     break;
                 case AuthMode.AuthorizedKeys:
                     ClientKeyMaterial authorizedKey = RequireKey(key);
                     string authorizedKeysFile = Path.Combine(serverRoot, "authorized_keys");
                     File.Copy(authorizedKey.PublicKeyPath, authorizedKeysFile, overwrite: true);
-                    server.setAuthorizedkeyAuthenticator(new AMNetAuthorizedKeysAuthenticator(authorizedKeysFile));
+                    server.SetAuthorizedKeysAuthenticator(authorizedKeysFile);
+                    server.SetAuthenticationMethods(AMNetSshAuthenticationMethods.PublicKey);
                     break;
                 default:
                     throw new InvalidOperationException($"Unsupported auth mode: {authMode}");

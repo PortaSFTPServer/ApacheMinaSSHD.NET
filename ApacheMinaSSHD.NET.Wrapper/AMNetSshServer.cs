@@ -1,4 +1,5 @@
 using ApacheMinaSSHD.NET.Wrapper.Abstractions;
+using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 using ApacheMinaSSHD.NET.Wrapper.Factories;
 using ApacheMinaSSHD.NET.Wrapper.Internals;
 using java.util;
@@ -30,6 +31,70 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Gets server configuration helpers for resource limits, timeouts, and cryptographic algorithms.
         /// </summary>
         public AMNetSshServerConfig Config { get; }
+
+        /// <summary>
+        /// Gets the configured authentication method chains in evaluation order.
+        /// </summary>
+        public IReadOnlyList<IReadOnlyList<string>> getConfiguredAuthenticationMethods()
+        {
+            return Config.GetConfiguredAuthenticationMethods();
+        }
+
+        /// <summary>
+        /// Gets the configured authentication method chains in evaluation order.
+        /// </summary>
+        public IReadOnlyList<IReadOnlyList<string>> GetConfiguredAuthenticationMethods()
+        {
+            return getConfiguredAuthenticationMethods();
+        }
+
+        /// <summary>
+        /// Sets the authentication method policy using one or more pre-built method chains.
+        /// </summary>
+        /// <param name="authenticationChains">
+        /// Authentication chains such as <see cref="AMNetSshAuthenticationMethods.PublicKey"/>
+        /// or values returned by <see cref="AMNetSshAuthenticationMethods.RequireAll(string[])"/>.
+        /// </param>
+        public void setAuthenticationMethods(params string[] authenticationChains)
+        {
+            Config.SetAuthenticationMethods(authenticationChains);
+        }
+
+        /// <summary>
+        /// Sets the authentication method policy using one or more pre-built method chains.
+        /// </summary>
+        /// <param name="authenticationChains">
+        /// Authentication chains such as <see cref="AMNetSshAuthenticationMethods.PublicKey"/>
+        /// or values returned by <see cref="AMNetSshAuthenticationMethods.RequireAll(string[])"/>.
+        /// </param>
+        public void SetAuthenticationMethods(params string[] authenticationChains)
+        {
+            setAuthenticationMethods(authenticationChains);
+        }
+
+        /// <summary>
+        /// Sets the authentication method policy using one or more required method groups.
+        /// </summary>
+        /// <param name="authenticationMethodGroups">
+        /// Each group contains methods that must all succeed in order. The outer set
+        /// represents alternative groups.
+        /// </param>
+        public void setAuthenticationMethodGroups(params IEnumerable<string>[] authenticationMethodGroups)
+        {
+            Config.SetAuthenticationMethodGroups(authenticationMethodGroups);
+        }
+
+        /// <summary>
+        /// Sets the authentication method policy using one or more required method groups.
+        /// </summary>
+        /// <param name="authenticationMethodGroups">
+        /// Each group contains methods that must all succeed in order. The outer set
+        /// represents alternative groups.
+        /// </param>
+        public void SetAuthenticationMethodGroups(params IEnumerable<string>[] authenticationMethodGroups)
+        {
+            setAuthenticationMethodGroups(authenticationMethodGroups);
+        }
 
         /// <summary>
         /// Gets or sets the TCP port the SSH server listens on.
@@ -181,6 +246,78 @@ namespace ApacheMinaSSHD.NET.Wrapper
         }
 
         /// <summary>
+        /// Enables keyboard-interactive authentication using .NET callbacks.
+        /// </summary>
+        /// <param name="generateChallenge">Callback that populates prompts sent to the client.</param>
+        /// <param name="authenticate">Callback that validates the client responses.</param>
+        public void setDelegateKeyboardInteractiveAuthenticator(
+            Action<string, ISshChallenge> generateChallenge,
+            Func<ISshSession, string, IResponseList, bool> authenticate)
+        {
+            setKeyboardInteractiveAuthenticator(
+                new AMNetDelegateKeyboardInteractiveAuthenticator(generateChallenge, authenticate));
+        }
+
+        /// <summary>
+        /// Enables keyboard-interactive authentication using .NET callbacks.
+        /// </summary>
+        /// <param name="generateChallenge">Callback that populates prompts sent to the client.</param>
+        /// <param name="authenticate">Callback that validates the client responses.</param>
+        public void SetDelegateKeyboardInteractiveAuthenticator(
+            Action<string, ISshChallenge> generateChallenge,
+            Func<ISshSession, string, IResponseList, bool> authenticate)
+        {
+            setDelegateKeyboardInteractiveAuthenticator(generateChallenge, authenticate);
+        }
+
+        /// <summary>
+        /// Enables keyboard-interactive authentication with a single fixed response.
+        /// </summary>
+        /// <param name="expectedResponse">The exact response to accept.</param>
+        /// <param name="username">Optional exact username to accept.</param>
+        /// <param name="prompt">Prompt text shown to the client.</param>
+        /// <param name="interactionName">Challenge name shown to the client.</param>
+        /// <param name="instruction">Instruction text shown with the challenge.</param>
+        public void setFixedKeyboardInteractiveAuthenticator(
+            string expectedResponse,
+            string? username = null,
+            string prompt = "Verification code",
+            string interactionName = "Authentication",
+            string instruction = "Enter the verification code.")
+        {
+            setKeyboardInteractiveAuthenticator(
+                new AMNetFixedKeyboardInteractiveAuthenticator(
+                    expectedResponse,
+                    username,
+                    prompt,
+                    interactionName,
+                    instruction));
+        }
+
+        /// <summary>
+        /// Enables keyboard-interactive authentication with a single fixed response.
+        /// </summary>
+        /// <param name="expectedResponse">The exact response to accept.</param>
+        /// <param name="username">Optional exact username to accept.</param>
+        /// <param name="prompt">Prompt text shown to the client.</param>
+        /// <param name="interactionName">Challenge name shown to the client.</param>
+        /// <param name="instruction">Instruction text shown with the challenge.</param>
+        public void SetFixedKeyboardInteractiveAuthenticator(
+            string expectedResponse,
+            string? username = null,
+            string prompt = "Verification code",
+            string interactionName = "Authentication",
+            string instruction = "Enter the verification code.")
+        {
+            setFixedKeyboardInteractiveAuthenticator(
+                expectedResponse,
+                username,
+                prompt,
+                interactionName,
+                instruction);
+        }
+
+        /// <summary>
         /// Enables username/password authentication.
         /// </summary>
         /// <param name="passwordAuthenticator">The application authenticator.</param>
@@ -197,6 +334,68 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void SetPasswordAuthenticator(IAMNetPasswordAuthenticator passwordAuthenticator)
         {
             setPasswordAuthenticator(passwordAuthenticator);
+        }
+
+        /// <summary>
+        /// Enables username/password authentication using multiple modules evaluated in order.
+        /// </summary>
+        /// <param name="authenticators">The password authenticators to try.</param>
+        public void setCompositePasswordAuthenticator(params IAMNetPasswordAuthenticator[] authenticators)
+        {
+            setPasswordAuthenticator(new AMNetCompositePasswordAuthenticator(authenticators));
+        }
+
+        /// <summary>
+        /// Enables username/password authentication using multiple modules evaluated in order.
+        /// </summary>
+        /// <param name="authenticators">The password authenticators to try.</param>
+        public void SetCompositePasswordAuthenticator(params IAMNetPasswordAuthenticator[] authenticators)
+        {
+            setCompositePasswordAuthenticator(authenticators);
+        }
+
+        /// <summary>
+        /// Enables username/password authentication using a .NET callback.
+        /// </summary>
+        /// <param name="authenticate">
+        /// Callback that receives username, password, and session metadata and returns
+        /// whether the credentials should be accepted.
+        /// </param>
+        public void setDelegatePasswordAuthenticator(Func<string, string, ISshSession, bool> authenticate)
+        {
+            setPasswordAuthenticator(new AMNetDelegatePasswordAuthenticator(authenticate));
+        }
+
+        /// <summary>
+        /// Enables username/password authentication using a .NET callback.
+        /// </summary>
+        /// <param name="authenticate">
+        /// Callback that receives username, password, and session metadata and returns
+        /// whether the credentials should be accepted.
+        /// </param>
+        public void SetDelegatePasswordAuthenticator(Func<string, string, ISshSession, bool> authenticate)
+        {
+            setDelegatePasswordAuthenticator(authenticate);
+        }
+
+        /// <summary>
+        /// Enables a single fixed username/password pair.
+        /// </summary>
+        /// <param name="username">The exact username to accept.</param>
+        /// <param name="password">The exact password to accept.</param>
+        public void setFixedPasswordAuthenticator(string username, string password)
+        {
+            setPasswordAuthenticator(new AMNetFixedPasswordAuthenticator(username, password));
+        }
+
+        /// <summary>
+        /// Enables a single fixed username/password pair.
+        /// </summary>
+        /// <param name="username">The exact username to accept.</param>
+        /// <param name="password">The exact password to accept.</param>
+        public void SetFixedPasswordAuthenticator(string username, string password)
+        {
+            setFixedPasswordAuthenticator(username, password);
         }
 
         /// <summary>
@@ -228,6 +427,111 @@ namespace ApacheMinaSSHD.NET.Wrapper
         }
 
         /// <summary>
+        /// Enables public key authentication using multiple modules evaluated in order.
+        /// </summary>
+        /// <param name="authenticators">The public key authenticators to try.</param>
+        public void setCompositePublickeyAuthenticator(params IAMNetPublickeyAuthenticator[] authenticators)
+        {
+            setPublickeyAuthenticator(new AMNetCompositePublickeyAuthenticator(authenticators));
+        }
+
+        /// <summary>
+        /// Enables public key authentication using multiple modules evaluated in order.
+        /// </summary>
+        /// <param name="authenticators">The public key authenticators to try.</param>
+        public void SetCompositePublickeyAuthenticator(params IAMNetPublickeyAuthenticator[] authenticators)
+        {
+            setCompositePublickeyAuthenticator(authenticators);
+        }
+
+        /// <summary>
+        /// Enables public key authentication using multiple modules evaluated in order.
+        /// </summary>
+        /// <param name="authenticators">The public key authenticators to try.</param>
+        public void SetCompositePublicKeyAuthenticator(params IAMNetPublickeyAuthenticator[] authenticators)
+        {
+            setCompositePublickeyAuthenticator(authenticators);
+        }
+
+        /// <summary>
+        /// Enables public key authentication using a .NET callback.
+        /// </summary>
+        /// <param name="authenticate">
+        /// Callback that receives username, public key fingerprint, and session metadata
+        /// and returns whether the key should be accepted.
+        /// </param>
+        public void setDelegatePublickeyAuthenticator(Func<string, string, ISshSession, bool> authenticate)
+        {
+            setPublickeyAuthenticator(new AMNetDelegatePublickeyAuthenticator(authenticate));
+        }
+
+        /// <summary>
+        /// Enables public key authentication using a .NET callback.
+        /// </summary>
+        /// <param name="authenticate">
+        /// Callback that receives username, public key fingerprint, and session metadata
+        /// and returns whether the key should be accepted.
+        /// </param>
+        public void SetDelegatePublickeyAuthenticator(Func<string, string, ISshSession, bool> authenticate)
+        {
+            setDelegatePublickeyAuthenticator(authenticate);
+        }
+
+        /// <summary>
+        /// Enables public key authentication using a .NET callback.
+        /// </summary>
+        /// <param name="authenticate">
+        /// Callback that receives username, public key fingerprint, and session metadata
+        /// and returns whether the key should be accepted.
+        /// </param>
+        public void SetDelegatePublicKeyAuthenticator(Func<string, string, ISshSession, bool> authenticate)
+        {
+            setDelegatePublickeyAuthenticator(authenticate);
+        }
+
+        /// <summary>
+        /// Enables public key authentication for one username and one or more accepted fingerprints.
+        /// </summary>
+        /// <param name="username">The exact username to accept.</param>
+        /// <param name="acceptedFingerprints">One or more accepted public key fingerprints.</param>
+        public void setFingerprintPublickeyAuthenticator(string username, params string[] acceptedFingerprints)
+        {
+            ArgumentNullException.ThrowIfNull(acceptedFingerprints);
+            if (acceptedFingerprints.Length == 0)
+            {
+                throw new ArgumentException("At least one accepted fingerprint is required.", nameof(acceptedFingerprints));
+            }
+
+            var authenticator = new AMNetFingerprintPublickeyAuthenticator();
+            foreach (string acceptedFingerprint in acceptedFingerprints)
+            {
+                authenticator.AddFingerprint(username, acceptedFingerprint);
+            }
+
+            setPublickeyAuthenticator(authenticator);
+        }
+
+        /// <summary>
+        /// Enables public key authentication for one username and one or more accepted fingerprints.
+        /// </summary>
+        /// <param name="username">The exact username to accept.</param>
+        /// <param name="acceptedFingerprints">One or more accepted public key fingerprints.</param>
+        public void SetFingerprintPublickeyAuthenticator(string username, params string[] acceptedFingerprints)
+        {
+            setFingerprintPublickeyAuthenticator(username, acceptedFingerprints);
+        }
+
+        /// <summary>
+        /// Enables public key authentication for one username and one or more accepted fingerprints.
+        /// </summary>
+        /// <param name="username">The exact username to accept.</param>
+        /// <param name="acceptedFingerprints">One or more accepted public key fingerprints.</param>
+        public void SetFingerprintPublicKeyAuthenticator(string username, params string[] acceptedFingerprints)
+        {
+            setFingerprintPublickeyAuthenticator(username, acceptedFingerprints);
+        }
+
+        /// <summary>
         /// Enables public key authentication backed by an authorized_keys file.
         /// </summary>
         /// <param name="authorizedKeysAuthenticator">The authorized keys configuration.</param>
@@ -253,6 +557,33 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void SetAuthorizedKeysAuthenticator(IAMNetAuthorizedKeysAuthenticator authorizedKeysAuthenticator)
         {
             setAuthorizedkeyAuthenticator(authorizedKeysAuthenticator);
+        }
+
+        /// <summary>
+        /// Enables public key authentication backed by an authorized_keys file path.
+        /// </summary>
+        /// <param name="path">The authorized_keys file path.</param>
+        public void setAuthorizedkeyAuthenticator(string path)
+        {
+            setAuthorizedkeyAuthenticator(new AMNetAuthorizedKeysAuthenticator(path));
+        }
+
+        /// <summary>
+        /// Enables public key authentication backed by an authorized_keys file path.
+        /// </summary>
+        /// <param name="path">The authorized_keys file path.</param>
+        public void SetAuthorizedkeyAuthenticator(string path)
+        {
+            setAuthorizedkeyAuthenticator(path);
+        }
+
+        /// <summary>
+        /// Enables public key authentication backed by an authorized_keys file path.
+        /// </summary>
+        /// <param name="path">The authorized_keys file path.</param>
+        public void SetAuthorizedKeysAuthenticator(string path)
+        {
+            setAuthorizedkeyAuthenticator(path);
         }
 
         /// <summary>
