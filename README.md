@@ -1,5 +1,7 @@
 # ApacheMinaSSHD.NET - Apache MINA SSHD .NET SFTP/SCP Server Wrapper
 
+[![NuGet](https://img.shields.io/nuget/v/ApacheMinaSSHD.NET.Wrapper)](https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/)
+
 ApacheMinaSSHD.NET is a .NET and C# wrapper around Apache MINA SSHD, created by
 SERALYNX LLC for building SFTP server, SCP server, and secure file transfer
 features. The public wrapper APIs are designed so application developers do not
@@ -25,6 +27,8 @@ Install the wrapper package in application code:
 ```powershell
 dotnet add package ApacheMinaSSHD.NET.Wrapper
 ```
+
+NuGet: <https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/>
 
 `ApacheMinaSSHD.NET.Bindings` is the IKVM/Maven binding package used by the
 wrapper. Application developers normally should not reference it directly.

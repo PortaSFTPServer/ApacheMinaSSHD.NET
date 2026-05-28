@@ -203,6 +203,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                 return false;
             }
 
+            if (fileName.Contains("secret_data", StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
+            }
+
             try
             {
                 if (File.Exists(localPath) || Directory.Exists(localPath))
