@@ -66,6 +66,13 @@ jobs:
           dotnet pack ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj -c Release --no-restore -o artifacts/nuget-ci /p:Version=0.0.0-ci.${{ github.run_number }} /p:PackageVersion=0.0.0-ci.${{ github.run_number }}
           dotnet pack ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj -c Release --no-restore -o artifacts/nuget-ci /p:Version=0.0.0-ci.${{ github.run_number }} /p:PackageVersion=0.0.0-ci.${{ github.run_number }}
 
+      - name: Upload NuGet artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-ci-${{ github.run_number }}
+          path: artifacts/nuget-ci/*.nupkg
+          if-no-files-found: error
+
       - name: Client integration and stress tests
         shell: pwsh
         run: dotnet run -c Release --no-build --project SimpleSSHDSever/SimpleSSHDSever.csproj -- --integration-tests
