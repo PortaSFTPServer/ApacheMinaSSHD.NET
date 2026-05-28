@@ -18,8 +18,8 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ApacheMinaSSHD.NET.Bindings" Version="1.0.0.1" />
-		<PackageReference Include="ApacheMinaSSHD.NET.Wrapper" Version="1.0.0.1" />
+		<PackageReference Include="ApacheMinaSSHD.NET.Bindings" Version="1.0.0.2" />
+		<PackageReference Include="ApacheMinaSSHD.NET.Wrapper" Version="1.0.0.2" />
 		<!--<PackageReference Include="IKVM" Version="8.15.0" />
 		<PackageReference Include="IKVM.Maven.Sdk" Version="1.11.0">-->
 			<!--<PrivateAssets>all</PrivateAssets>
@@ -30,8 +30,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\ApacheMinaSSHD.NET.Bindings\ApacheMinaSSHD.NET.Bindings.csproj" />
-	  <ProjectReference Include="..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />
 	  <ProjectReference Include="..\FileSystemHelper\FileSystemHelper.csproj" />
 	</ItemGroup>
 

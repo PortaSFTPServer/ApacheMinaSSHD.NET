@@ -8,7 +8,7 @@ namespace SimpleSSHDSever
         [STAThread]
         static int Main(string[] args)
         {
-            InitializeIkvm();
+            // InitializeIkvm();
 
             if (args.Any(arg => string.Equals(arg, "--integration-tests", StringComparison.OrdinalIgnoreCase)))
             {

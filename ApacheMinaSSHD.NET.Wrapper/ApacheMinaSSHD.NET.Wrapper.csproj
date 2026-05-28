@@ -21,7 +21,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);1591;1572;1573</NoWarn>
+    <NoWarn>$(NoWarn);1591;1572;1573;CA2255</NoWarn>
 
   </PropertyGroup>
 	<ItemGroup>
