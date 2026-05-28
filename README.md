@@ -53,7 +53,8 @@ dotnet add package ApacheMinaSSHD.NET.Wrapper
 NuGet: <https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/>
 
 `ApacheMinaSSHD.NET.Bindings` is the IKVM/Maven binding package used by the
-wrapper. Application developers normally should not reference it directly.
+wrapper. The IKVM-generated assemblies are bundled inside the Wrapper package,
+so you only need the single `ApacheMinaSSHD.NET.Wrapper` dependency.
 
 `SimpleSSHDSever`, `PortaSFTPServer`, `ApacheMinaSSHD.NET.Service`, and
 `ApacheMinaSSHD.NET.Shared` are not part of the NuGet package surface.

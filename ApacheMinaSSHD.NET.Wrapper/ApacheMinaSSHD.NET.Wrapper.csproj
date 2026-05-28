@@ -25,7 +25,9 @@
 
   </PropertyGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\ApacheMinaSSHD.NET.Bindings\ApacheMinaSSHD.NET.Bindings.csproj" />
+	  <ProjectReference Include="..\ApacheMinaSSHD.NET.Bindings\ApacheMinaSSHD.NET.Bindings.csproj">
+	    <PrivateAssets>all</PrivateAssets>
+	  </ProjectReference>
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="IKVM" Version="8.15.0" />
@@ -46,4 +48,13 @@
 	  <None Include="..\licenses\APACHE-2.0.txt" Pack="true" PackagePath="licenses\" />
 	  <None Include="..\licenses\SLF4J-MIT.txt" Pack="true" PackagePath="licenses\" />
 	</ItemGroup>
+
+	<Target Name="IncludeBindingsContent" BeforeTargets="_GetPackageFiles">
+		<ItemGroup>
+			<None Include="..\ApacheMinaSSHD.NET.Bindings\bin\$(Configuration)\$(TargetFramework)\*.dll"
+				  Pack="true"
+				  PackagePath="lib\$(TargetFramework)\"
+				  Visible="false" />
+		</ItemGroup>
+	</Target>
 </Project>
