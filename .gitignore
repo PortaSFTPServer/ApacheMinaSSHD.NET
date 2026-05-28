@@ -32,6 +32,10 @@ privatekeys/
 *.pubxml
 *.pubxml.user
 
+# Local NuGet package output
+nupkg/
+nupkgs/
+
 # Local extracted third-party distributions. Maven/NuGet restore fetches these.
 apache-sshd-*/
 

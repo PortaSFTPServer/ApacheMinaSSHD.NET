@@ -1,7 +1,4 @@
 ﻿using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
-using Org.BouncyCastle.Crypto.Parameters;
-using Org.BouncyCastle.OpenSsl;
-using Org.BouncyCastle.Security;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -83,14 +80,19 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         {
             if (string.IsNullOrWhiteSpace(filePath)) throw new ArgumentException("Path is empty", nameof(filePath));
 
-            // load to memory
             string content = File.ReadAllText(filePath).Trim();
             using var rsa = RSA.Create();
 
             try
             {
-                if (content.Contains("BEGIN PUBLIC KEY")) ImportFromPem(content);
-                else rsa.ImportParameters(ParseSshBlob(GetRawBytes(content)));
+                if (content.Contains("BEGIN ") && content.Contains(" KEY"))
+                {
+                    rsa.ImportFromPem(content);
+                }
+                else
+                {
+                    rsa.ImportParameters(ParseSshBlob(GetRawBytes(content)));
+                }
             }
             catch (Exception ex)
             {
@@ -102,24 +104,16 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 
 
         /// <summary>
-        /// Imports an RSA key from PEM text.
+        /// Imports an RSA key from PEM text using .NET's built-in PEM support.
+        /// Handles both public (BEGIN PUBLIC KEY) and private (BEGIN RSA PRIVATE KEY) PEM formats.
         /// </summary>
         /// <param name="pemText">The PEM-encoded key text.</param>
         /// <returns>An RSA instance initialized from the PEM data.</returns>
         public static RSA ImportFromPem(string pemText)
         {
-            using (var reader = new StringReader(pemText))
-            {
-                var pemReader = new PemReader(reader);
-                object keyObject = pemReader.ReadObject();
-
-                // Convert BouncyCastle RSA parameters to standard .NET RSA parameters
-                RSAParameters rsaParams = DotNetUtilities.ToRSAParameters((RsaPrivateCrtKeyParameters)keyObject);
-
-                RSA rsa = RSA.Create();
-                rsa.ImportParameters(rsaParams);
-                return rsa;
-            }
+            RSA rsa = RSA.Create();
+            rsa.ImportFromPem(pemText);
+            return rsa;
         }
 
         private static string GenerateMinaCompatibleHash(RSA rsa)
@@ -157,17 +151,9 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             }
             WriteSsh(mod);
 
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] hash = sha256.ComputeHash(ms.ToArray());
+            byte[] hash = SHA256.HashData(ms.ToArray());
 
-                return "SHA256:" + Convert.ToBase64String(hash).Replace("=", "");
-
-            }
-
-            //// SHA256 is the modern secure standard for SSH fingerprints
-            //byte[] hash = SHA256.HashData(ms.ToArray());
-            //return "SHA256:" + Convert.ToBase64String(hash).Replace("=", "");
+            return "SHA256:" + Convert.ToBase64String(hash).Replace("=", "");
         }
 
         private static byte[] GetRawBytes(string c)

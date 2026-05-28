@@ -202,9 +202,15 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public bool IsClosed() => isClosed();
 
         /// <summary>
-        /// Stops the server.
+        /// Stops the server if it was started.
         /// </summary>
-        public void Dispose() => stop();
+        public void Dispose()
+        {
+            if (isStarted())
+            {
+                stop();
+            }
+        }
 
         /// <summary>
         /// Sets the host key provider used to identify this SSH server to clients.

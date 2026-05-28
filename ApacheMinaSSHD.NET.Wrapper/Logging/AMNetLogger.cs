@@ -19,15 +19,33 @@ namespace ApacheMinaSSHD.NET.Wrapper.Logging
         public enum LogLevel
         {
             /// <summary>Informational logging.</summary>
-            info,
+            Info,
             /// <summary>Warning logging.</summary>
-            warn,
+            Warn,
             /// <summary>Error logging.</summary>
-            error,
+            Error,
             /// <summary>Debug logging.</summary>
-            debug,
+            Debug,
             /// <summary>Trace logging.</summary>
-            trace
+            Trace
+        }
+
+        private static bool slf4jConfigured;
+
+        private static void EnsureSlf4jConfigured(LogLevel logLevel)
+        {
+            if (slf4jConfigured)
+            {
+                return;
+            }
+
+            java.lang.System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", logLevel.ToString().ToLowerInvariant());
+            java.lang.System.setProperty("org.slf4j.simpleLogger.showDateTime", "true");
+            java.lang.System.setProperty("org.slf4j.simpleLogger.dateTimeFormat", "yyyy-MM-dd HH:mm:ss.SSS |");
+            java.lang.System.setProperty("org.slf4j.simpleLogger.showThreadName", "false");
+            java.lang.System.setProperty("org.slf4j.simpleLogger.showThreadId", "false");
+
+            slf4jConfigured = true;
         }
 
         /// <summary>
@@ -35,14 +53,9 @@ namespace ApacheMinaSSHD.NET.Wrapper.Logging
         /// </summary>
         /// <param name="type">The source type used as the logger name.</param>
         /// <param name="logLevel">The default log level.</param>
-        public AMNetLogger(Type type, LogLevel logLevel = LogLevel.info)
+        public AMNetLogger(Type type, LogLevel logLevel = LogLevel.Info)
         {
-
-            java.lang.System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", logLevel.ToString()); // log can be configured from the UI / Db
-            java.lang.System.setProperty("org.slf4j.simpleLogger.showDateTime", "true");
-            java.lang.System.setProperty("org.slf4j.simpleLogger.dateTimeFormat", "yyyy-MM-dd HH:mm:ss.SSS |");
-            java.lang.System.setProperty("org.slf4j.simpleLogger.showThreadName", "false");
-            java.lang.System.setProperty("org.slf4j.simpleLogger.showThreadId", "false");
+            EnsureSlf4jConfigured(logLevel);
 
             slf4JLogger = LoggerFactory.getLogger(type.FullName);
 

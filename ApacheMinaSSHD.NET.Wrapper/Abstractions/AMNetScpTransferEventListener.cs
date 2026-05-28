@@ -14,7 +14,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// Creates an SCP transfer listener using the default logger.
         /// </summary>
         public AMNetScpTransferEventListener()
-            : this(new AMNetLogger(typeof(AMNetScpTransferEventListener), AMNetLogger.LogLevel.info))
+            : this(new AMNetLogger(typeof(AMNetScpTransferEventListener), AMNetLogger.LogLevel.Info))
         {
         }
 

@@ -31,6 +31,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\ApacheMinaSSHD.NET.Bindings\ApacheMinaSSHD.NET.Bindings.csproj" />
 	  <ProjectReference Include="..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />
+	  <ProjectReference Include="..\FileSystemHelper\FileSystemHelper.csproj" />
 	</ItemGroup>
 
 </Project>

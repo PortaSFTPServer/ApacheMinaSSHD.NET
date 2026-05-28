@@ -8,7 +8,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
     /// </summary>
     public class AMNetIoServiceEventListener : IAMNetIoServiceEventListener
     {
-        IAMNetLogger logger = new AMNetLogger(typeof(AMNetIoServiceEventListener), AMNetLogger.LogLevel.info);
+        IAMNetLogger logger = new AMNetLogger(typeof(AMNetIoServiceEventListener), AMNetLogger.LogLevel.Info);
 
         /// <summary>
         /// Creates a default low-level connection listener.
@@ -48,7 +48,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <inheritdoc />
         public virtual void OnOutboundConnectionEstablished(ISshServiceConnection context)
         {
-            logger.Error(context.Exception?.Message!);
+            logger.Info("Outbound connection established.");
         }
     }
 }

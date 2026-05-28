@@ -29,7 +29,6 @@ namespace ApacheMinaSSHD.NET.Wrapper.FileSystem
         public void Dispose()
         {
             close();
-            GC.SuppressFinalize(this);
         }
 
         public void forEach(Consumer action)

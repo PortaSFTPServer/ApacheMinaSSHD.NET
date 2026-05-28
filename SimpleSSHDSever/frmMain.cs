@@ -3,7 +3,6 @@ using ApacheMinaSSHD.NET.Wrapper;
 using ApacheMinaSSHD.NET.Wrapper.Abstractions;
 using ApacheMinaSSHD.NET.Wrapper.Factories;
 using ApacheMinaSSHD.NET.Wrapper.Logging;
-using System.IO.Pipes;
 using System.Text.Json;
 
 namespace SimpleSSHDSever
@@ -25,7 +24,7 @@ namespace SimpleSSHDSever
         /// the customize logger class
         /// this class implements the methods that is only needed
         /// </summary>
-        IAMNetLogger logger = new AMNetLogger(typeof(frmMain), AMNetLogger.LogLevel.debug);
+        IAMNetLogger logger = new AMNetLogger(typeof(frmMain), AMNetLogger.LogLevel.Debug);
         public frmMain()
         {
             InitializeComponent();

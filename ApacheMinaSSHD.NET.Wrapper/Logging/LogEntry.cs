@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ApacheMinaSSHD.NET.Wrapper.Logging
+﻿namespace ApacheMinaSSHD.NET.Wrapper.Logging
 {
     /// <summary>
-    /// Represents a UI-friendly log message with an optional display color.
+    /// Represents a UI-friendly log message with an optional display color name.
     /// </summary>
     public class LogEntry
     {
@@ -20,7 +14,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Logging
 
         /// <summary>Gets or sets the log message text.</summary>
         public string Message = string.Empty;
-        /// <summary>Gets or sets the preferred display color.</summary>
-        public System.Drawing.Color Color = System.Drawing.Color.Empty;
+
+        /// <summary>Gets or sets the preferred display color name (e.g. "Red", "Green").</summary>
+        public string? ColorName { get; set; }
     }
 }

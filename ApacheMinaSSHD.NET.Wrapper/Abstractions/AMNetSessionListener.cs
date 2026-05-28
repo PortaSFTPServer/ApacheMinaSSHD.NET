@@ -14,7 +14,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// Creates a session listener using the default logger.
         /// </summary>
         public AMNetSessionListener()
-            : this(new AMNetLogger(typeof(AMNetSessionListener), AMNetLogger.LogLevel.info))
+            : this(new AMNetLogger(typeof(AMNetSessionListener), AMNetLogger.LogLevel.Info))
         {
         }
 

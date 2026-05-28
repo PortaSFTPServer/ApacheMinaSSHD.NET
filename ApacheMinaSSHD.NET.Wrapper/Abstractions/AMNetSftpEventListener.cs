@@ -8,7 +8,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
     /// </summary>
     public class AMNetSftpEventListener : IAMNetSftpEventListener
     {
-        IAMNetLogger logger = new AMNetLogger(typeof(AMNetSftpEventListener), AMNetLogger.LogLevel.info);
+        IAMNetLogger logger = new AMNetLogger(typeof(AMNetSftpEventListener), AMNetLogger.LogLevel.Info);
 
         /// <summary>
         /// Creates a default SFTP event listener.
@@ -43,7 +43,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <inheritdoc />
         public virtual void OnOpening(ISshEvent ctx)
         {
-            logger.Info($"Opening file{ctx.SshHandle.PhysicalPath}");
+            logger.Info($"Opening file {ctx.SshHandle.PhysicalPath}");
         }
 
         /// <inheritdoc />

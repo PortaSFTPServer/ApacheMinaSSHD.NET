@@ -12,7 +12,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
     {
         private readonly IAMNetIoServiceEventListener ioServiceEventListener;
 
-        IAMNetLogger logger = new AMNetLogger(typeof(InternalIoServiceEventListener), AMNetLogger.LogLevel.info);
+        IAMNetLogger logger = new AMNetLogger(typeof(InternalIoServiceEventListener), AMNetLogger.LogLevel.Info);
 
 
         public InternalIoServiceEventListener(IAMNetIoServiceEventListener ioServiceEventListener )
