@@ -1,4 +1,7 @@
 ﻿using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
+using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.OpenSsl;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -9,8 +12,9 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
     /// against key files in an Authorized_Keys directory.
     /// </summary>
     /// <remarks>
-    /// This authenticator exists for compatibility with the original directory
-    /// pattern. For new applications, prefer <see cref="AMNetAuthorizedKeysAuthenticator"/>
+    /// Supports RSA, ECDSA (NIST P-256, P-384, P-521), and Ed25519 keys in PEM,
+    /// OpenSSH public key, and SSH2 public key formats.
+    /// For new applications, prefer <see cref="AMNetAuthorizedKeysAuthenticator"/>
     /// for OpenSSH authorized_keys files or <see cref="AMNetFingerprintPublickeyAuthenticator"/>
     /// when fingerprints are stored in an application database.
     /// </remarks>
@@ -41,13 +45,6 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             return AuthenticateValidUserKeyFingerprint(username, incomingFingerprint);
         }
 
-
-        /// <summary>
-        /// let users to have multiple keys and select the valid one
-        /// </summary>
-        /// <param name="username"></param>
-        /// <param name="incomingFingerprint"></param>
-        /// <returns></returns>
         private bool AuthenticateValidUserKeyFingerprint(string username, string incomingFingerprint)
         {
             if (!Directory.Exists(authKeysPath))
@@ -57,10 +54,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 
             var authKeys = Directory.GetFiles(authKeysPath, $"*{username}*", SearchOption.TopDirectoryOnly);
 
-
             foreach (var keyPath in authKeys)
             {
-
                 var authKeyFingerprint = GetSecureFingerprint(keyPath);
 
                 if (string.Equals(incomingFingerprint, authKeyFingerprint, System.StringComparison.OrdinalIgnoreCase))
@@ -73,112 +68,167 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         }
 
         /// <summary>
-        /// Generates a fingerprint that matches Apache MINA SSHD's KeyUtils exactly.
-        /// This method is O(1) in performance and cross-platform.
+        /// Computes the SHA-256 fingerprint of a public key file that matches
+        /// Apache MINA SSHD's KeyUtils.getFingerPrint format.
         /// </summary>
         private static string GetSecureFingerprint(string filePath)
         {
-            if (string.IsNullOrWhiteSpace(filePath)) throw new ArgumentException("Path is empty", nameof(filePath));
+            if (string.IsNullOrWhiteSpace(filePath))
+            {
+                throw new ArgumentException("Path is empty", nameof(filePath));
+            }
 
             string content = File.ReadAllText(filePath).Trim();
-            using var rsa = RSA.Create();
-
-            try
-            {
-                if (content.Contains("BEGIN ") && content.Contains(" KEY"))
-                {
-                    rsa.ImportFromPem(content);
-                }
-                else
-                {
-                    rsa.ImportParameters(ParseSshBlob(GetRawBytes(content)));
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new CryptographicException("Failed to securely parse key format.", ex);
-            }
-
-            return GenerateMinaCompatibleHash(rsa);
-        }
-
-
-        /// <summary>
-        /// Imports an RSA key from PEM text using .NET's built-in PEM support.
-        /// Handles both public (BEGIN PUBLIC KEY) and private (BEGIN RSA PRIVATE KEY) PEM formats.
-        /// </summary>
-        /// <param name="pemText">The PEM-encoded key text.</param>
-        /// <returns>An RSA instance initialized from the PEM data.</returns>
-        public static RSA ImportFromPem(string pemText)
-        {
-            RSA rsa = RSA.Create();
-            rsa.ImportFromPem(pemText);
-            return rsa;
-        }
-
-        private static string GenerateMinaCompatibleHash(RSA rsa)
-        {
-            var p = rsa.ExportParameters(false);
-            byte[] exponent = p.Exponent
-                ?? throw new CryptographicException("RSA public exponent is missing.");
-            byte[] modulus = p.Modulus
-                ?? throw new CryptographicException("RSA public modulus is missing.");
-            if (modulus.Length == 0)
-            {
-                throw new CryptographicException("RSA public modulus is empty.");
-            }
-
-            using var ms = new MemoryStream();
-            using var writer = new BinaryWriter(ms);
-
-             void WriteSsh(byte[] d)
-            {
-                var len = BitConverter.GetBytes(d.Length);
-                if (BitConverter.IsLittleEndian) Array.Reverse(len);
-                writer.Write(len); writer.Write(d);
-            }
-
-            WriteSsh(Encoding.ASCII.GetBytes("ssh-rsa"));
-            WriteSsh(exponent);
-
-            // Securely handle signed integers for SSH/Java compatibility
-            byte[] mod = modulus;
-            if ((mod[0] & 0x80) != 0)
-            {
-                byte[] padded = new byte[mod.Length + 1];
-                Buffer.BlockCopy(mod, 0, padded, 1, mod.Length);
-                mod = padded;
-            }
-            WriteSsh(mod);
-
-            byte[] hash = SHA256.HashData(ms.ToArray());
-
+            byte[] sshEncoded = EncodeToSshWireFormat(content);
+            byte[] hash = SHA256.HashData(sshEncoded);
             return "SHA256:" + Convert.ToBase64String(hash).Replace("=", "");
         }
 
-        private static byte[] GetRawBytes(string c)
+        /// <summary>
+        /// Encodes a public key file to SSH wire format bytes for fingerprinting.
+        /// Supports PEM, OpenSSH public key, and SSH2 public key formats.
+        /// </summary>
+        private static byte[] EncodeToSshWireFormat(string content)
         {
-            if (c.Contains("BEGIN SSH2"))
+            // PEM format (e.g., -----BEGIN PUBLIC KEY-----)
+            if (content.Contains("BEGIN ") && content.Contains(" KEY"))
             {
-                var lines = c.Split('\n', '\r').Select(l => l.Trim());
-                return Convert.FromBase64String(string.Join("", lines.Where(l => !l.StartsWith("-") && !l.Contains(":"))));
+                using var reader = new StringReader(content);
+                var pemReader = new PemReader(reader);
+                object keyObj = pemReader.ReadObject();
+                AsymmetricKeyParameter pubKey = ExtractPublicKey(keyObj);
+                return EncodePublicKeyToSsh(pubKey);
             }
-            return Convert.FromBase64String(c.Split(' ')[1]);
+
+            // SSH2 public key format (---- BEGIN SSH2 PUBLIC KEY ----)
+            if (content.Contains("BEGIN SSH2") || content.Contains("BEGIN SSH2 PUBLIC KEY"))
+            {
+                var lines = content.Split('\n', '\r')
+                    .Select(l => l.Trim())
+                    .Where(l => l.Length > 0 && !l.StartsWith("----") && !l.Contains(":"));
+                return Convert.FromBase64String(string.Concat(lines));
+            }
+
+            // OpenSSH public key format: "keytype base64data [comment]"
+            string[] parts = content.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+            if (parts.Length >= 2 && IsSshKeyType(parts[0]))
+            {
+                return Convert.FromBase64String(parts[1]);
+            }
+
+            throw new CryptographicException("Unrecognized public key format. Supported formats: PEM, OpenSSH public key, SSH2 public key.");
         }
 
-        private static RSAParameters ParseSshBlob(byte[] d)
+        private static bool IsSshKeyType(string value)
         {
-            using var ms = new MemoryStream(d);
-            using var r = new BinaryReader(ms);
-            byte[] Next()
+            return value switch
             {
-                var lb = r.ReadBytes(4); if (BitConverter.IsLittleEndian) Array.Reverse(lb);
-                return r.ReadBytes(BitConverter.ToInt32(lb, 0));
+                "ssh-rsa" or "ssh-dss" or "ssh-ed25519"
+                    or "ecdsa-sha2-nistp256" or "ecdsa-sha2-nistp384" or "ecdsa-sha2-nistp521"
+                    or "sk-ssh-ed25519@openssh.com" or "sk-ecdsa-sha2-nistp256@openssh.com"
+                    => true,
+                _ => false
+            };
+        }
+
+        private static AsymmetricKeyParameter ExtractPublicKey(object pemObject)
+        {
+            return pemObject switch
+            {
+                AsymmetricCipherKeyPair pair => pair.Public,
+                AsymmetricKeyParameter key => key,
+                _ => throw new NotSupportedException($"Unrecognized PEM object: {pemObject.GetType().Name}. Expected a public key or a key pair.")
+            };
+        }
+
+        private static byte[] EncodePublicKeyToSsh(AsymmetricKeyParameter key)
+        {
+            return key switch
+            {
+                RsaKeyParameters rsa => EncodeRsaSsh(rsa),
+                ECPublicKeyParameters ec => EncodeEcdsaSsh(ec),
+                Ed25519PublicKeyParameters ed => EncodeEd25519Ssh(ed),
+                _ => throw new NotSupportedException($"Key type {key.GetType().Name} is not supported. Supported types: RSA, ECDSA, Ed25519.")
+            };
+        }
+
+        private static byte[] EncodeRsaSsh(RsaKeyParameters rsa)
+        {
+            using var ms = new MemoryStream();
+            WriteSshString(ms, "ssh-rsa");
+            WriteSshMpint(ms, rsa.Exponent.ToByteArrayUnsigned());
+            WriteSshMpint(ms, rsa.Modulus.ToByteArrayUnsigned());
+            return ms.ToArray();
+        }
+
+        private static byte[] EncodeEcdsaSsh(ECPublicKeyParameters ec)
+        {
+            string curveName = GetEcdsaCurveName(ec);
+            string algorithm = "ecdsa-sha2-" + curveName;
+
+            using var ms = new MemoryStream();
+            WriteSshString(ms, algorithm);
+            WriteSshString(ms, curveName);
+            byte[] encodedPoint = ec.Q.GetEncoded(false);
+            WriteSshString(ms, encodedPoint);
+            return ms.ToArray();
+        }
+
+        private static byte[] EncodeEd25519Ssh(Ed25519PublicKeyParameters ed)
+        {
+            using var ms = new MemoryStream();
+            WriteSshString(ms, "ssh-ed25519");
+            WriteSshString(ms, ed.GetEncoded());
+            return ms.ToArray();
+        }
+
+        private static string GetEcdsaCurveName(ECPublicKeyParameters ec)
+        {
+            int fieldSize = ec.Parameters.Curve.FieldSize;
+            return fieldSize switch
+            {
+                <= 256 => "nistp256",
+                <= 384 => "nistp384",
+                _ => "nistp521"
+            };
+        }
+
+        private static void WriteSshString(MemoryStream ms, string value)
+        {
+            byte[] bytes = Encoding.ASCII.GetBytes(value);
+            WriteUint32(ms, bytes.Length);
+            ms.Write(bytes);
+        }
+
+        private static void WriteSshString(MemoryStream ms, byte[] value)
+        {
+            WriteUint32(ms, value.Length);
+            ms.Write(value);
+        }
+
+        private static void WriteSshMpint(MemoryStream ms, byte[] value)
+        {
+            if (value.Length > 0 && (value[0] & 0x80) != 0)
+            {
+                WriteUint32(ms, value.Length + 1);
+                ms.WriteByte(0);
+                ms.Write(value);
             }
-            Next(); // Skip "ssh-rsa"
-            byte[] e = Next(); byte[] m = Next();
-            if (m[0] == 0x00) m = m.Skip(1).ToArray(); // Strip SSH padding
-            return new RSAParameters { Exponent = e, Modulus = m };
+            else
+            {
+                WriteUint32(ms, value.Length);
+                ms.Write(value);
+            }
+        }
+
+        private static void WriteUint32(MemoryStream ms, int value)
+        {
+            byte[] bytes = BitConverter.GetBytes(value);
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(bytes);
+            }
+            ms.Write(bytes);
         }
 
         private static string GetDefaultAuthorizedKeysBasePath()
@@ -188,6 +238,5 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                 ? AppContext.BaseDirectory
                 : System.IO.Path.Combine(appDataPath, "ApacheMinaSSHD.NET");
         }
-
     }
 }

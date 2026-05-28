@@ -42,7 +42,7 @@
             // btnStart
             // 
             btnStart.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnStart.Location = new Point(1068, 15);
+            btnStart.Location = new Point(893, 15);
             btnStart.Margin = new Padding(4, 2, 4, 2);
             btnStart.Name = "btnStart";
             btnStart.Size = new Size(209, 51);
@@ -59,7 +59,7 @@
             tabControl1.Margin = new Padding(4, 2, 4, 2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1261, 736);
+            tabControl1.Size = new Size(1086, 448);
             tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -70,7 +70,7 @@
             tabPage1.Margin = new Padding(4, 2, 4, 2);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(4, 2, 4, 2);
-            tabPage1.Size = new Size(1253, 698);
+            tabPage1.Size = new Size(1078, 410);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Logs";
             tabPage1.UseVisualStyleBackColor = true;
@@ -81,7 +81,7 @@
             richTextBox1.Location = new Point(4, 2);
             richTextBox1.Margin = new Padding(4, 5, 4, 5);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(1245, 694);
+            richTextBox1.Size = new Size(1070, 406);
             richTextBox1.TabIndex = 1;
             richTextBox1.Text = "";
             // 
@@ -91,7 +91,7 @@
             listView1.Location = new Point(4, 2);
             listView1.Margin = new Padding(4, 5, 4, 5);
             listView1.Name = "listView1";
-            listView1.Size = new Size(1245, 694);
+            listView1.Size = new Size(1070, 406);
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -109,7 +109,7 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(903, 28);
+            checkBox1.Location = new Point(676, 27);
             checkBox1.Margin = new Padding(4, 2, 4, 2);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(157, 29);
@@ -121,7 +121,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1291, 876);
+            ClientSize = new Size(1116, 592);
             Controls.Add(checkBox1);
             Controls.Add(label1);
             Controls.Add(tabControl1);
