@@ -42,6 +42,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             string managedPath = fileSystemAccessor.ResolveLocalFilePath(context, resolvedPath.toString());
             Path finalPath = ToPath(managedPath, resolvedPath);
 
+            ValidateSymlinkContainment(finalPath, rootDir);
+
             var validationContext = CreateContext(
                 subsystem,
                 SshFileSystemOperation.ResolveLocalFilePath,
@@ -504,6 +506,48 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             };
 
             return fileSystemAccessor.NoFollow(context, defaultNoFollow);
+        }
+
+        private void ValidateSymlinkContainment(Path filePath, Path rootDir)
+        {
+            try
+            {
+                Path resolvedPath = filePath.toRealPath();
+                if (!IsPathWithinRoot(resolvedPath, rootDir))
+                {
+                    throw new NoSuchFileException(filePath.toString(), null,
+                        "Resolved path is outside the allowed root directory.");
+                }
+            }
+            catch (java.io.IOException)
+            {
+                try
+                {
+                    if (Files.isSymbolicLink(filePath))
+                    {
+                        Path linkTarget = Files.readSymbolicLink(filePath);
+                        if (!linkTarget.isAbsolute())
+                        {
+                            linkTarget = filePath.getParent().resolve(linkTarget).normalize();
+                        }
+                        if (!IsPathWithinRoot(linkTarget, rootDir))
+                        {
+                            throw new NoSuchFileException(filePath.toString(), null,
+                                "Symlink target is outside the allowed root directory.");
+                        }
+                    }
+                }
+                catch (java.io.IOException)
+                {
+                }
+            }
+        }
+
+        private static bool IsPathWithinRoot(Path path, Path rootDir)
+        {
+            string pathStr = path.toAbsolutePath().normalize().toString();
+            string rootStr = rootDir.toAbsolutePath().normalize().toString();
+            return pathStr.StartsWith(rootStr, StringComparison.OrdinalIgnoreCase);
         }
 
         private static Path ToPath(string managedPath, Path fallback)
