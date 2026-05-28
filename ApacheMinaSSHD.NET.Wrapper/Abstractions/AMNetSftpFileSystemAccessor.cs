@@ -66,11 +66,41 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             {
                 string fullPath = Path.GetFullPath(path);
                 var target = File.ResolveLinkTarget(fullPath, true);
-                return target?.FullName ?? fullPath;
+                if (target != null)
+                {
+                    return target.FullName;
+                }
+
+                // File.ResolveLinkTarget returned null — the file is not a link
+                // or the platform doesn't support link resolution.
+                // As a fallback, check for the ReparsePoint attribute.
+                if (HasReparsePoint(fullPath))
+                {
+                    target = File.ResolveLinkTarget(fullPath, false);
+                    if (target != null)
+                    {
+                        return target.FullName;
+                    }
+                }
+
+                return fullPath;
             }
             catch
             {
                 return Path.GetFullPath(path);
+            }
+        }
+
+        private static bool HasReparsePoint(string fullPath)
+        {
+            try
+            {
+                return File.Exists(fullPath) &&
+                    (File.GetAttributes(fullPath) & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint;
+            }
+            catch
+            {
+                return false;
             }
         }
 

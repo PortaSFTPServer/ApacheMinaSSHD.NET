@@ -556,9 +556,13 @@ namespace SimpleSSHDSever
             params string[] batchCommands)
         {
             ProcessResult result = await RunSftpWithKeyAsync(tools, key, port, workingDirectory, batchCommands);
-            if (result.ExitCode == 0)
+            if (result.ExitCode == 0 &&
+                !result.StdErr.Contains("not found", StringComparison.OrdinalIgnoreCase) &&
+                !result.StdErr.Contains("permission denied", StringComparison.OrdinalIgnoreCase) &&
+                !result.StdErr.Contains("error", StringComparison.OrdinalIgnoreCase))
             {
-                throw new InvalidOperationException($"{failureMessage} Command unexpectedly succeeded.");
+                throw new InvalidOperationException(
+                    $"{failureMessage} Command unexpectedly succeeded. stdout={result.StdOut.Trim()}; stderr={result.StdErr.Trim()}");
             }
         }
 
