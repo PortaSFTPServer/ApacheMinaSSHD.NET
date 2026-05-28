@@ -114,7 +114,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                     FILE_SHARE_READ,
                     IntPtr.Zero,
                     OPEN_EXISTING,
-                    FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OPEN_REPARSE_POINT,
+                    FILE_FLAG_BACKUP_SEMANTICS,
                     IntPtr.Zero);
 
                 if (handle.IsInvalid)
