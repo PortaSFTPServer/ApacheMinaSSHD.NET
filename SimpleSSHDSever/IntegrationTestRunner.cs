@@ -313,10 +313,18 @@ namespace SimpleSSHDSever
                 return;
             }
 
-            if (!CanDetectSymlink(link))
+            Console.WriteLine($"  [DIAG] Symlink created: {link} -> {outside}");
+
+            RunSymlinkDiagnostics(link);
+
+            if (!CanDetectSymlinkViaResolveLinkTarget(link))
             {
-                Console.WriteLine("  [SKIP] Symlink boundary check skipped: symlink undetectable on this platform.");
-                return;
+                if (!CanDetectSymlinkViaFinalPath(link))
+                {
+                    Console.WriteLine("  [SKIP] Symlink boundary check skipped: symlink undetectable on this platform.");
+                    return;
+                }
+                Console.WriteLine("  [DIAG] Symlink detectable only via GetFinalPathNameByHandle, not ResolveLinkTarget.");
             }
 
             await ExpectSftpFailureAsync(
@@ -328,17 +336,70 @@ namespace SimpleSSHDSever
                 $"get outside-link.txt {SftpLocalPath(download)}");
         }
 
-        private static bool CanDetectSymlink(string path)
+        private static void RunSymlinkDiagnostics(string path)
         {
             try
             {
-                return File.ResolveLinkTarget(path, true) != null;
+                var attrs = File.GetAttributes(path);
+                Console.WriteLine($"  [DIAG] FileAttributes: {attrs} (ReparsePoint={attrs.HasFlag(FileAttributes.ReparsePoint)})");
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine($"  [DIAG] File.GetAttributes failed: {ex.Message}");
+            }
+
+            if (OperatingSystem.IsWindows())
+            {
+                var fi = new System.IO.FileInfo(path);
+                Console.WriteLine($"  [DIAG] FileInfo.Attributes: {fi.Attributes}");
+            }
+        }
+
+        private static bool CanDetectSymlinkViaResolveLinkTarget(string path)
+        {
+            try
+            {
+                var target = File.ResolveLinkTarget(path, true);
+                bool detected = target != null;
+                Console.WriteLine($"  [DIAG] File.ResolveLinkTarget(path, true): {(detected ? target!.FullName : "null")}");
+                return detected;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"  [DIAG] File.ResolveLinkTarget threw: {ex.GetType().Name}: {ex.Message}");
                 return false;
             }
         }
+
+        private static bool CanDetectSymlinkViaFinalPath(string path)
+        {
+            try
+            {
+                using var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, 1, FileOptions.None);
+                var sb = new StringBuilder(4096);
+                int result = GetFinalPathNameByHandle(fs.SafeFileHandle, sb, sb.Capacity, 0);
+                if (result > 0)
+                {
+                    string finalPath = sb.ToString();
+                    Console.WriteLine($"  [DIAG] GetFinalPathNameByHandle: {finalPath}");
+                    return true;
+                }
+                Console.WriteLine($"  [DIAG] GetFinalPathNameByHandle returned {result}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"  [DIAG] GetFinalPathNameByHandle threw: {ex.GetType().Name}: {ex.Message}");
+                return false;
+            }
+        }
+
+        [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true, CharSet = System.Runtime.InteropServices.CharSet.Auto)]
+        private static extern int GetFinalPathNameByHandle(
+            Microsoft.Win32.SafeHandles.SafeFileHandle hFile,
+            StringBuilder lpszFilePath,
+            int cchFilePath,
+            int dwFlags);
 
         private static TestServer StartServer(string runRoot, AuthMode authMode, ClientKeyMaterial? key)
         {

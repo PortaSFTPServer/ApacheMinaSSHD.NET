@@ -81,13 +81,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                     return target.FullName;
                 }
 
-                if (HasReparsePoint(fullPath))
+                target = File.ResolveLinkTarget(fullPath, false);
+                if (target != null)
                 {
-                    target = File.ResolveLinkTarget(fullPath, false);
-                    if (target != null)
-                    {
-                        return target.FullName;
-                    }
+                    return target.FullName;
                 }
 
                 return fullPath;
@@ -126,19 +123,6 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             catch
             {
                 return null;
-            }
-        }
-
-        private static bool HasReparsePoint(string fullPath)
-        {
-            try
-            {
-                return File.Exists(fullPath) &&
-                    (File.GetAttributes(fullPath) & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint;
-            }
-            catch
-            {
-                return false;
             }
         }
 

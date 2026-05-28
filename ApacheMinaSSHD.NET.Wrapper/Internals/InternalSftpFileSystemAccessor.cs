@@ -567,6 +567,31 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             catch (java.io.IOException)
             {
             }
+
+            // .NET-based symlink detection (most reliable on Windows for IKVM interop)
+            string? dotNetResolvedTarget = null;
+            try
+            {
+                string dotNetPath = filePath.toString();
+                var symlinkTarget = File.ResolveLinkTarget(dotNetPath, true);
+                if (symlinkTarget != null)
+                {
+                    dotNetResolvedTarget = System.IO.Path.GetFullPath(symlinkTarget.FullName);
+                }
+            }
+            catch
+            {
+            }
+
+            if (dotNetResolvedTarget != null)
+            {
+                string normalizedRoot = System.IO.Path.GetFullPath(rootStr);
+                if (!dotNetResolvedTarget.StartsWith(normalizedRoot, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new NoSuchFileException(pathStr, null,
+                        "Symlink target is outside the allowed root directory.");
+                }
+            }
         }
 
         private static bool TryResolveSymlinkTargetViaNativeApi(string path, out string? target)
