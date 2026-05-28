@@ -8,7 +8,10 @@ using java.nio.file;
 using java.nio.file.attribute;
 using java.security;
 using java.util;
+using Microsoft.Win32.SafeHandles;
 using org.apache.sshd.sftp.server;
+using System.Runtime.InteropServices;
+using System.Text;
 using Path = java.nio.file.Path;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Internals
@@ -518,30 +521,196 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                     throw new NoSuchFileException(filePath.toString(), null,
                         "Resolved path is outside the allowed root directory.");
                 }
+
+                return;
             }
             catch (java.io.IOException)
             {
-                try
+            }
+
+            string pathStr = filePath.toString();
+            string rootStr = rootDir.toAbsolutePath().normalize().toString();
+
+            if (OperatingSystem.IsWindows() && TryResolveSymlinkTargetViaNativeApi(pathStr, out string? nativeTarget))
+            {
+                if (nativeTarget == null || !nativeTarget.StartsWith(rootStr, StringComparison.OrdinalIgnoreCase))
                 {
-                    if (Files.isSymbolicLink(filePath))
+                    throw new NoSuchFileException(pathStr, null,
+                        "Symlink target is outside the allowed root directory.");
+                }
+
+                return;
+            }
+
+            try
+            {
+                if (Files.isSymbolicLink(filePath))
+                {
+                    Path linkTarget = Files.readSymbolicLink(filePath);
+                    if (!linkTarget.isAbsolute())
                     {
-                        Path linkTarget = Files.readSymbolicLink(filePath);
-                        if (!linkTarget.isAbsolute())
-                        {
-                            linkTarget = filePath.getParent().resolve(linkTarget).normalize();
-                        }
-                        if (!IsPathWithinRoot(linkTarget, rootDir))
-                        {
-                            throw new NoSuchFileException(filePath.toString(), null,
-                                "Symlink target is outside the allowed root directory.");
-                        }
+                        linkTarget = filePath.getParent().resolve(linkTarget).normalize();
+                    }
+                    if (!IsPathWithinRoot(linkTarget, rootDir))
+                    {
+                        throw new NoSuchFileException(filePath.toString(), null,
+                            "Symlink target is outside the allowed root directory.");
                     }
                 }
-                catch (java.io.IOException)
-                {
-                }
+            }
+            catch (java.io.IOException)
+            {
             }
         }
+
+        private static bool TryResolveSymlinkTargetViaNativeApi(string path, out string? target)
+        {
+            target = null;
+
+            WIN32_FIND_DATA findData;
+            IntPtr hFind = FindFirstFile(path, out findData);
+            if (hFind == INVALID_HANDLE_VALUE)
+            {
+                return false;
+            }
+
+            FindClose(hFind);
+
+            if ((findData.dwFileAttributes & FileAttributes.ReparsePoint) != FileAttributes.ReparsePoint ||
+                findData.dwReserved0 != IO_REPARSE_TAG_SYMLINK)
+            {
+                return false;
+            }
+
+            SafeFileHandle? handle = null;
+            try
+            {
+                handle = CreateOpenReparsePoint(path);
+                if (handle.IsInvalid)
+                {
+                    return false;
+                }
+
+                var outBuf = new byte[REPARSE_DATA_BUFFER_SIZE];
+                uint bytesReturned;
+                bool result = DeviceIoControl(
+                    handle,
+                    FSCTL_GET_REPARSE_POINT,
+                    IntPtr.Zero,
+                    0,
+                    Marshal.UnsafeAddrOfPinnedArrayElement(outBuf, 0),
+                    REPARSE_DATA_BUFFER_SIZE,
+                    out bytesReturned,
+                    IntPtr.Zero);
+
+                if (!result || bytesReturned < 20)
+                {
+                    return false;
+                }
+
+                ushort substituteNameOffset = BitConverter.ToUInt16(outBuf, 20);
+                ushort substituteNameLength = BitConverter.ToUInt16(outBuf, 22);
+                string substituteName = Encoding.Unicode.GetString(
+                    outBuf, 24 + substituteNameOffset, substituteNameLength);
+
+                substituteName = ResolveNtPathName(substituteName);
+                string dir = System.IO.Path.GetDirectoryName(path) ?? string.Empty;
+                target = System.IO.Path.GetFullPath(substituteName, dir);
+                return true;
+            }
+            finally
+            {
+                handle?.Dispose();
+            }
+        }
+
+        private static SafeFileHandle CreateOpenReparsePoint(string path)
+        {
+            return CreateFile(
+                path,
+                GENERIC_READ,
+                FILE_SHARE_READ,
+                IntPtr.Zero,
+                OPEN_EXISTING,
+                FILE_FLAG_OPEN_REPARSE_POINT,
+                IntPtr.Zero);
+        }
+
+        private static string ResolveNtPathName(string ntPath)
+        {
+            if (ntPath.StartsWith(@"\??\", StringComparison.Ordinal))
+            {
+                return ntPath.Substring(4);
+            }
+
+            if (ntPath.StartsWith(@"\GLOBAL??\", StringComparison.Ordinal))
+            {
+                return ntPath.Substring(9);
+            }
+
+            if (ntPath.StartsWith(@"\\?\", StringComparison.Ordinal))
+            {
+                return ntPath.Substring(4);
+            }
+
+            return ntPath;
+        }
+
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+        private struct WIN32_FIND_DATA
+        {
+            public FileAttributes dwFileAttributes;
+            public uint ftCreationTime_dwLowDateTime;
+            public uint ftCreationTime_dwHighDateTime;
+            public uint ftLastAccessTime_dwLowDateTime;
+            public uint ftLastAccessTime_dwHighDateTime;
+            public uint ftLastWriteTime_dwLowDateTime;
+            public uint ftLastWriteTime_dwHighDateTime;
+            public uint nFileSizeHigh;
+            public uint nFileSizeLow;
+            public uint dwReserved0;
+            public uint dwReserved1;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)]
+            public string cFileName;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 14)]
+            public string cAlternateFileName;
+        }
+
+        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        private static extern IntPtr FindFirstFile(string lpFileName, out WIN32_FIND_DATA lpFindFileData);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern bool FindClose(IntPtr hFindFile);
+
+        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        private static extern SafeFileHandle CreateFile(
+            string lpFileName,
+            uint dwDesiredAccess,
+            uint dwShareMode,
+            IntPtr lpSecurityAttributes,
+            uint dwCreationDisposition,
+            uint dwFlagsAndAttributes,
+            IntPtr hTemplateFile);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern bool DeviceIoControl(
+            SafeFileHandle hDevice,
+            uint dwIoControlCode,
+            IntPtr lpInBuffer,
+            uint nInBufferSize,
+            IntPtr lpOutBuffer,
+            uint nOutBufferSize,
+            out uint lpBytesReturned,
+            IntPtr lpOverlapped);
+
+        private const uint GENERIC_READ = 0x80000000;
+        private const uint FILE_SHARE_READ = 0x00000001;
+        private const uint OPEN_EXISTING = 3;
+        private const uint FILE_FLAG_OPEN_REPARSE_POINT = 0x00200000;
+        private const uint FSCTL_GET_REPARSE_POINT = 0x000900A8;
+        private const uint IO_REPARSE_TAG_SYMLINK = 0xA000000C;
+        private const uint REPARSE_DATA_BUFFER_SIZE = 16384;
+        private static readonly IntPtr INVALID_HANDLE_VALUE = new IntPtr(-1);
 
         private static bool IsPathWithinRoot(Path path, Path rootDir)
         {
