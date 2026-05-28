@@ -34,7 +34,7 @@ types in normal usage.
 
 ## SERALYNX LLC — Serving Critical Infrastructure
 
-<img width="935" height="369" alt="SERALYNX LLC - Porta SFTP Server for Critical Infrastructure" src="https://raw.githubusercontent.com/PortaSFTPServer/ApacheMinaSSHD.NET/main/docs/images/seralynx-banner.png" />
+![SERALYNX LLC - Porta SFTP Server for Critical Infrastructure](docs/images/seralynx-banner.png)
 
 ApacheMinaSSHD.NET is open source under the MIT License and maintained by SERALYNX LLC.
 External issues and pull requests may be reviewed at SERALYNX LLC's discretion.
