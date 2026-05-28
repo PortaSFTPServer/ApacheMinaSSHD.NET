@@ -18,7 +18,71 @@ namespace ApacheMinaSSHD.NET.Wrapper.FileSystem
         {
             _originalStream = originalStream;
             _originalIterator = originalStream.iterator();
-            _includePath = includePath ?? (path => !IsHidden(path));
+            _includePath = includePath ?? (_ => true);
+        }
+
+        public static FilteredDirectoryStream HideExtensions(DirectoryStream stream, params string[] extensions)
+        {
+            var exts = new HashSet<string>(extensions, StringComparer.OrdinalIgnoreCase);
+            return new FilteredDirectoryStream(stream, path =>
+            {
+                string? name = path.getFileName()?.toString();
+                if (string.IsNullOrWhiteSpace(name)) return true;
+                int dot = name.LastIndexOf('.');
+                if (dot < 0) return true;
+                return !exts.Contains(name.Substring(dot));
+            });
+        }
+
+        public static FilteredDirectoryStream ShowOnlyExtensions(DirectoryStream stream, params string[] extensions)
+        {
+            var exts = new HashSet<string>(extensions, StringComparer.OrdinalIgnoreCase);
+            return new FilteredDirectoryStream(stream, path =>
+            {
+                string? name = path.getFileName()?.toString();
+                if (string.IsNullOrWhiteSpace(name)) return false;
+                int dot = name.LastIndexOf('.');
+                if (dot < 0) return false;
+                return exts.Contains(name.Substring(dot));
+            });
+        }
+
+        public static FilteredDirectoryStream HideNames(DirectoryStream stream, params string[] names)
+        {
+            var set = new HashSet<string>(names, StringComparer.OrdinalIgnoreCase);
+            return new FilteredDirectoryStream(stream, path =>
+            {
+                string? name = path.getFileName()?.toString();
+                return !string.IsNullOrWhiteSpace(name) && !set.Contains(name);
+            });
+        }
+
+        public static FilteredDirectoryStream ShowOnlyNames(DirectoryStream stream, params string[] names)
+        {
+            var set = new HashSet<string>(names, StringComparer.OrdinalIgnoreCase);
+            return new FilteredDirectoryStream(stream, path =>
+            {
+                string? name = path.getFileName()?.toString();
+                return name != null && set.Contains(name);
+            });
+        }
+
+        public static FilteredDirectoryStream HideDirectories(DirectoryStream stream)
+        {
+            return new FilteredDirectoryStream(stream, path =>
+            {
+                string? dir = path.toAbsolutePath()?.toString();
+                return string.IsNullOrWhiteSpace(dir) || !Directory.Exists(dir);
+            });
+        }
+
+        public static FilteredDirectoryStream ShowOnlyDirectories(DirectoryStream stream)
+        {
+            return new FilteredDirectoryStream(stream, path =>
+            {
+                string? dir = path.toAbsolutePath()?.toString();
+                return !string.IsNullOrWhiteSpace(dir) && Directory.Exists(dir);
+            });
         }
 
         public void close()
@@ -48,27 +112,6 @@ namespace ApacheMinaSSHD.NET.Wrapper.FileSystem
         public Spliterator spliterator()
         {
             return Spliterators.spliteratorUnknownSize(iterator(), 0);
-        }
-
-        public static bool IsHidden(java.nio.file.Path path)
-        {
-            if (path == null)
-            {
-                return false;
-            }
-
-            string fileName = path.getFileName()?.toString()!;
-            if (string.IsNullOrWhiteSpace(fileName))
-            {
-                return false;
-            }
-
-            if (fileName.StartsWith(".") && fileName != "." && fileName != "..")
-            {
-                return true;
-            }
-
-            return fileName.Contains("secret_data", StringComparison.OrdinalIgnoreCase);
         }
 
         private bool ShouldInclude(java.nio.file.Path path)

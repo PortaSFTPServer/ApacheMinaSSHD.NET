@@ -160,6 +160,45 @@ server.setCommandFactory(new AMNetScpCommandFactory(
 server.start();
 ```
 
+## Directory Entry Filtering
+
+Control which files and directories are visible over SFTP/SCP by overriding
+`ShouldIncludeDirectoryEntry` on the file system accessor:
+
+```csharp
+class MyFileAccessor : AMNetSftpFileSystemAccessor
+{
+    public List<string> HiddenExtensions { get; set; } = [".log", ".tmp"];
+    public List<string> HiddenNames { get; set; } = ["secret_data"];
+    public bool HideDotFiles { get; set; } = true;
+
+    public override bool ShouldIncludeDirectoryEntry(ISshFileSystemAccess context)
+    {
+        var name = Path.GetFileName(context.Path);
+        if (string.IsNullOrWhiteSpace(name)) return true;
+
+        if (HideDotFiles && name.StartsWith(".")) return false;
+        if (HiddenNames.Contains(name, StringComparer.OrdinalIgnoreCase)) return false;
+
+        var ext = Path.GetExtension(name);
+        if (HiddenExtensions.Contains(ext, StringComparer.OrdinalIgnoreCase)) return false;
+
+        return base.ShouldIncludeDirectoryEntry(context);
+    }
+}
+
+// Same for SCP:
+class MyScpOpener : AMNetScpFileOpener
+{
+    public override bool ShouldIncludeDirectoryEntry(ISshScpFileAccess access)
+    {
+        var name = Path.GetFileName(access.Path);
+        if (name != null && name.StartsWith(".")) return false;
+        return base.ShouldIncludeDirectoryEntry(access);
+    }
+}
+```
+
 ## Algorithm Configuration
 
 Developers can inspect supported algorithms and configure allowed algorithms
