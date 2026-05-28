@@ -52,7 +52,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             Path finalPath = ToPath(managedPath, resolvedPath);
             Console.WriteLine($"[SRV] finalPath: {finalPath?.toString()}");
 
-            ValidateSymlinkContainment(finalPath, rootDir);
+            // Use real Windows paths for symlink containment when available.
+            // VirtualFileSystemView paths like "/outside-link.txt" are virtual and
+            // cannot be used with File.ResolveLinkTarget, FindFirstFile, etc.
+            ValidateSymlinkWithRealPath(subsystem, finalPath, rootDir, remotePath);
 
             var validationContext = CreateContext(
                 subsystem,
@@ -517,6 +520,65 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             };
 
             return fileSystemAccessor.NoFollow(context, defaultNoFollow);
+        }
+
+        private void ValidateSymlinkWithRealPath(SftpSubsystemProxy subsystem, Path finalPath, Path rootDir, string remotePath)
+        {
+            Path effectivePath = finalPath;
+            Path effectiveRoot = rootDir;
+
+            try
+            {
+                if (InternalVirtualFileSystemFactory.RealUserHomes.TryGetValue(
+                        subsystem.getSession().getUsername(), out string? realUserHome))
+                {
+                    string pathStr = effectivePath.toString();
+                    // Convert virtual paths (Unix-style starting with '/') to real paths.
+                    // On Windows, real paths start with a drive letter so '/' always means virtual.
+                    // On Linux, both virtual and real paths start with '/', so we verify the path
+                    // is not already within the real root to avoid double-conversion.
+                    if (pathStr.StartsWith('/') && IsVirtualNotRealPath(pathStr, realUserHome))
+                    {
+                        string relativePath = pathStr.TrimStart('/');
+                        string realFilePath = System.IO.Path.GetFullPath(
+                            System.IO.Path.Combine(realUserHome, relativePath));
+                        string realRootPath = System.IO.Path.GetFullPath(realUserHome);
+
+                        effectivePath = Paths.get(realFilePath);
+                        effectiveRoot = Paths.get(realRootPath);
+                        Console.WriteLine($"[SRV] Real path for symlink check: {realFilePath}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[SRV-DIAG] Failed to resolve real path, using virtual: {ex.GetType().Name}: {ex.Message}");
+            }
+
+            ValidateSymlinkContainment(effectivePath, effectiveRoot);
+        }
+
+        /// <summary>
+        /// Determines whether a Unix-style path (starting with '/') is a virtual path
+        /// rather than an already-resolved real path. On Windows, all paths starting with
+        /// '/' are virtual. On Linux, we check that the path does not already fall within
+        /// the real user home directory.
+        /// </summary>
+        private static bool IsVirtualNotRealPath(string path, string realUserHome)
+        {
+            if (OperatingSystem.IsWindows())
+            {
+                return true;
+            }
+
+            // On Linux, real paths also start with '/'. Check if this path is already
+            // a real path by verifying it isn't the real root or a child of it.
+            if (path.Length <= realUserHome.Length)
+            {
+                return !path.Equals(realUserHome, StringComparison.Ordinal);
+            }
+
+            return !path.StartsWith(realUserHome + "/", StringComparison.Ordinal);
         }
 
         private void ValidateSymlinkContainment(Path filePath, Path rootDir)

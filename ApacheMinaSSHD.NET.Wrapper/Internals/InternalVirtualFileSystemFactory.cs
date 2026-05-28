@@ -3,12 +3,20 @@ using java.nio.file;
 using org.apache.sshd.common.file;
 using org.apache.sshd.common.file.virtualfs;
 using org.apache.sshd.common.session;
+using System.Collections.Concurrent;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Internals
 {
     internal sealed class InternalVirtualFileSystemFactory : java.lang.Object, FileSystemFactory
     {
         private readonly AMNetVirtualFileSystemFactory fileSystemFactory;
+
+        /// <summary>
+        /// Maps authenticated usernames to their real (Windows) home directory paths.
+        /// Used by <see cref="InternalSftpFileSystemAccessor"/> to convert virtual paths to
+        /// real filesystem paths for symlink containment validation.
+        /// </summary>
+        internal static readonly ConcurrentDictionary<string, string> RealUserHomes = new();
 
         public InternalVirtualFileSystemFactory(AMNetVirtualFileSystemFactory fileSystemFactory)
         {
@@ -17,6 +25,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
         java.nio.file.FileSystem FileSystemFactory.createFileSystem(SessionContext sessionContext)
         {
+            // Store the real user home path so that symlink detection can use real Windows paths.
+            string userHome = fileSystemFactory.ResolveUserHomeDirectory(sessionContext.getUsername());
+            RealUserHomes[sessionContext.getUsername()] = userHome;
+
             return CreateVirtualFileSystemFactory(sessionContext).createFileSystem(sessionContext);
         }
 
