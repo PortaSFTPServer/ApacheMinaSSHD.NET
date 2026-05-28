@@ -86,22 +86,12 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 
         /// <summary>
         /// Encodes a public key file to SSH wire format bytes for fingerprinting.
-        /// Supports PEM, OpenSSH public key, and SSH2 public key formats.
+        /// Supports PEM, OpenSSH public key, OpenSSH private key, and SSH2 public key formats.
         /// </summary>
         private static byte[] EncodeToSshWireFormat(string content)
         {
-            // PEM format (e.g., -----BEGIN PUBLIC KEY-----)
-            if (content.Contains("BEGIN ") && content.Contains(" KEY"))
-            {
-                using var reader = new StringReader(content);
-                var pemReader = new PemReader(reader);
-                object keyObj = pemReader.ReadObject();
-                AsymmetricKeyParameter pubKey = ExtractPublicKey(keyObj);
-                return EncodePublicKeyToSsh(pubKey);
-            }
-
             // SSH2 public key format (---- BEGIN SSH2 PUBLIC KEY ----)
-            if (content.Contains("BEGIN SSH2") || content.Contains("BEGIN SSH2 PUBLIC KEY"))
+            if (content.Contains("BEGIN SSH2"))
             {
                 var lines = content.Split('\n', '\r')
                     .Select(l => l.Trim())
@@ -109,14 +99,99 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                 return Convert.FromBase64String(string.Concat(lines));
             }
 
-            // OpenSSH public key format: "keytype base64data [comment]"
+            // OpenSSH public key format: "keytype base64data [comment]" — fast path
             string[] parts = content.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
             if (parts.Length >= 2 && IsSshKeyType(parts[0]))
             {
                 return Convert.FromBase64String(parts[1]);
             }
 
-            throw new CryptographicException("Unrecognized public key format. Supported formats: PEM, OpenSSH public key, SSH2 public key.");
+            // OpenSSH private key format (-----BEGIN OPENSSH PRIVATE KEY-----).
+            // Extracts the embedded SSH wire-format public key without needing
+            // BouncyCastle PemReader or a password (the public key is stored
+            // unencrypted before the private key section).
+            if (content.Contains("BEGIN OPENSSH PRIVATE KEY"))
+            {
+                return DecodeOpenSshPrivateKey(content);
+            }
+
+            // PEM format via BouncyCastle PemReader (-----BEGIN ... KEY-----).
+            // Handles PUBLIC KEY, PRIVATE KEY, RSA PRIVATE KEY, EC PRIVATE KEY,
+            // DSA PRIVATE KEY. ENCRYPTED PRIVATE KEY is rejected below.
+            if (IsBouncyCastlePem(content))
+            {
+                return DecodePemToSshWireFormat(content);
+            }
+
+            throw new CryptographicException("Unrecognized public key format. Supported formats: PEM, OpenSSH public key, OpenSSH private key, SSH2 public key.");
+        }
+
+        private static bool IsBouncyCastlePem(string content)
+        {
+            return content.Contains("-----BEGIN ")
+                && content.Contains("-----")
+                && !content.Contains("ENCRYPTED PRIVATE KEY")
+                && !content.Contains("OPENSSH PRIVATE KEY")
+                && !content.Contains("BEGIN SSH2");
+        }
+
+        private static byte[] DecodePemToSshWireFormat(string content)
+        {
+            using var reader = new StringReader(content);
+            var pemReader = new PemReader(reader);
+
+            object? keyObj;
+            try
+            {
+                keyObj = pemReader.ReadObject();
+            }
+            catch (Exception ex) when (ex is IOException or InvalidOperationException)
+            {
+                throw new CryptographicException("Failed to read PEM content.", ex);
+            }
+
+            if (keyObj is null)
+            {
+                throw new CryptographicException("PEM content did not contain a recognizable key.");
+            }
+
+            AsymmetricKeyParameter pubKey = ExtractPublicKey(keyObj);
+            return EncodePublicKeyToSsh(pubKey);
+        }
+
+        private static byte[] DecodeOpenSshPrivateKey(string content)
+        {
+            // Extract base64 lines between the BEGIN/END markers.
+            var lines = content.Split('\n', '\r')
+                .Select(l => l.Trim())
+                .Where(l => l.Length > 0 && !l.StartsWith("-----"))
+                .ToArray();
+
+            byte[] decoded = Convert.FromBase64String(string.Concat(lines));
+
+            // OpenSSH private key wire format (PROTOCOL.key):
+            //   AUTH_MAGIC       = "openssh-key-v1\0"  (15 bytes)
+            //   ciphername       = string
+            //   kdfname          = string
+            //   kdfoptions       = string
+            //   number_of_keys   = uint32
+            //   public_key       = string  (SSH wire format — what we want)
+            //   encrypted_...    = ...     (skipped)
+            using var ms = new MemoryStream(decoded);
+            byte[] magicBytes = ReadBytes(ms, 15);
+            string magic = Encoding.ASCII.GetString(magicBytes);
+            if (magic != "openssh-key-v1\0")
+            {
+                throw new CryptographicException("Invalid OpenSSH private key header.");
+            }
+
+            ReadSshString(ms); // ciphername
+            ReadSshString(ms); // kdfname
+            ReadSshBytes(ms);  // kdfoptions
+            ReadUint32(ms);    // number_of_keys
+
+            byte[] publicKey = ReadSshBytes(ms);
+            return publicKey;
         }
 
         private static bool IsSshKeyType(string value)
@@ -126,6 +201,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                 "ssh-rsa" or "ssh-dss" or "ssh-ed25519"
                     or "ecdsa-sha2-nistp256" or "ecdsa-sha2-nistp384" or "ecdsa-sha2-nistp521"
                     or "sk-ssh-ed25519@openssh.com" or "sk-ecdsa-sha2-nistp256@openssh.com"
+                    or "ssh-rsa-cert-v01@openssh.com" or "ssh-dss-cert-v01@openssh.com"
+                    or "ssh-ed25519-cert-v01@openssh.com"
+                    or "ecdsa-sha2-nistp256-cert-v01@openssh.com"
+                    or "ecdsa-sha2-nistp384-cert-v01@openssh.com"
+                    or "ecdsa-sha2-nistp521-cert-v01@openssh.com"
                     => true,
                 _ => false
             };
@@ -229,6 +309,44 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                 Array.Reverse(bytes);
             }
             ms.Write(bytes);
+        }
+
+        private static string ReadSshString(MemoryStream ms)
+        {
+            int length = ReadUint32(ms);
+            return Encoding.ASCII.GetString(ReadBytes(ms, length));
+        }
+
+        private static byte[] ReadSshBytes(MemoryStream ms)
+        {
+            int length = ReadUint32(ms);
+            return ReadBytes(ms, length);
+        }
+
+        private static int ReadUint32(MemoryStream ms)
+        {
+            byte[] bytes = ReadBytes(ms, 4);
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(bytes);
+            }
+            return BitConverter.ToInt32(bytes);
+        }
+
+        private static byte[] ReadBytes(MemoryStream ms, int count)
+        {
+            byte[] buffer = new byte[count];
+            int offset = 0;
+            while (offset < count)
+            {
+                int read = ms.Read(buffer, offset, count - offset);
+                if (read == 0)
+                {
+                    throw new EndOfStreamException("Unexpected end of SSH key data.");
+                }
+                offset += read;
+            }
+            return buffer;
         }
 
         private static string GetDefaultAuthorizedKeysBasePath()

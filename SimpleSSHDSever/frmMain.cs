@@ -115,7 +115,7 @@ namespace SimpleSSHDSever
                         string? samplePassword = "Test1234"; // Environment.GetEnvironmentVariable("AMNET_SAMPLE_PASSWORD");
                         if (!string.IsNullOrWhiteSpace(samplePassword))
                         {
-                            string sampleUsername = Environment.GetEnvironmentVariable("AMNET_SAMPLE_USERNAME") ?? "demo";
+                            string sampleUsername = "demo"; // Environment.GetEnvironmentVariable("AMNET_SAMPLE_USERNAME");
                             sshd.SetFixedPasswordAuthenticator(sampleUsername, samplePassword);
                         }
 
