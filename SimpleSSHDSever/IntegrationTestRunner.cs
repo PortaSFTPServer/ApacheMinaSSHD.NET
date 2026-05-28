@@ -313,6 +313,12 @@ namespace SimpleSSHDSever
                 return;
             }
 
+            if (!CanDetectSymlink(link))
+            {
+                Console.WriteLine("  [SKIP] Symlink boundary check skipped: symlink undetectable on this platform.");
+                return;
+            }
+
             await ExpectSftpFailureAsync(
                 tools,
                 key,
@@ -320,6 +326,18 @@ namespace SimpleSSHDSever
                 server.ClientRoot,
                 "SFTP symlink escape should fail.",
                 $"get outside-link.txt {SftpLocalPath(download)}");
+        }
+
+        private static bool CanDetectSymlink(string path)
+        {
+            try
+            {
+                return File.ResolveLinkTarget(path, true) != null;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private static TestServer StartServer(string runRoot, AuthMode authMode, ClientKeyMaterial? key)
