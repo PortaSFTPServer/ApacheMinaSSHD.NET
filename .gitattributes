@@ -1,0 +1,19 @@
+* text=auto
+
+*.cs text diff
+*.md text diff
+*.csproj text diff
+*.yml text diff
+*.ps1 text diff
+*.json text diff
+
+*.png binary
+*.jpg binary
+*.dll binary
+*.jar binary
+*.pfx binary
+*.p12 binary
+*.pem binary
+*.key binary
+*.ppk binary
+*.ser binary

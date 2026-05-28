@@ -102,7 +102,7 @@ Multi-step authentication policy can also be expressed without raw SSH strings:
 server.SetAuthorizedKeysAuthenticator("authorized_keys");
 server.SetCompositePasswordAuthenticator(
     new AMNetDelegatePasswordAuthenticator((username, password, session) => false),
-    new AMNetFixedPasswordAuthenticator("fallback", "Password-12345!"));
+    new AMNetFixedPasswordAuthenticator("fallback", "<your-password>"));
 
 server.SetAuthenticationMethods(
     AMNetSshAuthenticationMethods.PublicKey,
