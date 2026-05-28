@@ -37,6 +37,7 @@ jobs:
         run: |
           dotnet restore ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj
           dotnet restore ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj
+          dotnet restore ApacheMinaSSHD.NET.Wrapper.Tests/ApacheMinaSSHD.NET.Wrapper.Tests.csproj
           dotnet restore SimpleSSHDSever/SimpleSSHDSever.csproj
 
       - name: Build
@@ -44,7 +45,12 @@ jobs:
         run: |
           dotnet build ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj -c Release --no-restore
           dotnet build ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj -c Release --no-restore
+          dotnet build ApacheMinaSSHD.NET.Wrapper.Tests/ApacheMinaSSHD.NET.Wrapper.Tests.csproj -c Release --no-restore
           dotnet build SimpleSSHDSever/SimpleSSHDSever.csproj -c Release --no-restore
+
+      - name: Unit tests
+        shell: pwsh
+        run: dotnet test ApacheMinaSSHD.NET.Wrapper.Tests/ApacheMinaSSHD.NET.Wrapper.Tests.csproj -c Release --no-build
 
       - name: Public API guard
         shell: pwsh
