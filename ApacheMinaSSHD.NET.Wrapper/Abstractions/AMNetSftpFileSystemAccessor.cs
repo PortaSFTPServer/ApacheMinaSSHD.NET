@@ -25,6 +25,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <inheritdoc />
         public virtual bool IsPathAllowed(ISshFileSystemAccess context)
         {
+            string? localPath = context.LocalPath;
+            string? rootPath = context.RootPath;
+
+            // Allow root and current-directory queries through without jail checks.
             if (context.Operation == SshFileSystemOperation.ResolveLocalFilePath &&
                 (string.IsNullOrWhiteSpace(context.RemotePath) ||
                  context.RemotePath == "." ||
@@ -33,7 +37,41 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                 return true;
             }
 
-            return IsVisibleByDefault(context.LocalPath);
+            if (!IsVisibleByDefault(localPath))
+            {
+                return false;
+            }
+
+            // Jail containment: ensure the resolved real path is within the root.
+            if (!string.IsNullOrWhiteSpace(localPath) &&
+                !string.IsNullOrWhiteSpace(rootPath))
+            {
+                return IsWithinRoot(localPath, rootPath);
+            }
+
+            return true;
+        }
+
+        private static bool IsWithinRoot(string localPath, string rootPath)
+        {
+            string realPath = ResolveFinalTarget(localPath);
+            string normalizedRoot = Path.GetFullPath(rootPath);
+
+            return realPath.StartsWith(normalizedRoot, StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static string ResolveFinalTarget(string path)
+        {
+            try
+            {
+                string fullPath = Path.GetFullPath(path);
+                var target = File.ResolveLinkTarget(fullPath, true);
+                return target?.FullName ?? fullPath;
+            }
+            catch
+            {
+                return Path.GetFullPath(path);
+            }
         }
 
         /// <inheritdoc />
