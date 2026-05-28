@@ -689,20 +689,33 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                     return null;
                 }
 
+                string? capturedTarget = null;
                 foreach (string line in stdout.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries))
                 {
                     string trimmed = line.Trim();
+
                     if (trimmed.StartsWith("Substitute Name:", StringComparison.OrdinalIgnoreCase))
                     {
-                        return trimmed.Substring("Substitute Name:".Length).Trim();
+                        capturedTarget = trimmed.Substring("Substitute Name:".Length).Trim();
+                        break;
                     }
+
                     if (trimmed.StartsWith("Print Name:", StringComparison.OrdinalIgnoreCase))
                     {
-                        return trimmed.Substring("Print Name:".Length).Trim();
+                        capturedTarget = trimmed.Substring("Print Name:".Length).Trim();
+                        break;
+                    }
+
+                    if (capturedTarget == null &&
+                        (trimmed.StartsWith(@"\??\", StringComparison.Ordinal) ||
+                         trimmed.StartsWith(@"\\?\", StringComparison.Ordinal) ||
+                         (trimmed.Length >= 2 && trimmed[1] == ':')))
+                    {
+                        capturedTarget = trimmed;
                     }
                 }
 
-                return null;
+                return capturedTarget;
             }
             catch
             {
