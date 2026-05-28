@@ -582,19 +582,43 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
             FindClose(hFind);
 
-            if ((findData.dwFileAttributes & FileAttributes.ReparsePoint) != FileAttributes.ReparsePoint ||
-                findData.dwReserved0 != IO_REPARSE_TAG_SYMLINK)
+            if ((findData.dwFileAttributes & FileAttributes.ReparsePoint) != FileAttributes.ReparsePoint)
             {
                 return false;
             }
 
+            string? detectedTarget = null;
+
+            if (findData.dwReserved0 == IO_REPARSE_TAG_SYMLINK)
+            {
+                detectedTarget = ResolveSymlinkTargetViaDeviceIoControl(path);
+            }
+
+            if (detectedTarget == null)
+            {
+                detectedTarget = ResolveSymlinkTargetViaFsUtil(path);
+            }
+
+            if (detectedTarget == null)
+            {
+                return false;
+            }
+
+            string resolvedSubstituteName = ResolveNtPathName(detectedTarget);
+            string dir = System.IO.Path.GetDirectoryName(path) ?? string.Empty;
+            target = System.IO.Path.GetFullPath(resolvedSubstituteName, dir);
+            return true;
+        }
+
+        private static string? ResolveSymlinkTargetViaDeviceIoControl(string path)
+        {
             SafeFileHandle? handle = null;
             try
             {
                 handle = CreateOpenReparsePoint(path);
                 if (handle.IsInvalid)
                 {
-                    return false;
+                    return null;
                 }
 
                 var outBuf = new byte[REPARSE_DATA_BUFFER_SIZE];
@@ -614,18 +638,19 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
                     if (!result || bytesReturned < REPARSE_DATA_HEADER_SIZE)
                     {
-                        return false;
+                        return null;
+                    }
+
+                    uint reparseTag = BitConverter.ToUInt32(outBuf, 0);
+                    if (reparseTag != IO_REPARSE_TAG_SYMLINK)
+                    {
+                        return null;
                     }
 
                     ushort substituteNameOffset = BitConverter.ToUInt16(outBuf, SYMLINK_SUBST_NAME_OFFSET);
                     ushort substituteNameLength = BitConverter.ToUInt16(outBuf, SYMLINK_SUBST_NAME_LENGTH);
-                    string rawSubstituteName = Encoding.Unicode.GetString(
+                    return Encoding.Unicode.GetString(
                         outBuf, SYMLINK_PATH_BUFFER_OFFSET + substituteNameOffset, substituteNameLength);
-
-                    string resolvedSubstituteName = ResolveNtPathName(rawSubstituteName);
-                    string dir = System.IO.Path.GetDirectoryName(path) ?? string.Empty;
-                    target = System.IO.Path.GetFullPath(resolvedSubstituteName, dir);
-                    return true;
                 }
                 finally
                 {
@@ -635,6 +660,53 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             finally
             {
                 handle?.Dispose();
+            }
+        }
+
+        private static string? ResolveSymlinkTargetViaFsUtil(string path)
+        {
+            try
+            {
+                var psi = new System.Diagnostics.ProcessStartInfo("fsutil", "reparsepoint query \"" + path + "\"")
+                {
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true
+                };
+
+                using var process = System.Diagnostics.Process.Start(psi);
+                if (process == null)
+                {
+                    return null;
+                }
+
+                string stdout = process.StandardOutput.ReadToEnd();
+                process.WaitForExit(5000);
+
+                if (process.ExitCode != 0)
+                {
+                    return null;
+                }
+
+                foreach (string line in stdout.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries))
+                {
+                    string trimmed = line.Trim();
+                    if (trimmed.StartsWith("Substitute Name:", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return trimmed.Substring("Substitute Name:".Length).Trim();
+                    }
+                    if (trimmed.StartsWith("Print Name:", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return trimmed.Substring("Print Name:".Length).Trim();
+                    }
+                }
+
+                return null;
+            }
+            catch
+            {
+                return null;
             }
         }
 
