@@ -7,14 +7,16 @@ need to import Apache MINA, IKVM, or Java types in normal usage.
 
 ApacheMinaSSHD.NET is created by SERALYNX LLC to help engineering firms,
 developers, and contractors add secure file transfer features to their products.
-It follows the same Apache MINA SSHD server integration paradigm used by Porta
-SFTP Server, while exposing a library-oriented .NET API for other developers.
+It follows the same Apache MINA SSHD server integration paradigm used by <a href="https://portasftpserver.com/portable-sftp-server-community-edition/" target="_blank">Porta
+SFTP Server</a>, while exposing a library-oriented .NET API for other developers.
 
 ApacheMinaSSHD.NET is open source under the MIT License and is maintained by
 SERALYNX LLC. External issues and pull requests may be reviewed at SERALYNX
 LLC's discretion. NuGet packages also include third-party notices for
 redistributed Apache MINA SSHD and SLF4J artifacts, plus IKVM dependency license
 guidance.
+
+<img width="935" height="369" alt="SERALYNX LLC - Porta SFTP Server" src="https://github.com/user-attachments/assets/f01fd470-418d-4e4c-9c6b-7148b1d89a2e" />
 
 ## Packages
 
