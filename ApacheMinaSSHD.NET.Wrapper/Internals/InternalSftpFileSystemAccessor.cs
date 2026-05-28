@@ -598,31 +598,39 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                 }
 
                 var outBuf = new byte[REPARSE_DATA_BUFFER_SIZE];
-                uint bytesReturned;
-                bool result = DeviceIoControl(
-                    handle,
-                    FSCTL_GET_REPARSE_POINT,
-                    IntPtr.Zero,
-                    0,
-                    Marshal.UnsafeAddrOfPinnedArrayElement(outBuf, 0),
-                    REPARSE_DATA_BUFFER_SIZE,
-                    out bytesReturned,
-                    IntPtr.Zero);
-
-                if (!result || bytesReturned < 20)
+                GCHandle pin = GCHandle.Alloc(outBuf, GCHandleType.Pinned);
+                try
                 {
-                    return false;
+                    uint bytesReturned;
+                    bool result = DeviceIoControl(
+                        handle,
+                        FSCTL_GET_REPARSE_POINT,
+                        IntPtr.Zero,
+                        0,
+                        pin.AddrOfPinnedObject(),
+                        REPARSE_DATA_BUFFER_SIZE,
+                        out bytesReturned,
+                        IntPtr.Zero);
+
+                    if (!result || bytesReturned < REPARSE_DATA_HEADER_SIZE)
+                    {
+                        return false;
+                    }
+
+                    ushort substituteNameOffset = BitConverter.ToUInt16(outBuf, SYMLINK_SUBST_NAME_OFFSET);
+                    ushort substituteNameLength = BitConverter.ToUInt16(outBuf, SYMLINK_SUBST_NAME_LENGTH);
+                    string rawSubstituteName = Encoding.Unicode.GetString(
+                        outBuf, SYMLINK_PATH_BUFFER_OFFSET + substituteNameOffset, substituteNameLength);
+
+                    string resolvedSubstituteName = ResolveNtPathName(rawSubstituteName);
+                    string dir = System.IO.Path.GetDirectoryName(path) ?? string.Empty;
+                    target = System.IO.Path.GetFullPath(resolvedSubstituteName, dir);
+                    return true;
                 }
-
-                ushort substituteNameOffset = BitConverter.ToUInt16(outBuf, 20);
-                ushort substituteNameLength = BitConverter.ToUInt16(outBuf, 22);
-                string substituteName = Encoding.Unicode.GetString(
-                    outBuf, 24 + substituteNameOffset, substituteNameLength);
-
-                substituteName = ResolveNtPathName(substituteName);
-                string dir = System.IO.Path.GetDirectoryName(path) ?? string.Empty;
-                target = System.IO.Path.GetFullPath(substituteName, dir);
-                return true;
+                finally
+                {
+                    pin.Free();
+                }
             }
             finally
             {
@@ -716,6 +724,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         private const uint FSCTL_GET_REPARSE_POINT = 0x000900A8;
         private const uint IO_REPARSE_TAG_SYMLINK = 0xA000000C;
         private const uint REPARSE_DATA_BUFFER_SIZE = 16384;
+        private const int SYMLINK_REPARSE_BUFFER_OFFSET = 8;
+        private const int SYMLINK_SUBST_NAME_OFFSET = SYMLINK_REPARSE_BUFFER_OFFSET + 0;
+        private const int SYMLINK_SUBST_NAME_LENGTH = SYMLINK_REPARSE_BUFFER_OFFSET + 2;
+        private const int SYMLINK_PATH_BUFFER_OFFSET = SYMLINK_REPARSE_BUFFER_OFFSET + 12;
+        private const int REPARSE_DATA_HEADER_SIZE = 8;
         private static readonly IntPtr INVALID_HANDLE_VALUE = new IntPtr(-1);
 
         private static bool IsPathWithinRoot(Path path, Path rootDir)
