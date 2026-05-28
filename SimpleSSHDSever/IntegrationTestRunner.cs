@@ -575,12 +575,14 @@ namespace SimpleSSHDSever
         {
             ProcessResult result = await RunSftpWithKeyAsync(tools, key, port, workingDirectory, batchCommands);
 
+            string combinedOutput = result.StdErr + " " + result.StdOut;
+
             bool hasError =
                 result.ExitCode != 0 ||
-                result.StdErr.Contains("not found", StringComparison.OrdinalIgnoreCase) ||
-                result.StdErr.Contains("no such file", StringComparison.OrdinalIgnoreCase) ||
-                result.StdErr.Contains("permission denied", StringComparison.OrdinalIgnoreCase) ||
-                result.StdErr.Contains("error", StringComparison.OrdinalIgnoreCase);
+                combinedOutput.Contains("not found", StringComparison.OrdinalIgnoreCase) ||
+                combinedOutput.Contains("no such file", StringComparison.OrdinalIgnoreCase) ||
+                combinedOutput.Contains("permission denied", StringComparison.OrdinalIgnoreCase) ||
+                combinedOutput.Contains("error", StringComparison.OrdinalIgnoreCase);
 
             if (!hasError)
             {
