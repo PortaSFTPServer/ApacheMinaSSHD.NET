@@ -1,4 +1,7 @@
 using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
+using System.Runtime.InteropServices;
+using System.Text;
+using Microsoft.Win32.SafeHandles;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 {
@@ -65,15 +68,19 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             try
             {
                 string fullPath = Path.GetFullPath(path);
+
+                string? finalPath = ResolveViaGetFinalPathByHandle(fullPath);
+                if (finalPath != null)
+                {
+                    return finalPath;
+                }
+
                 var target = File.ResolveLinkTarget(fullPath, true);
                 if (target != null)
                 {
                     return target.FullName;
                 }
 
-                // File.ResolveLinkTarget returned null — the file is not a link
-                // or the platform doesn't support link resolution.
-                // As a fallback, check for the ReparsePoint attribute.
                 if (HasReparsePoint(fullPath))
                 {
                     target = File.ResolveLinkTarget(fullPath, false);
@@ -91,6 +98,51 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             }
         }
 
+        private static string? ResolveViaGetFinalPathByHandle(string fullPath)
+        {
+            if (!OperatingSystem.IsWindows())
+            {
+                return null;
+            }
+
+            SafeFileHandle? handle = null;
+            try
+            {
+                handle = CreateFile(
+                    fullPath,
+                    GENERIC_READ,
+                    FILE_SHARE_READ,
+                    IntPtr.Zero,
+                    OPEN_EXISTING,
+                    FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OPEN_REPARSE_POINT,
+                    IntPtr.Zero);
+
+                if (handle.IsInvalid)
+                {
+                    return null;
+                }
+
+                var sb = new StringBuilder(4096);
+                int result = GetFinalPathNameByHandle(handle, sb, sb.Capacity, VOLUME_NAME_DOS);
+                if (result <= 0)
+                {
+                    return null;
+                }
+
+                string finalPath = sb.ToString();
+                if (finalPath.StartsWith(@"\\?\", StringComparison.Ordinal))
+                {
+                    finalPath = finalPath.Substring(4);
+                }
+
+                return finalPath;
+            }
+            finally
+            {
+                handle?.Dispose();
+            }
+        }
+
         private static bool HasReparsePoint(string fullPath)
         {
             try
@@ -103,6 +155,30 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                 return false;
             }
         }
+
+        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        private static extern SafeFileHandle CreateFile(
+            string lpFileName,
+            uint dwDesiredAccess,
+            uint dwShareMode,
+            IntPtr lpSecurityAttributes,
+            uint dwCreationDisposition,
+            uint dwFlagsAndAttributes,
+            IntPtr hTemplateFile);
+
+        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        private static extern int GetFinalPathNameByHandle(
+            SafeFileHandle hFile,
+            StringBuilder lpszFilePath,
+            int cchFilePath,
+            int dwFlags);
+
+        private const uint GENERIC_READ = 0x80000000;
+        private const uint FILE_SHARE_READ = 0x00000001;
+        private const uint OPEN_EXISTING = 3;
+        private const uint FILE_FLAG_BACKUP_SEMANTICS = 0x02000000;
+        private const uint FILE_FLAG_OPEN_REPARSE_POINT = 0x00200000;
+        private const int VOLUME_NAME_DOS = 0;
 
         /// <inheritdoc />
         public virtual IReadOnlyList<string> ResolveFileAccessLinkOptions(
