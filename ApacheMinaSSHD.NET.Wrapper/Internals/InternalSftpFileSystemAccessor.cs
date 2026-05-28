@@ -33,11 +33,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
         public Path resolveLocalFilePath(SftpSubsystemProxy subsystem, Path rootDir, string remotePath)
         {
-            Console.WriteLine($"[SRV] resolveLocalFilePath called: remotePath={remotePath}, rootDir={rootDir?.toString()}");
-
             // Keep MINA's default resolution first, then let managed policy rewrite or reject the path.
             Path resolvedPath = accessorDelegate.resolveLocalFilePath(subsystem, rootDir, remotePath);
-            Console.WriteLine($"[SRV] resolvedPath from MINA: {resolvedPath?.toString()}");
 
             var context = CreateContext(
                 subsystem,
@@ -47,10 +44,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                 remotePath: remotePath);
 
             string managedPath = fileSystemAccessor.ResolveLocalFilePath(context, resolvedPath.toString());
-            Console.WriteLine($"[SRV] managedPath from .NET: {managedPath}");
 
             Path finalPath = ToPath(managedPath, resolvedPath);
-            Console.WriteLine($"[SRV] finalPath: {finalPath?.toString()}");
 
             // Use real Windows paths for symlink containment when available.
             // VirtualFileSystemView paths like "/outside-link.txt" are virtual and
@@ -69,7 +64,6 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                 throw new NoSuchFileException(finalPath.toString(), null, "File or directory is not allowed.");
             }
 
-            Console.WriteLine($"[SRV] resolveLocalFilePath returning: {finalPath?.toString()}");
             return finalPath;
         }
 
@@ -546,13 +540,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
                         effectivePath = Paths.get(realFilePath);
                         effectiveRoot = Paths.get(realRootPath);
-                        Console.WriteLine($"[SRV] Real path for symlink check: {realFilePath}");
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                Console.WriteLine($"[SRV-DIAG] Failed to resolve real path, using virtual: {ex.GetType().Name}: {ex.Message}");
             }
 
             ValidateSymlinkContainment(effectivePath, effectiveRoot);
@@ -586,13 +578,9 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             string pathStr = filePath.toString();
             string rootStr = rootDir.toAbsolutePath().normalize().toString();
 
-            Console.WriteLine($"[SRV-DIAG] ValidateSymlinkContainment entered: path={pathStr}, root={rootStr}");
-
             try
             {
                 Path resolvedPath = filePath.toRealPath();
-                Console.WriteLine($"[SRV-DIAG] toRealPath returned: {resolvedPath}");
-                Console.WriteLine($"[SRV-DIAG] toRealPath equals filePath: {resolvedPath.equals(filePath)}");
                 if (!IsPathWithinRoot(resolvedPath, rootDir))
                 {
                     throw new NoSuchFileException(pathStr, null,
@@ -601,30 +589,22 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
                 if (!resolvedPath.equals(filePath))
                 {
-                    Console.WriteLine("[SRV-DIAG] toRealPath followed symlink, containment satisfied.");
                     return;
                 }
             }
-            catch (java.io.IOException ex)
+            catch (java.io.IOException)
             {
-                Console.WriteLine($"[SRV-DIAG] toRealPath threw: {ex.GetType().Name}: {ex.Message}");
             }
 
             if (OperatingSystem.IsWindows() && TryResolveSymlinkTargetViaNativeApi(pathStr, out string? nativeTarget))
             {
-                Console.WriteLine($"[SRV-DIAG] Native API target: {nativeTarget}");
                 if (nativeTarget == null || !nativeTarget.StartsWith(rootStr, StringComparison.OrdinalIgnoreCase))
                 {
                     throw new NoSuchFileException(pathStr, null,
                         "Symlink target is outside the allowed root directory.");
                 }
 
-                Console.WriteLine("[SRV-DIAG] Native API target within root.");
                 return;
-            }
-            else
-            {
-                Console.WriteLine("[SRV-DIAG] Native API did not detect symlink.");
             }
 
             try
@@ -636,21 +616,15 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                     {
                         linkTarget = filePath.getParent().resolve(linkTarget).normalize();
                     }
-                    Console.WriteLine($"[SRV-DIAG] Files.isSymbolicLink target: {linkTarget}");
                     if (!IsPathWithinRoot(linkTarget, rootDir))
                     {
                         throw new NoSuchFileException(pathStr, null,
                             "Symlink target is outside the allowed root directory.");
                     }
                 }
-                else
-                {
-                    Console.WriteLine("[SRV-DIAG] Files.isSymbolicLink returned false.");
-                }
             }
-            catch (java.io.IOException ex)
+            catch (java.io.IOException)
             {
-                Console.WriteLine($"[SRV-DIAG] Files.isSymbolicLink threw: {ex.GetType().Name}: {ex.Message}");
             }
 
             // .NET-based symlink detection (most reliable on Windows for IKVM interop)
@@ -658,34 +632,24 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             try
             {
                 string dotNetPath = filePath.toString();
-                Console.WriteLine($"[SRV-DIAG] .NET trying File.ResolveLinkTarget on: {dotNetPath}");
                 var symlinkTarget = File.ResolveLinkTarget(dotNetPath, true);
-                Console.WriteLine($"[SRV-DIAG] .NET File.ResolveLinkTarget result: {(symlinkTarget != null ? symlinkTarget.FullName : "null")}");
                 if (symlinkTarget != null)
                 {
                     dotNetResolvedTarget = System.IO.Path.GetFullPath(symlinkTarget.FullName);
-                    Console.WriteLine($"[SRV-DIAG] .NET resolved target: {dotNetResolvedTarget}");
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                Console.WriteLine($"[SRV-DIAG] .NET File.ResolveLinkTarget threw: {ex.GetType().Name}: {ex.Message}");
             }
 
             if (dotNetResolvedTarget != null)
             {
                 string normalizedRoot = System.IO.Path.GetFullPath(rootStr);
-                Console.WriteLine($"[SRV-DIAG] .NET normalizedRoot: {normalizedRoot}");
-                Console.WriteLine($"[SRV-DIAG] .NET starts-with check: {dotNetResolvedTarget.StartsWith(normalizedRoot, StringComparison.OrdinalIgnoreCase)}");
                 if (!dotNetResolvedTarget.StartsWith(normalizedRoot, StringComparison.OrdinalIgnoreCase))
                 {
                     throw new NoSuchFileException(pathStr, null,
                         "Symlink target is outside the allowed root directory.");
                 }
-            }
-            else
-            {
-                Console.WriteLine("[SRV-DIAG] .NET File.ResolveLinkTarget returned null or threw.");
             }
         }
 
@@ -787,13 +751,14 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         {
             try
             {
-                var psi = new System.Diagnostics.ProcessStartInfo("fsutil", "reparsepoint query \"" + path + "\"")
+                var psi = new System.Diagnostics.ProcessStartInfo("fsutil", "reparsepoint query")
                 {
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
                     CreateNoWindow = true
                 };
+                psi.ArgumentList.Add(path);
 
                 using var process = System.Diagnostics.Process.Start(psi);
                 if (process == null)

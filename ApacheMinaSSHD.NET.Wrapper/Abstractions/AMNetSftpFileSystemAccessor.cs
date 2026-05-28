@@ -68,39 +68,29 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             try
             {
                 string fullPath = Path.GetFullPath(path);
-                Console.WriteLine($"[SRV-RFT] ResolveFinalTarget input: {path}");
-                Console.WriteLine($"[SRV-RFT] ResolveFinalTarget fullPath: {fullPath}");
 
                 string? finalPath = ResolveViaGetFinalPathByHandle(fullPath);
                 if (finalPath != null)
                 {
-                    Console.WriteLine($"[SRV-RFT] GetFinalPathNameByHandle: {finalPath}");
                     return finalPath;
                 }
-                Console.WriteLine("[SRV-RFT] GetFinalPathNameByHandle returned null");
 
                 var target = File.ResolveLinkTarget(fullPath, true);
                 if (target != null)
                 {
-                    Console.WriteLine($"[SRV-RFT] File.ResolveLinkTarget(true): {target.FullName}");
                     return target.FullName;
                 }
-                Console.WriteLine("[SRV-RFT] File.ResolveLinkTarget(true) returned null");
 
                 target = File.ResolveLinkTarget(fullPath, false);
                 if (target != null)
                 {
-                    Console.WriteLine($"[SRV-RFT] File.ResolveLinkTarget(false): {target.FullName}");
                     return target.FullName;
                 }
-                Console.WriteLine("[SRV-RFT] File.ResolveLinkTarget(false) returned null");
 
-                Console.WriteLine($"[SRV-RFT] Fallback to fullPath: {fullPath}");
                 return fullPath;
             }
-            catch (Exception ex)
+            catch
             {
-                Console.WriteLine($"[SRV-RFT] ResolveFinalTarget threw: {ex.GetType().Name}: {ex.Message}");
                 return Path.GetFullPath(path);
             }
         }
