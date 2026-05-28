@@ -47,6 +47,7 @@
 	  <None Include="..\docs\STANDARDS-AND-ALGORITHMS.md" Pack="true" PackagePath="docs\" />
 	  <None Include="..\licenses\APACHE-2.0.txt" Pack="true" PackagePath="licenses\" />
 	  <None Include="..\licenses\SLF4J-MIT.txt" Pack="true" PackagePath="licenses\" />
+	  <None Include="..\docs\images\seralynx-banner.png" Pack="true" PackagePath="docs\images\" />
 	</ItemGroup>
 
 	<Target Name="IncludeBindingsContent" BeforeTargets="_GetPackageFiles">
