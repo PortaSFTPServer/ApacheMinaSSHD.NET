@@ -105,25 +105,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                 return null;
             }
 
-            SafeFileHandle? handle = null;
             try
             {
-                handle = CreateFile(
-                    fullPath,
-                    GENERIC_READ,
-                    FILE_SHARE_READ,
-                    IntPtr.Zero,
-                    OPEN_EXISTING,
-                    0,
-                    IntPtr.Zero);
-
-                if (handle.IsInvalid)
-                {
-                    return null;
-                }
-
+                using var fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read, FileShare.Read, 1, FileOptions.None);
                 var sb = new StringBuilder(4096);
-                int result = GetFinalPathNameByHandle(handle, sb, sb.Capacity, VOLUME_NAME_DOS);
+                int result = GetFinalPathNameByHandle(fs.SafeFileHandle, sb, sb.Capacity, VOLUME_NAME_DOS);
                 if (result <= 0)
                 {
                     return null;
@@ -137,9 +123,9 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 
                 return finalPath;
             }
-            finally
+            catch
             {
-                handle?.Dispose();
+                return null;
             }
         }
 
@@ -157,27 +143,12 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         }
 
         [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-        private static extern SafeFileHandle CreateFile(
-            string lpFileName,
-            uint dwDesiredAccess,
-            uint dwShareMode,
-            IntPtr lpSecurityAttributes,
-            uint dwCreationDisposition,
-            uint dwFlagsAndAttributes,
-            IntPtr hTemplateFile);
-
-        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         private static extern int GetFinalPathNameByHandle(
             SafeFileHandle hFile,
             StringBuilder lpszFilePath,
             int cchFilePath,
             int dwFlags);
 
-        private const uint GENERIC_READ = 0x80000000;
-        private const uint FILE_SHARE_READ = 0x00000001;
-        private const uint OPEN_EXISTING = 3;
-        private const uint FILE_FLAG_BACKUP_SEMANTICS = 0x02000000;
-        private const uint FILE_FLAG_OPEN_REPARSE_POINT = 0x00200000;
         private const int VOLUME_NAME_DOS = 0;
 
         /// <inheritdoc />
