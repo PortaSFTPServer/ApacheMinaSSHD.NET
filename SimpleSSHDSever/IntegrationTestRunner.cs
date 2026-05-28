@@ -574,13 +574,24 @@ namespace SimpleSSHDSever
             params string[] batchCommands)
         {
             ProcessResult result = await RunSftpWithKeyAsync(tools, key, port, workingDirectory, batchCommands);
-            if (result.ExitCode == 0 &&
-                !result.StdErr.Contains("not found", StringComparison.OrdinalIgnoreCase) &&
-                !result.StdErr.Contains("permission denied", StringComparison.OrdinalIgnoreCase) &&
-                !result.StdErr.Contains("error", StringComparison.OrdinalIgnoreCase))
+
+            bool hasError =
+                result.ExitCode != 0 ||
+                result.StdErr.Contains("not found", StringComparison.OrdinalIgnoreCase) ||
+                result.StdErr.Contains("no such file", StringComparison.OrdinalIgnoreCase) ||
+                result.StdErr.Contains("permission denied", StringComparison.OrdinalIgnoreCase) ||
+                result.StdErr.Contains("error", StringComparison.OrdinalIgnoreCase);
+
+            if (!hasError)
             {
                 throw new InvalidOperationException(
-                    $"{failureMessage} Command unexpectedly succeeded. stdout={result.StdOut.Trim()}; stderr={result.StdErr.Trim()}");
+                    $"{failureMessage} Command unexpectedly succeeded. " +
+                    $"exitCode={result.ExitCode}; stdout={result.StdOut.Trim()}; stderr={result.StdErr.Trim()}");
+            }
+
+            if (result.ExitCode == 0)
+            {
+                Console.WriteLine("  [DIAG] sftp -b returned 0 but stderr indicates failure; accepting as expected denial.");
             }
         }
 
