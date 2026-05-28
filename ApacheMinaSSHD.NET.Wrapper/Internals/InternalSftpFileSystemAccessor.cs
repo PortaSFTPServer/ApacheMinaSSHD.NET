@@ -522,7 +522,13 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                         "Resolved path is outside the allowed root directory.");
                 }
 
-                return;
+                // If toRealPath returned a different path (symlink was followed), containment is satisfied.
+                // If it returned the same path, the Java NIO layer may not have followed the symlink,
+                        // so we fall through to native detection.
+                if (!resolvedPath.equals(filePath))
+                {
+                    return;
+                }
             }
             catch (java.io.IOException)
             {
