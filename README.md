@@ -60,10 +60,13 @@ wrapper. Application developers normally should not reference it directly.
 
 ## NuGet Release Automation
 
-NuGet packages are versioned from Git tags and GitHub Actions release inputs.
-Push a tag such as `v1.0.0` or `v1.0.0-beta.1` to publish that exact package
-version. The `NuGet Release` workflow also supports manual dispatch with an
-explicit SemVer version and a `publish` toggle.
+NuGet packages are published automatically whenever code is pushed to the `main`
+branch and all CI checks pass. The CI workflow increments the revision number
+and pushes a tag such as `v1.0.0.0`, `v1.0.0.1`, etc., which triggers the
+`NuGet Release` workflow to build, test, pack, and publish.
+
+The `NuGet Release` workflow also supports manual dispatch with an explicit
+version (e.g., `1.0.1.0`) and a `publish` toggle.
 
 Publishing requires a repository secret named `NUGET_API_KEY`. Without that
 secret, the workflow can still validate, build, test, pack, and upload package

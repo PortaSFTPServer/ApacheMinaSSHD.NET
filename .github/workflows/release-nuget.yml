@@ -3,11 +3,11 @@ name: NuGet Release
 on:
   push:
     tags:
-      - "v*.*.*"
+      - "v*.*.*.*"
   workflow_dispatch:
     inputs:
       version:
-        description: "SemVer package version, for example 1.0.0 or 1.0.0-beta.1"
+        description: "Package version, for example 1.0.0.0 or 1.0.0.1"
         required: true
         type: string
       publish:
@@ -51,15 +51,15 @@ jobs:
           $version = $env:INPUT_VERSION
 
           if ([string]::IsNullOrWhiteSpace($version)) {
-            if ($env:REF_NAME -notmatch '^v(?<version>\d+\.\d+\.\d+(-[0-9A-Za-z][0-9A-Za-z\.-]*)?)$') {
-              throw "Release tags must use vMAJOR.MINOR.PATCH or vMAJOR.MINOR.PATCH-prerelease, for example v1.0.0 or v1.0.0-beta.1."
+            if ($env:REF_NAME -notmatch '^v(?<version>\d+\.\d+\.\d+\.\d+(-[0-9A-Za-z][0-9A-Za-z\.-]*)?)$') {
+              throw "Release tags must use vMAJOR.MINOR.PATCH.REVISION, for example v1.0.0.0 or v1.0.0.1."
             }
 
             $version = $Matches.version
           }
 
-          if ($version -notmatch '^\d+\.\d+\.\d+(-[0-9A-Za-z][0-9A-Za-z\.-]*)?$') {
-            throw "Version '$version' must be SemVer, for example 1.0.0 or 1.0.0-beta.1."
+          if ($version -notmatch '^\d+\.\d+\.\d+\.\d+(-[0-9A-Za-z][0-9A-Za-z\.-]*)?$') {
+            throw "Version '$version' must be MAJOR.MINOR.PATCH.REVISION, for example 1.0.0.0 or 1.0.0.1."
           }
 
           "package_version=$version" >> $env:GITHUB_OUTPUT
