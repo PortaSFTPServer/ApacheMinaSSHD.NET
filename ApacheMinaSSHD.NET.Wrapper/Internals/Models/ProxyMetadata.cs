@@ -75,8 +75,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
                 var inet = remoteAddress?.getAddress();
                 return inet?.getHostName() ?? "Unknown";
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[{nameof(ProxyMetadata)}] GetHostname failed: {ex.Message}");
                 return "Unknown";
             }
         }

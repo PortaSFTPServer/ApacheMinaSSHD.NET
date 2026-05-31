@@ -47,7 +47,24 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         /// <returns>The local directory path to use as the user's home.</returns>
         public virtual string ResolveUserHomeDirectory(string username)
         {
-            return Path.Combine(BasePath, username);
+            string sanitized = SanitizeUsername(username);
+            return Path.Combine(BasePath, sanitized);
+        }
+
+        /// <summary>
+        /// Sanitizes a username to prevent directory traversal and path injection.
+        /// </summary>
+        private static string SanitizeUsername(string username)
+        {
+            if (string.IsNullOrWhiteSpace(username))
+                throw new ArgumentException("Username cannot be empty.", nameof(username));
+
+            string safe = username.Replace("..", "", StringComparison.Ordinal)
+                                  .Replace('/', '_')
+                                  .Replace('\\', '_')
+                                  .Replace(':', '_');
+
+            return string.IsNullOrWhiteSpace(safe) ? "_" : safe;
         }
 
         internal FileSystemFactory ToJavaFileSystemFactory()

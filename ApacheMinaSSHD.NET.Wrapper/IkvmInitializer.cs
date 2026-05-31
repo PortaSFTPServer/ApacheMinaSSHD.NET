@@ -26,8 +26,10 @@ namespace ApacheMinaSSHD.NET.Wrapper
                     Assembly asm = Assembly.Load(name);
                     ikvm.runtime.Startup.addBootClassPathAssembly(asm);
                 }
-                catch
+                catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(
+                        $"[{nameof(IkvmInitializer)}] Failed to load IKVM assembly '{name}': {ex.Message}");
                 }
             }
         }

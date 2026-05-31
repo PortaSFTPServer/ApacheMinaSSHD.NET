@@ -17,15 +17,14 @@ namespace ApacheMinaSSHD.NET.Helpers
         /// </param>
         public static void SetFipsMode(bool state)
         {
+                if (state)
+                {
+                    SecurityUtils.setFipsMode();
+                }
 
-                // SecurityUtils.setFipsMode();
-               
-                // to enable/disable the FIPS
                 SecurityUtils.setAPrioriDisabledProvider("BCFIPS", !state);
 
-                // to enable/disable the standard Bouncy Castle provider
                 SecurityUtils.setAPrioriDisabledProvider("BC", state);
-           
         }
 
     }

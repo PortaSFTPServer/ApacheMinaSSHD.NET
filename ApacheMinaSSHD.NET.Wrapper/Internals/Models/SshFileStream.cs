@@ -36,7 +36,13 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
 
         public override long Seek(long offset, SeekOrigin origin)
         {
-            // Standard seek logic mapping to _position
+            _position = origin switch
+            {
+                SeekOrigin.Begin => offset,
+                SeekOrigin.Current => _position + offset,
+                SeekOrigin.End => throw new NotSupportedException("Seek from end is not supported."),
+                _ => throw new ArgumentOutOfRangeException(nameof(origin))
+            };
             return _position;
         }
 

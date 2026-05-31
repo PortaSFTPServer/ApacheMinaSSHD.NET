@@ -19,6 +19,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         {
         }
 
+        /// <summary>
+        /// File or directory names (case-insensitive) that should be hidden by the default policy.
+        /// </summary>
+        protected virtual IReadOnlySet<string> HiddenNames { get; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "secret_data" };
+
         /// <inheritdoc />
         public virtual string ResolveLocalFilePath(ISshFileSystemAccess context, string resolvedLocalPath)
         {
@@ -89,8 +94,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 
                 return fullPath;
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[{nameof(AMNetSftpFileSystemAccessor)}] ResolveFinalTarget failed for '{path}': {ex.Message}");
                 return Path.GetFullPath(path);
             }
         }
@@ -120,8 +127,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 
                 return finalPath;
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[{nameof(AMNetSftpFileSystemAccessor)}] GetFinalPathNameByHandle failed: {ex.Message}");
                 return null;
             }
         }
@@ -302,7 +311,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                 return false;
             }
 
-            if (fileName.Contains("secret_data", StringComparison.OrdinalIgnoreCase))
+            if (HiddenNames.Contains(fileName))
             {
                 return false;
             }
@@ -314,8 +323,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                     return (File.GetAttributes(localPath) & FileAttributes.Hidden) == 0;
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[{nameof(AMNetSftpFileSystemAccessor)}] IsVisibleByDefault failed for '{localPath}': {ex.Message}");
                 return true;
             }
 

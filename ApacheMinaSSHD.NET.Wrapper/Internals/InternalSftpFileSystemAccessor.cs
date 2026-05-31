@@ -543,8 +543,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[{nameof(InternalSftpFileSystemAccessor)}] Failed to resolve real user home: {ex.Message}");
             }
 
             ValidateSymlinkContainment(effectivePath, effectiveRoot);
@@ -638,8 +640,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                     dotNetResolvedTarget = System.IO.Path.GetFullPath(symlinkTarget.FullName);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[{nameof(InternalSftpFileSystemAccessor)}] .NET symlink resolution failed for '{filePath}': {ex.Message}");
             }
 
             if (dotNetResolvedTarget != null)
@@ -802,8 +806,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
                 return capturedTarget;
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[{nameof(InternalSftpFileSystemAccessor)}] fsutil reparsepoint query failed: {ex.Message}");
                 return null;
             }
         }
@@ -1038,8 +1044,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                     ? null
                     : new SshSession(subsystem.getSession());
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[{nameof(InternalSftpFileSystemAccessor)}] Failed to create session wrapper: {ex.Message}");
                 return null;
             }
         }

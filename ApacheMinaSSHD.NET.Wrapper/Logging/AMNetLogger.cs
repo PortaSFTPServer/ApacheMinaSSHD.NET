@@ -30,6 +30,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Logging
             Trace
         }
 
+        private static readonly object slf4jLock = new();
         private static bool slf4jConfigured;
 
         private static void EnsureSlf4jConfigured(LogLevel logLevel)
@@ -39,13 +40,21 @@ namespace ApacheMinaSSHD.NET.Wrapper.Logging
                 return;
             }
 
-            java.lang.System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", logLevel.ToString().ToLowerInvariant());
-            java.lang.System.setProperty("org.slf4j.simpleLogger.showDateTime", "true");
-            java.lang.System.setProperty("org.slf4j.simpleLogger.dateTimeFormat", "yyyy-MM-dd HH:mm:ss.SSS |");
-            java.lang.System.setProperty("org.slf4j.simpleLogger.showThreadName", "false");
-            java.lang.System.setProperty("org.slf4j.simpleLogger.showThreadId", "false");
+            lock (slf4jLock)
+            {
+                if (slf4jConfigured)
+                {
+                    return;
+                }
 
-            slf4jConfigured = true;
+                java.lang.System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", logLevel.ToString().ToLowerInvariant());
+                java.lang.System.setProperty("org.slf4j.simpleLogger.showDateTime", "true");
+                java.lang.System.setProperty("org.slf4j.simpleLogger.dateTimeFormat", "yyyy-MM-dd HH:mm:ss.SSS |");
+                java.lang.System.setProperty("org.slf4j.simpleLogger.showThreadName", "false");
+                java.lang.System.setProperty("org.slf4j.simpleLogger.showThreadId", "false");
+
+                slf4jConfigured = true;
+            }
         }
 
         /// <summary>

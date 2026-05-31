@@ -15,5 +15,15 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <param name="session">Session metadata for the connection being authenticated.</param>
         /// <returns><c>true</c> to accept the credentials; otherwise <c>false</c>.</returns>
         bool Authenticate(string username, string password, ISshSession session);
+
+        /// <summary>
+        /// Handles a client-initiated password change request.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <param name="oldPassword">The current password.</param>
+        /// <param name="newPassword">The requested new password.</param>
+        /// <param name="session">Session metadata.</param>
+        /// <returns><c>true</c> if the password change is accepted; otherwise <c>false</c>.</returns>
+        bool HandlePasswordChangeRequest(string username, string oldPassword, string newPassword, ISshSession session) => false;
     }
 }

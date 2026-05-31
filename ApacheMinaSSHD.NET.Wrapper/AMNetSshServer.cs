@@ -201,14 +201,21 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// </summary>
         public bool IsClosed() => isClosed();
 
+        private bool disposed;
+
         /// <summary>
         /// Stops the server if it was started.
         /// </summary>
         public void Dispose()
         {
-            if (isStarted())
+            if (!disposed)
             {
-                stop();
+                if (isStarted())
+                {
+                    stop();
+                }
+
+                disposed = true;
             }
         }
 

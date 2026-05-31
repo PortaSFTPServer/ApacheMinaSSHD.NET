@@ -25,6 +25,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// </summary>
         public string? RootPath { get; }
 
+        /// <summary>
+        /// File or directory names (case-insensitive) that should be hidden by the default policy.
+        /// </summary>
+        protected virtual IReadOnlySet<string> HiddenNames { get; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "secret_data" };
+
         /// <inheritdoc />
         public virtual string ResolveLocalPath(ISshScpFileAccess access, string resolvedPath) => resolvedPath;
 
@@ -107,7 +112,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <inheritdoc />
         public virtual void CreateTargetStreamResolver(ISshScpFileAccess access) { }
 
-        private static bool IsVisibleByDefault(string? path)
+        private bool IsVisibleByDefault(string? path)
         {
             if (string.IsNullOrWhiteSpace(path))
             {
@@ -115,8 +120,12 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             }
 
             string fileName = Path.GetFileName(path);
-            if (fileName.StartsWith(".", StringComparison.Ordinal) ||
-                fileName.Contains("secret_data", StringComparison.OrdinalIgnoreCase))
+            if (fileName.StartsWith(".", StringComparison.Ordinal))
+            {
+                return false;
+            }
+
+            if (HiddenNames.Contains(fileName))
             {
                 return false;
             }
@@ -125,8 +134,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             {
                 return !File.GetAttributes(path).HasFlag(FileAttributes.Hidden);
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[{nameof(AMNetScpFileOpener)}] IsVisibleByDefault failed for '{path}': {ex.Message}");
                 return true;
             }
         }

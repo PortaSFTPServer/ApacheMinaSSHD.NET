@@ -494,8 +494,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                 {
                     result.add(PosixFilePermission.valueOf(permission));
                 }
-                catch
+                catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(
+                        $"[{nameof(InternalScpFileOpener)}] Failed to parse permission '{permission}': {ex.Message}");
                     return fallback;
                 }
             }
@@ -532,8 +534,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                     ? new SshSession(serverSession)
                     : null;
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[{nameof(InternalScpFileOpener)}] Failed to create session wrapper: {ex.Message}");
                 return null;
             }
         }
