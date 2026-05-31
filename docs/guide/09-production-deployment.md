@@ -111,7 +111,11 @@ backend sftp_servers
 ApacheMinaSSHD.NET includes real OpenSSH integration tests. Run them to validate your configuration:
 
 ```powershell
-dotnet run --project SimpleSSHDSever\SimpleSSHDSever.csproj -- --integration-tests
+# Windows Forms sample
+dotnet run --project Sample\SimpleSSHDSever\SimpleSSHDSever.csproj -- --integration-tests
+
+# Console sample (lightweight, no GUI)
+dotnet run --project Sample\ConsoleSftpServer\ConsoleSftpServer.csproj
 ```
 
 This tests:

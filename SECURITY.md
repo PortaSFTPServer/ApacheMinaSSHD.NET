@@ -28,7 +28,7 @@ responsible for the final security policy used in production.
 
 ## Sample Project
 
-`SimpleSSHDSever` is a sample and integration harness. It demonstrates how the
+`Sample/SimpleSSHDSever` is a sample and integration harness. It demonstrates how the
 library can be wired to real OpenSSH clients and how policy hooks can be tested.
 It should not be copied as a complete production server without replacing the
 sample authentication, authorization, storage, logging, and deployment policy

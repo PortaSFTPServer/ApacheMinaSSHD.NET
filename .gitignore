@@ -12,7 +12,7 @@ artifacts/
 # Local test output and logs
 .winscp-stress-logs/
 .public-repo-staging*/
-SimpleSSHDSever/obfuscar.xml
+Sample/SimpleSSHDSever/obfuscar.xml
 *.log
 
 # Private keys, host keys, certificates, and local auth fixtures

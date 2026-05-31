@@ -77,14 +77,14 @@ jobs:
         run: |
           dotnet restore ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj
           dotnet restore ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj
-          dotnet restore SimpleSSHDSever/SimpleSSHDSever.csproj
+          dotnet restore Sample/SimpleSSHDSever/SimpleSSHDSever.csproj
 
       - name: Build
         shell: pwsh
         run: |
           dotnet build ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj -c Release --no-restore /p:Version=${{ steps.version.outputs.package_version }} /p:PackageVersion=${{ steps.version.outputs.package_version }}
           dotnet build ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj -c Release --no-restore /p:Version=${{ steps.version.outputs.package_version }} /p:PackageVersion=${{ steps.version.outputs.package_version }}
-          dotnet build SimpleSSHDSever/SimpleSSHDSever.csproj -c Release --no-restore /p:Version=${{ steps.version.outputs.package_version }} /p:PackageVersion=${{ steps.version.outputs.package_version }}
+          dotnet build Sample/SimpleSSHDSever/SimpleSSHDSever.csproj -c Release --no-restore /p:Version=${{ steps.version.outputs.package_version }} /p:PackageVersion=${{ steps.version.outputs.package_version }}
 
       - name: Public API guard
         shell: pwsh
@@ -96,7 +96,7 @@ jobs:
 
       - name: Client integration and stress tests
         shell: pwsh
-        run: dotnet run -c Release --no-build --project SimpleSSHDSever/SimpleSSHDSever.csproj -- --integration-tests
+        run: dotnet run -c Release --no-build --project Sample/SimpleSSHDSever/SimpleSSHDSever.csproj -- --integration-tests
 
       - name: Dependency and CVE scan
         shell: pwsh

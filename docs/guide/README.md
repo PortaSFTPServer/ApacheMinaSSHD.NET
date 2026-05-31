@@ -25,6 +25,15 @@ This guide walks you through creating production-ready SSH file transfer servers
 | [Logging & Monitoring](08-logging.md) | SLF4J bridge, audit events, custom loggers |
 | [Production Deployment](09-production-deployment.md) | Windows Service, Docker, high availability, monitoring |
 
+## Sample Projects
+
+The repository includes two sample projects in the `Sample/` folder:
+
+| Project | Description |
+|---------|-------------|
+| [SimpleSSHDSever](../Sample/SimpleSSHDSever/) | Windows Forms GUI server with integration test harness |
+| [ConsoleSftpServer](../Sample/ConsoleSftpServer/) | Lightweight console-based SFTP server |
+
 ## Installation
 
 ```powershell

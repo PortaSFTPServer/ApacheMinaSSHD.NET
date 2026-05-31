@@ -56,7 +56,7 @@ NuGet: <https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/>
 wrapper. The IKVM-generated assemblies are bundled inside the Wrapper package,
 so you only need the single `ApacheMinaSSHD.NET.Wrapper` dependency.
 
-`SimpleSSHDSever`, `PortaSFTPServer`, `ApacheMinaSSHD.NET.Service`, and
+`Sample/SimpleSSHDSever`, `Sample/ConsoleSftpServer`, `PortaSFTPServer`, `ApacheMinaSSHD.NET.Service`, and
 `ApacheMinaSSHD.NET.Shared` are not part of the NuGet package surface.
 
 ## NuGet Release Automation
@@ -293,7 +293,12 @@ dotnet build ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj --no-r
 .\eng\verify-public-api.ps1
 .\eng\verify-xml-docs.ps1
 .\eng\security-scan.ps1
-dotnet run --no-build --project SimpleSSHDSever\SimpleSSHDSever.csproj -- --integration-tests
+
+# WinForms sample (includes integration tests)
+dotnet run --no-build --project Sample\SimpleSSHDSever\SimpleSSHDSever.csproj -- --integration-tests
+
+# Console sample (lightweight, no GUI)
+dotnet run --no-build --project Sample\ConsoleSftpServer\ConsoleSftpServer.csproj
 ```
 
 The public API guard fails if the wrapper package exposes Java, Apache MINA,
