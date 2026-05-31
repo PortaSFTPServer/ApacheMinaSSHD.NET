@@ -81,43 +81,4 @@ jobs:
         shell: pwsh
         run: ./eng/security-scan.ps1
 
-  auto-tag:
-    name: Auto-increment version tag
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    needs: build-test-security
-    runs-on: windows-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-          fetch-tags: true
 
-      - name: Increment and push tag
-        shell: pwsh
-        env:
-          RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-        run: |
-          git fetch --tags origin
-
-          $latestTag = git tag --list 'v*.*.*.*' --sort=-version:refname | Select-Object -First 1
-
-          if ([string]::IsNullOrWhiteSpace($latestTag)) {
-            $newTag = "v1.0.0.0"
-          }
-          else {
-            $parts = $latestTag.TrimStart('v') -split '\.'
-            $major = [int]$parts[0]
-            $minor = [int]$parts[1]
-            $patch = [int]$parts[2]
-            $revision = [int]$parts[3] + 1
-            $newTag = "v$major.$minor.$patch.$revision"
-          }
-
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git tag $newTag
-          git remote set-url origin "https://x-access-token:$env:RELEASE_TOKEN@github.com/${{ github.repository }}.git"
-          git push origin $newTag
-          Write-Host "Created and pushed tag: $newTag"
