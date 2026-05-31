@@ -127,6 +127,20 @@ Use ApacheMinaSSHD.NET when you need:
   handling, virtual file systems, root jail behavior, hidden-file filtering,
   SFTP hooks, SCP hooks, audit events, and SSH algorithm configuration.
 
+## Developer Guide
+
+For complete, organized documentation on building SFTP/SCP servers with ApacheMinaSSHD.NET, see the [Developer Guide](docs/guide/README.md):
+
+- [Quick Start](docs/guide/01-quickstart.md) — Build your first server in 5 minutes
+- [Server Configuration](docs/guide/02-configuration.md) — Timeouts, limits, algorithms
+- [Authentication](docs/guide/03-authentication.md) — Password, public key, MFA
+- [Virtual Filesystem](docs/guide/04-virtual-filesystem.md) — Root jail, path containment
+- [SFTP Subsystem](docs/guide/05-sftp-subsystem.md) — File operations, event hooks
+- [SCP Subsystem](docs/guide/06-scp-subsystem.md) — Secure copy, transfer events
+- [Security Best Practices](docs/guide/07-security.md) — Hardening, symlink containment
+- [Logging & Monitoring](docs/guide/08-logging.md) — SLF4J bridge, audit events
+- [Production Deployment](docs/guide/09-production-deployment.md) — Windows Service, Docker, CI/CD
+
 ## Quick Start
 
 ```csharp
