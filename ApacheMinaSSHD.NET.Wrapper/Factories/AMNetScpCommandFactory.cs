@@ -56,13 +56,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         public bool addEventListener(IAMNetScpTransferEventListener eventListener)
         {
             ArgumentNullException.ThrowIfNull(eventListener);
-            if (eventListeners.ContainsKey(eventListener))
+            var internalListener = new InternalScpTransferEventListener(eventListener);
+            if (!eventListeners.TryAdd(eventListener, internalListener))
             {
                 return false;
             }
-
-            var internalListener = new InternalScpTransferEventListener(eventListener);
-            eventListeners[eventListener] = internalListener;
 
             return factory.addEventListener(internalListener);
         }
