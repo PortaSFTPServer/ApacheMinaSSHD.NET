@@ -125,14 +125,18 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                 return false;
             }
 
-            if (HiddenNames.Contains(fileName))
+            if (HiddenNames.Contains(fileName) ||
+                HiddenNames.Any(name => fileName.StartsWith(name + ".", StringComparison.OrdinalIgnoreCase)))
             {
                 return false;
             }
 
             try
             {
-                return !File.GetAttributes(path).HasFlag(FileAttributes.Hidden);
+                if (File.Exists(path) || Directory.Exists(path))
+                {
+                    return !File.GetAttributes(path).HasFlag(FileAttributes.Hidden);
+                }
             }
             catch (Exception ex)
             {
@@ -140,6 +144,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                     $"[{nameof(AMNetScpFileOpener)}] IsVisibleByDefault failed for '{path}': {ex.Message}");
                 return false;
             }
+
+            return true;
         }
 
         private static string EnsureTrailingSeparator(string path)

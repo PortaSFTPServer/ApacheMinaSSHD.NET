@@ -323,7 +323,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                 return false;
             }
 
-            if (HiddenNames.Contains(fileName))
+            if (HiddenNames.Contains(fileName) ||
+                HiddenNames.Any(name => fileName.StartsWith(name + ".", StringComparison.OrdinalIgnoreCase)))
             {
                 return false;
             }
