@@ -10,6 +10,17 @@ Start with modern algorithm preferences:
 server.Config.ApplyModernAlgorithmDefaults();
 ```
 
+### Terrapin Attack (CVE-2023-48795) Mitigation
+
+Apache MINA SSHD 2.12.0+ (bundled in this wrapper) implements the strict key
+exchange extension (`kex-strict-*` VH identifiers) that prevents the Terrapin
+prefix-truncation attack. This wrapper uses Apache MINA SSHD 2.18.0, so the
+mitigation is active by default — no configuration needed.
+
+The modern cipher presets (`ApplyModernAlgorithmDefaults`) include ChaCha20-Poly1305
+and AES-CTR modes, both safe under strict key exchange. Legacy CBC ciphers are
+not included in the modern presets.
+
 ### Recommended Cipher Suite
 
 ```csharp
