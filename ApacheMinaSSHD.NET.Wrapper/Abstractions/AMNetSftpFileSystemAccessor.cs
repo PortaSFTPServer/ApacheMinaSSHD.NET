@@ -63,7 +63,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         private static bool IsWithinRoot(string localPath, string rootPath)
         {
             string realPath = ResolveFinalTarget(localPath);
-            string normalizedRoot = Path.GetFullPath(rootPath);
+            string normalizedRoot = Path.GetFullPath(rootPath)
+                .TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
 
             if (!realPath.StartsWith(normalizedRoot, StringComparison.OrdinalIgnoreCase))
             {

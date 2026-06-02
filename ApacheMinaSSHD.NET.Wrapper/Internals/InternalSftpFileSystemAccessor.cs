@@ -841,6 +841,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
         private static bool IsTargetWithinRoot(string targetPath, string rootPath)
         {
+            rootPath = rootPath.TrimEnd('/', '\\');
+
             if (!targetPath.StartsWith(rootPath, StringComparison.OrdinalIgnoreCase))
             {
                 return false;
@@ -868,7 +870,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         private static bool IsPathWithinRoot(Path path, Path rootDir)
         {
             string pathStr = path.toAbsolutePath().normalize().toString();
-            string rootStr = rootDir.toAbsolutePath().normalize().toString();
+            string rootStr = rootDir.toAbsolutePath().normalize().toString()
+                .TrimEnd('/', '\\');
 
             if (!pathStr.StartsWith(rootStr, StringComparison.OrdinalIgnoreCase))
             {
