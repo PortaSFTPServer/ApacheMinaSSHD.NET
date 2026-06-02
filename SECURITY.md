@@ -3,7 +3,7 @@
 ApacheMinaSSHD.NET is a .NET SFTP server library and C# wrapper created by
 [SERALYNX LLC](https://portasftpserver.com), the team behind
 **[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)** —
-a portable SFTP server for Windows trusted by civil engineering, construction, and
+a portable SFTP server for Windows and Linux trusted by civil engineering, construction, and
 critical infrastructure teams worldwide.
 
 The wrapper provides .NET-facing APIs, extension points, and integration tests;

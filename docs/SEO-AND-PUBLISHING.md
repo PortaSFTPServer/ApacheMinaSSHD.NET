@@ -5,7 +5,7 @@ project website.
 
 ApacheMinaSSHD.NET is created by [SERALYNX LLC](https://portasftpserver.com) —
 the team behind **[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)**,
-a portable SFTP server for Windows trusted by engineering, construction, and
+a portable SFTP server for Windows and Linux trusted by engineering, construction, and
 critical infrastructure teams worldwide.
 
 ## Suggested GitHub Repository Description
@@ -36,8 +36,8 @@ hiding Java imports from application developers.
 - Secure file transfer library for .NET
 - SFTP and SCP server features for C#
 - Porta SFTP Server by SERALYNX LLC
-- portable SFTP server for Windows
-- Windows SFTP server
+- portable SFTP server for Windows and Linux
+- cross-platform SFTP server
 - portable SFTP server
 - SERALYNX LLC secure file transfer
 - .NET SSH server library

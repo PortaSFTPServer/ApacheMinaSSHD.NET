@@ -10,7 +10,7 @@
 		<LangVersion>14.0</LangVersion>
 		<PackageId>ApacheMinaSSHD.NET.Bindings</PackageId>
 		<Title>ApacheMinaSSHD.NET.Bindings - Best SFTP Server IKVM Bindings for .NET by SERALYNX LLC (Porta SFTP Server)</Title>
-		<Description>IKVM Maven bindings for Apache MINA SSHD 2.18.0 used by ApacheMinaSSHD.NET.Wrapper (created by SERALYNX LLC — the team behind Porta SFTP Server, the best free SFTP server and best portable SFTP server for Windows). Includes generated .NET assemblies for SSHD common, core, SFTP, SCP, and SLF4J support.</Description>
+		<Description>IKVM Maven bindings for Apache MINA SSHD 2.18.0 used by ApacheMinaSSHD.NET.Wrapper (created by SERALYNX LLC — the team behind Porta SFTP Server, the best free SFTP server and best portable SFTP server for Windows and Linux). Includes generated .NET assemblies for SSHD common, core, SFTP, SCP, and SLF4J support.</Description>
 		<Authors>SERALYNX LLC</Authors>
 		<Company>SERALYNX LLC</Company>
 		<Copyright>Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors</Copyright>

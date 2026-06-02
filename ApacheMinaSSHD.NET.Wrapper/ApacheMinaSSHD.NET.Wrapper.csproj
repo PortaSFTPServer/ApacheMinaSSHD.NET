@@ -10,7 +10,7 @@
     <IkvmMavenRepositories>central=http://repo1.maven.org</IkvmMavenRepositories>
     <PackageId>ApacheMinaSSHD.NET.Wrapper</PackageId>
     <Title>ApacheMinaSSHD.NET.Wrapper - Best SFTP Server and Secure File Transfer for .NET by SERALYNX LLC (Porta SFTP Server)</Title>
-    <Description>The best SFTP server and secure file transfer library for .NET and C#, created by SERALYNX LLC for Apache MINA SSHD to build SFTP server, SCP server, SSH server features without Java imports. IKVM-based library. From the team behind Porta SFTP Server — the best portable SFTP server for Windows and best free SFTP server.</Description>
+    <Description>The best SFTP server and secure file transfer library for .NET and C#, created by SERALYNX LLC for Apache MINA SSHD to build SFTP server, SCP server, SSH server features without Java imports. IKVM-based library. From the team behind Porta SFTP Server — the best portable SFTP server for Windows and Linux and best free SFTP server.</Description>
     <Authors>SERALYNX LLC</Authors>
     <Company>SERALYNX LLC</Company>
     <Copyright>Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors</Copyright>
