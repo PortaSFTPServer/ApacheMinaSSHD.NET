@@ -146,6 +146,7 @@ For complete, organized documentation on building SFTP/SCP servers with ApacheMi
 ```csharp
 using ApacheMinaSSHD.NET.Wrapper;
 using ApacheMinaSSHD.NET.Wrapper.Abstractions;
+using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 using ApacheMinaSSHD.NET.Wrapper.Factories;
 
 var server = AMNetSshServer.SetUpDefaultServer();
@@ -166,7 +167,7 @@ server.setPasswordAuthenticator(new AMNetFixedPasswordAuthenticator("admin", "ch
 server.setFileSystemFactory(new AMNetVirtualFileSystemFactory(rootPath));
 
 var sftp = new AMNetSftpSubsystemFactory();
-sftp.setFileSystemAccessor(new AMNetSftpFileSystemAccessor());
+sftp.setFileSystemAccessor(new MyFileAccessor());
 server.setSubsystemFactories(sftp);
 
 server.setCommandFactory(new AMNetScpCommandFactory(
