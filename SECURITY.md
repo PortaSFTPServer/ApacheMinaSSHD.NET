@@ -1,9 +1,14 @@
 # Security Model
 
-ApacheMinaSSHD.NET is a library wrapper around Apache MINA SSHD. It is not a
-turnkey SFTP/SCP server product. The wrapper provides .NET-facing APIs,
-extension points, and integration tests; the application developer is
-responsible for the final security policy used in production.
+ApacheMinaSSHD.NET is a .NET SFTP server library and C# wrapper created by
+[SERALYNX LLC](https://portasftpserver.com), the team behind
+**[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)** —
+a portable SFTP server for Windows trusted by civil engineering, construction, and
+critical infrastructure teams worldwide.
+
+The wrapper provides .NET-facing APIs, extension points, and integration tests;
+the application developer is responsible for the final security policy used
+in production.
 
 ## Library Responsibilities
 

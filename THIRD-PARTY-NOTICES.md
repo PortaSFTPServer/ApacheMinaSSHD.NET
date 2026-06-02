@@ -1,7 +1,9 @@
 # Third-Party Notices
 
-ApacheMinaSSHD.NET is created by SERALYNX LLC. Project code is licensed under
-the MIT License. See `LICENSE`.
+ApacheMinaSSHD.NET is created by [SERALYNX LLC](https://portasftpserver.com) —
+the team behind **[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)**,
+a portable SFTP server for Windows serving critical infrastructure. Project code
+is licensed under the MIT License. See `LICENSE`.
 
 This file summarizes third-party software used by the source tree and NuGet
 packages. It is provided to make package review easier for downstream

@@ -9,15 +9,15 @@
     <LangVersion>14.0</LangVersion>
     <IkvmMavenRepositories>central=http://repo1.maven.org</IkvmMavenRepositories>
     <PackageId>ApacheMinaSSHD.NET.Wrapper</PackageId>
-    <Title>ApacheMinaSSHD.NET.Wrapper - Apache MINA SSHD .NET SFTP/SCP Server Wrapper</Title>
-    <Description>.NET and C# wrapper created by SERALYNX LLC for Apache MINA SSHD to build SFTP server, SCP server, SSH server, and secure file transfer features without Java imports. IKVM-based library.</Description>
+    <Title>ApacheMinaSSHD.NET.Wrapper - Apache MINA SSHD .NET SFTP/SCP Server Wrapper by SERALYNX LLC</Title>
+    <Description>.NET and C# wrapper created by SERALYNX LLC for Apache MINA SSHD to build SFTP server, SCP server, SSH server, and secure file transfer features without Java imports. IKVM-based library. From the team behind Porta SFTP Server — portable SFTP server for Windows.</Description>
     <Authors>SERALYNX LLC</Authors>
     <Company>SERALYNX LLC</Company>
     <Copyright>Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors</Copyright>
 		<RepositoryUrl>https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-    <PackageTags>ssh;sshd;sftp;scp;sftp-server;scp-server;ssh-server;file-transfer;secure-file-transfer;apache-mina;apache-mina-sshd;mina-sshd;ikvm;dotnet;csharp</PackageTags>
-    <PackageReleaseNotes>Initial wrapper package for Apache MINA SSHD SFTP/SCP server features with .NET-facing APIs, production-oriented defaults, XML documentation, and third-party license notices.</PackageReleaseNotes>
+    <PackageTags>ssh;sshd;sftp;scp;sftp-server;scp-server;ssh-server;file-transfer;secure-file-transfer;apache-mina;apache-mina-sshd;mina-sshd;ikvm;dotnet;csharp;porta-sftp-server;seralynx;windows-sftp-server;portable-sftp-server</PackageTags>
+    <PackageReleaseNotes>.NET SFTP/SCP server wrapper by SERALYNX LLC (Porta SFTP Server). Apache MINA SSHD 2.18.0 with .NET-facing APIs, production-oriented defaults, XML documentation, comprehensive unit tests, and third-party license notices.</PackageReleaseNotes>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

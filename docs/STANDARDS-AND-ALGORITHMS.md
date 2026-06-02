@@ -1,8 +1,10 @@
 # Standards and Supported Algorithms
 
-ApacheMinaSSHD.NET wraps Apache MINA SSHD 2.17.1 through IKVM. This document
-lists the SSH/SFTP/SCP protocol references and the public algorithm names exposed
-by the .NET wrapper.
+ApacheMinaSSHD.NET — a .NET SFTP server library and C# wrapper created by
+[SERALYNX LLC](https://portasftpserver.com) (the team behind
+**[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)**) —
+wraps Apache MINA SSHD through IKVM. This document lists the SSH/SFTP/SCP
+protocol references and the public algorithm names exposed by the .NET wrapper.
 
 The constants below are the wrapper's .NET-facing names for SSH algorithm
 configuration. Actual runtime availability can vary by Apache MINA SSHD version,
@@ -108,3 +110,7 @@ exchange methods when available. Developers building production systems should
 still define an explicit security policy for their application, test that policy
 against their supported clients, and periodically review algorithm choices
 against current SSH recommendations.
+
+---
+
+*ApacheMinaSSHD.NET is maintained by **SERALYNX LLC** — building secure file transfer solutions for critical infrastructure since 2017. For a turnkey portable SFTP server for Windows with GUI management, visit [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).*

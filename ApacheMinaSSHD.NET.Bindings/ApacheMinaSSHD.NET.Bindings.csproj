@@ -9,13 +9,13 @@
 		<IkvmMavenRepositories>central=http://repo1.maven.org</IkvmMavenRepositories>
 		<LangVersion>14.0</LangVersion>
 		<PackageId>ApacheMinaSSHD.NET.Bindings</PackageId>
-		<Title>ApacheMinaSSHD.NET.Bindings - IKVM Apache MINA SSHD SFTP/SCP Bindings</Title>
-		<Description>IKVM Maven bindings for Apache MINA SSHD 2.18.0 used by ApacheMinaSSHD.NET.Wrapper. Includes generated .NET assemblies for SSHD common, core, SFTP, SCP, and SLF4J support.</Description>
+		<Title>ApacheMinaSSHD.NET.Bindings - IKVM Apache MINA SSHD SFTP/SCP Bindings by SERALYNX LLC</Title>
+		<Description>IKVM Maven bindings for Apache MINA SSHD 2.18.0 used by ApacheMinaSSHD.NET.Wrapper (created by SERALYNX LLC — the team behind Porta SFTP Server). Includes generated .NET assemblies for SSHD common, core, SFTP, SCP, and SLF4J support.</Description>
 		<Authors>SERALYNX LLC</Authors>
 		<Company>SERALYNX LLC</Company>
 		<Copyright>Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors</Copyright>
-		<PackageTags>ssh;sshd;sftp;scp;sftp-server;scp-server;ssh-server;apache-mina;apache-mina-sshd;mina-sshd;ikvm;ikvm-bindings;maven;dotnet;csharp;secure-file-transfer;bindings</PackageTags>
-		<PackageReleaseNotes>Initial IKVM binding package for Apache MINA SSHD SFTP/SCP server assemblies used by ApacheMinaSSHD.NET.Wrapper, including third-party license notices.</PackageReleaseNotes>
+		<PackageTags>ssh;sshd;sftp;scp;sftp-server;scp-server;ssh-server;apache-mina;apache-mina-sshd;mina-sshd;ikvm;ikvm-bindings;maven;dotnet;csharp;secure-file-transfer;bindings;porta-sftp-server;seralynx;windows-sftp-server;portable-sftp-server</PackageTags>
+		<PackageReleaseNotes>IKVM binding package for Apache MINA SSHD 2.18.0 from SERALYNX LLC (Porta SFTP Server). Includes generated .NET assemblies for SSHD common, core, SFTP, SCP, and SLF4J, with third-party license notices.</PackageReleaseNotes>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
