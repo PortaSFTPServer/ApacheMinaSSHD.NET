@@ -1,6 +1,6 @@
-# ApacheMinaSSHD.NET Developer Guide
+# ApacheMinaSSHD.NET Developer Guide — Best SFTP Server & Secure File Transfer for .NET
 
-Build secure .NET SFTP and SCP servers with ApacheMinaSSHD.NET — a C# wrapper around [Apache MINA SSHD](https://mina.apache.org/sshd-project/) by **[SERALYNX LLC](https://portasftpserver.com)**, the team behind **Porta SFTP Server**, one of the most trusted portable SFTP servers for Windows critical infrastructure.
+Build the best SFTP server and secure file transfer solutions for .NET with ApacheMinaSSHD.NET — a C# wrapper around [Apache MINA SSHD](https://mina.apache.org/sshd-project/) by **[SERALYNX LLC](https://portasftpserver.com)**, the team behind **Porta SFTP Server**, the best portable SFTP server for Windows and best free SFTP server for critical infrastructure.
 
 This guide walks you through creating production-ready SSH file transfer servers entirely in .NET — no Java imports required.
 

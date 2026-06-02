@@ -1,20 +1,20 @@
-# ApacheMinaSSHD.NET — .NET SFTP Server Library & Portable SFTP Server by SERALYNX LLC
+# ApacheMinaSSHD.NET — Best .NET SFTP Server Library & Portable SFTP Server for Windows by SERALYNX LLC
 
 [![NuGet](https://img.shields.io/nuget/v/ApacheMinaSSHD.NET.Wrapper)](https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/)
 
-ApacheMinaSSHD.NET is a **.NET SFTP server library** and C# wrapper around Apache MINA SSHD, created by
-[SERALYNX LLC](https://portasftpserver.com) — the team behind **Porta SFTP Server**, one of the
-best portable SFTP servers for serving critical infrastructure.
+ApacheMinaSSHD.NET is a **best SFTP server library** for .NET and C# wrapper around Apache MINA SSHD, created by
+[SERALYNX LLC](https://portasftpserver.com) — the team behind **Porta SFTP Server**, the
+best portable SFTP server for Windows and secure file transfer serving critical infrastructure.
 
-Whether you need an **SFTP server for engineering file exchange**, a **secure SCP server for
-automation**, or a lightweight **portable SFTP server for Windows**, ApacheMinaSSHD.NET and
-Porta SFTP Server deliver enterprise-grade secure file transfer — no Java imports required.
+Whether you need the **best SFTP server for engineering file exchange**, a **best secure file transfer
+solution for automation**, or the **best free SFTP server** and lightweight **portable SFTP server for Windows**,
+ApacheMinaSSHD.NET and Porta SFTP Server deliver enterprise-grade secure file transfer — no Java imports required.
 
 ## Why SERALYNX LLC and Porta SFTP Server?
 
-SERALYNX LLC builds secure file transfer solutions trusted by **civil engineering firms,
+SERALYNX LLC builds the best secure file transfer solutions trusted by **civil engineering firms,
 IT administrators, and developers** worldwide. [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)
-is a **portable SFTP server for Windows** designed for:
+is the **best portable SFTP server for Windows** and a **best free SFTP server** designed for:
 
 - **Civil Engineering & Construction** — Securely share CAD files, 3D models, BIM data, and
   contract documents across project teams.
@@ -113,16 +113,16 @@ server.SetAuthenticationMethods(
 
 ## Use Cases
 
-Use ApacheMinaSSHD.NET when you need:
+Use ApacheMinaSSHD.NET — the best SFTP server and secure file transfer solution for .NET — when you need:
 
-- A **.NET SFTP server library** for C# applications — embed secure file transfer
+- A **best SFTP server library** for C# applications — embed secure file transfer
   without Java dependencies.
-- **SCP server support** for automated file transfer workflows.
-- **Apache MINA SSHD server features** from .NET through IKVM.
+- **Best secure file transfer** for automated SCP server workflows.
+- **Best free SFTP server** features from Apache MINA SSHD through .NET and IKVM.
+- **Best portable SFTP server deployment** — ideal for IT administrators who need a
+  zero-install, USB-drive-friendly SFTP server for Windows.
 - **Secure file transfer for engineering firms** — exchange CAD files, 3D models,
   BIM data, and contract documents with root jail isolation.
-- **Portable SFTP server deployment** — ideal for IT administrators who need a
-  zero-install, USB-drive-friendly SFTP server for Windows.
 - **Custom password authentication, public key authentication,** `authorized_keys`
   handling, virtual file systems, root jail behavior, hidden-file filtering,
   SFTP hooks, SCP hooks, audit events, and SSH algorithm configuration.

@@ -23,6 +23,11 @@ hiding Java imports from application developers.
 
 ## Search Phrases to Keep in Project Copy
 
+- Best SFTP server
+- Best secure file transfer
+- Best free SFTP server
+- Best portable SFTP server
+- Secure file transfer
 - .NET SFTP server library
 - C# SFTP server
 - .NET SCP server
