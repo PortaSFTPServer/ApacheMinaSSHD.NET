@@ -10,7 +10,7 @@
 		<LangVersion>14.0</LangVersion>
 		<PackageId>ApacheMinaSSHD.NET.Bindings</PackageId>
 		<Title>ApacheMinaSSHD.NET.Bindings - IKVM Apache MINA SSHD SFTP/SCP Bindings</Title>
-		<Description>IKVM Maven bindings for Apache MINA SSHD 2.17.1 used by ApacheMinaSSHD.NET.Wrapper. Includes generated .NET assemblies for SSHD common, core, SFTP, SCP, and SLF4J support.</Description>
+		<Description>IKVM Maven bindings for Apache MINA SSHD 2.18.0 used by ApacheMinaSSHD.NET.Wrapper. Includes generated .NET assemblies for SSHD common, core, SFTP, SCP, and SLF4J support.</Description>
 		<Authors>SERALYNX LLC</Authors>
 		<Company>SERALYNX LLC</Company>
 		<Copyright>Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors</Copyright>
@@ -25,10 +25,10 @@
 	<ItemGroup>
 
 		<!--<IkvmReference Include="pathToLibFolder\*.jar" />-->
-		<MavenReference Include="org.apache.sshd:sshd-core" Version="2.17.1" IkvmExport="true" />
-		<MavenReference Include="org.apache.sshd:sshd-sftp" Version="2.17.1" IkvmExport="true" />
-		<MavenReference Include="org.apache.sshd:sshd-scp" Version="2.17.1" IkvmExport="true" />
-		<MavenReference Include="org.apache.sshd:sshd-common" Version="2.17.1" IkvmExport="true" />
+		<MavenReference Include="org.apache.sshd:sshd-core" Version="2.18.0" IkvmExport="true" />
+		<MavenReference Include="org.apache.sshd:sshd-sftp" Version="2.18.0" IkvmExport="true" />
+		<MavenReference Include="org.apache.sshd:sshd-scp" Version="2.18.0" IkvmExport="true" />
+		<MavenReference Include="org.apache.sshd:sshd-common" Version="2.18.0" IkvmExport="true" />
 		<MavenReference Include="org.slf4j:slf4j-api" Version="1.7.36" />
 		<MavenReference Include="org.slf4j:slf4j-simple" Version="1.7.36" />
 		<!--<MavenReference Include="ch.qos.logback:logback-core:1.5.32" />

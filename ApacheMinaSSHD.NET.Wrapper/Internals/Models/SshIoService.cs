@@ -17,7 +17,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
         public SshIoService(org.apache.sshd.common.io.IoService inner) => _inner = inner;
 
         public bool IsAcceptor => _inner is org.apache.sshd.common.io.IoAcceptor;
-        // Corrected methods for SSHD 2.17.1
+        // Corrected methods for SSHD 2.18.0
         public bool IsClosing => _inner.isClosing();
         public bool IsClosed => _inner.isClosed();
 
