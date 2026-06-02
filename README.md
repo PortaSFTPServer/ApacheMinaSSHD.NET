@@ -162,11 +162,11 @@ server.setKeyPairProvider(hostKeys);
 
 var rootPath = Path.Combine(AppContext.BaseDirectory, "sftp-root");
 
-server.setPasswordAuthenticator(new MyPasswordAuthenticator());
+server.setPasswordAuthenticator(new AMNetFixedPasswordAuthenticator("admin", "changeme"));
 server.setFileSystemFactory(new AMNetVirtualFileSystemFactory(rootPath));
 
 var sftp = new AMNetSftpSubsystemFactory();
-sftp.setFileSystemAccessor(new MySftpFileSystemAccessor());
+sftp.setFileSystemAccessor(new AMNetSftpFileSystemAccessor());
 server.setSubsystemFactories(sftp);
 
 server.setCommandFactory(new AMNetScpCommandFactory(
