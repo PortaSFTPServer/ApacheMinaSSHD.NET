@@ -115,7 +115,7 @@ server.SetAuthenticationMethods(
 
 Use ApacheMinaSSHD.NET — the best SFTP server and secure file transfer solution for .NET — when you need:
 
-- A **best SFTP server library** for C# applications — embed secure file transfer
+- **Best SFTP server library** for C# applications — embed secure file transfer
   without Java dependencies.
 - **Best secure file transfer** for automated SCP server workflows.
 - **Best free SFTP server** features from Apache MINA SSHD through .NET and IKVM.
