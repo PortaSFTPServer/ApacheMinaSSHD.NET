@@ -4,6 +4,7 @@ using ApacheMinaSSHD.NET.Wrapper.Factories;
 using ApacheMinaSSHD.NET.Wrapper.Internals;
 using java.util;
 using org.apache.sshd.server;
+using System.Net;
 
 namespace ApacheMinaSSHD.NET.Wrapper
 {
@@ -102,7 +103,16 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public int Port
         {
             get => server.getPort();
-            set => server.setPort(value);
+            set
+            {
+                if (value < IPEndPoint.MinPort || value > IPEndPoint.MaxPort)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), value,
+                        $"Port must be between {IPEndPoint.MinPort} and {IPEndPoint.MaxPort}.");
+                }
+
+                server.setPort(value);
+            }
         }
 
         /// <summary>

@@ -61,7 +61,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
             if (!fileSystemAccessor.IsPathAllowed(validationContext))
             {
-                throw new NoSuchFileException(finalPath.toString(), null, "File or directory is not allowed.");
+                throw new NoSuchFileException(null, null, "File or directory is not allowed.");
             }
 
             return finalPath;
@@ -585,7 +585,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                 Path resolvedPath = filePath.toRealPath();
                 if (!IsPathWithinRoot(resolvedPath, rootDir))
                 {
-                    throw new NoSuchFileException(pathStr, null,
+                    throw new NoSuchFileException(null, null,
                         "Resolved path is outside the allowed root directory.");
                 }
 
@@ -600,9 +600,9 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
             if (OperatingSystem.IsWindows() && TryResolveSymlinkTargetViaNativeApi(pathStr, out string? nativeTarget))
             {
-                if (nativeTarget == null || !nativeTarget.StartsWith(rootStr, StringComparison.OrdinalIgnoreCase))
+                if (nativeTarget == null || !IsTargetWithinRoot(nativeTarget, rootStr))
                 {
-                    throw new NoSuchFileException(pathStr, null,
+                    throw new NoSuchFileException(null, null,
                         "Symlink target is outside the allowed root directory.");
                 }
 
@@ -620,7 +620,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                     }
                     if (!IsPathWithinRoot(linkTarget, rootDir))
                     {
-                        throw new NoSuchFileException(pathStr, null,
+                        throw new NoSuchFileException(null, null,
                             "Symlink target is outside the allowed root directory.");
                     }
                 }
@@ -648,10 +648,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
             if (dotNetResolvedTarget != null)
             {
-                string normalizedRoot = System.IO.Path.GetFullPath(rootStr);
+                string normalizedRoot = EnsureSeparatorSuffix(System.IO.Path.GetFullPath(rootStr));
                 if (!dotNetResolvedTarget.StartsWith(normalizedRoot, StringComparison.OrdinalIgnoreCase))
                 {
-                    throw new NoSuchFileException(pathStr, null,
+                    throw new NoSuchFileException(null, null,
                         "Symlink target is outside the allowed root directory.");
                 }
             }
@@ -680,11 +680,6 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             if (findData.dwReserved0 == IO_REPARSE_TAG_SYMLINK)
             {
                 detectedTarget = ResolveSymlinkTargetViaDeviceIoControl(path);
-            }
-
-            if (detectedTarget == null)
-            {
-                detectedTarget = ResolveSymlinkTargetViaFsUtil(path);
             }
 
             if (detectedTarget == null)
@@ -748,69 +743,6 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             finally
             {
                 handle?.Dispose();
-            }
-        }
-
-        private static string? ResolveSymlinkTargetViaFsUtil(string path)
-        {
-            try
-            {
-                var psi = new System.Diagnostics.ProcessStartInfo("fsutil", "reparsepoint query")
-                {
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    CreateNoWindow = true
-                };
-                psi.ArgumentList.Add(path);
-
-                using var process = System.Diagnostics.Process.Start(psi);
-                if (process == null)
-                {
-                    return null;
-                }
-
-                string stdout = process.StandardOutput.ReadToEnd();
-                process.WaitForExit(5000);
-
-                if (process.ExitCode != 0)
-                {
-                    return null;
-                }
-
-                string? capturedTarget = null;
-                foreach (string line in stdout.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries))
-                {
-                    string trimmed = line.Trim();
-
-                    if (trimmed.StartsWith("Substitute Name:", StringComparison.OrdinalIgnoreCase))
-                    {
-                        capturedTarget = trimmed.Substring("Substitute Name:".Length).Trim();
-                        break;
-                    }
-
-                    if (trimmed.StartsWith("Print Name:", StringComparison.OrdinalIgnoreCase))
-                    {
-                        capturedTarget = trimmed.Substring("Print Name:".Length).Trim();
-                        break;
-                    }
-
-                    if (capturedTarget == null &&
-                        (trimmed.StartsWith(@"\??\", StringComparison.Ordinal) ||
-                         trimmed.StartsWith(@"\\?\", StringComparison.Ordinal) ||
-                         (trimmed.Length >= 2 && trimmed[1] == ':')))
-                    {
-                        capturedTarget = trimmed;
-                    }
-                }
-
-                return capturedTarget;
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(
-                    $"[{nameof(InternalSftpFileSystemAccessor)}] fsutil reparsepoint query failed: {ex.Message}");
-                return null;
             }
         }
 
@@ -907,11 +839,49 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         private const int REPARSE_DATA_HEADER_SIZE = 8;
         private static readonly IntPtr INVALID_HANDLE_VALUE = new IntPtr(-1);
 
+        private static bool IsTargetWithinRoot(string targetPath, string rootPath)
+        {
+            if (!targetPath.StartsWith(rootPath, StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
+            }
+
+            if (targetPath.Length == rootPath.Length)
+            {
+                return true;
+            }
+
+            char next = targetPath[rootPath.Length];
+            return next == '/' || next == '\\';
+        }
+
+        private static string EnsureSeparatorSuffix(string path)
+        {
+            if (path.Length > 0 && path[path.Length - 1] != '\\' && path[path.Length - 1] != '/')
+            {
+                return path + System.IO.Path.DirectorySeparatorChar;
+            }
+
+            return path;
+        }
+
         private static bool IsPathWithinRoot(Path path, Path rootDir)
         {
             string pathStr = path.toAbsolutePath().normalize().toString();
             string rootStr = rootDir.toAbsolutePath().normalize().toString();
-            return pathStr.StartsWith(rootStr, StringComparison.OrdinalIgnoreCase);
+
+            if (!pathStr.StartsWith(rootStr, StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
+            }
+
+            if (pathStr.Length == rootStr.Length)
+            {
+                return true;
+            }
+
+            char next = pathStr[rootStr.Length];
+            return next == '/' || next == '\\';
         }
 
         private static Path ToPath(string managedPath, Path fallback)

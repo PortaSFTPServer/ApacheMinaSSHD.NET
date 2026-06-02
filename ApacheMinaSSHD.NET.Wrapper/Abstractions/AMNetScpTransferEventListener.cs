@@ -30,37 +30,37 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <inheritdoc />
         public virtual void OnStartFile(ISshScpTransferEvent context)
         {
-            logger.Info($"SCP {context.Operation} started for file {context.Path}.");
+            logger.Debug($"SCP {context.Operation} started for file {context.Path}.");
         }
 
         /// <inheritdoc />
         public virtual void OnEndFile(ISshScpTransferEvent context)
         {
-            logger.Info($"SCP {context.Operation} ended for file {context.Path}.");
+            logger.Debug($"SCP {context.Operation} ended for file {context.Path}.");
         }
 
         /// <inheritdoc />
         public virtual void OnFileAck(ISshScpTransferEvent context)
         {
-            logger.Info($"SCP {context.Operation} acknowledgement for file {context.Path}: {context.AckStatusCode}");
+            logger.Debug($"SCP {context.Operation} acknowledgement for file {context.Path}: {context.AckStatusCode}");
         }
 
         /// <inheritdoc />
         public virtual void OnReceiveCommandAck(ISshScpTransferEvent context)
         {
-            logger.Info($"SCP receive command acknowledgement for {context.Command}: {context.AckStatusCode}");
+            logger.Debug($"SCP receive command acknowledgement for {context.Command}: {context.AckStatusCode}");
         }
 
         /// <inheritdoc />
         public virtual void OnStartFolder(ISshScpTransferEvent context)
         {
-            logger.Info($"SCP {context.Operation} started for folder {context.Path}.");
+            logger.Debug($"SCP {context.Operation} started for folder {context.Path}.");
         }
 
         /// <inheritdoc />
         public virtual void OnEndFolder(ISshScpTransferEvent context)
         {
-            logger.Info($"SCP {context.Operation} ended for folder {context.Path}.");
+            logger.Debug($"SCP {context.Operation} ended for folder {context.Path}.");
         }
     }
 }

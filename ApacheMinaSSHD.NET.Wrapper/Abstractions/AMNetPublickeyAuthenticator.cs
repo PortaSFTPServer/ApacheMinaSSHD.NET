@@ -52,7 +52,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                 return false;
             }
 
-            var authKeys = Directory.GetFiles(authKeysPath, $"*{username}*", SearchOption.TopDirectoryOnly);
+            string escapedUsername = username
+                .Replace("*", "[*]")
+                .Replace("?", "[?]")
+                .Replace("[", "[[]");
+            var authKeys = Directory.GetFiles(authKeysPath, $"*{escapedUsername}*", SearchOption.TopDirectoryOnly);
 
             foreach (var keyPath in authKeys)
             {

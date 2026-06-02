@@ -13,7 +13,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
     public sealed class AMNetFingerprintPublickeyAuthenticator : IAMNetPublickeyAuthenticator
     {
         private readonly Dictionary<string, HashSet<string>> userFingerprints =
-            new(StringComparer.Ordinal);
+            new(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// Creates an empty fingerprint authenticator.

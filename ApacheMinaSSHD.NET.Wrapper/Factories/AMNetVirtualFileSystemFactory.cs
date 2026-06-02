@@ -1,5 +1,6 @@
 using ApacheMinaSSHD.NET.Wrapper.Internals;
 using org.apache.sshd.common.file;
+using System.Text;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Factories
 {
@@ -59,12 +60,16 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
             if (string.IsNullOrWhiteSpace(username))
                 throw new ArgumentException("Username cannot be empty.", nameof(username));
 
-            string safe = username.Replace("..", "", StringComparison.Ordinal)
-                                  .Replace('/', '_')
-                                  .Replace('\\', '_')
-                                  .Replace(':', '_');
+            var safe = new StringBuilder(username.Length);
+            foreach (char c in username)
+            {
+                if (char.IsLetterOrDigit(c) || c == '-' || c == '_' || c == '.')
+                {
+                    safe.Append(c);
+                }
+            }
 
-            return string.IsNullOrWhiteSpace(safe) ? "_" : safe;
+            return safe.Length == 0 ? "_" : safe.ToString();
         }
 
         internal FileSystemFactory ToJavaFileSystemFactory()

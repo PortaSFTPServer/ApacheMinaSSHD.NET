@@ -138,7 +138,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             {
                 System.Diagnostics.Debug.WriteLine(
                     $"[{nameof(AMNetScpFileOpener)}] IsVisibleByDefault failed for '{path}': {ex.Message}");
-                return true;
+                return false;
             }
         }
 

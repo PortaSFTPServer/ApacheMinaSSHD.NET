@@ -12,9 +12,9 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
     /// Production applications should normally validate one-time codes or secondary
     /// factors through their own identity provider.
     /// </remarks>
-    public sealed class AMNetFixedKeyboardInteractiveAuthenticator : IAMNetKeyboardInteractiveAuthenticator
+    public sealed class AMNetFixedKeyboardInteractiveAuthenticator : IAMNetKeyboardInteractiveAuthenticator, IDisposable
     {
-        private readonly byte[] expectedResponseBytes;
+        private byte[]? expectedResponseBytes;
 
         /// <summary>
         /// Creates a fixed keyboard-interactive authenticator.
@@ -85,9 +85,24 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                 return false;
             }
 
+            if (expectedResponseBytes == null)
+            {
+                return false;
+            }
+
             byte[] incomingBytes = Encoding.UTF8.GetBytes(responses[0] ?? string.Empty);
             return incomingBytes.Length == expectedResponseBytes.Length
                 && CryptographicOperations.FixedTimeEquals(expectedResponseBytes, incomingBytes);
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            if (expectedResponseBytes != null)
+            {
+                Array.Clear(expectedResponseBytes, 0, expectedResponseBytes.Length);
+                expectedResponseBytes = null;
+            }
         }
     }
 }

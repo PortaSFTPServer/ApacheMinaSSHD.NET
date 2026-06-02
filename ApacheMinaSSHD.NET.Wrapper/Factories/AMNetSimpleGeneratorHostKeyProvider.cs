@@ -16,7 +16,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         {
             KeyPath = keyPath;
             Algorithm = "RSA";
-            KeySize = 2048;
+            KeySize = 3072;
         }
 
         /// <summary>

@@ -12,10 +12,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
     /// deployments. Production applications should normally validate credentials
     /// against their own identity store and auditing policy.
     /// </remarks>
-    public sealed class AMNetFixedPasswordAuthenticator : IAMNetPasswordAuthenticator
+    public sealed class AMNetFixedPasswordAuthenticator : IAMNetPasswordAuthenticator, IDisposable
     {
         private readonly string username;
-        private readonly byte[] passwordBytes;
+        private byte[]? passwordBytes;
 
         /// <summary>
         /// Creates a fixed password authenticator.
@@ -46,9 +46,24 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                 return false;
             }
 
+            if (passwordBytes == null)
+            {
+                return false;
+            }
+
             byte[] incomingBytes = Encoding.UTF8.GetBytes(password ?? string.Empty);
             return incomingBytes.Length == passwordBytes.Length
                 && CryptographicOperations.FixedTimeEquals(passwordBytes, incomingBytes);
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            if (passwordBytes != null)
+            {
+                Array.Clear(passwordBytes, 0, passwordBytes.Length);
+                passwordBytes = null;
+            }
         }
     }
 }

@@ -65,7 +65,18 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             string realPath = ResolveFinalTarget(localPath);
             string normalizedRoot = Path.GetFullPath(rootPath);
 
-            return realPath.StartsWith(normalizedRoot, StringComparison.OrdinalIgnoreCase);
+            if (!realPath.StartsWith(normalizedRoot, StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
+            }
+
+            if (realPath.Length == normalizedRoot.Length)
+            {
+                return true;
+            }
+
+            char next = realPath[normalizedRoot.Length];
+            return next == Path.DirectorySeparatorChar || next == Path.AltDirectorySeparatorChar;
         }
 
         private static string ResolveFinalTarget(string path)
@@ -327,7 +338,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             {
                 System.Diagnostics.Debug.WriteLine(
                     $"[{nameof(AMNetSftpFileSystemAccessor)}] IsVisibleByDefault failed for '{localPath}': {ex.Message}");
-                return true;
+                return false;
             }
 
             return true;
