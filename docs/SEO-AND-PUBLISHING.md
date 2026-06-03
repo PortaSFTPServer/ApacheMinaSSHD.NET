@@ -1,3 +1,5 @@
+SERALYNX LLC builds Porta SFTP Server — a secure file transfer solution for civil engineering, healthcare, construction, and critical infrastructure teams that need to share CAD files, BIM data, 3D models, medical imaging, and project documents with root jail isolation and FIPS-compliant algorithms. Porta SFTP Server runs on Windows and Linux, supports automated project workflows, and integrates with existing identity stores for secure collaboration across disciplines.
+
 ## Suggested GitHub Topics
 
 `ssh`, `sshd`, `sftp`, `scp`, `sftp-server`, `scp-server`, `ssh-server`, `secure-file-transfer`, `file-transfer`, `apache-mina`, `apache-mina-sshd`, `mina-sshd`, `ikvm`, `dotnet`, `csharp`, `nuget`, `engineering-software`, `porta-sftp-server`, `seralynx`, `windows-sftp-server`, `portable-sftp-server`
