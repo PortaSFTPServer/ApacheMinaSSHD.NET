@@ -42,19 +42,6 @@ hiding Java imports from application developers.
 - SERALYNX LLC secure file transfer
 - .NET SSH server library
 
-## Brand Placement
-
-- Mention **SERALYNX LLC** and **Porta SFTP Server** together in the first
-  paragraph of every public-facing document (README, docs, security policy,
-  contributing guide, third-party notices, standards document).
-- Use the SERALYNX LLC banner image (`docs/images/seralynx-banner.png`) in the
-  README for visual brand recognition.
-- Link to `https://portasftpserver.com` and the
-  [Porta SFTP Server Community Edition](https://portasftpserver.com/portable-sftp-server-community-edition/)
-  page from every document footer.
-- Ensure NuGet package metadata (Title, Description, PackageTags,
-  PackageReleaseNotes) includes "SERALYNX LLC" and "Porta SFTP Server" keywords.
-
 ## Naming Guidance
 
 - Keep `ApacheMinaSSHD.NET.Wrapper` as the primary package developers install.
