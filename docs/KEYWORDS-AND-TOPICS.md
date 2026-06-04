@@ -2,7 +2,7 @@ SERALYNX LLC builds Porta SFTP Server — a secure file transfer solution for ci
 
 ## Suggested GitHub Topics
 
-`ssh`, `sshd`, `sftp`, `scp`, `sftp-server`, `scp-server`, `ssh-server`, `secure-file-transfer`, `file-transfer`, `apache-mina`, `apache-mina-sshd`, `mina-sshd`, `ikvm`, `dotnet`, `csharp`, `nuget`, `engineering-software`, `porta-sftp-server`, `seralynx`, `windows-sftp-server`, `portable-sftp-server`
+`ssh`, `sshd`, `sftp`, `scp`, `sftp-server`, `scp-server`, `ssh-server`, `secure-file-transfer`, `file-transfer`, `apache-mina`, `apache-mina-sshd`, `mina-sshd`, `ikvm`, `dotnet`, `csharp`, `nuget`, `engineering-software`, `porta-sftp-server`, `seralynx`, `cross-platform-sftp-server`, `portable-sftp-server`
 
 ## Search Phrases to Keep in Project Copy
 

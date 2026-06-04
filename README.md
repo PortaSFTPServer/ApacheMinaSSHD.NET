@@ -1,4 +1,4 @@
-# ApacheMinaSSHD.NET — Best .NET SFTP Server Library & Portable SFTP Server for Windows by SERALYNX LLC
+# ApacheMinaSSHD.NET — Best .NET SFTP Server Library by SERALYNX LLC (Porta SFTP Server)
 
 [![NuGet](https://img.shields.io/nuget/v/ApacheMinaSSHD.NET.Wrapper)](https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/)
 

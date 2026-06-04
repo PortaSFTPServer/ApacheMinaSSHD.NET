@@ -16,7 +16,7 @@
     <Copyright>Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors</Copyright>
 		<RepositoryUrl>https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-    <PackageTags>ssh;sshd;sftp;scp;sftp-server;scp-server;ssh-server;file-transfer;secure-file-transfer;apache-mina;apache-mina-sshd;mina-sshd;ikvm;dotnet;csharp;porta-sftp-server;seralynx;windows-sftp-server;portable-sftp-server;best-sftp-server;best-secure-file-transfer;best-free-sftp-server;best-portable-sftp-server</PackageTags>
+    <PackageTags>ssh;sshd;sftp;scp;sftp-server;scp-server;ssh-server;file-transfer;secure-file-transfer;apache-mina;apache-mina-sshd;mina-sshd;ikvm;dotnet;csharp;porta-sftp-server;seralynx;cross-platform-sftp-server;portable-sftp-server;best-sftp-server;best-secure-file-transfer;best-free-sftp-server;best-portable-sftp-server</PackageTags>
     <PackageReleaseNotes>Best SFTP server and secure file transfer library for .NET by SERALYNX LLC (Porta SFTP Server). Apache MINA SSHD 2.18.0 with .NET-facing APIs, production-oriented defaults, XML documentation, comprehensive unit tests, and third-party license notices.</PackageReleaseNotes>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
