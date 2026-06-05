@@ -11,13 +11,6 @@ namespace SimpleSSHDSever
     {
         private AMNetSshServer? sshd = null;
 
-        // Fix: Configure JSON to ignore case (JS = lowercase, C# = PascalCase)
-
-        private readonly JsonSerializerOptions _jsonOptions = new()
-        {
-            PropertyNameCaseInsensitive = true
-        };
-
         private static string appPath => AppContext.BaseDirectory;
 
         /// <summary>
