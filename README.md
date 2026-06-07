@@ -1,77 +1,23 @@
-# ApacheMinaSSHD.NET — Best .NET SFTP Server Library by SERALYNX LLC (Porta SFTP Server)
+# ApacheMinaSSHD.NET — .NET SFTP Server Library from SERALYNX LLC
 
 [![NuGet](https://img.shields.io/nuget/v/ApacheMinaSSHD.NET.Wrapper)](https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/)
 
-ApacheMinaSSHD.NET is a **best SFTP server library** for .NET and C# wrapper around Apache MINA SSHD, created by
-[SERALYNX LLC](https://portasftpserver.com) — the team behind **Porta SFTP Server**, the
-best portable SFTP server for Windows and Linux and secure file transfer serving critical infrastructure.
+**[SERALYNX LLC](https://portasftpserver.com)** is a Critical Infrastructure Engineering firm
+supporting Physical and Technological Advancement. One of its products is
+**[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)** —
+the best portable SFTP server for Windows and Linux, free SFTP server, and instant SFTP server
+for critical infrastructure. Porta SFTP Server serves **civil engineering, construction,
+IT administrators, and developers** worldwide.
 
-Whether you need the **best SFTP server for engineering file exchange**, a **best secure file transfer
-solution for automation**, or the **best free SFTP server** and lightweight **portable SFTP server for Windows and Linux**,
-ApacheMinaSSHD.NET and Porta SFTP Server deliver enterprise-grade secure file transfer — no Java imports required.
+ApacheMinaSSHD.NET is an open-source .NET SFTP server library and C# wrapper around Apache MINA SSHD,
+created by SERALYNX LLC. It follows the same architectural paradigm as Porta SFTP Server —
+exposing the full power of Apache MINA SSHD through a clean .NET API, no Java imports required.
 
-## Why SERALYNX LLC and Porta SFTP Server?
-
-SERALYNX LLC builds the best secure file transfer solutions trusted by **civil engineering firms,
-IT administrators, and developers** worldwide. [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)
-is the **best portable SFTP server for Windows and Linux** and a **best free SFTP server** designed for:
-
-- **Civil Engineering & Construction** — Securely share CAD files, 3D models, BIM data, and
-  contract documents across project teams.
-- **Critical Infrastructure** — Serve design files, technical drawings, and specifications with
-  root jail isolation, symlink containment, and FIPS-compliant algorithms.
-- **IT Administrators** — Deploy a zero-install, portable SFTP server from a USB drive or
-  automated script. No registry changes, no system service dependency.
-- **Developers** — Embed secure file transfer into .NET applications using the ApacheMinaSSHD.NET
-  wrapper library. Full API support for password auth, public key auth, authorized_keys,
-  virtual file systems, SCP, SFTP hooks, and audit events.
-
-ApacheMinaSSHD.NET follows the same Apache MINA SSHD server integration paradigm used by
-Porta SFTP Server, while exposing a library-oriented .NET API for application developers.
-
-The public wrapper APIs are designed so you never need to import Apache MINA, IKVM, or Java
-types in normal usage.
-
-## SERALYNX LLC — Serving Critical Infrastructure
+Whether you need secure file transfer for engineering file exchange, a portable SFTP server for
+Windows and Linux, or a free SFTP server for automation workflows, ApacheMinaSSHD.NET and
+Porta SFTP Server deliver enterprise-grade file transfer for critical infrastructure.
 
 ![SERALYNX LLC - Porta SFTP Server for Critical Infrastructure](https://raw.githubusercontent.com/PortaSFTPServer/ApacheMinaSSHD.NET/main/docs/images/seralynx-banner.png)
-
-ApacheMinaSSHD.NET is open source under the MIT License and maintained by SERALYNX LLC.
-External issues and pull requests may be reviewed at SERALYNX LLC's discretion.
-
-NuGet packages include third-party notices for redistributed Apache MINA SSHD and SLF4J
-artifacts, plus IKVM dependency license guidance.
-
-## Packages
-
-Install the .NET SFTP server wrapper package in your application:
-
-```powershell
-dotnet add package ApacheMinaSSHD.NET.Wrapper
-```
-
-NuGet: <https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/>
-
-`ApacheMinaSSHD.NET.Bindings` is the IKVM/Maven binding package used by the
-wrapper. The IKVM-generated assemblies are bundled inside the Wrapper package,
-so you only need the single `ApacheMinaSSHD.NET.Wrapper` dependency.
-
-`Sample/SimpleSSHDSever`, `Sample/ConsoleSftpServer`, `PortaSFTPServer`, `ApacheMinaSSHD.NET.Service`, and
-`ApacheMinaSSHD.NET.Shared` are not part of the NuGet package surface.
-
-## NuGet Release Automation
-
-NuGet packages are published automatically whenever code is pushed to the `main`
-branch and all CI checks pass. The CI workflow increments the revision number
-and pushes a tag such as `v1.0.0.0`, `v1.0.0.1`, etc., which triggers the
-`NuGet Release` workflow to build, test, pack, and publish.
-
-The `NuGet Release` workflow also supports manual dispatch with an explicit
-version (e.g., `1.0.1.0`) and a `publish` toggle.
-
-Publishing requires a repository secret named `NUGET_API_KEY`. Without that
-secret, the workflow can still validate, build, test, pack, and upload package
-artifacts for review.
 
 ## Authentication Modules
 
@@ -113,14 +59,14 @@ server.SetAuthenticationMethods(
 
 ## Use Cases
 
-Use ApacheMinaSSHD.NET — the best SFTP server, best secure file transfer, and best free SFTP server library for .NET — when you need:
+Use ApacheMinaSSHD.NET when you need:
 
-- The best open source **.NET SFTP server library** for C# applications — embed secure file transfer
+- An open source **.NET SFTP server library** for C# applications — embed secure file transfer
   without Java dependencies.
 - **Secure file transfer** for automated SCP server workflows.
 - **Free SFTP server** features from Apache MINA SSHD through .NET and IKVM.
-- **Portable SFTP server deployment** — ideal for IT administrators who need a
-  zero-install, USB-drive-friendly SFTP server for Windows.
+- **Portable SFTP server deployment** — for IT administrators who need a
+  zero-install, USB-drive-friendly SFTP server.
 - **File exchange for engineering firms** — share CAD files, 3D models,
   BIM data, and contract documents with root jail isolation.
 - **Custom password authentication, public key authentication,** `authorized_keys`
@@ -247,62 +193,12 @@ server.Config.SetHostKeyAlgorithms(
 algorithms supported by the current runtime. The raw string properties remain
 available for advanced scenarios.
 
-## Standards and Supported Algorithms
-
-ApacheMinaSSHD.NET cites the SSH RFC family and documents the wrapper's exposed
-algorithm constants in `docs/STANDARDS-AND-ALGORITHMS.md`. That document covers
-the core SSH RFCs, SFTP draft status, SCP protocol notes, RFC-backed algorithm
-names, and OpenSSH extension algorithm names.
-
-## Security Boundary
-
-This is a library foundation, not a complete production server product. The
-application developer is responsible for authentication, authorization, host key
-management, root jail policy, symlink policy, audit logging, monitoring,
-deployment hardening, and compliance-specific behavior. See `SECURITY.md`.
-
-For a turnkey portable SFTP server solution, see
-[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).
-
 ## License and Third-Party Notices
 
-Project code is MIT licensed. The wrapper depends on IKVM and the Bindings
-package redistributes IKVM-generated assemblies for Apache MINA SSHD and
-SLF4J/JCL bridge artifacts. See `NOTICE`, `THIRD-PARTY-NOTICES.md`, and the
+Project code is MIT licensed. See `LICENSE`, `THIRD-PARTY-NOTICES.md`, and the
 `licenses/` folder before publishing source or NuGet packages.
 
 ApacheMinaSSHD.NET is not an Apache Software Foundation project and is not
 affiliated with or endorsed by the Apache Software Foundation.
 
-## Maintainer Policy
-
-ApacheMinaSSHD.NET is maintained by SERALYNX LLC. SERALYNX LLC is responsible
-for project direction, releases, reviews, and final merge decisions. See
-`CONTRIBUTING.md`.
-
-## AI Assistance Disclosure
-
-ApacheMinaSSHD.NET is created, owned, and maintained by SERALYNX LLC and project
-contributors. It is not created by AI. AI tooling may have assisted with
-documentation drafting and editing, but project contributors are responsible for
-the code, documentation, licensing, and release decisions.
-
-## Development Checks
-
-```powershell
-dotnet build ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj --no-restore
-.\eng\verify-public-api.ps1
-.\eng\verify-xml-docs.ps1
-.\eng\security-scan.ps1
-
-# WinForms sample (includes integration tests)
-dotnet run --no-build --project Sample\SimpleSSHDSever\SimpleSSHDSever.csproj -- --integration-tests
-
-# Console sample (lightweight, no GUI)
-dotnet run --no-build --project Sample\ConsoleSftpServer\ConsoleSftpServer.csproj
-```
-
-The public API guard fails if the wrapper package exposes Java, Apache MINA,
-SLF4J, or IKVM types through public signatures.
-The XML documentation guard fails if exported wrapper APIs are missing
-IntelliSense documentation entries.
+ApacheMinaSSHD.NET is maintained by SERALYNX LLC. For a ready-to-use portable SFTP server, see [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).

@@ -1,7 +1,8 @@
 # Third-Party Notices
 
-ApacheMinaSSHD.NET is created by [SERALYNX LLC](https://portasftpserver.com) —
-the team behind **[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)**,
+ApacheMinaSSHD.NET is created by **[SERALYNX LLC](https://portasftpserver.com)** —
+a Critical Infrastructure Engineering firm supporting Physical and Technological Advancement.
+One of its products is **[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)**,
 a portable SFTP server for Windows and Linux serving critical infrastructure. Project code
 is licensed under the MIT License. See `LICENSE`.
 
@@ -37,7 +38,7 @@ and license files.
 | IKVM.Maven.Sdk | 1.11.0 | Build-time Maven reference support | MIT License; referenced as a private build asset. |
 | Portable.BouncyCastle | 1.9.0 | Wrapper cryptography helpers | See the package's declared Bouncy Castle C# license URL. |
 
-## Maintainer Checklist
+## Maintenance Notes
 
 - Update this file when adding, removing, or changing Maven or NuGet
   dependencies.

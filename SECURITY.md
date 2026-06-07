@@ -1,35 +1,20 @@
 # Security Model
 
 ApacheMinaSSHD.NET is a .NET SFTP server library and C# wrapper created by
-[SERALYNX LLC](https://portasftpserver.com), the team behind
+**[SERALYNX LLC](https://portasftpserver.com)** is a Critical Infrastructure Engineering firm
+supporting Physical and Technological Advancement. One of its products is
 **[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)** —
-a portable SFTP server for Windows and Linux trusted by civil engineering, construction, and
-critical infrastructure teams worldwide.
+the best portable SFTP server for Windows and Linux, free SFTP server, and instant SFTP server
+for critical infrastructure.
 
-The wrapper provides .NET-facing APIs, extension points, and integration tests;
-the application developer is responsible for the final security policy used
-in production.
+The wrapper exposes .NET APIs and extension points. The application developer
+owns the final security policy in production.
 
-## Library Responsibilities
-
-- Hide Apache MINA and Java types from application-facing interfaces.
-- Expose .NET hooks for authentication, authorization, filesystem access,
-  event handling, logging, SFTP, and SCP behavior.
-- Deny password and keyboard-interactive authentication by default unless the
-  application configures an explicit authenticator.
-- Provide conservative baseline configuration helpers for common SSH limits.
-- Keep SFTP/SCP behavior covered by real OpenSSH integration tests.
-- Add dependency and vulnerability scanning for NuGet and Maven dependencies.
-
-## Application Responsibilities
-
-- Implement authentication and authorization policy for the deployment.
-- Manage host keys, user keys, passwords, key rotation, and secret storage.
-- Define filesystem jail behavior, path traversal handling, symlink behavior,
-  hidden-file policy, and per-user storage isolation.
-- Decide allowed SSH algorithms, banners, session limits, rate limits, logging,
-  audit retention, monitoring, backup, and incident-response behavior.
-- Run the integration tests and security scan in the application's CI pipeline.
+The wrapper hides Apache MINA and Java types from application code, provides
+.NET hooks for authentication and filesystem access, denies password auth by
+default, and includes baseline configuration helpers. Applications handle
+authentication policy, host key management, filesystem jail rules, symlink
+behavior, algorithm selection, session limits, audit logging, and monitoring.
 
 ## Sample Project
 
