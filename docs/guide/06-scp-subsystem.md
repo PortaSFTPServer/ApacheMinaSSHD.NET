@@ -130,7 +130,7 @@ server.setCommandFactory(new AMNetScpCommandFactory(
 
 ---
 
-**Next:** [Security Best Practices](07-security.md) — hardening your server for production.
+**Next:** [Security Best Practices](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/07-security.md) — hardening your server for production.
 
 ---
 

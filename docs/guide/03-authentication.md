@@ -208,7 +208,7 @@ This scans all project files for vulnerable package references and queries the O
 
 ---
 
-**Next:** [Virtual Filesystem](04-virtual-filesystem.md) — root jail isolation, user home directories, and path containment.
+**Next:** [Virtual Filesystem](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/04-virtual-filesystem.md) — root jail isolation, user home directories, and path containment.
 
 ---
 

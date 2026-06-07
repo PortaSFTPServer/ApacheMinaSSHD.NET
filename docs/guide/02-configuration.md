@@ -102,7 +102,7 @@ server.Config.WELCOME_BANNER = "Authorized access only";
 
 ---
 
-**Next:** [Authentication](03-authentication.md) — password, public key, keyboard-interactive, and multi-factor authentication.
+**Next:** [Authentication](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/03-authentication.md) — password, public key, keyboard-interactive, and multi-factor authentication.
 
 ---
 

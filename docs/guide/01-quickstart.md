@@ -46,7 +46,7 @@ The host key is automatically persisted to `hostkey.ser` and reused across resta
 server.SetFixedPasswordAuthenticator("demo", "your-password-here");
 ```
 
-For production, implement `IAMNetPasswordAuthenticator` against your identity store — see the [Authentication guide](03-authentication.md).
+For production, implement `IAMNetPasswordAuthenticator` against your identity store — see the [Authentication guide](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/03-authentication.md).
 
 ## Step 5: Configure the Filesystem
 
@@ -116,7 +116,7 @@ sftp> put test-file.txt
 
 ---
 
-**Next:** [Server Configuration](02-configuration.md) — tune timeouts, limits, and crypto algorithms.
+**Next:** [Server Configuration](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/02-configuration.md) — tune timeouts, limits, and crypto algorithms.
 
 ---
 

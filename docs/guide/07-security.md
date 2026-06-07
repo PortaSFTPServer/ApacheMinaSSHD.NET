@@ -197,7 +197,7 @@ class SecurityAuditListener : AMNetSftpEventListener
 
 ---
 
-**Next:** [Logging & Monitoring](08-logging.md) — SLF4J bridge, audit events, and custom loggers.
+**Next:** [Logging & Monitoring](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/08-logging.md) — SLF4J bridge, audit events, and custom loggers.
 
 ---
 

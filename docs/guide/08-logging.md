@@ -144,7 +144,7 @@ class JavaLogRedirect
 
 ---
 
-**Next:** [Production Deployment](09-production-deployment.md) — Windows Service, Docker, monitoring, and CI/CD.
+**Next:** [Production Deployment](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/09-production-deployment.md) — Windows Service, Docker, monitoring, and CI/CD.
 
 ---
 

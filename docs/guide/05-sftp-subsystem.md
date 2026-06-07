@@ -153,7 +153,7 @@ Each hook receives an `ISshFileSystemAccess` context with:
 
 ---
 
-**Next:** [SCP Subsystem](06-scp-subsystem.md) — SCP file transfer setup and event handling.
+**Next:** [SCP Subsystem](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/06-scp-subsystem.md) — SCP file transfer setup and event handling.
 
 ---
 
