@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApacheMinaSSHD.NET — .NET SFTP Server Library by SERALYNX LLC</title>
+<meta name="description" content="ApacheMinaSSHD.NET is a .NET SFTP server library and C# wrapper around Apache MINA SSHD by SERALYNX LLC — the team behind Porta SFTP Server, the best portable SFTP server for Windows and Linux.">
+<meta name="keywords" content="SFTP server .NET, C# SFTP server, SSH server .NET, Apache MINA SSHD, secure file transfer .NET, portable SFTP server, SERALYNX LLC, Porta SFTP Server">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #1a1a2e; background: #f8f9fa; line-height: 1.6; }
+header { background: linear-gradient(135deg, #0f3460, #1a1a2e); color: #fff; padding: 4rem 1rem; text-align: center; }
+header h1 { font-size: 2.4rem; margin-bottom: .5rem; }
+header p { font-size: 1.1rem; opacity: .9; max-width: 640px; margin: 0 auto; }
+header .badge { margin-top: 1.5rem; display: inline-block; background: #e94560; color: #fff; padding: .4rem 1.2rem; border-radius: 20px; font-weight: 600; font-size: .9rem; }
+.container { max-width: 960px; margin: 0 auto; padding: 2rem 1rem; }
+section { margin-bottom: 3rem; }
+h2 { font-size: 1.6rem; color: #0f3460; margin-bottom: 1.2rem; border-bottom: 3px solid #e94560; padding-bottom: .4rem; display: inline-block; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
+.card { background: #fff; border-radius: 8px; padding: 1.4rem; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+.card h3 { color: #e94560; margin-bottom: .5rem; }
+.card p { font-size: .9rem; color: #555; }
+.card a { text-decoration: none; color: inherit; display: block; }
+.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.14); transform: translateY(-2px); transition: .2s; }
+.samples { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .8rem; }
+.sample { background: #fff; border-radius: 6px; padding: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,.06); font-size: .9rem; }
+.sample strong { color: #0f3460; display: block; margin-bottom: .2rem; }
+.sample span { color: #666; font-size: .85rem; }
+footer { background: #1a1a2e; color: #aaa; text-align: center; padding: 2rem 1rem; font-size: .9rem; }
+footer a { color: #e94560; text-decoration: none; }
+footer strong { color: #fff; }
+.btn { display: inline-block; background: #e94560; color: #fff; padding: .7rem 1.8rem; border-radius: 6px; font-weight: 600; text-decoration: none; margin-top: 1.5rem; }
+.btn:hover { background: #d63850; }
+</style>
+</head>
+<body>
+
+<header>
+<h1>ApacheMinaSSHD.NET</h1>
+<p>A .NET SFTP server library and C# wrapper around Apache MINA SSHD — created by SERALYNX LLC, the team behind <strong>Porta SFTP Server</strong>, the best portable SFTP server for Windows and Linux.</p>
+<a class="badge" href="https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/">NuGet: ApacheMinaSSHD.NET.Wrapper</a>
+</header>
+
+<div class="container">
+
+<section>
+<h2>Get Started</h2>
+<div class="cards">
+<div class="card"><a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET">
+<h3>Source Code</h3>
+<p>Browse the repository on GitHub — MIT licensed, open for contributions.</p>
+</a></div>
+<div class="card"><a href="https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/">
+<h3>NuGet Package</h3>
+<p><code>dotnet add package ApacheMinaSSHD.NET.Wrapper</code> — one dependency, no Java imports.</p>
+</a></div>
+<div class="card"><a href="https://portasftpserver.com/portable-sftp-server-community-edition/">
+<h3>Porta SFTP Server</h3>
+<p>Ready-to-use portable SFTP server for Windows and Linux with GUI management.</p>
+</a></div>
+</div>
+</section>
+
+<section>
+<h2>Sample Projects</h2>
+<p style="margin-bottom:.8rem;color:#555">Ready-to-run C# examples covering every scenario:</p>
+<div class="samples">
+<div class="sample"><strong>MinimalServer</strong><span>Simplest SFTP server in ~15 lines</span></div>
+<div class="sample"><strong>AuthenticationServer</strong><span>Password, public key, MFA, keyboard-interactive</span></div>
+<div class="sample"><strong>VirtualFileSystemServer</strong><span>Root jail, hidden-file filtering, access control</span></div>
+<div class="sample"><strong>ScpServer</strong><span>SCP file opener, transfer events, directory filtering</span></div>
+<div class="sample"><strong>SftpEventServer</strong><span>Track open/close/read/write/create/remove/move</span></div>
+<div class="sample"><strong>SessionMonitorServer</strong><span>Session lifecycle, connections, proxy metadata</span></div>
+<div class="sample"><strong>ProductionServer</strong><span>JSON config, algorithm tuning, all listeners</span></div>
+</div>
+</section>
+
+<section>
+<h2>About SERALYNX LLC</h2>
+<p><strong>SERALYNX LLC</strong> is a Critical Infrastructure Engineering firm supporting Physical and Technological Advancement. One of its products is <strong><a href="https://portasftpserver.com/portable-sftp-server-community-edition/" style="color:#e94560">Porta SFTP Server</a></strong> — the best portable SFTP server for Windows and Linux, free SFTP server, and instant SFTP server for critical infrastructure.</p>
+<p style="margin-top:.8rem">ApacheMinaSSHD.NET follows the same architectural paradigm as Porta SFTP Server, exposing the full power of Apache MINA SSHD through a clean .NET API — no Java imports required.</p>
+<a class="btn" href="https://portasftpserver.com">Visit Porta SFTP Server</a>
+</section>
+
+</div>
+
+<footer>
+<p><strong>ApacheMinaSSHD.NET</strong> is maintained by <a href="https://portasftpserver.com"><strong>SERALYNX LLC</strong></a> &mdash; building secure file transfer solutions for critical infrastructure.</p>
+<p style="margin-top:.4rem">MIT Licensed &bull; Not affiliated with the Apache Software Foundation</p>
+</footer>
+
+</body>
+</html>
