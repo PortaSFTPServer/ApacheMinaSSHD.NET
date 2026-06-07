@@ -113,4 +113,4 @@ against current SSH recommendations.
 
 ---
 
-*ApacheMinaSSHD.NET is maintained by **SERALYNX LLC** — building secure file transfer solutions for critical infrastructure since 2017. For a turnkey portable SFTP server for Windows and Linux with GUI management, visit [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).*
+*ApacheMinaSSHD.NET is maintained by **SERALYNX LLC** — building secure file transfer solutions for critical infrastructure since 2015. For a turnkey portable SFTP server for Windows and Linux with GUI management, visit [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).*
