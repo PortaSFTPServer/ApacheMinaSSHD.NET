@@ -13,4 +13,11 @@
   </Project>
   <Project Path="ApacheMinaSSHD.NET.Wrapper.Tests/ApacheMinaSSHD.NET.Wrapper.Tests.csproj" />
   <Project Path="Sample/ConsoleSftpServer/ConsoleSftpServer.csproj" />
+  <Project Path="Sample/MinimalServer/MinimalServer.csproj" />
+  <Project Path="Sample/AuthenticationServer/AuthenticationServer.csproj" />
+  <Project Path="Sample/VirtualFileSystemServer/VirtualFileSystemServer.csproj" />
+  <Project Path="Sample/ScpServer/ScpServer.csproj" />
+  <Project Path="Sample/SftpEventServer/SftpEventServer.csproj" />
+  <Project Path="Sample/SessionMonitorServer/SessionMonitorServer.csproj" />
+  <Project Path="Sample/ProductionServer/ProductionServer.csproj" />
 </Solution>

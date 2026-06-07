@@ -13,6 +13,8 @@
 	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Platforms>AnyCPU;x86;x64</Platforms>
     <LangVersion>14.0</LangVersion>
+    <AssemblyName>SimpleSSHDSever</AssemblyName>
+    <Description>Windows Forms C# SFTP server example — GUI-based SFTP server with integration test harness, authentication, virtual file system, SCP, and session monitoring using ApacheMinaSSHD.NET. By SERALYNX LLC (Porta SFTP Server).</Description>
     <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages>
 
   </PropertyGroup>

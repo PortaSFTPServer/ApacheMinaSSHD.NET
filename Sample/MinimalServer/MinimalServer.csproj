@@ -1,16 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>14.0</LangVersion>
-    <Description>Lightweight C# SFTP console server example — demonstrates basic SFTP server setup with password authentication, virtual file system, and host key generation using ApacheMinaSSHD.NET. By SERALYNX LLC (Porta SFTP Server).</Description>
+    <Description>Minimal C# SFTP server example — simplest way to embed an SFTP server in a .NET application using ApacheMinaSSHD.NET wrapper. Part of the SERALYNX LLC Porta SFTP Server ecosystem. Secure file transfer for .NET developers.</Description>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />
   </ItemGroup>
-
 </Project>

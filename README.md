@@ -73,6 +73,22 @@ Use ApacheMinaSSHD.NET when you need:
   handling, virtual file systems, root jail behavior, hidden-file filtering,
   SFTP hooks, SCP hooks, audit events, and SSH algorithm configuration.
 
+## Sample Projects
+
+Browse ready-to-run C# SFTP server examples that demonstrate real scenarios:
+
+| Sample | What it shows |
+|--------|--------------|
+| [MinimalServer](Sample/MinimalServer) | Minimal C# SFTP server — simplest way to embed an SFTP server in .NET (~15 lines) |
+| [AuthenticationServer](Sample/AuthenticationServer) | Password, public key, fingerprint, authorized_keys, keyboard-interactive, and MFA auth — pick via CLI arg |
+| [VirtualFileSystemServer](Sample/VirtualFileSystemServer) | Root jail isolation, hidden-file filtering, path access control for SFTP and SCP |
+| [ScpServer](Sample/ScpServer) | SCP server with custom file opener, transfer audit, and directory filtering |
+| [SftpEventServer](Sample/SftpEventServer) | SFTP event listeners — track open/close/read/write/create/remove/move operations |
+| [SessionMonitorServer](Sample/SessionMonitorServer) | Session lifecycle, connection monitoring, proxy metadata inspection |
+| [ProductionServer](Sample/ProductionServer) | Production-ready: external JSON config, algorithm selection, combined listeners |
+
+All samples target .NET 10 and reference the wrapper NuGet package directly.
+
 ## Developer Guide
 
 For complete, organized documentation on building SFTP/SCP servers with ApacheMinaSSHD.NET, see the [Developer Guide](docs/guide/README.md):
