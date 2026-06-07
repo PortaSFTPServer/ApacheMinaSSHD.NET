@@ -4,90 +4,402 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ApacheMinaSSHD.NET — .NET SFTP Server Library by SERALYNX LLC</title>
-<meta name="description" content="ApacheMinaSSHD.NET is a .NET SFTP server library and C# wrapper around Apache MINA SSHD by SERALYNX LLC — the team behind Porta SFTP Server, the best portable SFTP server for Windows and Linux.">
-<meta name="keywords" content="SFTP server .NET, C# SFTP server, SSH server .NET, Apache MINA SSHD, secure file transfer .NET, portable SFTP server, SERALYNX LLC, Porta SFTP Server">
+<meta name="description" content="ApacheMinaSSHD.NET is a free, open-source .NET SFTP server library and C# wrapper around Apache MINA SSHD. Embed secure SFTP and SCP file transfer in your C# applications with no Java dependencies. Created by SERALYNX LLC, the team behind Porta SFTP Server — the best portable SFTP server for Windows and Linux.">
+<meta name="keywords" content=".NET SFTP server library, C# SFTP server, SSH server .NET, Apache MINA SSHD .NET, secure file transfer C#, SFTP NuGet, portable SFTP server, free SFTP server .NET, instant SFTP server, SCP server C#, SERALYNX LLC, Porta SFTP Server, embed SFTP server, SFTP authentication C#, virtual file system SFTP">
+<meta name="author" content="SERALYNX LLC">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://portasftpserver.github.io/ApacheMinaSSHD.NET/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ApacheMinaSSHD.NET — .NET SFTP Server Library by SERALYNX LLC">
+<meta property="og:description" content="Free, open-source .NET SFTP server library and C# wrapper around Apache MINA SSHD. Embed secure file transfer in your C# applications with no Java dependencies.">
+<meta property="og:url" content="https://portasftpserver.github.io/ApacheMinaSSHD.NET/">
+<meta property="og:type" content="software">
+<meta property="og:site_name" content="ApacheMinaSSHD.NET">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ApacheMinaSSHD.NET — .NET SFTP Server Library">
+<meta name="twitter:description" content="Free, open-source .NET SFTP server library. Embed secure SFTP and SCP in C#. No Java required.">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ApacheMinaSSHD.NET",
+  "description": "A free, open-source .NET SFTP server library and C# wrapper around Apache MINA SSHD. Embed secure SFTP and SCP file transfer in C# applications with no Java dependencies.",
+  "url": "https://portasftpserver.github.io/ApacheMinaSSHD.NET/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Windows, Linux, macOS",
+  "programmingLanguage": "C#",
+  "license": "MIT",
+  "author": {
+    "@type": "Organization",
+    "name": "SERALYNX LLC",
+    "url": "https://portasftpserver.com",
+    "description": "Critical Infrastructure Engineering firm supporting Physical and Technological Advancement. Creator of Porta SFTP Server."
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ApacheMinaSSHD.NET",
+  "url": "https://portasftpserver.github.io/ApacheMinaSSHD.NET/"
+}
+</script>
+
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #1a1a2e; background: #f8f9fa; line-height: 1.6; }
-header { background: linear-gradient(135deg, #0f3460, #1a1a2e); color: #fff; padding: 4rem 1rem; text-align: center; }
-header h1 { font-size: 2.4rem; margin-bottom: .5rem; }
-header p { font-size: 1.1rem; opacity: .9; max-width: 640px; margin: 0 auto; }
-header .badge { margin-top: 1.5rem; display: inline-block; background: #e94560; color: #fff; padding: .4rem 1.2rem; border-radius: 20px; font-weight: 600; font-size: .9rem; }
-.container { max-width: 960px; margin: 0 auto; padding: 2rem 1rem; }
-section { margin-bottom: 3rem; }
-h2 { font-size: 1.6rem; color: #0f3460; margin-bottom: 1.2rem; border-bottom: 3px solid #e94560; padding-bottom: .4rem; display: inline-block; }
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
-.card { background: #fff; border-radius: 8px; padding: 1.4rem; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
-.card h3 { color: #e94560; margin-bottom: .5rem; }
-.card p { font-size: .9rem; color: #555; }
-.card a { text-decoration: none; color: inherit; display: block; }
-.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.14); transform: translateY(-2px); transition: .2s; }
-.samples { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .8rem; }
-.sample { background: #fff; border-radius: 6px; padding: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,.06); font-size: .9rem; }
-.sample strong { color: #0f3460; display: block; margin-bottom: .2rem; }
-.sample span { color: #666; font-size: .85rem; }
-footer { background: #1a1a2e; color: #aaa; text-align: center; padding: 2rem 1rem; font-size: .9rem; }
-footer a { color: #e94560; text-decoration: none; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #1a1a2e; background: #fff; line-height: 1.6; }
+
+/* Navigation */
+nav { position: sticky; top: 0; z-index: 100; background: rgba(26,26,46,.98); backdrop-filter: blur(6px); color: #fff; padding: 0 1rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+nav .logo { font-weight: 700; font-size: 1.05rem; }
+nav .logo a { color: #fff; text-decoration: none; }
+nav .logo span { color: #e94560; }
+nav .nav-links { display: flex; gap: 1.6rem; }
+nav .nav-links a { color: #ccc; text-decoration: none; font-size: .88rem; transition: color .2s; }
+nav .nav-links a:hover { color: #e94560; }
+.nav-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; }
+
+/* Hero */
+.hero { background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 50%, #16213e 100%); color: #fff; padding: 5rem 1rem 4rem; text-align: center; }
+.hero h1 { font-size: 2.6rem; margin-bottom: .6rem; letter-spacing: -.5px; }
+.hero h1 span { color: #e94560; }
+.hero .subtitle { font-size: 1.1rem; max-width: 680px; margin: 0 auto 1.8rem; opacity: .9; }
+.hero .badge-wrap { display: flex; justify-content: center; gap: .8rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+.hero .badge-wrap a { color: #fff; text-decoration: none; }
+.hero-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.8rem; }
+.btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.8rem; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: .95rem; transition: all .2s; }
+.btn-primary { background: #e94560; color: #fff; }
+.btn-primary:hover { background: #d63850; transform: translateY(-1px); }
+.btn-outline { border: 2px solid rgba(255,255,255,.4); color: #fff; }
+.btn-outline:hover { border-color: #e94560; background: rgba(233,69,96,.1); transform: translateY(-1px); }
+
+.container { max-width: 1040px; margin: 0 auto; padding: 3.5rem 1.5rem; }
+section h2 { font-size: 1.7rem; color: #0f3460; margin-bottom: .6rem; }
+section .section-sub { color: #666; margin-bottom: 2rem; font-size: 1rem; max-width: 600px; }
+.section-label { display: inline-block; background: #0f3460; color: #fff; font-size: .75rem; font-weight: 600; padding: .2rem .8rem; border-radius: 4px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: .6rem; }
+
+/* Cards */
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.2rem; }
+.card { background: #f8f9fa; border-radius: 10px; padding: 1.6rem; transition: all .25s; border: 1px solid #eee; }
+.card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.1); border-color: #e94560; }
+.card .icon { font-size: 1.8rem; margin-bottom: .6rem; display: block; }
+.card h3 { color: #0f3460; margin-bottom: .4rem; font-size: 1.05rem; }
+.card p { color: #555; font-size: .9rem; }
+.card a { text-decoration: none; color: inherit; }
+
+/* Code block */
+.code-block { background: #1a1a2e; color: #e4e4e4; border-radius: 10px; padding: 1.5rem; overflow-x: auto; font-family: "SF Mono", "Cascadia Code", "Fira Code", monospace; font-size: .85rem; line-height: 1.7; position: relative; }
+.code-block .kw { color: #c792ea; }
+.code-block .type { color: #82aaff; }
+.code-block .str { color: #c3e88d; }
+.code-block .cm { color: #546e7a; }
+.code-block .fn { color: #f78c6c; }
+.code-tab { display: flex; gap: 0; margin-bottom: 0; border-bottom: none; }
+.code-tab button { background: #f0f0f0; border: 1px solid #ddd; border-bottom: none; padding: .5rem 1.2rem; font-size: .85rem; cursor: pointer; border-radius: 6px 6px 0 0; font-weight: 500; color: #555; transition: all .2s; }
+.code-tab button.active { background: #1a1a2e; color: #fff; border-color: #1a1a2e; }
+.code-tab button:hover:not(.active) { background: #e0e0e0; }
+.copy-btn { position: absolute; top: .6rem; right: .6rem; background: rgba(255,255,255,.1); border: none; color: #aaa; padding: .3rem .7rem; border-radius: 4px; cursor: pointer; font-size: .78rem; }
+.copy-btn:hover { background: rgba(255,255,255,.2); color: #fff; }
+
+/* Samples grid */
+.samples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .8rem; }
+.sample-item { background: #f8f9fa; border: 1px solid #eee; border-radius: 8px; padding: 1rem 1.2rem; transition: all .2s; }
+.sample-item:hover { border-color: #e94560; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+.sample-item h3 { font-size: .95rem; color: #0f3460; margin-bottom: .2rem; }
+.sample-item p { font-size: .82rem; color: #666; }
+.sample-item a { text-decoration: none; color: inherit; display: block; }
+
+/* Features detail */
+.feature-row { display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 2.5rem; align-items: flex-start; }
+.feature-row:last-child { margin-bottom: 0; }
+.feature-row .icon-box { flex: 0 0 48px; height: 48px; background: #0f3460; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.3rem; }
+.feature-row .text { flex: 1; min-width: 200px; }
+.feature-row .text h3 { color: #0f3460; margin-bottom: .3rem; font-size: 1.05rem; }
+.feature-row .text p { color: #555; font-size: .9rem; }
+
+/* Two col */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+@media (max-width:700px) { .two-col { grid-template-columns: 1fr; } }
+
+/* About */
+.about-card { background: #f8f9fa; border-radius: 12px; padding: 2rem; border-left: 4px solid #e94560; }
+
+/* Footer */
+footer { background: #1a1a2e; color: #aaa; padding: 2.5rem 1.5rem; text-align: center; font-size: .9rem; }
+footer .f-links { display: flex; justify-content: center; gap: 1.8rem; flex-wrap: wrap; margin-bottom: 1rem; }
+footer .f-links a { color: #ccc; text-decoration: none; font-size: .88rem; }
+footer .f-links a:hover { color: #e94560; }
 footer strong { color: #fff; }
-.btn { display: inline-block; background: #e94560; color: #fff; padding: .7rem 1.8rem; border-radius: 6px; font-weight: 600; text-decoration: none; margin-top: 1.5rem; }
-.btn:hover { background: #d63850; }
+footer a { color: #e94560; text-decoration: none; }
+
+/* Responsive nav */
+@media (max-width:640px) {
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 56px; left: 0; right: 0; background: #1a1a2e; padding: 1rem; gap: .8rem; }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: block; }
+  .hero h1 { font-size: 1.8rem; }
+  .hero .subtitle { font-size: .95rem; }
+  section h2 { font-size: 1.35rem; }
+}
 </style>
 </head>
 <body>
 
-<header>
-<h1>ApacheMinaSSHD.NET</h1>
-<p>A .NET SFTP server library and C# wrapper around Apache MINA SSHD — created by SERALYNX LLC, the team behind <strong>Porta SFTP Server</strong>, the best portable SFTP server for Windows and Linux.</p>
-<a class="badge" href="https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/">NuGet: ApacheMinaSSHD.NET.Wrapper</a>
-</header>
+<nav>
+<div class="logo"><a href="/ApacheMinaSSHD.NET/"><span>SSHD</span>.NET</a></div>
+<button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+<div class="nav-links">
+<a href="#features">Features</a>
+<a href="#samples">Samples</a>
+<a href="#quickstart">Quick Start</a>
+<a href="#about">About</a>
+<a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET">GitHub</a>
+<a href="https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/">NuGet</a>
+</div>
+</nav>
+
+<section class="hero">
+<h1>Apache<span>MinaSSHD</span>.NET</h1>
+<p class="subtitle">A <strong>free</strong>, <strong>open-source</strong> .NET SFTP server library and C# wrapper around Apache MINA SSHD. Embed secure SFTP, SCP, and SSH file transfer in your C# applications with <strong>zero Java dependencies</strong>.</p>
+<div class="badge-wrap">
+<a href="https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/"><img src="https://img.shields.io/nuget/v/ApacheMinaSSHD.NET.Wrapper" alt="NuGet version"></a>
+<a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET"><img src="https://img.shields.io/github/license/PortaSFTPServer/ApacheMinaSSHD.NET" alt="MIT license"></a>
+</div>
+<div class="hero-btns">
+<a class="btn btn-primary" href="https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/">Install via NuGet</a>
+<a class="btn btn-outline" href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET">View on GitHub</a>
+</div>
+<p style="margin-top:1.4rem;font-size:.88rem;opacity:.7"><code style="background:rgba(255,255,255,.1);padding:.15rem .5rem;border-radius:3px">dotnet add package ApacheMinaSSHD.NET.Wrapper</code></p>
+</section>
 
 <div class="container">
 
-<section>
-<h2>Get Started</h2>
-<div class="cards">
-<div class="card"><a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET">
-<h3>Source Code</h3>
-<p>Browse the repository on GitHub — MIT licensed, open for contributions.</p>
-</a></div>
-<div class="card"><a href="https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/">
-<h3>NuGet Package</h3>
-<p><code>dotnet add package ApacheMinaSSHD.NET.Wrapper</code> — one dependency, no Java imports.</p>
-</a></div>
-<div class="card"><a href="https://portasftpserver.com/portable-sftp-server-community-edition/">
-<h3>Porta SFTP Server</h3>
-<p>Ready-to-use portable SFTP server for Windows and Linux with GUI management.</p>
-</a></div>
+<section id="features">
+<div class="section-label">Features</div>
+<h2>Embed a Full SFTP Server in Your .NET App</h2>
+<p class="section-sub">ApacheMinaSSHD.NET wraps Apache MINA SSHD 2.17.1 through IKVM — no Java imports, no manual setup, just .NET APIs.</p>
+
+<div class="grid-3">
+<div class="card"><span class="icon">&#128274;</span><h3>Password Authentication</h3><p>Fixed, delegate, and composite password authenticators. Full multi-user support with per-session callbacks.</p></div>
+<div class="card"><span class="icon">&#128273;</span><h3>Public Key Authentication</h3><p>Fingerprint-based, directory-backed, and OpenSSH authorized_keys authenticators. Supports Ed25519, RSA, ECDSA.</p></div>
+<div class="card"><span class="icon">&#128161;</span><h3>Keyboard-Interactive &amp; MFA</h3><p>Challenge-response authentication. Combine password + public key for multi-factor authentication policies.</p></div>
+<div class="card"><span class="icon">&#128193;</span><h3>Virtual File System</h3><p>Root jail isolation, per-user home directories, hidden-file filtering, path traversal protection, and symlink containment.</p></div>
+<div class="card"><span class="icon">&#128230;</span><h3>SFTP &amp; SCP Subsystems</h3><p>Full SFTP (file open/close/read/write/create/delete/rename/move) and SCP (upload/download/recursive) server support.</p></div>
+<div class="card"><span class="icon">&#128200;</span><h3>Event Listeners &amp; Monitoring</h3><p>SFTP lifecycle events, session create/establish/close/disconnect, I/O service events, and proxy metadata inspection.</p></div>
+<div class="card"><span class="icon">&#9881;&#65039;</span><h3>Algorithm Configuration</h3><p>Choose ciphers (AES-GCM, ChaCha20-Poly1305), MACs (HMAC-SHA2), key exchange (Curve25519, ECDH), and host key algorithms.</p></div>
+<div class="card"><span class="icon">&#9201;</span><h3>Production Defaults</h3><p>ApplyProductionDefaults and ApplyModernAlgorithmDefaults for conservative security baselines. Configurable timeouts, limits, and banners.</p></div>
+<div class="card"><span class="icon">&#128009;</span><h3>MIT Licensed</h3><p>Free for any use — personal, commercial, or enterprise. No restrictions, no hidden fees. Built by SERALYNX LLC.</p></div>
 </div>
 </section>
 
-<section>
-<h2>Sample Projects</h2>
-<p style="margin-bottom:.8rem;color:#555">Ready-to-run C# examples covering every scenario:</p>
-<div class="samples">
-<div class="sample"><strong>MinimalServer</strong><span>Simplest SFTP server in ~15 lines</span></div>
-<div class="sample"><strong>AuthenticationServer</strong><span>Password, public key, MFA, keyboard-interactive</span></div>
-<div class="sample"><strong>VirtualFileSystemServer</strong><span>Root jail, hidden-file filtering, access control</span></div>
-<div class="sample"><strong>ScpServer</strong><span>SCP file opener, transfer events, directory filtering</span></div>
-<div class="sample"><strong>SftpEventServer</strong><span>Track open/close/read/write/create/remove/move</span></div>
-<div class="sample"><strong>SessionMonitorServer</strong><span>Session lifecycle, connections, proxy metadata</span></div>
-<div class="sample"><strong>ProductionServer</strong><span>JSON config, algorithm tuning, all listeners</span></div>
+</div>
+
+<section style="background:#f8f9fa;padding:3.5rem 1.5rem" id="quickstart">
+<div class="container" style="padding:0">
+<div class="section-label">Quick Start</div>
+<h2>Build Your First SFTP Server in 5 Minutes</h2>
+<p class="section-sub">Create a console app, add the NuGet package, and paste this code:</p>
+
+<div class="code-tab">
+<button class="active" onclick="showCode('cs','pw')">Password Auth</button>
+<button onclick="showCode('cs','mfa')">Multi-Factor Auth</button>
+<button onclick="showCode('cs','events')">With Events</button>
+</div>
+
+<div id="code-pw" class="code-block">
+<div class="copy-btn" onclick="copyCode('code-pw-content')">Copy</div>
+<pre id="code-pw-content">using ApacheMinaSSHD.NET.Wrapper;
+using ApacheMinaSSHD.NET.Wrapper.Factories;
+
+var server = AMNetSshServer.SetUpDefaultServer();
+server.Host = "127.0.0.1";
+server.Port = 2222;
+server.Config.ApplyProductionDefaults();
+server.Config.ApplyModernAlgorithmDefaults();
+
+var hostKeys = new AMNetSimpleGeneratorHostKeyProvider("hostkey.ser");
+hostKeys.setAlgorithm("RSA");
+hostKeys.setKeySize(3072);
+server.setKeyPairProvider(hostKeys);
+
+server.SetFixedPasswordAuthenticator("admin", "changeme");
+server.setFileSystemFactory(
+    new AMNetVirtualFileSystemFactory(@"./sftp-root"));
+server.setSubsystemFactories(
+    new AMNetSftpSubsystemFactory());
+
+server.Start();
+Console.WriteLine("SFTP server running on port 2222");
+Console.ReadLine();
+server.Stop();</pre>
+</div>
+
+<div id="code-mfa" class="code-block" style="display:none">
+<div class="copy-btn" onclick="copyCode('code-mfa-content')">Copy</div>
+<pre id="code-mfa-content">using ApacheMinaSSHD.NET.Wrapper;
+using ApacheMinaSSHD.NET.Wrapper.Factories;
+using ApacheMinaSSHD.NET.Wrapper.Abstractions;
+
+var server = AMNetSshServer.SetUpDefaultServer();
+server.Host = "127.0.0.1";
+server.Port = 2222;
+server.Config.ApplyProductionDefaults();
+server.Config.ApplyModernAlgorithmDefaults();
+server.setKeyPairProvider(
+    new AMNetSimpleGeneratorHostKeyProvider("hostkey.ser"));
+
+// Require both password AND keyboard-interactive
+server.SetFixedPasswordAuthenticator("admin", "s3cret!");
+server.SetFixedKeyboardInteractiveAuthenticator(
+    "123456",
+    prompt: "TOTP Code",
+    instruction: "Enter your two-factor code.");
+
+server.SetAuthenticationMethods(
+    AMNetSshAuthenticationMethods.RequireAll(
+        AMNetSshAuthenticationMethods.Password,
+        AMNetSshAuthenticationMethods.KeyboardInteractive));
+
+server.setFileSystemFactory(
+    new AMNetVirtualFileSystemFactory(@"./sftp-root"));
+server.setSubsystemFactories(
+    new AMNetSftpSubsystemFactory());
+server.Start();
+Console.ReadLine();
+server.Stop();</pre>
+</div>
+
+<div id="code-events" class="code-block" style="display:none">
+<div class="copy-btn" onclick="copyCode('code-events-content')">Copy</div>
+<pre id="code-events-content">using ApacheMinaSSHD.NET.Wrapper;
+using ApacheMinaSSHD.NET.Wrapper.Factories;
+using ApacheMinaSSHD.NET.Wrapper.Abstractions;
+using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
+
+var server = AMNetSshServer.SetUpDefaultServer();
+server.Host = "127.0.0.1";
+server.Port = 2222;
+server.Config.ApplyProductionDefaults();
+server.Config.ApplyModernAlgorithmDefaults();
+server.SetFixedPasswordAuthenticator("admin", "changeme");
+server.setKeyPairProvider(
+    new AMNetSimpleGeneratorHostKeyProvider("hostkey.ser"));
+server.setFileSystemFactory(
+    new AMNetVirtualFileSystemFactory(@"./sftp-root"));
+
+var sftp = new AMNetSftpSubsystemFactory();
+sftp.addSftpEventListener(new MyEventListener());
+sftp.setFileSystemAccessor(new MyFileAccessor());
+server.setSubsystemFactories(sftp);
+server.Start();
+Console.ReadLine();
+server.Stop();
+
+class MyEventListener : AMNetSftpEventListener {
+    public override void OnOpen(ISshEvent ctx)
+        => Console.WriteLine($"Open: {ctx.SshHandle.PhysicalPath}");
+    public override void OnWrite(ISshReadWrite ctx)
+        => Console.WriteLine($"Write: {ctx.Length} bytes");
+}
+
+class MyFileAccessor : AMNetSftpFileSystemAccessor {
+    public override bool ShouldIncludeDirectoryEntry(
+        ISshFileSystemAccess context) {
+        var name = Path.GetFileName(context.RemotePath);
+        if (name?.StartsWith('.') == true) return false;
+        return base.ShouldIncludeDirectoryEntry(context);
+    }
+}</pre>
+</div>
 </div>
 </section>
 
-<section>
-<h2>About SERALYNX LLC</h2>
-<p><strong>SERALYNX LLC</strong> is a Critical Infrastructure Engineering firm supporting Physical and Technological Advancement. One of its products is <strong><a href="https://portasftpserver.com/portable-sftp-server-community-edition/" style="color:#e94560">Porta SFTP Server</a></strong> — the best portable SFTP server for Windows and Linux, free SFTP server, and instant SFTP server for critical infrastructure.</p>
-<p style="margin-top:.8rem">ApacheMinaSSHD.NET follows the same architectural paradigm as Porta SFTP Server, exposing the full power of Apache MINA SSHD through a clean .NET API — no Java imports required.</p>
-<a class="btn" href="https://portasftpserver.com">Visit Porta SFTP Server</a>
+<div class="container">
+
+<section id="samples">
+<div class="section-label">Sample Projects</div>
+<h2>Explore Every Scenario</h2>
+<p class="section-sub">Ready-to-run C# projects in the repository — from minimal to production-ready.</p>
+
+<div class="samples-grid">
+<div class="sample-item"><a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/tree/main/Sample/MinimalServer"><h3>MinimalServer</h3><p>Simplest SFTP server in ~15 lines of C#. Perfect starting point.</p></a></div>
+<div class="sample-item"><a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/tree/main/Sample/AuthenticationServer"><h3>AuthenticationServer</h3><p>Password, delegate, composite, public key, fingerprint, authorized_keys, keyboard-interactive, and MFA.</p></a></div>
+<div class="sample-item"><a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/tree/main/Sample/VirtualFileSystemServer"><h3>VirtualFileSystemServer</h3><p>Root jail isolation, hidden-file filtering, path access control for SFTP and SCP.</p></a></div>
+<div class="sample-item"><a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/tree/main/Sample/ScpServer"><h3>ScpServer</h3><p>Custom SCP file opener, transfer event audit, and directory filtering.</p></a></div>
+<div class="sample-item"><a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/tree/main/Sample/SftpEventServer"><h3>SftpEventServer</h3><p>Track file open, close, read, write, create, remove, and move operations in real time.</p></a></div>
+<div class="sample-item"><a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/tree/main/Sample/SessionMonitorServer"><h3>SessionMonitorServer</h3><p>Session lifecycle, I/O connection events, proxy metadata, and structured logging.</p></a></div>
+<div class="sample-item"><a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/tree/main/Sample/ProductionServer"><h3>ProductionServer</h3><p>JSON config, algorithm selection, SFTP events, SCP, session monitoring — all together.</p></a></div>
+<div class="sample-item"><a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/tree/main/Sample/ConsoleSftpServer"><h3>ConsoleSftpServer</h3><p>Lightweight console-based SFTP server with basic setup.</p></a></div>
+<div class="sample-item"><a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/tree/main/Sample/SimpleSSHDSever"><h3>SimpleSSHDSever</h3><p>Windows Forms GUI server with integration test harness and WinSCP support.</p></a></div>
+</div>
+</section>
+
+<section id="about">
+<div class="section-label">About</div>
+<h2>SERALYNX LLC &mdash; Critical Infrastructure Engineering</h2>
+<p class="section-sub">ApacheMinaSSHD.NET is created by SERALYNX LLC, the team behind Porta SFTP Server — the best portable SFTP server for Windows and Linux.</p>
+
+<div class="two-col">
+<div class="about-card">
+<h3 style="color:#0f3460;margin-bottom:.6rem">&#128640; SERALYNX LLC</h3>
+<p>We are a Critical Infrastructure Engineering firm supporting <strong>Physical and Technological Advancement</strong>. We build secure file transfer solutions trusted by civil engineering firms, IT administrators, and developers worldwide.</p>
+<p style="margin-top:.6rem">Porta SFTP Server is our flagship portable SFTP server — a zero-install, instant SFTP server for Windows and Linux that serves critical infrastructure with root jail isolation, FIPS-compliant algorithms, and enterprise-grade security.</p>
+<p style="margin-top:.6rem">ApacheMinaSSHD.NET follows the same architectural paradigm as Porta SFTP Server, exposing the full power of Apache MINA SSHD through a clean .NET API — no Java imports required.</p>
+<a class="btn btn-primary" href="https://portasftpserver.com" style="margin-top:1.2rem">Visit Porta SFTP Server</a>
+</div>
+<div>
+<h3 style="color:#0f3460;margin-bottom:.8rem">Why .NET Developers Choose Us</h3>
+<div class="feature-row"><div class="icon-box">&#10003;</div><div class="text"><h3>Zero Java Dependencies</h3><p>IKVM is bundled inside the NuGet package. Your application code never imports Java, Apache MINA, or SLF4J types.</p></div></div>
+<div class="feature-row"><div class="icon-box">&#10003;</div><div class="text"><h3>Open Source &amp; MIT</h3><p>Full source on GitHub. Free for personal, commercial, and enterprise use. Contribute, fork, or customize.</p></div></div>
+<div class="feature-row"><div class="icon-box">&#10003;</div><div class="text"><h3>Cross-Platform</h3><p>Targets .NET 10. Runs on Windows, Linux, and macOS. Deploy as a console app, Windows Service, or Docker container.</p></div></div>
+<div class="feature-row"><div class="icon-box">&#10003;</div><div class="text"><h3>Real SSH Compatibility</h3><p>Tested against OpenSSH and WinSCP clients. Supports SFTP v3, SCP, and standard SSH authentication flows.</p></div></div>
+</div>
+</div>
 </section>
 
 </div>
 
 <footer>
-<p><strong>ApacheMinaSSHD.NET</strong> is maintained by <a href="https://portasftpserver.com"><strong>SERALYNX LLC</strong></a> &mdash; building secure file transfer solutions for critical infrastructure.</p>
-<p style="margin-top:.4rem">MIT Licensed &bull; Not affiliated with the Apache Software Foundation</p>
+<div class="f-links">
+<a href="https://portasftpserver.com">Porta SFTP Server</a>
+<a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET">GitHub</a>
+<a href="https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/">NuGet</a>
+<a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/README.md">Developer Guide</a>
+<a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/SECURITY.md">Security</a>
+</div>
+<p><strong>ApacheMinaSSHD.NET</strong> is maintained by <a href="https://portasftpserver.com"><strong>SERALYNX LLC</strong></a> &mdash; building secure file transfer for critical infrastructure since 2017.</p>
+<p style="margin-top:.3rem">MIT Licensed &bull; Not affiliated with the Apache Software Foundation</p>
 </footer>
+
+<script>
+function showCode(lang, id) {
+  document.querySelectorAll('.code-block').forEach(b => b.style.display = 'none');
+  document.getElementById('code-' + id).style.display = 'block';
+  document.querySelectorAll('.code-tab button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+function copyCode(id) {
+  var text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = event.target;
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+  });
+}
+</script>
 
 </body>
 </html>

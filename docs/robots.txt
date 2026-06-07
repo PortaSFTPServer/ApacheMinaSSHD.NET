@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://portasftpserver.github.io/ApacheMinaSSHD.NET/sitemap.xml

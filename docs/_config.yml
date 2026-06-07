@@ -1,2 +1,4 @@
 title: ApacheMinaSSHD.NET
-description: .NET SFTP server library and C# wrapper around Apache MINA SSHD by SERALYNX LLC
+description: Free, open-source .NET SFTP server library and C# wrapper around Apache MINA SSHD by SERALYNX LLC. Embed secure SFTP and SCP file transfer in C# applications.
+url: https://portasftpserver.github.io
+baseurl: /ApacheMinaSSHD.NET
