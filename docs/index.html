@@ -89,6 +89,7 @@ nav .nav-links a:hover { color: #e94560; }
 .container { max-width: 1040px; margin: 0 auto; padding: 3.5rem 1.5rem; }
 section h2 { font-size: 1.7rem; color: #0f3460; margin-bottom: .6rem; }
 section .section-sub { color: #666; margin-bottom: 2rem; font-size: 1rem; max-width: 600px; }
+.section-divider { border: none; border-top: 1px solid #e0e0e0; margin: 0; }
 .section-label { display: inline-block; background: #0f3460; color: #fff; font-size: .75rem; font-weight: 600; padding: .2rem .8rem; border-radius: 4px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: .6rem; }
 
 /* Cards */
@@ -159,7 +160,7 @@ footer a { color: #e94560; text-decoration: none; }
 <body>
 
 <nav>
-<div class="logo"><a href="/ApacheMinaSSHD.NET/"><span>SSHD</span>.NET</a></div>
+<div class="logo"><a href="/ApacheMinaSSHD.NET/">ApacheMinaSSHD.NET</a></div>
 <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
 <div class="nav-links">
 <a href="#features">Features</a>
@@ -204,6 +205,8 @@ footer a { color: #e94560; text-decoration: none; }
 <div class="card"><span class="icon">&#128009;</span><h3>MIT Licensed</h3><p>Free for any use — personal, commercial, or enterprise. No restrictions, no hidden fees. Built by SERALYNX LLC.</p></div>
 </div>
 </section>
+
+<hr class="section-divider">
 
 </div>
 
@@ -327,6 +330,8 @@ class MyFileAccessor : AMNetSftpFileSystemAccessor {
 </div>
 </section>
 
+<hr class="section-divider">
+
 <div class="container">
 
 <section id="samples">
@@ -346,6 +351,8 @@ class MyFileAccessor : AMNetSftpFileSystemAccessor {
 <div class="sample-item"><a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/tree/main/Sample/SimpleSSHDSever"><h3>SimpleSSHDSever</h3><p>Windows Forms GUI server with integration test harness and WinSCP support.</p></a></div>
 </div>
 </section>
+
+<hr class="section-divider">
 
 <section id="about">
 <div class="section-label">About</div>
