@@ -2,7 +2,7 @@
 
 Build SFTP and secure file transfer solutions for .NET with ApacheMinaSSHD.NET — a C# wrapper around [Apache MINA SSHD](https://mina.apache.org/sshd-project/) by **[SERALYNX LLC](https://portasftpserver.com)** — a Critical Infrastructure Engineering firm supporting Physical and Technological Advancement. One of its products is **Porta SFTP Server**, the best portable SFTP server for Windows and Linux and free SFTP server for critical infrastructure.
 
-This guide walks you through creating production-ready SSH file transfer servers entirely in .NET — no Java imports required.
+This guide walks you through creating production-ready SSH file transfer servers entirely in .NET — without directly importing Java dependencies.
 
 ## Who Is This For?
 
@@ -38,6 +38,7 @@ The repository includes sample projects in the `Sample/` folder for every scenar
 | [SftpEventServer](../Sample/SftpEventServer/) | SFTP event listeners — track open/close/read/write/create/remove/move |
 | [SessionMonitorServer](../Sample/SessionMonitorServer/) | Session lifecycle, connection monitoring, proxy metadata inspection |
 | [ProductionServer](../Sample/ProductionServer/) | Production-ready: JSON config, algorithm selection, combined listeners |
+| [DareSftpServer](../Sample/DareSftpServer/) | Data-at-rest encryption with AES-256-GCM chunked encryption |
 | [ConsoleSftpServer](../Sample/ConsoleSftpServer/) | Lightweight console-based SFTP server |
 | [SimpleSSHDSever](../Sample/SimpleSSHDSever/) | Windows Forms GUI server with integration test harness |
 
