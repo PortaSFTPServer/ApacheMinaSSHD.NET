@@ -32,6 +32,7 @@ This guide walks you through creating production-ready SSH file transfer servers
 | [Security Best Practices](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/07-security.md) | Crypto algorithms, hardening, symlink containment |
 | [Logging & Monitoring](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/08-logging.md) | SLF4J bridge, audit events, custom loggers |
 | [Production Deployment](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/09-production-deployment.md) | Windows Service, Docker, high availability, monitoring |
+| [PROXY Protocol](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/10-proxy-protocol.md) | Load balancer integration, PROXY v1/v2, custom acceptors |
 
 ## Sample Projects
 
