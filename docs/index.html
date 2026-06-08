@@ -181,13 +181,15 @@ footer a { color: #e94560; text-decoration: none; }
 <h1>Apache<span>MinaSSHD</span>.NET</h1>
 <p class="subtitle">A <strong>free</strong>, <strong>open-source</strong> .NET SFTP server library and C# wrapper around Apache MINA SSHD. Embed secure SFTP, SCP, and SSH file transfer in your C# applications with <strong>zero Java dependencies</strong>.</p>
 <p style="max-width:720px;margin:0 auto 1.8rem;font-size:.88rem;background:rgba(233,69,96,.15);border:1px solid rgba(233,69,96,.4);border-radius:8px;padding:.8rem 1.2rem;color:#f0b4b4;text-align:left">
-<strong>&#9888;&#65039; Security disclaimer:</strong> This is a <strong>wrapper library</strong>. Like any wrapper —
-whether for a database driver, HTTP client, or cryptographic library — <strong>security depends on
-how you use it</strong>. ApacheMinaSSHD.NET exposes the Apache MINA SSHD engine through .NET APIs,
-giving you building blocks for authentication, virtual file systems, and algorithm selection.
-It is your responsibility to configure these components correctly, choose strong algorithms,
-validate inputs, enforce access controls, set appropriate limits, and follow security best
-practices for your environment.
+<strong>&#9888;&#65039; Security disclaimer:</strong> This is a <strong>wrapper library</strong> around Apache
+MINA SSHD — it wraps <strong>SFTP (SSH File Transfer Protocol) and SCP (Secure Copy Protocol)
+only</strong>. It does <strong>not</strong> implement FTP, FTPS, TFTP, or any other insecure file transfer protocol.
+Like any wrapper — whether for a database driver, HTTP client, or cryptographic library —
+<strong>security depends on how you use it</strong>. ApacheMinaSSHD.NET exposes the Apache MINA SSHD engine
+through .NET APIs, giving you building blocks for authentication, virtual file systems, and
+algorithm selection. It is your responsibility to configure these components correctly, choose
+strong algorithms, validate inputs, enforce access controls, set appropriate limits, and follow
+security best practices for your environment.
 See the <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/07-security.md" style="color:#e94560">Security Best Practices guide</a>.
 </p>
 <div class="badge-wrap">

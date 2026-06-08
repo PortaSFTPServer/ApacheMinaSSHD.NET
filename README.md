@@ -2,13 +2,15 @@
 
 [![NuGet](https://img.shields.io/nuget/v/ApacheMinaSSHD.NET.Wrapper)](https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/)
 
-> **⚠️ Security disclaimer:** This is a **wrapper library**. Like any wrapper — whether for a
-> database driver, HTTP client, or cryptographic library — **security depends on how you use it**.
-> ApacheMinaSSHD.NET exposes the Apache MINA SSHD engine through .NET APIs, giving you building
-> blocks for authentication, virtual file systems, and algorithm selection. It is your
-> responsibility to configure these components correctly, choose strong algorithms, validate
-> inputs, enforce access controls, set appropriate limits, and follow security best practices
-> for your environment. Review the [Security Best Practices guide](docs/guide/07-security.md)
+> **⚠️ Security disclaimer:** This is a **wrapper library** around Apache MINA SSHD — it wraps
+> **SFTP (SSH File Transfer Protocol) and SCP (Secure Copy Protocol) only**. It does **not**
+> implement FTP, FTPS, TFTP, or any other insecure file transfer protocol. Like any wrapper —
+> whether for a database driver, HTTP client, or cryptographic library — **security depends on
+> how you use it**. ApacheMinaSSHD.NET exposes the Apache MINA SSHD engine through .NET APIs,
+> giving you building blocks for authentication, virtual file systems, and algorithm selection.
+> It is your responsibility to configure these components correctly, choose strong algorithms,
+> validate inputs, enforce access controls, set appropriate limits, and follow security best
+> practices for your environment. Review the [Security Best Practices guide](docs/guide/07-security.md)
 > before deploying to production.
 
 **[SERALYNX LLC](https://portasftpserver.com)** is a Critical Infrastructure Engineering firm
