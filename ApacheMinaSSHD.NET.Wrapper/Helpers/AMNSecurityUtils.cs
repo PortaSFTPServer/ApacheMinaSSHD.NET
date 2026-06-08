@@ -8,6 +8,8 @@ namespace ApacheMinaSSHD.NET.Helpers
     /// </summary>
     public static class AMNSecurityUtils
     {
+        private static bool fipsConfigured;
+
         /// <summary>
         /// Enables or disables FIPS-oriented provider selection.
         /// </summary>
@@ -15,16 +17,27 @@ namespace ApacheMinaSSHD.NET.Helpers
         /// <c>true</c> to prefer the BCFIPS provider and disable the standard Bouncy Castle provider;
         /// <c>false</c> to use the standard provider behavior.
         /// </param>
+        /// <remarks>
+        /// The underlying Java <c>SecurityUtils.setFipsMode()</c> can only be called once
+        /// per JVM lifetime. Subsequent calls are no-ops since the JVM state is already established.
+        /// </remarks>
         public static void SetFipsMode(bool state)
         {
-                if (state)
-                {
-                    SecurityUtils.setFipsMode();
-                }
+            if (fipsConfigured)
+            {
+                return;
+            }
 
-                SecurityUtils.setAPrioriDisabledProvider("BCFIPS", !state);
+            if (state)
+            {
+                SecurityUtils.setFipsMode();
+            }
 
-                SecurityUtils.setAPrioriDisabledProvider("BC", state);
+            SecurityUtils.setAPrioriDisabledProvider("BCFIPS", !state);
+
+            SecurityUtils.setAPrioriDisabledProvider("BC", state);
+
+            fipsConfigured = true;
         }
 
     }
