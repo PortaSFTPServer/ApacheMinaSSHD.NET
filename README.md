@@ -229,7 +229,6 @@ available for advanced scenarios.
 Project code is MIT licensed. See `LICENSE`, `THIRD-PARTY-NOTICES.md`, and the
 `licenses/` folder before publishing source or NuGet packages.
 
-ApacheMinaSSHD.NET is not an Apache Software Foundation project and is not
-affiliated with or endorsed by the Apache Software Foundation.
+[![Apache MINA SSHD](https://mina.apache.org/assets/img/header-sshd.png)](https://mina.apache.org/sshd-project/) ApacheMinaSSHD.NET is a **wrapper** around **[Apache MINA SSHD](https://mina.apache.org/sshd-project/)**, a trademark of the **Apache Software Foundation**. This project is not affiliated with or endorsed by the Apache Software Foundation.
 
 ApacheMinaSSHD.NET is maintained by SERALYNX LLC. For a ready-to-use portable SFTP server, see [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).
