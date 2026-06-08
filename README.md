@@ -250,9 +250,9 @@ Project code is MIT licensed. See `LICENSE`, `THIRD-PARTY-NOTICES.md`, and the
 
 ApacheMinaSSHD.NET is made possible by these exceptional open source projects:
 
-[![Bouncy Castle](https://www.bouncycastle.org/wp-content/uploads/2023/12/logo-bc.svg)](https://www.bouncycastle.org/) — Cryptography library (MIT / Bouncy Castle)
-
-[![SLF4J](https://upload.wikimedia.org/wikipedia/commons/d/d5/SLF4J_Logo.png)](https://www.slf4j.org/) — Logging facade (MIT)
+| [![Bouncy Castle](https://www.bouncycastle.org/wp-content/uploads/2023/12/logo-bc.svg)](https://www.bouncycastle.org/) | [![SLF4J](https://upload.wikimedia.org/wikipedia/commons/d/d5/SLF4J_Logo.png)](https://www.slf4j.org/) |
+|---|---|
+| Cryptography library (MIT / Bouncy Castle) | Logging facade (MIT) |
 
 - **[Apache MINA SSHD](https://mina.apache.org/sshd-project/)** — SSH/SFTP/SCP protocol engine (Apache License 2.0)
 - **[IKVM](https://ikvm.org/)** — Java-to-.NET bridge
