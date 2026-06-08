@@ -4,6 +4,20 @@
 
 > **⚠️ Security disclaimer:** This is a wrapper library around Apache MINA SSHD — it wraps SFTP and SCP only. This is to support a secure transfer in transit by default. It does not implement FTP, FTPS, TFTP, or any other insecure protocol. Like any wrapper library, security depends on how you use it. You are responsible for configuring authentication, encryption algorithms, access controls, and limits appropriately for your environment. Review the [Security Best Practices guide](docs/guide/07-security.md) before deploying to production.
 
+## Table of Contents
+
+- [Authentication Modules](#authentication-modules)
+- [Use Cases](#use-cases)
+- [Version Compatibility](#version-compatibility)
+- [Sample Projects](#sample-projects)
+- [Developer Guide](#developer-guide)
+- [Quick Start](#quick-start)
+- [Directory Entry Filtering](#directory-entry-filtering)
+- [Algorithm Configuration](#algorithm-configuration)
+- [Powered by Apache MINA SSHD](#powered-by-apache-mina-sshd)
+- [License and Third-Party Notices](#license-and-third-party-notices)
+  - [Acknowledgments](#acknowledgments)
+
 **[SERALYNX LLC](https://portasftpserver.com)** is a Critical Infrastructure Engineering firm
 supporting Physical and Technological Advancement. One of its products is
 **[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)** —
@@ -22,20 +36,6 @@ ApacheMinaSSHD.NET delivers enterprise-grade secure file transfer.
 ![SERALYNX LLC - Porta SFTP Server for Critical Infrastructure](https://raw.githubusercontent.com/PortaSFTPServer/ApacheMinaSSHD.NET/main/docs/images/seralynx-banner.png)
 
 SERALYNX LLC was founded to solve a real problem in critical infrastructure engineering: civil engineers, construction teams, and IT administrators needed a way to **securely collaborate** on CAD files, 3D models, BIM data, technical drawings, and project documents — without complex VPNs, insecure FTP, or expensive enterprise systems. **Porta SFTP Server** was built as a portable, zero-install SFTP server that deploys in minutes on any Windows or Linux machine. **ApacheMinaSSHD.NET** extends that mission to developers — giving .NET applications the same enterprise-grade secure file transfer as an embeddable library, purpose-built for **secure collaboration**, **project management**, and **data exchange** in critical infrastructure.
-
-## Table of Contents
-
-- [Authentication Modules](#authentication-modules)
-- [Use Cases](#use-cases)
-- [Version Compatibility](#version-compatibility)
-- [Sample Projects](#sample-projects)
-- [Developer Guide](#developer-guide)
-- [Quick Start](#quick-start)
-- [Directory Entry Filtering](#directory-entry-filtering)
-- [Algorithm Configuration](#algorithm-configuration)
-- [Powered by Apache MINA SSHD](#powered-by-apache-mina-sshd)
-- [License and Third-Party Notices](#license-and-third-party-notices)
-  - [Acknowledgments](#acknowledgments)
 
 ## Authentication Modules
 
