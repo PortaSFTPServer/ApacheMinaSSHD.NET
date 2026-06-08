@@ -23,6 +23,20 @@ ApacheMinaSSHD.NET delivers enterprise-grade secure file transfer.
 
 SERALYNX LLC was founded to solve a real problem in critical infrastructure engineering: civil engineers, construction teams, and IT administrators needed a way to **securely collaborate** on CAD files, 3D models, BIM data, technical drawings, and project documents — without complex VPNs, insecure FTP, or expensive enterprise systems. **Porta SFTP Server** was built as a portable, zero-install SFTP server that deploys in minutes on any Windows or Linux machine. **ApacheMinaSSHD.NET** extends that mission to developers — giving .NET applications the same enterprise-grade secure file transfer as an embeddable library, purpose-built for **secure collaboration**, **project management**, and **data exchange** in critical infrastructure.
 
+## Table of Contents
+
+- [Authentication Modules](#authentication-modules)
+- [Use Cases](#use-cases)
+- [Version Compatibility](#version-compatibility)
+- [Sample Projects](#sample-projects)
+- [Developer Guide](#developer-guide)
+- [Quick Start](#quick-start)
+- [Directory Entry Filtering](#directory-entry-filtering)
+- [Algorithm Configuration](#algorithm-configuration)
+- [Powered by Apache MINA SSHD](#powered-by-apache-mina-sshd)
+- [License and Third-Party Notices](#license-and-third-party-notices)
+  - [Acknowledgments](#acknowledgments)
+
 ## Authentication Modules
 
 The public authentication API stays .NET-only. Developers can implement the
