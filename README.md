@@ -246,4 +246,15 @@ or endorsed by the Apache Software Foundation.
 Project code is MIT licensed. See `LICENSE`, `THIRD-PARTY-NOTICES.md`, and the
 `licenses/` folder before publishing source or NuGet packages.
 
+### Acknowledgments
+
+ApacheMinaSSHD.NET is made possible by these exceptional open source projects:
+
+[![Bouncy Castle](https://www.bouncycastle.org/wp-content/uploads/2023/12/logo-bc.svg)](https://www.bouncycastle.org/) — Cryptography library (MIT / Bouncy Castle)
+
+[![SLF4J](https://upload.wikimedia.org/wikipedia/commons/d/d5/SLF4J_Logo.png)](https://www.slf4j.org/) — Logging facade (MIT)
+
+- **[Apache MINA SSHD](https://mina.apache.org/sshd-project/)** — SSH/SFTP/SCP protocol engine (Apache License 2.0)
+- **[IKVM](https://ikvm.org/)** — Java-to-.NET bridge
+
 ApacheMinaSSHD.NET is maintained by SERALYNX LLC. For a ready-to-use portable SFTP server, see [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).
