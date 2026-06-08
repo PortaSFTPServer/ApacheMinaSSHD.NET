@@ -20,7 +20,7 @@
     ],
     "globalMetadata": {
       "_appTitle": "ApacheMinaSSHD.NET API Reference",
-      "_appFooter": "",
+      "_appFooter": "<a href=\"https://portasftpserver.com/portable-sftp-server-community-edition/\" style=\"margin-right: 1em;\">Porta SFTP Server</a>",
       "_appLogoPath": "images/logo.svg",
       "_appLogoUrl": "https://portasftpserver.github.io/ApacheMinaSSHD.NET/api/ApacheMinaSSHD.NET.Wrapper.html",
       "_enableSearch": true
