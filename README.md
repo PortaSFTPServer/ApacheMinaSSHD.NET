@@ -75,6 +75,14 @@ Use ApacheMinaSSHD.NET when you need:
   handling, virtual file systems, root jail behavior, hidden-file filtering,
   SFTP hooks, SCP hooks, audit events, and SSH algorithm configuration.
 
+## Version Compatibility
+
+| Component | Version |
+|-----------|---------|
+| .NET | 6.0, 8.0, 9.0, 10.0 |
+| Bundled Apache MINA SSHD | 2.18.0 |
+| IKVM | 8.12.0+ |
+
 ## Sample Projects
 
 Browse ready-to-run C# SFTP server examples that demonstrate real scenarios:

@@ -133,6 +133,16 @@ class CustomAccessor : AMNetSftpFileSystemAccessor
 }
 ```
 
+## Common Pitfalls
+
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| Users see each other's files | Root jail not configured | Always set `AMNetVirtualFileSystemFactory` via `setFileSystemFactory()` |
+| Path traversal works | `createUserDirectory` with unsanitized username | Username sanitization is automatic — but verify `ResolveUserHomeDirectory` does not introduce traversal in custom overrides |
+| Dot-files visible | Hidden names not configured | Override `HiddenNames` or `ShouldIncludeDirectoryEntry` to hide `.git`, `.env`, etc. |
+
+See [VirtualFileSystemServer](../Sample/VirtualFileSystemServer/) for a complete root jail implementation.
+
 ---
 
 **Next:** [SFTP Subsystem](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/05-sftp-subsystem.md) — file operations, event hooks, and access control.

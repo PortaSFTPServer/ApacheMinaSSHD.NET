@@ -133,6 +133,16 @@ class JavaLogRedirect
 }
 ```
 
+## Common Pitfalls
+
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| No log output | `AMNetLogger` not instantiated | Create a logger instance before any operations to initialize the SLF4J bridge |
+| Java exceptions in output | MINA SSHD internal errors logged via SLF4J | These are expected — filter by log level or inspect the stack trace |
+| Custom logger not receiving events | Interface not fully implemented | Implement all five `IAMNetLogger` methods — unimplemented methods silently drop messages |
+
+See [SessionMonitorServer](../Sample/SessionMonitorServer/) for a logging and session monitoring example.
+
 ## Production Monitoring Checklist
 
 - [ ] Configure `AMNetLogger` with appropriate log level for each environment

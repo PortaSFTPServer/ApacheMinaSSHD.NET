@@ -196,15 +196,16 @@ PROXY protocol support for load balancers:
 server.setServerProxyAcceptor(new AMNetServerProxyAcceptor());
 ```
 
-## Security Scanner Integration
+## Common Pitfalls
 
-ApacheMinaSSHD.NET includes a security scanning script that checks both NuGet and Maven dependencies for known CVEs. Run it as part of your CI pipeline:
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| All logins rejected | Authenticator deny-by-default | Configure at least one authenticator with `SetPasswordAuthenticator()` or equivalent |
+| Public key auth fails | Wrong key format | Use OpenSSH format (`ssh-rsa AAA...`), not `-----BEGIN RSA PRIVATE KEY-----` |
+| MFA stops working mid-session | Auth method order matters | Configure methods **before** starting the server |
+| Delegate authenticator not called | Wrong method used | Use `SetDelegatePasswordAuthenticator()`, not `SetPasswordAuthenticator()` with a custom class |
 
-```powershell
-./eng/security-scan.ps1
-```
-
-This scans all project files for vulnerable package references and queries the OSV database for Maven dependency vulnerabilities.
+See [AuthenticationServer](../Sample/AuthenticationServer/) for runnable examples of every auth mode.
 
 ---
 

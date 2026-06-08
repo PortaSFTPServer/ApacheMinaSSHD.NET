@@ -100,6 +100,16 @@ server.Config.IDLE_TIMEOUT = TimeSpan.FromMinutes(5);
 server.Config.WELCOME_BANNER = "Authorized access only";
 ```
 
+## Common Pitfalls
+
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| Algorithms not taking effect | Set after server start | Configure all algorithms **before** calling `Start()` |
+| `ApplyModernAlgorithmDefaults()` unavailable | Outdated wrapper version | Update to the latest NuGet package |
+| Timeouts triggering during large transfers | `IDLE_TIMEOUT` too low | Set `IDLE_TIMEOUT` high enough for your largest file transfers |
+
+See [ProductionServer](../Sample/ProductionServer/) for a real-world configuration example.
+
 ---
 
 **Next:** [Authentication](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/03-authentication.md) — password, public key, keyboard-interactive, and multi-factor authentication.

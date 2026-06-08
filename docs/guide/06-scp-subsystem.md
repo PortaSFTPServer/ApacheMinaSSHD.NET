@@ -110,6 +110,16 @@ public override bool ShouldIncludeDirectoryEntry(ISshScpFileAccess access)
 }
 ```
 
+## Common Pitfalls
+
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| SCP not working | `setCommandFactory` not called | You must register the SCP command factory even if SFTP is already configured |
+| Uploads go to wrong directory | `ResolveIncomingFilePath` not overridden | Override to route incoming files to a specific `incoming/` subdirectory |
+| Permission denied on download | File outside root path | `IsPathAllowed` blocks files outside the root — verify the root path is correct |
+
+See [ScpServer](../Sample/ScpServer/) for a complete SCP implementation with transfer audit.
+
 ## Combined SFTP + SCP Setup
 
 Most deployments enable both protocols:

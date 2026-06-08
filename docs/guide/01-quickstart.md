@@ -13,7 +13,7 @@ This guide walks you through creating a working SFTP/SCP server with ApacheMinaS
 dotnet add package ApacheMinaSSHD.NET.Wrapper
 ```
 
-No additional packages are needed — the Wrapper bundles all IKVM bindings, Apache MINA SSHD, SLF4J, and Bouncy Castle assemblies.
+No additional packages are needed — the Wrapper bundles all IKVM bindings, Apache MINA SSHD 2.18.0, SLF4J, and Bouncy Castle assemblies. Compatible with .NET 6.0, 8.0, 9.0, and 10.0.
 
 ## Step 2: Create the Server
 
@@ -85,8 +85,8 @@ server.Host = "127.0.0.1";
 server.Port = 2222;
 
 var hostKeys = new AMNetSimpleGeneratorHostKeyProvider("hostkey.ser");
-hostKeys.setAlgorithm(AMNetSshAlgorithms.HostKeyAlgorithms.Rsa);
-hostKeys.setKeySize(3072);
+hostKeys.Algorithm = AMNetSshAlgorithms.HostKeyAlgorithms.Rsa;
+hostKeys.KeySize = 3072;
 server.setKeyPairProvider(hostKeys);
 
 server.SetFixedPasswordAuthenticator("demo", "your-password-here");
@@ -113,6 +113,25 @@ sftp> pwd
 sftp> ls
 sftp> put test-file.txt
 ```
+
+## Common Pitfalls
+
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| Connection refused | Port already in use or firewall | Verify port is free with `netstat -ano`, check firewall rules |
+| Host key regenerates on every restart | Key file directory not writable | Ensure `hostkey.ser` directory has write permissions |
+| "Authentication failed" | Authenticator not configured or wrong credentials | Call `SetFixedPasswordAuthenticator` or a custom authenticator before `Start()` |
+
+## Next Steps
+
+Your server works — now harden it for real use:
+
+1. **[Configure production limits](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/02-configuration.md)** — apply `ApplyProductionDefaults()` and tune timeouts, limits, and algorithms
+2. **[Add proper authentication](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/03-authentication.md)** — replace the hardcoded password with delegate or custom authenticators against your identity store
+3. **[Set up a virtual filesystem](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/04-virtual-filesystem.md)** — enable root jail isolation so users cannot escape their home directories
+4. **[Enable audit logging](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/08-logging.md)** — attach SFTP event listeners to track file operations
+
+See [MinimalServer](../Sample/MinimalServer/) for a complete, runnable version of this example.
 
 ---
 

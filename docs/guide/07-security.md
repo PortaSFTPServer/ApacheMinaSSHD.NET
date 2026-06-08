@@ -128,6 +128,10 @@ Each user is confined to `jail/{username}`. Path traversal via `../` in username
 - `AUTH_TIMEOUT` limits the authentication window
 - Deny-by-default: all authenticators reject unless explicitly configured
 
+## Data-at-Rest Encryption
+
+For scenarios requiring encrypted storage, see [DareSftpServer](../Sample/DareSftpServer/) — it demonstrates AES-256-GCM chunked encryption for data at rest.
+
 ## Dependency Vulnerability Scanning
 
 Run the built-in security scanner in your CI pipeline:
@@ -181,6 +185,14 @@ class SecurityAuditListener : AMNetSftpEventListener
     }
 }
 ```
+
+## Common Pitfalls
+
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| FIPS mode throws on second server instance | `SetFipsMode` is one-shot per JVM lifetime | The library handles this internally with a static sentinel — ensure you only call it once |
+| "Weak algorithm" warning | Legacy cipher in default set | Call `ApplyModernAlgorithmDefaults()` to restrict to modern ciphers, MACs, and KEX |
+| Host key file permissions too permissive | Default file permissions may be loose | Set `hostKeys.StrictFilePermissions = true` to enforce access control on the key file |
 
 ## Production Checklist
 

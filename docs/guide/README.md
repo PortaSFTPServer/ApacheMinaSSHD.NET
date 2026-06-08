@@ -11,6 +11,14 @@ This guide walks you through creating production-ready SSH file transfer servers
 - **Civil engineering and construction teams** sharing CAD, BIM, and 3D model files securely
 - **DevOps engineers** automating secure file transfer pipelines
 
+## Version Compatibility
+
+| Component | Version |
+|-----------|---------|
+| .NET | 6.0, 8.0, 9.0, 10.0 |
+| Bundled Apache MINA SSHD | 2.18.0 |
+| IKVM | 8.12.0+ |
+
 ## What You'll Learn
 
 | Guide | Description |

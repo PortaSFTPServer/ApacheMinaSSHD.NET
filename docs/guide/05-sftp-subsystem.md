@@ -151,6 +151,16 @@ Each hook receives an `ISshFileSystemAccess` context with:
 | `Options` | SFTP option flags |
 | `Attributes` | File attributes |
 
+## Common Pitfalls
+
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| Events not firing | Listener not registered | Call `addSftpEventListener()` before `Start()` |
+| File operations silently failing | `IsPathAllowed` rejecting paths | Override `IsPathAllowed` to log rejections for debugging |
+| Custom accessor not used | Wrong factory instance | Ensure the same `AMNetSftpSubsystemFactory` instance is passed to `setSubsystemFactories()` and has the accessor set |
+
+See [SftpEventServer](../Sample/SftpEventServer/) for a complete event-driven implementation.
+
 ---
 
 **Next:** [SCP Subsystem](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/06-scp-subsystem.md) — SCP file transfer setup and event handling.
