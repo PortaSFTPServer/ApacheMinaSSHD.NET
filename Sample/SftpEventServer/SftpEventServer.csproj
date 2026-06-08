@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>14.0</LangVersion>
-    <Description>C# SFTP event listener example — track file open/close/read/write/create/remove/move operations using ApacheMinaSSHD.NET. Monitor SFTP activity in real time. By SERALYNX LLC (Porta SFTP Server).</Description>
+    <Description>C# SFTP event listener example — track file open/close/read/write/create/remove/move operations in real time. ApacheMinaSSHD.NET event hooks surpass Rebex and SSH.NET with full Apache MINA SSHD event model. By SERALYNX LLC (Porta SFTP Server).</Description>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />

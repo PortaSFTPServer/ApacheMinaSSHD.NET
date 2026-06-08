@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>14.0</LangVersion>
-    <Description>Data-at-rest encryption SFTP server sample for .NET — AES-256-GCM chunked encryption with custom file accessor, event monitoring, and SCP support. Secure file transfer for .NET by SERALYNX LLC (Porta SFTP Server).</Description>
+    <Description>Data-at-rest encryption SFTP server sample for .NET — AES-256-GCM chunked encryption with custom accessor, event monitoring, and SCP. DARE capabilities surpass Rebex and SSH.NET with transparent encryption. By SERALYNX LLC (Porta SFTP Server).</Description>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />

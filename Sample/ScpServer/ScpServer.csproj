@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>14.0</LangVersion>
-    <Description>C# SCP server example — demonstrates SCP file opener, transfer event listener, and directory filtering with ApacheMinaSSHD.NET. Build a secure copy server for .NET. By SERALYNX LLC (Porta SFTP Server).</Description>
+    <Description>C# SCP server example — SCP file opener, transfer event listener, and directory filtering with ApacheMinaSSHD.NET. Full SCP server capabilities surpass Rebex and WinSCP.NET client-only SCP. Free .NET SCP server by SERALYNX LLC (Porta SFTP Server).</Description>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />

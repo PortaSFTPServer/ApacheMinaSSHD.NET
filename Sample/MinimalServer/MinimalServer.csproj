@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>14.0</LangVersion>
-    <Description>Minimal C# SFTP server example — simplest way to embed an SFTP server in a .NET application using ApacheMinaSSHD.NET wrapper. Part of the SERALYNX LLC Porta SFTP Server ecosystem. Secure file transfer for .NET developers.</Description>
+    <Description>Minimal C# SFTP server example — simplest way to embed a full SFTP server in .NET using ApacheMinaSSHD.NET. Surpasses Rebex and SSH.NET client-only libraries with a complete Apache MINA SSHD server. Free Apache 2.0 licensed .NET SFTP by SERALYNX LLC (Porta SFTP Server).</Description>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />

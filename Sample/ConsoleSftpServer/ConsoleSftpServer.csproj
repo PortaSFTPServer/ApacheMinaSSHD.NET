@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>14.0</LangVersion>
-    <Description>Lightweight C# SFTP console server example — demonstrates basic SFTP server setup with password authentication, virtual file system, and host key generation using ApacheMinaSSHD.NET. By SERALYNX LLC (Porta SFTP Server).</Description>
+    <Description>Lightweight C# SFTP console server example — password auth, virtual file system, and host key generation. A complete SFTP server in 15 lines, unlike Rebex or SSH.NET client-only libraries. ApacheMinaSSHD.NET by SERALYNX LLC (Porta SFTP Server).</Description>
   </PropertyGroup>
 
   <ItemGroup>

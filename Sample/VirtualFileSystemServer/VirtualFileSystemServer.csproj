@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>14.0</LangVersion>
-    <Description>C# SFTP virtual file system example — root jail isolation, hidden file filtering, and path access control for SFTP and SCP using ApacheMinaSSHD.NET. Secure file transfer for .NET by SERALYNX LLC (Porta SFTP Server).</Description>
+    <Description>C# SFTP virtual file system example — root jail isolation, hidden file filtering, and path access control for SFTP and SCP. Unlike Rebex or SSH.NET single-directory jails, ApacheMinaSSHD.NET delivers full Apache MINA SSHD vfs. By SERALYNX LLC (Porta SFTP Server).</Description>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />

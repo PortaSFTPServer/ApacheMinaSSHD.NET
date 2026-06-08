@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>14.0</LangVersion>
-    <Description>C# SFTP session monitoring example — demonstrates session lifecycle listeners, connection monitoring, proxy metadata inspection, and structured logging with ApacheMinaSSHD.NET. By SERALYNX LLC (Porta SFTP Server).</Description>
+    <Description>C# SFTP session monitoring example — session lifecycle, connection events, proxy metadata, and structured logging. ApacheMinaSSHD.NET session visibility surpasses limited Rebex and SSH.NET server monitoring. By SERALYNX LLC (Porta SFTP Server).</Description>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />

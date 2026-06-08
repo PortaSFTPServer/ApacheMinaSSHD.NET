@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>14.0</LangVersion>
-    <Description>C# SFTP server authentication example — demonstrates password, public key, fingerprint, authorized_keys, keyboard-interactive, and multi-factor authentication with ApacheMinaSSHD.NET. By SERALYNX LLC (Porta SFTP Server).</Description>
+    <Description>C# SFTP server authentication example — password, public key, fingerprint, authorized_keys, keyboard-interactive, and MFA. Full SSH authentication surpasses Rebex, SSH.NET, and WinSCP.NET alternatives. ApacheMinaSSHD.NET by SERALYNX LLC (Porta SFTP Server).</Description>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />
