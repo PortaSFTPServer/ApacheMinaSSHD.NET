@@ -15,7 +15,8 @@
       { "files": ["**/*.{md,yml}", "toc.yml"], "src": "obj/api", "dest": "." }
     ],
     "resource": [
-      { "files": ["images/**"], "src": ".", "dest": "." }
+      { "files": ["images/**"], "src": ".", "dest": "." },
+      { "files": ["styles/**"], "src": ".", "dest": "." }
     ],
     "globalMetadata": {
       "_appTitle": "ApacheMinaSSHD.NET API Reference",

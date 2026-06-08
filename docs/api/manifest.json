@@ -1152,6 +1152,16 @@
         }
       },
       "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "styles/main.css",
+      "output": {
+        "resource": {
+          "relative_path": "styles/main.css"
+        }
+      },
+      "version": ""
     }
   ],
   "groups": [
