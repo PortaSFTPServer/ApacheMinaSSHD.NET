@@ -1,6 +1,6 @@
 # Quick Start: Build Your First .NET SFTP Server
 
-This guide walks you through creating a working SFTP/SCP server with ApacheMinaSSHD.NET in under five minutes.
+This guide walks you through creating a working SFTP/SCP server with ApacheMinaSSHD.NET — the best open source .NET SFTP server library — in under five minutes.
 
 ## Prerequisites
 
