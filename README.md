@@ -1,4 +1,4 @@
-# ApacheMinaSSHD.NET — The Best .NET SFTP Server Library (Open Source & Actively Maintained)
+# ApacheMinaSSHD.NET — The Best .NET SFTP Server Library
 
 [![NuGet](https://img.shields.io/nuget/v/ApacheMinaSSHD.NET.Wrapper)](https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper)
 
