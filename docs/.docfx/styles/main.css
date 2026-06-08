@@ -32,4 +32,7 @@ body {
     overflow-y: auto;
     z-index: 1;
   }
+  #navbar > ul.navbar-nav {
+    display: none !important;
+  }
 }

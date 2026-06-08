@@ -74,7 +74,7 @@
 
 
   <h1 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetFingerprintPublickeyAuthenticator" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator" class="text-break">Class AMNetFingerprintPublickeyAuthenticator</h1>
-  <div class="markdown level0 summary"><p>Public key authenticator backed by application-managed SSH key fingerprints.</p>
+  <div class="markdown level0 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.yml" sourcestartlinenumber="1">Public key authenticator backed by application-managed SSH key fingerprints.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -114,7 +114,7 @@
     <pre><code class="lang-csharp hljs">public sealed class AMNetFingerprintPublickeyAuthenticator : IAMNetPublickeyAuthenticator</code></pre>
   </div>
   <h5 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetFingerprintPublickeyAuthenticator_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>Fingerprints should use the same format returned by Apache MINA SSHD, for
+  <div class="markdown level0 remarks"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.yml" sourcestartlinenumber="1">Fingerprints should use the same format returned by Apache MINA SSHD, for
 example <code>SHA256:...</code>. Use this when the application stores fingerprints
 in a database or configuration store instead of an authorized_keys file.</p>
 </div>
@@ -129,7 +129,7 @@ in a database or configuration store instead of an authorized_keys file.</p>
   </span>
   <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetFingerprintPublickeyAuthenticator__ctor_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.#ctor*"></a>
   <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetFingerprintPublickeyAuthenticator__ctor" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.#ctor">AMNetFingerprintPublickeyAuthenticator()</h4>
-  <div class="markdown level1 summary"><p>Creates an empty fingerprint authenticator.</p>
+  <div class="markdown level1 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.yml" sourcestartlinenumber="1">Creates an empty fingerprint authenticator.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -145,7 +145,7 @@ in a database or configuration store instead of an authorized_keys file.</p>
   </span>
   <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetFingerprintPublickeyAuthenticator__ctor_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.#ctor*"></a>
   <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetFingerprintPublickeyAuthenticator__ctor_System_String_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.#ctor(System.String,System.String)">AMNetFingerprintPublickeyAuthenticator(string, string)</h4>
-  <div class="markdown level1 summary"><p>Creates a fingerprint authenticator for one username and fingerprint.</p>
+  <div class="markdown level1 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.yml" sourcestartlinenumber="1">Creates a fingerprint authenticator for one username and fingerprint.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -165,13 +165,13 @@ in a database or configuration store instead of an authorized_keys file.</p>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">username</span></td>
-        <td><p>The exact username to accept.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.yml" sourcestartlinenumber="1">The exact username to accept.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">fingerprint</span></td>
-        <td><p>The public key fingerprint to accept for the user.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.yml" sourcestartlinenumber="1">The public key fingerprint to accept for the user.</p>
 </td>
       </tr>
     </tbody>
@@ -187,7 +187,7 @@ in a database or configuration store instead of an authorized_keys file.</p>
   </span>
   <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetFingerprintPublickeyAuthenticator_AddFingerprint_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.AddFingerprint*"></a>
   <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetFingerprintPublickeyAuthenticator_AddFingerprint_System_String_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.AddFingerprint(System.String,System.String)">AddFingerprint(string, string)</h4>
-  <div class="markdown level1 summary"><p>Adds an accepted fingerprint for a username.</p>
+  <div class="markdown level1 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.yml" sourcestartlinenumber="1">Adds an accepted fingerprint for a username.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -207,13 +207,13 @@ in a database or configuration store instead of an authorized_keys file.</p>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">username</span></td>
-        <td><p>The exact username to accept.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.yml" sourcestartlinenumber="1">The exact username to accept.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">fingerprint</span></td>
-        <td><p>The public key fingerprint to accept for the user.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.yml" sourcestartlinenumber="1">The public key fingerprint to accept for the user.</p>
 </td>
       </tr>
     </tbody>
@@ -229,7 +229,7 @@ in a database or configuration store instead of an authorized_keys file.</p>
     <tbody>
       <tr>
         <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.html">AMNetFingerprintPublickeyAuthenticator</a></td>
-        <td><p>The current authenticator so calls can be chained.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.yml" sourcestartlinenumber="1">The current authenticator so calls can be chained.</p>
 </td>
       </tr>
     </tbody>
@@ -243,7 +243,7 @@ in a database or configuration store instead of an authorized_keys file.</p>
   </span>
   <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetFingerprintPublickeyAuthenticator_Authenticate_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.Authenticate*"></a>
   <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetFingerprintPublickeyAuthenticator_Authenticate_System_String_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.Authenticate(System.String,System.String,ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession)">Authenticate(string, string, ISshSession)</h4>
-  <div class="markdown level1 summary"><p>Returns whether the supplied public key fingerprint should be accepted for the user.</p>
+  <div class="markdown level1 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.yml" sourcestartlinenumber="1">Returns whether the supplied public key fingerprint should be accepted for the user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -263,19 +263,19 @@ in a database or configuration store instead of an authorized_keys file.</p>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">username</span></td>
-        <td><p>The username requested by the client.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.yml" sourcestartlinenumber="1">The username requested by the client.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">incomingFingerprint</span></td>
-        <td><p>The fingerprint of the public key presented by the client.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.yml" sourcestartlinenumber="1">The fingerprint of the public key presented by the client.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a></td>
         <td><span class="parametername">session</span></td>
-        <td><p>Session metadata for the connection being authenticated.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.yml" sourcestartlinenumber="1">Session metadata for the connection being authenticated.</p>
 </td>
       </tr>
     </tbody>
@@ -291,7 +291,7 @@ in a database or configuration store instead of an authorized_keys file.</p>
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p><code>true</code> to accept the public key; otherwise <code>false</code>.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.yml" sourcestartlinenumber="1"><code>true</code> to accept the public key; otherwise <code>false</code>.</p>
 </td>
       </tr>
     </tbody>

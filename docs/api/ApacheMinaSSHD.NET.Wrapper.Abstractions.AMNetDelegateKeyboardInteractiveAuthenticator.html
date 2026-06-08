@@ -74,7 +74,7 @@
 
 
   <h1 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetDelegateKeyboardInteractiveAuthenticator" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator" class="text-break">Class AMNetDelegateKeyboardInteractiveAuthenticator</h1>
-  <div class="markdown level0 summary"><p>Keyboard-interactive authenticator backed by .NET callbacks for challenge
+  <div class="markdown level0 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.yml" sourcestartlinenumber="1">Keyboard-interactive authenticator backed by .NET callbacks for challenge
 generation and response validation.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
@@ -125,7 +125,7 @@ generation and response validation.</p>
   </span>
   <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetDelegateKeyboardInteractiveAuthenticator__ctor_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.#ctor*"></a>
   <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetDelegateKeyboardInteractiveAuthenticator__ctor_System_Action_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshChallenge__System_Func_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_IResponseList_System_Boolean__" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.#ctor(System.Action{System.String,ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshChallenge},System.Func{ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession,System.String,ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.IResponseList,System.Boolean})">AMNetDelegateKeyboardInteractiveAuthenticator(Action&lt;string, ISshChallenge&gt;, Func&lt;ISshSession, string, IResponseList, bool&gt;)</h4>
-  <div class="markdown level1 summary"><p>Creates a keyboard-interactive authenticator backed by .NET callbacks.</p>
+  <div class="markdown level1 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.yml" sourcestartlinenumber="1">Creates a keyboard-interactive authenticator backed by .NET callbacks.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -145,13 +145,13 @@ generation and response validation.</p>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-2">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshChallenge.html">ISshChallenge</a>&gt;</td>
         <td><span class="parametername">generateChallenge</span></td>
-        <td><p>Callback that populates prompts sent to the client.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.yml" sourcestartlinenumber="1">Callback that populates prompts sent to the client.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.IResponseList.html">IResponseList</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</td>
         <td><span class="parametername">authenticate</span></td>
-        <td><p>Callback that validates the client responses.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.yml" sourcestartlinenumber="1">Callback that validates the client responses.</p>
 </td>
       </tr>
     </tbody>
@@ -167,7 +167,7 @@ generation and response validation.</p>
   </span>
   <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetDelegateKeyboardInteractiveAuthenticator_Authenticate_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.Authenticate*"></a>
   <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetDelegateKeyboardInteractiveAuthenticator_Authenticate_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_IResponseList_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.Authenticate(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession,System.String,ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.IResponseList)">Authenticate(ISshSession, string, IResponseList)</h4>
-  <div class="markdown level1 summary"><p>Validates the client's responses to the generated challenge.</p>
+  <div class="markdown level1 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.yml" sourcestartlinenumber="1">Validates the client's responses to the generated challenge.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -187,19 +187,19 @@ generation and response validation.</p>
       <tr>
         <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a></td>
         <td><span class="parametername">session</span></td>
-        <td><p>Session metadata for the connection being authenticated.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.yml" sourcestartlinenumber="1">Session metadata for the connection being authenticated.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">username</span></td>
-        <td><p>The username requested by the client.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.yml" sourcestartlinenumber="1">The username requested by the client.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.IResponseList.html">IResponseList</a></td>
         <td><span class="parametername">response</span></td>
-        <td><p>The responses supplied by the client.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.yml" sourcestartlinenumber="1">The responses supplied by the client.</p>
 </td>
       </tr>
     </tbody>
@@ -215,7 +215,7 @@ generation and response validation.</p>
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p><code>true</code> to accept the responses; otherwise <code>false</code>.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.yml" sourcestartlinenumber="1"><code>true</code> to accept the responses; otherwise <code>false</code>.</p>
 </td>
       </tr>
     </tbody>
@@ -229,7 +229,7 @@ generation and response validation.</p>
   </span>
   <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetDelegateKeyboardInteractiveAuthenticator_GenerateChallenge_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.GenerateChallenge*"></a>
   <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetDelegateKeyboardInteractiveAuthenticator_GenerateChallenge_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshChallenge_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.GenerateChallenge(System.String,ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshChallenge)">GenerateChallenge(string, ISshChallenge)</h4>
-  <div class="markdown level1 summary"><p>Populates the challenge sent to the client.</p>
+  <div class="markdown level1 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.yml" sourcestartlinenumber="1">Populates the challenge sent to the client.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -249,13 +249,13 @@ generation and response validation.</p>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">username</span></td>
-        <td><p>The username requested by the client.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.yml" sourcestartlinenumber="1">The username requested by the client.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshChallenge.html">ISshChallenge</a></td>
         <td><span class="parametername">challenge</span></td>
-        <td><p>The challenge object to populate with prompts.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetDelegateKeyboardInteractiveAuthenticator.yml" sourcestartlinenumber="1">The challenge object to populate with prompts.</p>
 </td>
       </tr>
     </tbody>

@@ -74,7 +74,7 @@
 
 
   <h1 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetPublickeyAuthenticator" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetPublickeyAuthenticator" class="text-break">Class AMNetPublickeyAuthenticator</h1>
-  <div class="markdown level0 summary"><p>Directory-backed public key authenticator that compares incoming key fingerprints
+  <div class="markdown level0 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetPublickeyAuthenticator.yml" sourcestartlinenumber="1">Directory-backed public key authenticator that compares incoming key fingerprints
 against key files in an Authorized_Keys directory.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
@@ -118,7 +118,7 @@ against key files in an Authorized_Keys directory.</p>
     <pre><code class="lang-csharp hljs">public class AMNetPublickeyAuthenticator : IAMNetPublickeyAuthenticator</code></pre>
   </div>
   <h5 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetPublickeyAuthenticator_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>Supports RSA, ECDSA (NIST P-256, P-384, P-521), and Ed25519 keys in PEM,
+  <div class="markdown level0 remarks"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetPublickeyAuthenticator.yml" sourcestartlinenumber="1">Supports RSA, ECDSA (NIST P-256, P-384, P-521), and Ed25519 keys in PEM,
 OpenSSH public key, and SSH2 public key formats.
 For new applications, prefer <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.html">AMNetAuthorizedKeysAuthenticator</a>
 for OpenSSH authorized_keys files or <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetFingerprintPublickeyAuthenticator.html">AMNetFingerprintPublickeyAuthenticator</a>
@@ -135,7 +135,7 @@ when fingerprints are stored in an application database.</p>
   </span>
   <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetPublickeyAuthenticator__ctor_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetPublickeyAuthenticator.#ctor*"></a>
   <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetPublickeyAuthenticator__ctor_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetPublickeyAuthenticator.#ctor(System.String)">AMNetPublickeyAuthenticator(string)</h4>
-  <div class="markdown level1 summary"><p>Creates a public key authenticator.</p>
+  <div class="markdown level1 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetPublickeyAuthenticator.yml" sourcestartlinenumber="1">Creates a public key authenticator.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -155,7 +155,7 @@ when fingerprints are stored in an application database.</p>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">authKeysPath</span></td>
-        <td><p>Base path that contains the Authorized_Keys directory. When empty, a default
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetPublickeyAuthenticator.yml" sourcestartlinenumber="1">Base path that contains the Authorized_Keys directory. When empty, a default
 application data path is used.</p>
 </td>
       </tr>
@@ -172,7 +172,7 @@ application data path is used.</p>
   </span>
   <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetPublickeyAuthenticator_Authenticate_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetPublickeyAuthenticator.Authenticate*"></a>
   <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetPublickeyAuthenticator_Authenticate_System_String_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetPublickeyAuthenticator.Authenticate(System.String,System.String,ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession)">Authenticate(string, string, ISshSession)</h4>
-  <div class="markdown level1 summary"><p>Returns whether the supplied public key fingerprint should be accepted for the user.</p>
+  <div class="markdown level1 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetPublickeyAuthenticator.yml" sourcestartlinenumber="1">Returns whether the supplied public key fingerprint should be accepted for the user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -192,19 +192,19 @@ application data path is used.</p>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">username</span></td>
-        <td><p>The username requested by the client.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetPublickeyAuthenticator.yml" sourcestartlinenumber="1">The username requested by the client.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">incomingFingerprint</span></td>
-        <td><p>The fingerprint of the public key presented by the client.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetPublickeyAuthenticator.yml" sourcestartlinenumber="1">The fingerprint of the public key presented by the client.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a></td>
         <td><span class="parametername">session</span></td>
-        <td><p>Session metadata for the connection being authenticated.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetPublickeyAuthenticator.yml" sourcestartlinenumber="1">Session metadata for the connection being authenticated.</p>
 </td>
       </tr>
     </tbody>
@@ -220,7 +220,7 @@ application data path is used.</p>
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p><code>true</code> to accept the public key; otherwise <code>false</code>.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetPublickeyAuthenticator.yml" sourcestartlinenumber="1"><code>true</code> to accept the public key; otherwise <code>false</code>.</p>
 </td>
       </tr>
     </tbody>

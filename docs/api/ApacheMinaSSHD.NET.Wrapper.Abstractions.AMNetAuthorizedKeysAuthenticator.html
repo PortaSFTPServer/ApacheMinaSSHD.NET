@@ -74,7 +74,7 @@
 
 
   <h1 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetAuthorizedKeysAuthenticator" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator" class="text-break">Class AMNetAuthorizedKeysAuthenticator</h1>
-  <div class="markdown level0 summary"><p>Authorized_keys authenticator configuration.</p>
+  <div class="markdown level0 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.yml" sourcestartlinenumber="1">Authorized_keys authenticator configuration.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -117,7 +117,7 @@
     <pre><code class="lang-csharp hljs">public class AMNetAuthorizedKeysAuthenticator : IAMNetAuthorizedKeysAuthenticator</code></pre>
   </div>
   <h5 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetAuthorizedKeysAuthenticator_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>This authenticator delegates OpenSSH-style authorized_keys parsing to Apache
+  <div class="markdown level0 remarks"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.yml" sourcestartlinenumber="1">This authenticator delegates OpenSSH-style authorized_keys parsing to Apache
 MINA SSHD while keeping Java types out of the public .NET API.</p>
 </div>
   <h3 id="constructors">Constructors
@@ -131,7 +131,7 @@ MINA SSHD while keeping Java types out of the public .NET API.</p>
   </span>
   <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetAuthorizedKeysAuthenticator__ctor_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.#ctor*"></a>
   <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetAuthorizedKeysAuthenticator__ctor_System_String_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.#ctor(System.String,System.String)">AMNetAuthorizedKeysAuthenticator(string, string?)</h4>
-  <div class="markdown level1 summary"><p>Creates an authorized_keys authenticator configuration.</p>
+  <div class="markdown level1 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.yml" sourcestartlinenumber="1">Creates an authorized_keys authenticator configuration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -151,13 +151,13 @@ MINA SSHD while keeping Java types out of the public .NET API.</p>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">path</span></td>
-        <td><p>The authorized_keys file path used to validate public keys.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.yml" sourcestartlinenumber="1">The authorized_keys file path used to validate public keys.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">allowedBasePath</span></td>
-        <td><p>Optional base path. When set, the resolved path must be within this directory to prevent path traversal.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.yml" sourcestartlinenumber="1">Optional base path. When set, the resolved path must be within this directory to prevent path traversal.</p>
 </td>
       </tr>
     </tbody>
@@ -173,7 +173,7 @@ MINA SSHD while keeping Java types out of the public .NET API.</p>
   </span>
   <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetAuthorizedKeysAuthenticator_AllowedBasePath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.AllowedBasePath*"></a>
   <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetAuthorizedKeysAuthenticator_AllowedBasePath" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.AllowedBasePath">AllowedBasePath</h4>
-  <div class="markdown level1 summary"><p>Gets the optional base path used to validate the authorized_keys file path.
+  <div class="markdown level1 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.yml" sourcestartlinenumber="1">Gets the optional base path used to validate the authorized_keys file path.
 When set, the resolved path must be within this directory.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -205,7 +205,7 @@ When set, the resolved path must be within this directory.</p>
   </span>
   <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetAuthorizedKeysAuthenticator_KeysFilePath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.KeysFilePath*"></a>
   <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetAuthorizedKeysAuthenticator_KeysFilePath" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.KeysFilePath">KeysFilePath</h4>
-  <div class="markdown level1 summary"><p>Gets the authorized_keys file path used to validate client public keys.</p>
+  <div class="markdown level1 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.yml" sourcestartlinenumber="1">Gets the authorized_keys file path used to validate client public keys.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -228,7 +228,7 @@ When set, the resolved path must be within this directory.</p>
     </tbody>
   </table>
   <h5 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetAuthorizedKeysAuthenticator_KeysFilePath_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Implementations may return a relative path, but the wrapper normalizes
+  <div class="markdown level1 remarks"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.yml" sourcestartlinenumber="1">Implementations may return a relative path, but the wrapper normalizes
 built-in configurations to an absolute path before calling Apache MINA SSHD.</p>
 </div>
   <h3 id="methods">Methods
@@ -242,7 +242,7 @@ built-in configurations to an absolute path before calling Apache MINA SSHD.</p>
   </span>
   <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetAuthorizedKeysAuthenticator_FromFile_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.FromFile*"></a>
   <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetAuthorizedKeysAuthenticator_FromFile_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.FromFile(System.String)">FromFile(string)</h4>
-  <div class="markdown level1 summary"><p>Creates an authorized_keys authenticator configuration from a file path.</p>
+  <div class="markdown level1 summary"><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.yml" sourcestartlinenumber="1">Creates an authorized_keys authenticator configuration from a file path.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -262,7 +262,7 @@ built-in configurations to an absolute path before calling Apache MINA SSHD.</p>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">path</span></td>
-        <td><p>The authorized_keys file path used to validate public keys.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.yml" sourcestartlinenumber="1">The authorized_keys file path used to validate public keys.</p>
 </td>
       </tr>
     </tbody>
@@ -278,7 +278,7 @@ built-in configurations to an absolute path before calling Apache MINA SSHD.</p>
     <tbody>
       <tr>
         <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.html">AMNetAuthorizedKeysAuthenticator</a></td>
-        <td><p>An authorized_keys authenticator configuration.</p>
+        <td><p sourcefile="obj/api/ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetAuthorizedKeysAuthenticator.yml" sourcestartlinenumber="1">An authorized_keys authenticator configuration.</p>
 </td>
       </tr>
     </tbody>
