@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>14.0</LangVersion>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <Description>Cross-platform Photino Blazor desktop SFTP server manager for .NET — start/stop, session monitoring, and live log viewer. Hybrid Blazor UI by SERALYNX LLC (Porta SFTP Server).</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Photino.Blazor" Version="4.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />
+  </ItemGroup>
+</Project>
