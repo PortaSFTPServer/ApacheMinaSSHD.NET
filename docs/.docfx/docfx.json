@@ -14,9 +14,13 @@
     "content": [
       { "files": ["**/*.{md,yml}", "toc.yml"], "src": "obj/api", "dest": "." }
     ],
+    "resource": [
+      { "files": ["images/**"], "src": ".", "dest": "." }
+    ],
     "globalMetadata": {
       "_appTitle": "ApacheMinaSSHD.NET API Reference",
       "_appFooter": "",
+      "_appLogoPath": "images/logo.svg",
       "_enableSearch": true
     },
     "template": ["default"],
