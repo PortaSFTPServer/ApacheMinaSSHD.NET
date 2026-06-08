@@ -39,6 +39,7 @@ The repository includes sample projects in the `Sample/` folder for every scenar
 | [SessionMonitorServer](../Sample/SessionMonitorServer/) | Session lifecycle, connection monitoring, proxy metadata inspection |
 | [ProductionServer](../Sample/ProductionServer/) | Production-ready: JSON config, algorithm selection, combined listeners |
 | [DareSftpServer](../Sample/DareSftpServer/) | Data-at-rest encryption with AES-256-GCM chunked encryption |
+| [AvaloniaSftpServer](../Sample/AvaloniaSftpServer/) | Cross-platform Avalonia UI SFTP server manager — start/stop, sessions, live log |
 | [ConsoleSftpServer](../Sample/ConsoleSftpServer/) | Lightweight console-based SFTP server |
 | [SimpleSSHDSever](../Sample/SimpleSSHDSever/) | Windows Forms GUI server with integration test harness |
 

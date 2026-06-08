@@ -1,0 +1,84 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="AvaloniaSftpServer.MainWindow"
+        Title="ApacheMinaSSHD.NET — SFTP Server Manager"
+        Width="860" Height="600"
+        MinWidth="640" MinHeight="400">
+  <Grid RowDefinitions="Auto,*" Margin="12">
+    <Border Grid.Row="0" Background="{StaticResource SystemAccentColor}" CornerRadius="8" Padding="16" Margin="0,0,0,12">
+      <Grid ColumnDefinitions="Auto,*,Auto" VerticalAlignment="Center">
+        <TextBlock Grid.Column="0" FontSize="20" FontWeight="Bold" Foreground="White" VerticalAlignment="Center"
+                   Text="ApacheMinaSSHD.NET" />
+        <TextBlock Grid.Column="1" FontSize="13" Foreground="#DDD" VerticalAlignment="Center" Margin="12,0,0,0"
+                   Text="Cross-platform SFTP Server Manager" />
+      </Grid>
+    </Border>
+
+    <TabControl Grid.Row="1">
+      <TabItem Header="Server">
+        <Grid RowDefinitions="Auto,Auto,Auto,*" Margin="8">
+          <Border Grid.Row="0" Padding="12" CornerRadius="6" Background="{StaticResource SystemAccentColor}" Opacity="0.08">
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <TextBlock Text="Host:" VerticalAlignment="Center" />
+              <TextBox x:Name="HostBox" Text="127.0.0.1" Width="120" />
+              <TextBlock Text="Port:" VerticalAlignment="Center" Margin="12,0,0,0" />
+              <TextBox x:Name="PortBox" Text="2222" Width="80" />
+              <Button x:Name="StartBtn" Content="Start" Margin="12,0,0,0"
+                      Click="OnStartClick" IsEnabled="True" />
+              <Button x:Name="StopBtn" Content="Stop" Margin="8,0,0,0"
+                      Click="OnStopClick" IsEnabled="False" />
+            </StackPanel>
+          </Border>
+
+          <Border Grid.Row="1" Margin="0,8,0,0" Padding="12" CornerRadius="6"
+                  Background="{StaticResource SystemAccentColor}" Opacity="0.08">
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <TextBlock Text="Status:" VerticalAlignment="Center" FontWeight="SemiBold" />
+              <TextBlock x:Name="StatusText" Text="Stopped" VerticalAlignment="Center" Foreground="Gray" />
+              <TextBlock x:Name="UptimeText" Text="" VerticalAlignment="Center" Foreground="Gray" Margin="20,0,0,0" />
+            </StackPanel>
+          </Border>
+
+          <TextBlock Grid.Row="2" Margin="0,12,0,4" FontWeight="SemiBold" FontSize="14" Text="Configuration" />
+          <ScrollViewer Grid.Row="3">
+            <StackPanel Margin="0,4,0,0">
+              <CheckBox x:Name="ApplyProductionDefaults" Content="Apply production defaults" IsChecked="True" Margin="0,0,0,4" />
+              <CheckBox x:Name="ApplyModernAlgorithms" Content="Apply modern algorithm defaults" IsChecked="True" Margin="0,0,0,4" />
+              <CheckBox x:Name="EnabledSFTP" Content="SFTP subsystem" IsChecked="True" IsEnabled="False" Margin="0,0,0,4" />
+              <CheckBox x:Name="EnabledSCP" Content="SCP subsystem" IsChecked="True" Margin="0,0,0,4" />
+              <TextBlock Text="Storage root:" Margin="0,8,0,2" />
+              <TextBox x:Name="StorageRootBox" Text="sftp-storage" />
+              <TextBlock Text="Host key file:" Margin="0,8,0,2" />
+              <TextBox x:Name="HostKeyBox" Text="hostkey.ser" />
+              <TextBlock Text="Password:" Margin="0,8,0,2" />
+              <TextBox x:Name="PasswordBox" Text="changeme" PasswordChar="*" />
+            </StackPanel>
+          </ScrollViewer>
+        </Grid>
+      </TabItem>
+
+      <TabItem Header="Sessions">
+        <Grid RowDefinitions="Auto,*" Margin="8">
+          <TextBlock Grid.Row="0" x:Name="SessionCount" Text="0 active sessions" FontWeight="SemiBold" Margin="0,0,0,8" />
+          <DataGrid Grid.Row="1" x:Name="SessionGrid"
+                    AutoGenerateColumns="False" IsReadOnly="True"
+                    Background="#1A1A1A" BorderBrush="{StaticResource SystemAccentColor}" BorderThickness="1">
+            <DataGrid.Columns>
+              <DataGridTextColumn Header="Session ID" Binding="{Binding Id, StringFormat='{}{0:N}'}" Width="*" />
+              <DataGridTextColumn Header="Remote Address" Binding="{Binding RemoteAddress}" Width="2*" />
+              <DataGridTextColumn Header="Started" Binding="{Binding StartedAt}" Width="*" />
+            </DataGrid.Columns>
+          </DataGrid>
+        </Grid>
+      </TabItem>
+
+      <TabItem Header="Log">
+        <Grid RowDefinitions="Auto,*" Margin="8">
+          <Button Grid.Row="0" x:Name="ClearLogBtn" Content="Clear" HorizontalAlignment="Right"
+                  Click="OnClearLogClick" Margin="0,0,0,4" />
+          <ListBox Grid.Row="1" x:Name="LogList" Background="#1A1A1A" BorderBrush="#333" BorderThickness="1" />
+        </Grid>
+      </TabItem>
+    </TabControl>
+  </Grid>
+</Window>

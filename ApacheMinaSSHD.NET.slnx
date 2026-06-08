@@ -21,4 +21,5 @@
   <Project Path="Sample/SessionMonitorServer/SessionMonitorServer.csproj" />
   <Project Path="Sample/ProductionServer/ProductionServer.csproj" />
   <Project Path="Sample/DareSftpServer/DareSftpServer.csproj" />
+  <Project Path="Sample/AvaloniaSftpServer/AvaloniaSftpServer.csproj" />
 </Solution>
