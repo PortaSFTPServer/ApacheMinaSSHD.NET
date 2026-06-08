@@ -6,6 +6,7 @@
 
 ## Table of Contents
 
+- [Introduction](#introduction)
 - [Authentication Modules](#authentication-modules)
 - [Use Cases](#use-cases)
 - [Version Compatibility](#version-compatibility)
@@ -17,6 +18,8 @@
 - [Powered by Apache MINA SSHD](#powered-by-apache-mina-sshd)
 - [License and Third-Party Notices](#license-and-third-party-notices)
   - [Acknowledgments](#acknowledgments)
+
+## Introduction
 
 **[SERALYNX LLC](https://portasftpserver.com)** is a Critical Infrastructure Engineering firm
 supporting Physical and Technological Advancement. One of its products is
