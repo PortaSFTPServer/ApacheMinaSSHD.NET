@@ -8,10 +8,14 @@
 > whether for a database driver, HTTP client, or cryptographic library — **security depends on
 > how you use it**. ApacheMinaSSHD.NET exposes the Apache MINA SSHD engine through .NET APIs,
 > giving you building blocks for authentication, virtual file systems, and algorithm selection.
-> It is your responsibility to configure these components correctly, choose strong algorithms,
-> validate inputs, enforce access controls, set appropriate limits, and follow security best
-> practices for your environment. Review the [Security Best Practices guide](docs/guide/07-security.md)
-> before deploying to production.
+> To achieve fully compliant secure file transfer in transit (e.g., FIPS 140-2/140-3,
+> NIST SP 800-52, or other regulatory standards), you must explicitly configure allowed
+> ciphers, MACs, key exchange algorithms, host key types, and key sizes — the library does
+> not enforce a particular compliance profile out of the box. It is your responsibility to
+> configure these components correctly, choose strong algorithms, validate inputs, enforce
+> access controls, set appropriate limits, and follow security best practices for your
+> environment. Review the [Security Best Practices guide](docs/guide/07-security.md) before
+> deploying to production.
 
 **[SERALYNX LLC](https://portasftpserver.com)** is a Critical Infrastructure Engineering firm
 supporting Physical and Technological Advancement. One of its products is
