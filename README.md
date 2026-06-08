@@ -136,6 +136,7 @@ For complete, organized documentation on building SFTP/SCP servers with ApacheMi
 - [Security Best Practices](docs/guide/07-security.md) — Hardening, symlink containment
 - [Logging & Monitoring](docs/guide/08-logging.md) — SLF4J bridge, audit events
 - [Production Deployment](docs/guide/09-production-deployment.md) — Windows Service, Docker, CI/CD
+- [PROXY Protocol](docs/guide/10-proxy-protocol.md) — Load balancers, real client IP, PROXY v1/v2
 
 ## Quick Start
 
