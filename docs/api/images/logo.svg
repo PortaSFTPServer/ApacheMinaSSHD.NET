@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 38" width="220" height="38">
-  <text x="0" y="28" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600" fill="#ccc">Apache</text>
-  <text x="68" y="28" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600" fill="#e94560">MinaSSHD</text>
-  <text x="156" y="28" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600" fill="#ccc">.NET</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 38" width="260" height="38">
+  <text x="0" y="28" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600">
+    <tspan fill="#ccc">Apache</tspan><tspan fill="#e94560">MinaSSHD</tspan><tspan fill="#ccc">.NET</tspan>
+  </text>
 </svg>
