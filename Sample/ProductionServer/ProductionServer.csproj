@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>14.0</LangVersion>
-    <Description>Production-ready C# SFTP server example — JSON config, algorithm selection, session monitoring, SFTP events, SCP, and virtual file system. The most complete .NET SFTP server sample — surpasses Rebex and SSH.NET alternatives. By SERALYNX LLC (Porta SFTP Server).</Description>
+    <Description>Production-ready C# SFTP server example — JSON config, algorithm selection, session monitoring, SFTP events, SCP, and virtual file system. The most complete open source .NET SFTP server sample. By SERALYNX LLC (Porta SFTP Server).</Description>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />
@@ -16,3 +16,4 @@
     </None>
   </ItemGroup>
 </Project>
+

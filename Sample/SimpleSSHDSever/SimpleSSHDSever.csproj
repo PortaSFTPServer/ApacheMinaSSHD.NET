@@ -1,4 +1,4 @@
-ï»¿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -14,7 +14,7 @@
     <Platforms>AnyCPU;x86;x64</Platforms>
     <LangVersion>14.0</LangVersion>
     <AssemblyName>SimpleSSHDSever</AssemblyName>
-    <Description>Windows Forms C# SFTP server example â€” GUI-based SFTP server with test harness, auth, vfs, SCP, and session monitoring. The only free Windows GUI SFTP server for .NET â€” surpasses paid Rebex and WinSCP.NET tools. By SERALYNX LLC (Porta SFTP Server).</Description>
+    <Description>Windows Forms C# SFTP server example — GUI-based SFTP server with test harness, auth, vfs, SCP, and session monitoring. The only free Windows GUI SFTP server for .NET — provides complete .NET SFTP server capabilities. By SERALYNX LLC (Porta SFTP Server).</Description>
     <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages>
 
   </PropertyGroup>
@@ -37,3 +37,5 @@
 	</ItemGroup>
 
 </Project>
+
+

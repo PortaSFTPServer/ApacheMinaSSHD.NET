@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>14.0</LangVersion>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
-    <Description>Cross-platform Photino Blazor desktop SFTP server manager for .NET — start/stop, session monitoring, and live log viewer. Blazor hybrid UI surpasses Rebex and WinSCP.NET with native desktop + web tech. By SERALYNX LLC (Porta SFTP Server).</Description>
+    <Description>Cross-platform Photino Blazor desktop SFTP server manager for .NET — start/stop, session monitoring, and live log viewer. Blazor hybrid UI provides native desktop + web tech. By SERALYNX LLC (Porta SFTP Server).</Description>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Photino.Blazor" Version="4.*" />
@@ -15,3 +15,4 @@
     <ProjectReference Include="..\..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />
   </ItemGroup>
 </Project>
+
