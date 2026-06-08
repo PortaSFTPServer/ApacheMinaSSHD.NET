@@ -159,7 +159,7 @@ Each hook receives an `ISshFileSystemAccess` context with:
 | File operations silently failing | `IsPathAllowed` rejecting paths | Override `IsPathAllowed` to log rejections for debugging |
 | Custom accessor not used | Wrong factory instance | Ensure the same `AMNetSftpSubsystemFactory` instance is passed to `setSubsystemFactories()` and has the accessor set |
 
-See [SftpEventServer](../Sample/SftpEventServer/) for a complete event-driven implementation.
+See [SftpEventServer](../../Sample/SftpEventServer/) for a complete event-driven implementation.
 
 ---
 

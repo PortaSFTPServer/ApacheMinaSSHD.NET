@@ -40,18 +40,18 @@ The repository includes sample projects in the `Sample/` folder for every scenar
 
 | Project | Description |
 |---------|-------------|
-| [MinimalServer](../Sample/MinimalServer/) | Minimal C# SFTP server — simplest way to embed SFTP in .NET |
-| [AuthenticationServer](../Sample/AuthenticationServer/) | Password, public key, fingerprint, authorized_keys, keyboard-interactive, and MFA |
-| [VirtualFileSystemServer](../Sample/VirtualFileSystemServer/) | Root jail isolation, hidden-file filtering, path access control |
-| [ScpServer](../Sample/ScpServer/) | SCP server with custom file opener, transfer audit, and directory filtering |
-| [SftpEventServer](../Sample/SftpEventServer/) | SFTP event listeners — track open/close/read/write/create/remove/move |
-| [SessionMonitorServer](../Sample/SessionMonitorServer/) | Session lifecycle, connection monitoring, proxy metadata inspection |
-| [ProductionServer](../Sample/ProductionServer/) | Production-ready: JSON config, algorithm selection, combined listeners |
-| [DareSftpServer](../Sample/DareSftpServer/) | Data-at-rest encryption with AES-256-GCM chunked encryption |
-| [AvaloniaSftpServer](../Sample/AvaloniaSftpServer/) | Cross-platform Avalonia UI SFTP server manager — start/stop, sessions, live log |
-| [PhotinoSftpServer](../Sample/PhotinoSftpServer/) | Cross-platform Photino Blazor desktop app — Blazor UI, start/stop, sessions, live log |
-| [ConsoleSftpServer](../Sample/ConsoleSftpServer/) | Lightweight console-based SFTP server |
-| [SimpleSSHDSever](../Sample/SimpleSSHDSever/) | Windows Forms GUI server with integration test harness |
+| [MinimalServer](../../Sample/MinimalServer/) | Minimal C# SFTP server — simplest way to embed SFTP in .NET |
+| [AuthenticationServer](../../Sample/AuthenticationServer/) | Password, public key, fingerprint, authorized_keys, keyboard-interactive, and MFA |
+| [VirtualFileSystemServer](../../Sample/VirtualFileSystemServer/) | Root jail isolation, hidden-file filtering, path access control |
+| [ScpServer](../../Sample/ScpServer/) | SCP server with custom file opener, transfer audit, and directory filtering |
+| [SftpEventServer](../../Sample/SftpEventServer/) | SFTP event listeners — track open/close/read/write/create/remove/move |
+| [SessionMonitorServer](../../Sample/SessionMonitorServer/) | Session lifecycle, connection monitoring, proxy metadata inspection |
+| [ProductionServer](../../Sample/ProductionServer/) | Production-ready: JSON config, algorithm selection, combined listeners |
+| [DareSftpServer](../../Sample/DareSftpServer/) | Data-at-rest encryption with AES-256-GCM chunked encryption |
+| [AvaloniaSftpServer](../../Sample/AvaloniaSftpServer/) | Cross-platform Avalonia UI SFTP server manager — start/stop, sessions, live log |
+| [PhotinoSftpServer](../../Sample/PhotinoSftpServer/) | Cross-platform Photino Blazor desktop app — Blazor UI, start/stop, sessions, live log |
+| [ConsoleSftpServer](../../Sample/ConsoleSftpServer/) | Lightweight console-based SFTP server |
+| [SimpleSSHDSever](../../Sample/SimpleSSHDSever/) | Windows Forms GUI server with integration test harness |
 
 ## Installation
 

@@ -164,7 +164,7 @@ dotnet build ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj
 
 ## Sample Project Reference
 
-For a complete production server implementation, see [ProductionServer](../Sample/ProductionServer/) — it includes external JSON configuration, algorithm selection, combined SFTP/SCP listeners, and all the patterns described in this guide.
+For a complete production server implementation, see [ProductionServer](../../Sample/ProductionServer/) — it includes external JSON configuration, algorithm selection, combined SFTP/SCP listeners, and all the patterns described in this guide.
 
 ## Troubleshooting Common Issues
 

@@ -141,7 +141,7 @@ class CustomAccessor : AMNetSftpFileSystemAccessor
 | Path traversal works | `createUserDirectory` with unsanitized username | Username sanitization is automatic — but verify `ResolveUserHomeDirectory` does not introduce traversal in custom overrides |
 | Dot-files visible | Hidden names not configured | Override `HiddenNames` or `ShouldIncludeDirectoryEntry` to hide `.git`, `.env`, etc. |
 
-See [VirtualFileSystemServer](../Sample/VirtualFileSystemServer/) for a complete root jail implementation.
+See [VirtualFileSystemServer](../../Sample/VirtualFileSystemServer/) for a complete root jail implementation.
 
 ---
 

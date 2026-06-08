@@ -119,7 +119,7 @@ Enable PROXY protocol v2 on the target group. The default acceptor handles AWS N
 
 ## Sample
 
-See [SessionMonitorServer](../Sample/SessionMonitorServer/) for a complete example with custom proxy acceptor, session lifecycle monitoring, and connection auditing.
+See [SessionMonitorServer](../../Sample/SessionMonitorServer/) for a complete example with custom proxy acceptor, session lifecycle monitoring, and connection auditing.
 
 ---
 

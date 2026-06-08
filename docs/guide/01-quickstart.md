@@ -131,7 +131,7 @@ Your server works — now harden it for real use:
 3. **[Set up a virtual filesystem](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/04-virtual-filesystem.md)** — enable root jail isolation so users cannot escape their home directories
 4. **[Enable audit logging](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/08-logging.md)** — attach SFTP event listeners to track file operations
 
-See [MinimalServer](../Sample/MinimalServer/) for a complete, runnable version of this example.
+See [MinimalServer](../../Sample/MinimalServer/) for a complete, runnable version of this example.
 
 ---
 

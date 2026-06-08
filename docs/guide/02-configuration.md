@@ -108,7 +108,7 @@ server.Config.WELCOME_BANNER = "Authorized access only";
 | `ApplyModernAlgorithmDefaults()` unavailable | Outdated wrapper version | Update to the latest NuGet package |
 | Timeouts triggering during large transfers | `IDLE_TIMEOUT` too low | Set `IDLE_TIMEOUT` high enough for your largest file transfers |
 
-See [ProductionServer](../Sample/ProductionServer/) for a real-world configuration example.
+See [ProductionServer](../../Sample/ProductionServer/) for a real-world configuration example.
 
 ---
 

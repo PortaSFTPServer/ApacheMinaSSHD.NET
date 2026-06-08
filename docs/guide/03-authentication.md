@@ -205,7 +205,7 @@ server.setServerProxyAcceptor(new AMNetServerProxyAcceptor());
 | MFA stops working mid-session | Auth method order matters | Configure methods **before** starting the server |
 | Delegate authenticator not called | Wrong method used | Use `SetDelegatePasswordAuthenticator()`, not `SetPasswordAuthenticator()` with a custom class |
 
-See [AuthenticationServer](../Sample/AuthenticationServer/) for runnable examples of every auth mode.
+See [AuthenticationServer](../../Sample/AuthenticationServer/) for runnable examples of every auth mode.
 
 ---
 

@@ -130,7 +130,7 @@ Each user is confined to `jail/{username}`. Path traversal via `../` in username
 
 ## Data-at-Rest Encryption
 
-For scenarios requiring encrypted storage, see [DareSftpServer](../Sample/DareSftpServer/) — it demonstrates AES-256-GCM chunked encryption for data at rest.
+For scenarios requiring encrypted storage, see [DareSftpServer](../../Sample/DareSftpServer/) — it demonstrates AES-256-GCM chunked encryption for data at rest.
 
 ## Dependency Vulnerability Scanning
 
