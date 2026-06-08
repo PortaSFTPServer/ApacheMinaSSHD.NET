@@ -13,13 +13,13 @@ ApacheMinaSSHD.NET is an open-source .NET SFTP server library and C# wrapper aro
 created by SERALYNX LLC. It follows the same architectural paradigm as Porta SFTP Server —
 exposing the full power of Apache MINA SSHD through a clean .NET API, zero Java dependencies.
 
-> **⚠️ Security disclaimer:** ApacheMinaSSHD.NET is a **wrapper** that exposes the Apache MINA SSHD
-> engine through .NET APIs. It provides the building blocks — authentication modules, virtual file
-> systems, algorithm selection — but **application-level security depends entirely on how you
-> configure and use these components**. You are responsible for: choosing strong algorithms and
-> key sizes, validating authentication callbacks, enforcing path containment, setting appropriate
-> timeouts and rate limits, keeping dependencies updated, and following security best practices
-> for your deployment environment. Review the [Security Best Practices guide](docs/guide/07-security.md)
+> **⚠️ Security disclaimer:** This is a **wrapper library**. Like any wrapper — whether for a
+> database driver, HTTP client, or cryptographic library — **security depends on how you use it**.
+> ApacheMinaSSHD.NET exposes the Apache MINA SSHD engine through .NET APIs, giving you building
+> blocks for authentication, virtual file systems, and algorithm selection. It is your
+> responsibility to configure these components correctly, choose strong algorithms, validate
+> inputs, enforce access controls, set appropriate limits, and follow security best practices
+> for your environment. Review the [Security Best Practices guide](docs/guide/07-security.md)
 > before deploying to production.
 
 Whether you need secure file transfer for engineering file exchange, a portable SFTP server for
