@@ -1,6 +1,6 @@
 # ApacheMinaSSHD.NET — Open Source .NET SFTP Server Library from SERALYNX LLC
 
-[![NuGet](https://img.shields.io/nuget/v/ApacheMinaSSHD.NET.Wrapper)](https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/)
+[![NuGet](https://img.shields.io/nuget/v/ApacheMinaSSHD.NET.Wrapper)](https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper)
 
 > **⚠️ Security disclaimer:** This is a wrapper library around Apache MINA SSHD — it wraps SFTP and SCP only. This is to support a secure transfer in transit by default. It does not implement FTP, FTPS, TFTP, or any other insecure protocol. Like any wrapper library, security depends on how you use it. You are responsible for configuring authentication, encryption algorithms, access controls, and limits appropriately for your environment. Review the [Security Best Practices guide](docs/guide/07-security.md) before deploying to production.
 
