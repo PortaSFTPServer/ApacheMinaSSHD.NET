@@ -2,6 +2,15 @@
 
 [![NuGet](https://img.shields.io/nuget/v/ApacheMinaSSHD.NET.Wrapper)](https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper/)
 
+> **⚠️ Security disclaimer:** This is a **wrapper library**. Like any wrapper — whether for a
+> database driver, HTTP client, or cryptographic library — **security depends on how you use it**.
+> ApacheMinaSSHD.NET exposes the Apache MINA SSHD engine through .NET APIs, giving you building
+> blocks for authentication, virtual file systems, and algorithm selection. It is your
+> responsibility to configure these components correctly, choose strong algorithms, validate
+> inputs, enforce access controls, set appropriate limits, and follow security best practices
+> for your environment. Review the [Security Best Practices guide](docs/guide/07-security.md)
+> before deploying to production.
+
 **[SERALYNX LLC](https://portasftpserver.com)** is a Critical Infrastructure Engineering firm
 supporting Physical and Technological Advancement. One of its products is
 **[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)** —
@@ -12,15 +21,6 @@ IT administrators, and developers** worldwide.
 ApacheMinaSSHD.NET is an open-source .NET SFTP server library and C# wrapper around Apache MINA SSHD,
 created by SERALYNX LLC. It follows the same architectural paradigm as Porta SFTP Server —
 exposing the full power of Apache MINA SSHD through a clean .NET API, zero Java dependencies.
-
-> **⚠️ Security disclaimer:** This is a **wrapper library**. Like any wrapper — whether for a
-> database driver, HTTP client, or cryptographic library — **security depends on how you use it**.
-> ApacheMinaSSHD.NET exposes the Apache MINA SSHD engine through .NET APIs, giving you building
-> blocks for authentication, virtual file systems, and algorithm selection. It is your
-> responsibility to configure these components correctly, choose strong algorithms, validate
-> inputs, enforce access controls, set appropriate limits, and follow security best practices
-> for your environment. Review the [Security Best Practices guide](docs/guide/07-security.md)
-> before deploying to production.
 
 Whether you need secure file transfer for engineering file exchange, a portable SFTP server for
 Windows and Linux, or a free SFTP server for automation workflows, ApacheMinaSSHD.NET and
