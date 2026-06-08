@@ -224,11 +224,24 @@ server.Config.SetHostKeyAlgorithms(
 algorithms supported by the current runtime. The raw string properties remain
 available for advanced scenarios.
 
+## Powered by Apache MINA SSHD
+
+[![Apache MINA SSHD](https://mina.apache.org/assets/img/header-sshd.png)](https://mina.apache.org/sshd-project/)
+
+ApacheMinaSSHD.NET is a **.NET wrapper** around **[Apache MINA SSHD](https://mina.apache.org/sshd-project/)**, the
+production-grade SSH/SFTP/SCP server library maintained by the **[Apache Software Foundation](https://www.apache.org/)**.
+Apache MINA SSHD is the backbone of this project — all SSH protocol handling, cryptographic operations, session
+management, and file transfer logic come from the Apache MINA SSHD project.
+
+We are grateful to the Apache Software Foundation and the Apache MINA SSHD community for creating and maintaining
+this excellent library. This project would not exist without their work.
+
+Apache MINA SSHD is a trademark of the Apache Software Foundation. ApacheMinaSSHD.NET is **not** affiliated with
+or endorsed by the Apache Software Foundation.
+
 ## License and Third-Party Notices
 
 Project code is MIT licensed. See `LICENSE`, `THIRD-PARTY-NOTICES.md`, and the
 `licenses/` folder before publishing source or NuGet packages.
-
-[![Apache MINA SSHD](https://mina.apache.org/assets/img/header-sshd.png)](https://mina.apache.org/sshd-project/) ApacheMinaSSHD.NET is a **wrapper** around **[Apache MINA SSHD](https://mina.apache.org/sshd-project/)**, a trademark of the **Apache Software Foundation**. This project is not affiliated with or endorsed by the Apache Software Foundation.
 
 ApacheMinaSSHD.NET is maintained by SERALYNX LLC. For a ready-to-use portable SFTP server, see [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).
