@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Interface IAMNetSftpEventListener | ApacheMinaSSHD.NET API Reference </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Interface IAMNetSftpEventListener | ApacheMinaSSHD.NET API Reference ">
+    
+    <meta name="description" content="Receives SFTP subsystem, file handle, path, and message events.">
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener">
+
+
+
+  <h1 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener" class="text-break">Interface IAMNetSftpEventListener</h1>
+  <div class="markdown level0 summary"><p>Receives SFTP subsystem, file handle, path, and message events.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ApacheMinaSSHD.html">ApacheMinaSSHD</a>.<a class="xref" href="ApacheMinaSSHD.NET.html">NET</a>.<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.html">Wrapper</a>.<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.html">Abstractions</a></h6>
+  <h6><strong>Assembly</strong>: ApacheMinaSSHD.NET.Wrapper.dll</h6>
+  <h5 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IAMNetSftpEventListener</code></pre>
+  </div>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnClosed_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshEvent_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnClosed(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEvent)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L51">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnClosed_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnClosed*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnClosed_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshEvent_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnClosed(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEvent)">OnClosed(ISshEvent)</h4>
+  <div class="markdown level1 summary"><p>Called after a handle is closed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnClosed(ISshEvent ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEvent.html">ISshEvent</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>The handle event metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnClosing_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshEvent_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnClosing(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEvent)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L48">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnClosing_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnClosing*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnClosing_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshEvent_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnClosing(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEvent)">OnClosing(ISshEvent)</h4>
+  <div class="markdown level1 summary"><p>Called before a handle is closed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnClosing(ISshEvent ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEvent.html">ISshEvent</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>The handle event metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnCreated_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshPath_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnCreated(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L71">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnCreated_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnCreated*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnCreated_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshPath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnCreated(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath)">OnCreated(ISshPath)</h4>
+  <div class="markdown level1 summary"><p>Called after a path is created.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnCreated(ISshPath ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath.html">ISshPath</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>Path metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnCreating_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshPath_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnCreating(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L68">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnCreating_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnCreating*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnCreating_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshPath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnCreating(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath)">OnCreating(ISshPath)</h4>
+  <div class="markdown level1 summary"><p>Called before a path is created.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnCreating(ISshPath ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath.html">ISshPath</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>Path metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnDestroying_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnDestroying(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L18">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnDestroying_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnDestroying*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnDestroying_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnDestroying(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession)">OnDestroying(ISshSession)</h4>
+  <div class="markdown level1 summary"><p>Called when the SFTP subsystem is being destroyed for a session.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnDestroying(ISshSession sshSession)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a></td>
+        <td><span class="parametername">sshSession</span></td>
+        <td><p>The session metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnExiting_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshHandle_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnExiting(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession%2CApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshHandle)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L28">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnExiting_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnExiting*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnExiting_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshHandle_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnExiting(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession,ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshHandle)">OnExiting(ISshSession, ISshHandle)</h4>
+  <div class="markdown level1 summary"><p>Called when an SFTP handle exits.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnExiting(ISshSession sshSession, ISshHandle sshHandle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a></td>
+        <td><span class="parametername">sshSession</span></td>
+        <td><p>The session metadata.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshHandle.html">ISshHandle</a></td>
+        <td><span class="parametername">sshHandle</span></td>
+        <td><p>The handle metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnInitialized_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_Int32_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnInitialized(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L15">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnInitialized_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnInitialized*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnInitialized_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_Int32_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnInitialized(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession,System.Int32)">OnInitialized(ISshSession, int)</h4>
+  <div class="markdown level1 summary"><p>Called when the SFTP subsystem is initialized for a session.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnInitialized(ISshSession sshSession, int version)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a></td>
+        <td><span class="parametername">sshSession</span></td>
+        <td><p>The session metadata.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">version</span></td>
+        <td><p>The negotiated SFTP protocol version.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnLink_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSysLink_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnLink(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSysLink)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L97">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnLink_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnLink*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnLink_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSysLink_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnLink(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSysLink)">OnLink(ISshSysLink)</h4>
+  <div class="markdown level1 summary"><p>Called after a hard link or symbolic link is created.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnLink(ISshSysLink ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSysLink.html">ISshSysLink</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>Link metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnLinking_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSysLink_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnLinking(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSysLink)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L94">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnLinking_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnLinking*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnLinking_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSysLink_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnLinking(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSysLink)">OnLinking(ISshSysLink)</h4>
+  <div class="markdown level1 summary"><p>Called before a hard link or symbolic link is created.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnLinking(ISshSysLink ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSysLink.html">ISshSysLink</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>Link metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnModifiedAttributes_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshPath_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnModifiedAttributes(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L89">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnModifiedAttributes_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnModifiedAttributes*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnModifiedAttributes_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshPath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnModifiedAttributes(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath)">OnModifiedAttributes(ISshPath)</h4>
+  <div class="markdown level1 summary"><p>Called after path attributes are modified.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnModifiedAttributes(ISshPath ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath.html">ISshPath</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>Path metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnModifyingAttributes_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshPath_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnModifyingAttributes(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L86">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnModifyingAttributes_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnModifyingAttributes*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnModifyingAttributes_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshPath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnModifyingAttributes(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath)">OnModifyingAttributes(ISshPath)</h4>
+  <div class="markdown level1 summary"><p>Called before path attributes are modified.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnModifyingAttributes(ISshPath ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath.html">ISshPath</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>Path metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnMoved_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshMove_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnMoved(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshMove)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L83">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnMoved_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnMoved*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnMoved_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshMove_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnMoved(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshMove)">OnMoved(ISshMove)</h4>
+  <div class="markdown level1 summary"><p>Called after a path is moved.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnMoved(ISshMove ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshMove.html">ISshMove</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>Move metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnMoving_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshMove_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnMoving(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshMove)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L80">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnMoving_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnMoving*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnMoving_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshMove_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnMoving(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshMove)">OnMoving(ISshMove)</h4>
+  <div class="markdown level1 summary"><p>Called before a path is moved.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnMoving(ISshMove ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshMove.html">ISshMove</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>Move metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnOpen_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshEvent_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnOpen(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEvent)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L42">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnOpen_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnOpen*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnOpen_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshEvent_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnOpen(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEvent)">OnOpen(ISshEvent)</h4>
+  <div class="markdown level1 summary"><p>Called after a handle is opened.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnOpen(ISshEvent ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEvent.html">ISshEvent</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>The handle event metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnOpenFailed_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshIOFailure_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnOpenFailed(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshIOFailure)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L45">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnOpenFailed_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnOpenFailed*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnOpenFailed_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshIOFailure_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnOpenFailed(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshIOFailure)">OnOpenFailed(ISshIOFailure)</h4>
+  <div class="markdown level1 summary"><p>Called after a handle open fails.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnOpenFailed(ISshIOFailure ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshIOFailure.html">ISshIOFailure</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>The failure metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnOpening_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshEvent_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnOpening(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEvent)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L39">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnOpening_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnOpening*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnOpening_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshEvent_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnOpening(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEvent)">OnOpening(ISshEvent)</h4>
+  <div class="markdown level1 summary"><p>Called before a handle is opened.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnOpening(ISshEvent ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEvent.html">ISshEvent</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>The handle event metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnRead_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshReadWrite_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnRead(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReadWrite)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L57">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnRead_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnRead*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnRead_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshReadWrite_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnRead(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReadWrite)">OnRead(ISshReadWrite)</h4>
+  <div class="markdown level1 summary"><p>Called after file data is read.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnRead(ISshReadWrite ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReadWrite.html">ISshReadWrite</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>Read metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnReadEntries_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshEntries_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnReadEntries(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEntries)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L24">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnReadEntries_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnReadEntries*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnReadEntries_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshEntries_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnReadEntries(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEntries)">OnReadEntries(ISshEntries)</h4>
+  <div class="markdown level1 summary"><p>Called after directory entries are read.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnReadEntries(ISshEntries sshEntries)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEntries.html">ISshEntries</a></td>
+        <td><span class="parametername">sshEntries</span></td>
+        <td><p>Directory read metadata and entries.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnReading_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshReadWrite_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnReading(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReadWrite)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L54">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnReading_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnReading*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnReading_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshReadWrite_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnReading(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReadWrite)">OnReading(ISshReadWrite)</h4>
+  <div class="markdown level1 summary"><p>Called before file data is read.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnReading(ISshReadWrite ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReadWrite.html">ISshReadWrite</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>Read metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnReadingEntries_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshEntries_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnReadingEntries(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEntries)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L21">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnReadingEntries_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnReadingEntries*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnReadingEntries_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshEntries_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnReadingEntries(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEntries)">OnReadingEntries(ISshEntries)</h4>
+  <div class="markdown level1 summary"><p>Called before directory entries are read.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnReadingEntries(ISshEntries sshEntries)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshEntries.html">ISshEntries</a></td>
+        <td><span class="parametername">sshEntries</span></td>
+        <td><p>Directory read metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnReceived_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshReceived_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnReceived(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReceived)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L34">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnReceived_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnReceived*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnReceived_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshReceived_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnReceived(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReceived)">OnReceived(ISshReceived)</h4>
+  <div class="markdown level1 summary"><p>Called when an SFTP message is received.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnReceived(ISshReceived sshReceived)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReceived.html">ISshReceived</a></td>
+        <td><span class="parametername">sshReceived</span></td>
+        <td><p>Received message metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnReceivedExtension_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshReceived_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnReceivedExtension(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReceived)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L31">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnReceivedExtension_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnReceivedExtension*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnReceivedExtension_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshReceived_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnReceivedExtension(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReceived)">OnReceivedExtension(ISshReceived)</h4>
+  <div class="markdown level1 summary"><p>Called when an SFTP extension message is received.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnReceivedExtension(ISshReceived sshReceived)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReceived.html">ISshReceived</a></td>
+        <td><span class="parametername">sshReceived</span></td>
+        <td><p>Received message metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnRemoved_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshPath_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnRemoved(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L77">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnRemoved_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnRemoved*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnRemoved_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshPath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnRemoved(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath)">OnRemoved(ISshPath)</h4>
+  <div class="markdown level1 summary"><p>Called after a path is removed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnRemoved(ISshPath ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath.html">ISshPath</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>Path metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnRemoving_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshPath_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnRemoving(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L74">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnRemoving_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnRemoving*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnRemoving_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshPath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnRemoving(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath)">OnRemoving(ISshPath)</h4>
+  <div class="markdown level1 summary"><p>Called before a path is removed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnRemoving(ISshPath ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshPath.html">ISshPath</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>Path metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnWrite_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshReadWrite_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnWrite(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReadWrite)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L63">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnWrite_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnWrite*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnWrite_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshReadWrite_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnWrite(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReadWrite)">OnWrite(ISshReadWrite)</h4>
+  <div class="markdown level1 summary"><p>Called after file data is written.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnWrite(ISshReadWrite ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReadWrite.html">ISshReadWrite</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>Write metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnWriting_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshReadWrite_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnWriting(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReadWrite)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L60">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnWriting_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnWriting*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener_OnWriting_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshReadWrite_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener.OnWriting(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReadWrite)">OnWriting(ISshReadWrite)</h4>
+  <div class="markdown level1 summary"><p>Called before file data is written.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnWriting(ISshReadWrite ctx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshReadWrite.html">ISshReadWrite</a></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>Write metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSftpEventListener.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpEventListener%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/IAMNetSftpEventListener.cs/#L8" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

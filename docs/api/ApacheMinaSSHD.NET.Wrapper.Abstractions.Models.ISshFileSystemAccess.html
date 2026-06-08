@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Interface ISshFileSystemAccess | ApacheMinaSSHD.NET API Reference </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Interface ISshFileSystemAccess | ApacheMinaSSHD.NET API Reference ">
+    
+    <meta name="description" content="Provides metadata for SFTP filesystem policy callbacks.">
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess">
+
+
+
+  <h1 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess" class="text-break">Interface ISshFileSystemAccess</h1>
+  <div class="markdown level0 summary"><p>Provides metadata for SFTP filesystem policy callbacks.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ApacheMinaSSHD.html">ApacheMinaSSHD</a>.<a class="xref" href="ApacheMinaSSHD.NET.html">NET</a>.<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.html">Wrapper</a>.<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.html">Abstractions</a>.<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.html">Models</a></h6>
+  <h6><strong>Assembly</strong>: ApacheMinaSSHD.NET.Wrapper.dll</h6>
+  <h5 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ISshFileSystemAccess</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Attributes.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Attributes%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L118">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Attributes_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Attributes*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Attributes" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Attributes">Attributes</h4>
+  <div class="markdown level1 summary"><p>Gets attributes associated with the operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyDictionary&lt;string, object&gt; Attributes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Command.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Command%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L110">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Command_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Command*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Command" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Command">Command</h4>
+  <div class="markdown level1 summary"><p>Gets an operation-specific command value when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Command { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_DestinationPath.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.DestinationPath%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L82">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_DestinationPath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.DestinationPath*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_DestinationPath" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.DestinationPath">DestinationPath</h4>
+  <div class="markdown level1 summary"><p>Gets the operation destination path when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string? DestinationPath { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Extension.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Extension%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L88">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Extension_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Extension*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Extension" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Extension">Extension</h4>
+  <div class="markdown level1 summary"><p>Gets the SFTP extension name when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string? Extension { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_FileAttributeName.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.FileAttributeName%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L92">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_FileAttributeName_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.FileAttributeName*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_FileAttributeName" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.FileAttributeName">FileAttributeName</h4>
+  <div class="markdown level1 summary"><p>Gets the file attribute name when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string? FileAttributeName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_FileAttributeView.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.FileAttributeView%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L90">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_FileAttributeView_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.FileAttributeView*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_FileAttributeView" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.FileAttributeView">FileAttributeView</h4>
+  <div class="markdown level1 summary"><p>Gets the file attribute view name when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string? FileAttributeView { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_FollowLinks.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.FollowLinks%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L106">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_FollowLinks_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.FollowLinks*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_FollowLinks" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.FollowLinks">FollowLinks</h4>
+  <div class="markdown level1 summary"><p>Gets whether links should be followed for the current operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool FollowLinks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Group.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Group%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L96">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Group_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Group*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Group" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Group">Group</h4>
+  <div class="markdown level1 summary"><p>Gets the group name when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string? Group { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_IsDirectory.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.IsDirectory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L100">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_IsDirectory_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.IsDirectory*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_IsDirectory" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.IsDirectory">IsDirectory</h4>
+  <div class="markdown level1 summary"><p>Gets whether the current target is a directory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsDirectory { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_IsSymbolicLink.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.IsSymbolicLink%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L102">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_IsSymbolicLink_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.IsSymbolicLink*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_IsSymbolicLink" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.IsSymbolicLink">IsSymbolicLink</h4>
+  <div class="markdown level1 summary"><p>Gets whether the current target is a symbolic link.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsSymbolicLink { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Length.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Length%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L114">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Length_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Length*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Length" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Length">Length</h4>
+  <div class="markdown level1 summary"><p>Gets an operation-specific length when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long Length { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_LocalPath.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.LocalPath%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L78">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_LocalPath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.LocalPath*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_LocalPath" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.LocalPath">LocalPath</h4>
+  <div class="markdown level1 summary"><p>Gets the resolved local path when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string? LocalPath { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Offset.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Offset%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L112">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Offset_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Offset*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Offset" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Offset">Offset</h4>
+  <div class="markdown level1 summary"><p>Gets an operation-specific file offset when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long Offset { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Operation.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Operation%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L70">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Operation_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Operation*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Operation" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Operation">Operation</h4>
+  <div class="markdown level1 summary"><p>Gets the filesystem operation currently being evaluated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">SshFileSystemOperation Operation { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.SshFileSystemOperation.html">SshFileSystemOperation</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Options.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Options%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L116">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Options_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Options*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Options" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Options">Options</h4>
+  <div class="markdown level1 summary"><p>Gets option names associated with the operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;string&gt; Options { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Owner.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Owner%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L94">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Owner_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Owner*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Owner" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Owner">Owner</h4>
+  <div class="markdown level1 summary"><p>Gets the owner name when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string? Owner { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_RemoteHandle.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.RemoteHandle%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L84">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_RemoteHandle_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.RemoteHandle*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_RemoteHandle" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.RemoteHandle">RemoteHandle</h4>
+  <div class="markdown level1 summary"><p>Gets the remote handle identifier when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string? RemoteHandle { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_RemoteName.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.RemoteName%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L86">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_RemoteName_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.RemoteName*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_RemoteName" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.RemoteName">RemoteName</h4>
+  <div class="markdown level1 summary"><p>Gets the remote name being reported or manipulated when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string? RemoteName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_RemotePath.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.RemotePath%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L76">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_RemotePath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.RemotePath*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_RemotePath" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.RemotePath">RemotePath</h4>
+  <div class="markdown level1 summary"><p>Gets the client-requested remote path when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string? RemotePath { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_RootPath.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.RootPath%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L74">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_RootPath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.RootPath*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_RootPath" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.RootPath">RootPath</h4>
+  <div class="markdown level1 summary"><p>Gets the configured filesystem root path when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string? RootPath { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Session.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Session%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L72">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Session_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Session*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Session" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Session">Session</h4>
+  <div class="markdown level1 summary"><p>Gets the session associated with the operation when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ISshSession? Session { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_SharedLock.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.SharedLock%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L108">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_SharedLock_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.SharedLock*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_SharedLock" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.SharedLock">SharedLock</h4>
+  <div class="markdown level1 summary"><p>Gets whether a requested lock is shared.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SharedLock { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_ShortName.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.ShortName%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L104">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_ShortName_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.ShortName*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_ShortName" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.ShortName">ShortName</h4>
+  <div class="markdown level1 summary"><p>Gets whether short-name reporting was requested.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ShortName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_SourcePath.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.SourcePath%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L80">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_SourcePath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.SourcePath*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_SourcePath" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.SourcePath">SourcePath</h4>
+  <div class="markdown level1 summary"><p>Gets the operation source path when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string? SourcePath { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Value.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Value%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L98">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Value_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Value*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_Value" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.Value">Value</h4>
+  <div class="markdown level1 summary"><p>Gets an operation-specific value when available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object? Value { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileSystemAccess.cs/#L67" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

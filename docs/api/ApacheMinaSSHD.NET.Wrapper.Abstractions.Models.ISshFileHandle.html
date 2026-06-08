@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Interface ISshFileHandle | ApacheMinaSSHD.NET API Reference </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Interface ISshFileHandle | ApacheMinaSSHD.NET API Reference ">
+    
+    <meta name="description" content="Represents an open SFTP file handle for direct data operations.">
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle">
+
+
+
+  <h1 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle" class="text-break">Interface ISshFileHandle</h1>
+  <div class="markdown level0 summary"><p>Represents an open SFTP file handle for direct data operations.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ApacheMinaSSHD.html">ApacheMinaSSHD</a>.<a class="xref" href="ApacheMinaSSHD.NET.html">NET</a>.<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.html">Wrapper</a>.<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.html">Abstractions</a>.<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.html">Models</a></h6>
+  <h6><strong>Assembly</strong>: ApacheMinaSSHD.NET.Wrapper.dll</h6>
+  <h5 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ISshFileHandle</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_AccessMask.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.AccessMask%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileHandle.cs/#L17">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_AccessMask_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.AccessMask*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_AccessMask" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.AccessMask">AccessMask</h4>
+  <div class="markdown level1 summary"><p>Gets the SFTP access mask used to open the file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int AccessMask { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Attributes.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Attributes%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileHandle.cs/#L21">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Attributes_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Attributes*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Attributes" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Attributes">Attributes</h4>
+  <div class="markdown level1 summary"><p>Gets file attributes captured for the handle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyDictionary&lt;string, object&gt; Attributes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_IsOpenAppend.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.IsOpenAppend%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileHandle.cs/#L19">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_IsOpenAppend_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.IsOpenAppend*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_IsOpenAppend" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.IsOpenAppend">IsOpenAppend</h4>
+  <div class="markdown level1 summary"><p>Gets whether the file is open in append mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsOpenAppend { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_SshHandle.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.SshHandle%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileHandle.cs/#L65">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_SshHandle_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.SshHandle*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_SshHandle" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.SshHandle">SshHandle</h4>
+  <div class="markdown level1 summary"><p>Gets the underlying safe handle metadata.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ISshHandle SshHandle { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshHandle.html">ISshHandle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Append_System_Byte___System_Int32_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Append(System.Byte%5B%5D%2CSystem.Int32%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileHandle.cs/#L29">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Append_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Append*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Append_System_Byte___System_Int32_System_Nullable_System_Int32__" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Append(System.Byte[],System.Int32,System.Nullable{System.Int32})">Append(byte[], int, int?)</h4>
+  <div class="markdown level1 summary"><p>Appends data to the file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Append(byte[] data, int offset = 0, int? length = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The source buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The source buffer offset.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</td>
+        <td><span class="parametername">length</span></td>
+        <td><p>The number of bytes to append, or <code>null</code> for the remaining buffer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_AsStream.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.AsStream%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileHandle.cs/#L71">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_AsStream_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.AsStream*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_AsStream" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.AsStream">AsStream()</h4>
+  <div class="markdown level1 summary"><p>Returns a .NET stream wrapper over this file handle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream AsStream()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></td>
+        <td><p>A stream backed by this SFTP file handle.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Close.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Close%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileHandle.cs/#L73">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Close_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Close*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Close" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Close">Close()</h4>
+  <div class="markdown level1 summary"><p>Closes the file handle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Close()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Lock_System_Int64_System_Int64_System_Int32_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Lock(System.Int64%2CSystem.Int64%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileHandle.cs/#L58">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Lock_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Lock*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Lock_System_Int64_System_Int64_System_Int32_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Lock(System.Int64,System.Int64,System.Int32)">Lock(long, long, int)</h4>
+  <div class="markdown level1 summary"><p>Locks a file region.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Lock(long offset, long length, int mask)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The file region offset.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">length</span></td>
+        <td><p>The file region length.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">mask</span></td>
+        <td><p>The lock mask supplied by the client.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Read_System_Byte___System_Int64_System_Boolean__System_Int32_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Read(System.Byte%5B%5D%2CSystem.Int64%2CSystem.Boolean%40%2CSystem.Int32%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileHandle.cs/#L44">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Read_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Read*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Read_System_Byte___System_Int64_System_Boolean__System_Int32_System_Nullable_System_Int32__" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Read(System.Byte[],System.Int64,System.Boolean@,System.Int32,System.Nullable{System.Int32})">Read(byte[], long, out bool, int, int?)</h4>
+  <div class="markdown level1 summary"><p>Reads data from the file and reports end-of-file state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Read(byte[] data, long fileOffset, out bool isEof, int dataOffset = 0, int? length = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The destination buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">fileOffset</span></td>
+        <td><p>The file offset to read from.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">isEof</span></td>
+        <td><p>Set to <code>true</code> when the read reaches end-of-file.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">dataOffset</span></td>
+        <td><p>The destination buffer offset.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</td>
+        <td><span class="parametername">length</span></td>
+        <td><p>The number of bytes to read, or <code>null</code> for the remaining buffer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>The number of bytes read.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Read_System_Byte___System_Int64_System_Int32_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Read(System.Byte%5B%5D%2CSystem.Int64%2CSystem.Int32%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileHandle.cs/#L36">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Read_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Read*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Read_System_Byte___System_Int64_System_Int32_System_Nullable_System_Int32__" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Read(System.Byte[],System.Int64,System.Int32,System.Nullable{System.Int32})">Read(byte[], long, int, int?)</h4>
+  <div class="markdown level1 summary"><p>Reads data from the file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Read(byte[] data, long fileOffset, int dataOffset = 0, int? length = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The destination buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">fileOffset</span></td>
+        <td><p>The file offset to read from.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">dataOffset</span></td>
+        <td><p>The destination buffer offset.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</td>
+        <td><span class="parametername">length</span></td>
+        <td><p>The number of bytes to read, or <code>null</code> for the remaining buffer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>The number of bytes read.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Unlock_System_Int64_System_Int64_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Unlock(System.Int64%2CSystem.Int64)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileHandle.cs/#L62">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Unlock_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Unlock*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Unlock_System_Int64_System_Int64_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Unlock(System.Int64,System.Int64)">Unlock(long, long)</h4>
+  <div class="markdown level1 summary"><p>Unlocks a file region.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Unlock(long offset, long length)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The file region offset.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">length</span></td>
+        <td><p>The file region length.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Write_System_Byte___System_Int64_System_Int32_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Write(System.Byte%5B%5D%2CSystem.Int64%2CSystem.Int32%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileHandle.cs/#L50">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Write_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Write*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle_Write_System_Byte___System_Int64_System_Int32_System_Nullable_System_Int32__" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle.Write(System.Byte[],System.Int64,System.Int32,System.Nullable{System.Int32})">Write(byte[], long, int, int?)</h4>
+  <div class="markdown level1 summary"><p>Writes data to the file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Write(byte[] data, long fileOffset, int dataOffset = 0, int? length = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The source buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">fileOffset</span></td>
+        <td><p>The file offset to write to.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">dataOffset</span></td>
+        <td><p>The source buffer offset.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</td>
+        <td><span class="parametername">length</span></td>
+        <td><p>The number of bytes to write, or <code>null</code> for the remaining buffer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileHandle.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileHandle%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/Models/ISshFileHandle.cs/#L12" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

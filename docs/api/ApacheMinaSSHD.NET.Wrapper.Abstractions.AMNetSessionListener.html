@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class AMNetSessionListener | ApacheMinaSSHD.NET API Reference </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class AMNetSessionListener | ApacheMinaSSHD.NET API Reference ">
+    
+    <meta name="description" content="Default session listener that logs SSH session lifecycle events.">
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener">
+
+
+
+  <h1 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener" class="text-break">Class AMNetSessionListener</h1>
+  <div class="markdown level0 summary"><p>Default session listener that logs SSH session lifecycle events.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">AMNetSessionListener</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSessionListener.html">IAMNetSessionListener</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ApacheMinaSSHD.html">ApacheMinaSSHD</a>.<a class="xref" href="ApacheMinaSSHD.NET.html">NET</a>.<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.html">Wrapper</a>.<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.html">Abstractions</a></h6>
+  <h6><strong>Assembly</strong>: ApacheMinaSSHD.NET.Wrapper.dll</h6>
+  <h5 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class AMNetSessionListener : IAMNetSessionListener</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener__ctor.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSessionListener.cs/#L16">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener__ctor_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.#ctor*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener__ctor" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.#ctor">AMNetSessionListener()</h4>
+  <div class="markdown level1 summary"><p>Creates a session listener using the default logger.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AMNetSessionListener()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener__ctor_ApacheMinaSSHD_NET_Wrapper_Logging_IAMNetLogger_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.%23ctor(ApacheMinaSSHD.NET.Wrapper.Logging.IAMNetLogger)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSessionListener.cs/#L25">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener__ctor_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.#ctor*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener__ctor_ApacheMinaSSHD_NET_Wrapper_Logging_IAMNetLogger_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.#ctor(ApacheMinaSSHD.NET.Wrapper.Logging.IAMNetLogger)">AMNetSessionListener(IAMNetLogger)</h4>
+  <div class="markdown level1 summary"><p>Creates a session listener using the supplied logger.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AMNetSessionListener(IAMNetLogger logger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Logging.IAMNetLogger.html">IAMNetLogger</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>The logger used by the default event handlers.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionClosed_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionClosed(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSessionListener.cs/#L43">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionClosed_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionClosed*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionClosed_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionClosed(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession)">OnSessionClosed(ISshSession)</h4>
+  <div class="markdown level1 summary"><p>Called when the SSH session is closed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnSessionClosed(ISshSession session)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a></td>
+        <td><span class="parametername">session</span></td>
+        <td><p>The session metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionCreated_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionCreated(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSessionListener.cs/#L31">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionCreated_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionCreated*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionCreated_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionCreated(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession)">OnSessionCreated(ISshSession)</h4>
+  <div class="markdown level1 summary"><p>Called when a session object is created.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnSessionCreated(ISshSession session)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a></td>
+        <td><span class="parametername">session</span></td>
+        <td><p>The session metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionDisconnect_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionDisconnect(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSessionListener.cs/#L49">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionDisconnect_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionDisconnect*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionDisconnect_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionDisconnect(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)">OnSessionDisconnect(ISshSessionEvent)</h4>
+  <div class="markdown level1 summary"><p>Called when a session disconnect message is observed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnSessionDisconnect(ISshSessionEvent context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent.html">ISshSessionEvent</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The disconnect event metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionEstablished_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionEstablished(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSessionListener.cs/#L37">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionEstablished_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionEstablished*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionEstablished_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionEstablished(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession)">OnSessionEstablished(ISshSession)</h4>
+  <div class="markdown level1 summary"><p>Called when the SSH session is established.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnSessionEstablished(ISshSession session)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a></td>
+        <td><span class="parametername">session</span></td>
+        <td><p>The session metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionEvent_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionEvent(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSessionListener.cs/#L55">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionEvent_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionEvent*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionEvent_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionEvent(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)">OnSessionEvent(ISshSessionEvent)</h4>
+  <div class="markdown level1 summary"><p>Called for a generic session event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnSessionEvent(ISshSessionEvent context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent.html">ISshSessionEvent</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The session event metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionException_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionException(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSessionListener.cs/#L61">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionException_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionException*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionException_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionException(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)">OnSessionException(ISshSessionEvent)</h4>
+  <div class="markdown level1 summary"><p>Called when an exception is raised for the session.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnSessionException(ISshSessionEvent context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent.html">ISshSessionEvent</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The session event metadata and exception.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionNegotiationEnd_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionNegotiationEnd(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSessionListener.cs/#L73">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionNegotiationEnd_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionNegotiationEnd*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionNegotiationEnd_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionNegotiationEnd(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)">OnSessionNegotiationEnd(ISshSessionEvent)</h4>
+  <div class="markdown level1 summary"><p>Called when key exchange or algorithm negotiation ends.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnSessionNegotiationEnd(ISshSessionEvent context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent.html">ISshSessionEvent</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The negotiation event metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionNegotiationOptionsCreated_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionNegotiationOptionsCreated(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSessionListener.cs/#L79">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionNegotiationOptionsCreated_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionNegotiationOptionsCreated*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionNegotiationOptionsCreated_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionNegotiationOptionsCreated(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)">OnSessionNegotiationOptionsCreated(ISshSessionEvent)</h4>
+  <div class="markdown level1 summary"><p>Called after negotiation options are created.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnSessionNegotiationOptionsCreated(ISshSessionEvent context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent.html">ISshSessionEvent</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The negotiation options metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionNegotiationStart_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionNegotiationStart(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSessionListener.cs/#L67">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionNegotiationStart_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionNegotiationStart*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionNegotiationStart_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionNegotiationStart(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)">OnSessionNegotiationStart(ISshSessionEvent)</h4>
+  <div class="markdown level1 summary"><p>Called when key exchange or algorithm negotiation starts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnSessionNegotiationStart(ISshSessionEvent context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent.html">ISshSessionEvent</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The negotiation event metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionPeerIdentificationLine_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionPeerIdentificationLine(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSessionListener.cs/#L85">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionPeerIdentificationLine_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionPeerIdentificationLine*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionPeerIdentificationLine_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionPeerIdentificationLine(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)">OnSessionPeerIdentificationLine(ISshSessionEvent)</h4>
+  <div class="markdown level1 summary"><p>Called when a peer identification line is read.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnSessionPeerIdentificationLine(ISshSessionEvent context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent.html">ISshSessionEvent</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The peer identification metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionPeerIdentificationReceived_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionPeerIdentificationReceived(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSessionListener.cs/#L91">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionPeerIdentificationReceived_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionPeerIdentificationReceived*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionPeerIdentificationReceived_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionPeerIdentificationReceived(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)">OnSessionPeerIdentificationReceived(ISshSessionEvent)</h4>
+  <div class="markdown level1 summary"><p>Called when the peer identification string is received.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnSessionPeerIdentificationReceived(ISshSessionEvent context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent.html">ISshSessionEvent</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The peer identification metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionPeerIdentificationSend_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionPeerIdentificationSend(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSessionListener.cs/#L97">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionPeerIdentificationSend_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionPeerIdentificationSend*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener_OnSessionPeerIdentificationSend_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSessionEvent_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener.OnSessionPeerIdentificationSend(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent)">OnSessionPeerIdentificationSend(ISshSessionEvent)</h4>
+  <div class="markdown level1 summary"><p>Called when the server sends its peer identification string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnSessionPeerIdentificationSend(ISshSessionEvent context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSessionEvent.html">ISshSessionEvent</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The peer identification metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSessionListener.html">IAMNetSessionListener</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSessionListener.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSessionListener%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSessionListener.cs/#L9" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

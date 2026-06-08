@@ -60,6 +60,13 @@ jobs:
         shell: pwsh
         run: ./eng/verify-xml-docs.ps1 -Configuration Release
 
+      - name: Generate API reference
+        shell: pwsh
+        run: |
+          dotnet tool install -g docfx --version 2.78.5
+          docfx metadata docs/.docfx/docfx.json --logLevel Warning
+          docfx build docs/.docfx/docfx.json --logLevel Warning
+
       - name: Pack validation
         shell: pwsh
         run: |

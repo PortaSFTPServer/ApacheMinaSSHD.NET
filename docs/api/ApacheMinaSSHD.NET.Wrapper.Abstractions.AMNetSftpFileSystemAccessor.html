@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class AMNetSftpFileSystemAccessor | ApacheMinaSSHD.NET API Reference </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class AMNetSftpFileSystemAccessor | ApacheMinaSSHD.NET API Reference ">
+    
+    <meta name="description" content="Default .NET-facing SFTP filesystem policy hook. Override this class to implement application-specific path resolution, filtering, and filesystem operation validation without using Apache MINA or Java types in application code.">
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor">
+
+
+
+  <h1 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor" class="text-break">Class AMNetSftpFileSystemAccessor</h1>
+  <div class="markdown level0 summary"><p>Default .NET-facing SFTP filesystem policy hook. Override this class to implement
+application-specific path resolution, filtering, and filesystem operation
+validation without using Apache MINA or Java types in application code.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">AMNetSftpFileSystemAccessor</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpFileSystemAccessor.html">IAMNetSftpFileSystemAccessor</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ApacheMinaSSHD.html">ApacheMinaSSHD</a>.<a class="xref" href="ApacheMinaSSHD.NET.html">NET</a>.<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.html">Wrapper</a>.<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.html">Abstractions</a></h6>
+  <h6><strong>Assembly</strong>: ApacheMinaSSHD.NET.Wrapper.dll</h6>
+  <h5 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class AMNetSftpFileSystemAccessor : IAMNetSftpFileSystemAccessor</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor__ctor.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L18">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor__ctor_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.#ctor*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor__ctor" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.#ctor">AMNetSftpFileSystemAccessor()</h4>
+  <div class="markdown level1 summary"><p>Creates a default SFTP filesystem accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AMNetSftpFileSystemAccessor()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_HiddenNames.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.HiddenNames%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L25">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_HiddenNames_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.HiddenNames*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_HiddenNames" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.HiddenNames">HiddenNames</h4>
+  <div class="markdown level1 summary"><p>File or directory names (case-insensitive) that should be hidden by the default policy.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual IReadOnlySet&lt;string&gt; HiddenNames { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1">IReadOnlySet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ApplyExtensionFileAttributes_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ApplyExtensionFileAttributes(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L176">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ApplyExtensionFileAttributes_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ApplyExtensionFileAttributes*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ApplyExtensionFileAttributes_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ApplyExtensionFileAttributes(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">ApplyExtensionFileAttributes(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when extension attributes are being applied to a file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ApplyExtensionFileAttributes(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_CloseDirectory_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.CloseDirectory(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L211">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_CloseDirectory_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.CloseDirectory*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_CloseDirectory_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.CloseDirectory(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">CloseDirectory(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when an SFTP directory handle is closed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void CloseDirectory(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_CloseFile_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.CloseFile(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L201">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_CloseFile_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.CloseFile*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_CloseFile_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.CloseFile(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">CloseFile(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when an SFTP file handle is closed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void CloseFile(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_CopyFile_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.CopyFile(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L286">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_CopyFile_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.CopyFile*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_CopyFile_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.CopyFile(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">CopyFile(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when a client attempts to copy a file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void CopyFile(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_CreateDirectory_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.CreateDirectory(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L265">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_CreateDirectory_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.CreateDirectory*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_CreateDirectory_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.CreateDirectory(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">CreateDirectory(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when a client attempts to create a directory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void CreateDirectory(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_CreateLink_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.CreateLink(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L270">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_CreateLink_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.CreateLink*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_CreateLink_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.CreateLink(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">CreateLink(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when a client attempts to create a hard link or symbolic link.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void CreateLink(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_IsPathAllowed_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.IsPathAllowed(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L34">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_IsPathAllowed_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.IsPathAllowed*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_IsPathAllowed_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.IsPathAllowed(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">IsPathAllowed(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Returns whether the requested SFTP path or operation is allowed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IsPathAllowed(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request being evaluated.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><code>true</code> to allow the operation; otherwise <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_IsVisibleByDefault_System_String_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.IsVisibleByDefault(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L306">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_IsVisibleByDefault_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.IsVisibleByDefault*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_IsVisibleByDefault_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.IsVisibleByDefault(System.String)">IsVisibleByDefault(string?)</h4>
+  <div class="markdown level1 summary"><p>Returns whether a path should be visible using the default hidden-file policy.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool IsVisibleByDefault(string? localPath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">localPath</span></td>
+        <td><p>The local path to evaluate.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><code>true</code> when the path should be visible; otherwise <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_NoFollow_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_System_Boolean_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.NoFollow(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L296">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_NoFollow_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.NoFollow*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_NoFollow_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_System_Boolean_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.NoFollow(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess,System.Boolean)">NoFollow(ISshFileSystemAccess, bool)</h4>
+  <div class="markdown level1 summary"><p>Returns whether symlinks should be treated as no-follow for the current request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool NoFollow(ISshFileSystemAccess context, bool defaultNoFollow)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">defaultNoFollow</span></td>
+        <td><p>The default no-follow decision.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>The no-follow decision to use.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_OpenDirectory_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.OpenDirectory(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L206">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_OpenDirectory_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.OpenDirectory*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_OpenDirectory_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.OpenDirectory(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">OpenDirectory(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when an SFTP directory handle is opened.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OpenDirectory(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_OpenFile_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.OpenFile(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L186">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_OpenFile_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.OpenFile*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_OpenFile_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.OpenFile(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">OpenFile(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called before or during SFTP file open handling.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OpenFile(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_PutRemoteFileName_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.PutRemoteFileName(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L181">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_PutRemoteFileName_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.PutRemoteFileName*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_PutRemoteFileName_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.PutRemoteFileName(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">PutRemoteFileName(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when the server is preparing a remote filename response.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void PutRemoteFileName(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ReadFileAttributes_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ReadFileAttributes(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess%2CSystem.Collections.Generic.IReadOnlyDictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L222">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ReadFileAttributes_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ReadFileAttributes*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ReadFileAttributes_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ReadFileAttributes(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">ReadFileAttributes(ISshFileSystemAccess, IReadOnlyDictionary&lt;string, object&gt;)</h4>
+  <div class="markdown level1 summary"><p>Allows the application to filter or rewrite attributes read from a file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IReadOnlyDictionary&lt;string, object&gt; ReadFileAttributes(ISshFileSystemAccess context, IReadOnlyDictionary&lt;string, object&gt; resolvedAttributes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
+        <td><span class="parametername">resolvedAttributes</span></td>
+        <td><p>The default attributes.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
+        <td><p>The attributes to return to the client.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_RemoveFile_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.RemoveFile(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L291">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_RemoveFile_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.RemoveFile*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_RemoveFile_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.RemoveFile(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">RemoveFile(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when a client attempts to remove a file or directory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void RemoveFile(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_RenameFile_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.RenameFile(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L281">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_RenameFile_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.RenameFile*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_RenameFile_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.RenameFile(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">RenameFile(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when a client attempts to rename or move a file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void RenameFile(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveFileAccessLinkOptions_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_System_Collections_Generic_IReadOnlyList_System_String__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveFileAccessLinkOptions(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess%2CSystem.Collections.Generic.IReadOnlyList%7BSystem.String%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L160">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveFileAccessLinkOptions_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveFileAccessLinkOptions*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveFileAccessLinkOptions_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_System_Collections_Generic_IReadOnlyList_System_String__" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveFileAccessLinkOptions(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess,System.Collections.Generic.IReadOnlyList{System.String})">ResolveFileAccessLinkOptions(ISshFileSystemAccess, IReadOnlyList&lt;string&gt;)</h4>
+  <div class="markdown level1 summary"><p>Allows the application to adjust link-following options used for file access.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IReadOnlyList&lt;string&gt; ResolveFileAccessLinkOptions(ISshFileSystemAccess context, IReadOnlyList&lt;string&gt; resolvedOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td><span class="parametername">resolvedOptions</span></td>
+        <td><p>The default option names.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td><p>The option names to apply.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveFileOwner_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveFileOwner(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L235">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveFileOwner_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveFileOwner*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveFileOwner_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveFileOwner(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">ResolveFileOwner(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when file owner information is resolved.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ResolveFileOwner(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveGroupOwner_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveGroupOwner(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L245">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveGroupOwner_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveGroupOwner*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveGroupOwner_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveGroupOwner(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">ResolveGroupOwner(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when group owner information is resolved.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ResolveGroupOwner(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveLinkTarget_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_System_String_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveLinkTarget(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L275">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveLinkTarget_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveLinkTarget*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveLinkTarget_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveLinkTarget(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess,System.String)">ResolveLinkTarget(ISshFileSystemAccess, string)</h4>
+  <div class="markdown level1 summary"><p>Allows the application to rewrite a symbolic link target reported to the client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string ResolveLinkTarget(ISshFileSystemAccess context, string resolvedTarget)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">resolvedTarget</span></td>
+        <td><p>The default resolved link target.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The link target to report to the client.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveLocalFilePath_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_System_String_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveLocalFilePath(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L28">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveLocalFilePath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveLocalFilePath*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveLocalFilePath_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveLocalFilePath(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess,System.String)">ResolveLocalFilePath(ISshFileSystemAccess, string)</h4>
+  <div class="markdown level1 summary"><p>Allows the application to rewrite the resolved local path for an SFTP request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string ResolveLocalFilePath(ISshFileSystemAccess context, string resolvedLocalPath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata, including remote and resolved local paths.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">resolvedLocalPath</span></td>
+        <td><p>The default resolved local path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The local path to use for the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveReportedFileAttributes_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveReportedFileAttributes(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess%2CSystem.Collections.Generic.IReadOnlyDictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L168">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveReportedFileAttributes_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveReportedFileAttributes*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ResolveReportedFileAttributes_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ResolveReportedFileAttributes(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">ResolveReportedFileAttributes(ISshFileSystemAccess, IReadOnlyDictionary&lt;string, object&gt;)</h4>
+  <div class="markdown level1 summary"><p>Allows the application to filter or rewrite attributes reported to clients.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IReadOnlyDictionary&lt;string, object&gt; ResolveReportedFileAttributes(ISshFileSystemAccess context, IReadOnlyDictionary&lt;string, object&gt; resolvedAttributes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
+        <td><span class="parametername">resolvedAttributes</span></td>
+        <td><p>The default attributes.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
+        <td><p>The attributes to report to the client.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SetFileAccessControl_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SetFileAccessControl(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L260">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SetFileAccessControl_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SetFileAccessControl*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SetFileAccessControl_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SetFileAccessControl(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">SetFileAccessControl(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when a client attempts to set file access control information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SetFileAccessControl(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SetFileAttribute_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SetFileAttribute(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L230">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SetFileAttribute_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SetFileAttribute*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SetFileAttribute_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SetFileAttribute(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">SetFileAttribute(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when a client sets a file attribute.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SetFileAttribute(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SetFileOwner_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SetFileOwner(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L240">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SetFileOwner_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SetFileOwner*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SetFileOwner_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SetFileOwner(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">SetFileOwner(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when a client attempts to set file owner information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SetFileOwner(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SetFilePermissions_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SetFilePermissions(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L255">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SetFilePermissions_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SetFilePermissions*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SetFilePermissions_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SetFilePermissions(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">SetFilePermissions(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when a client attempts to set file permissions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SetFilePermissions(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SetGroupOwner_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SetGroupOwner(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L250">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SetGroupOwner_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SetGroupOwner*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SetGroupOwner_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SetGroupOwner(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">SetGroupOwner(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when a client attempts to set group owner information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SetGroupOwner(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ShouldIncludeDirectoryEntry_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ShouldIncludeDirectoryEntry(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L216">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ShouldIncludeDirectoryEntry_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ShouldIncludeDirectoryEntry*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_ShouldIncludeDirectoryEntry_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.ShouldIncludeDirectoryEntry(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">ShouldIncludeDirectoryEntry(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Returns whether a directory entry should be visible to the client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool ShouldIncludeDirectoryEntry(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the directory entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><code>true</code> to include the entry; otherwise <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SyncFileData_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SyncFileData(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L196">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SyncFileData_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SyncFileData*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_SyncFileData_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.SyncFileData(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">SyncFileData(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when a client requests file data synchronization.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SyncFileData(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_TryLock_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.TryLock(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L191">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_TryLock_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.TryLock*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor_TryLock_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshFileSystemAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor.TryLock(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess)">TryLock(ISshFileSystemAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when a client attempts to lock a file region.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void TryLock(ISshFileSystemAccess context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshFileSystemAccess.html">ISshFileSystemAccess</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Operation metadata for the lock request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSftpFileSystemAccessor.html">IAMNetSftpFileSystemAccessor</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetSftpFileSystemAccessor.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetSftpFileSystemAccessor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetSftpFileSystemAccessor.cs/#L13" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class AMNetScpFileOpener | ApacheMinaSSHD.NET API Reference </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class AMNetScpFileOpener | ApacheMinaSSHD.NET API Reference ">
+    
+    <meta name="description" content="Default .NET-facing SCP filesystem policy hook. Override this class to implement application-specific SCP path, stream, and permission behavior without using Apache MINA or Java types in application code.">
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener">
+
+
+
+  <h1 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener" class="text-break">Class AMNetScpFileOpener</h1>
+  <div class="markdown level0 summary"><p>Default .NET-facing SCP filesystem policy hook. Override this class to implement
+application-specific SCP path, stream, and permission behavior without using
+Apache MINA or Java types in application code.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">AMNetScpFileOpener</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetScpFileOpener.html">IAMNetScpFileOpener</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ApacheMinaSSHD.html">ApacheMinaSSHD</a>.<a class="xref" href="ApacheMinaSSHD.NET.html">NET</a>.<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.html">Wrapper</a>.<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.html">Abstractions</a></h6>
+  <h6><strong>Assembly</strong>: ApacheMinaSSHD.NET.Wrapper.dll</h6>
+  <h5 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class AMNetScpFileOpener : IAMNetScpFileOpener</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener__ctor_System_String_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.%23ctor(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L16">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener__ctor_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.#ctor*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener__ctor_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.#ctor(System.String)">AMNetScpFileOpener(string?)</h4>
+  <div class="markdown level1 summary"><p>Creates a default SCP policy hook.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AMNetScpFileOpener(string? rootPath = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">rootPath</span></td>
+        <td><p>Optional root path used by the default path allow-list behavior.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_HiddenNames.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.HiddenNames%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L31">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_HiddenNames_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.HiddenNames*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_HiddenNames" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.HiddenNames">HiddenNames</h4>
+  <div class="markdown level1 summary"><p>File or directory names (case-insensitive) that should be hidden by the default policy.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual IReadOnlySet&lt;string&gt; HiddenNames { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1">IReadOnlySet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_RootPath.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.RootPath%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L26">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_RootPath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.RootPath*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_RootPath" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.RootPath">RootPath</h4>
+  <div class="markdown level1 summary"><p>Gets the optional local root path used by the default path allow-list behavior.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? RootPath { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_CloseRead_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.CloseRead(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L101">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_CloseRead_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.CloseRead*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_CloseRead_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.CloseRead(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess)">CloseRead(ISshScpFileAccess)</h4>
+  <div class="markdown level1 summary"><p>Called after a local file read/send handle is closed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void CloseRead(ISshScpFileAccess access)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_CloseWrite_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.CloseWrite(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L107">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_CloseWrite_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.CloseWrite*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_CloseWrite_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.CloseWrite(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess)">CloseWrite(ISshScpFileAccess)</h4>
+  <div class="markdown level1 summary"><p>Called after a local file write/receive handle is closed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void CloseWrite(ISshScpFileAccess access)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_CreateSourceStreamResolver_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.CreateSourceStreamResolver(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L110">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_CreateSourceStreamResolver_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.CreateSourceStreamResolver*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_CreateSourceStreamResolver_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.CreateSourceStreamResolver(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess)">CreateSourceStreamResolver(ISshScpFileAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when the server creates an outgoing SCP source stream resolver.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void CreateSourceStreamResolver(ISshScpFileAccess access)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_CreateTargetStreamResolver_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.CreateTargetStreamResolver(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L113">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_CreateTargetStreamResolver_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.CreateTargetStreamResolver*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_CreateTargetStreamResolver_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.CreateTargetStreamResolver(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess)">CreateTargetStreamResolver(ISshScpFileAccess)</h4>
+  <div class="markdown level1 summary"><p>Called when the server creates an incoming SCP target stream resolver.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void CreateTargetStreamResolver(ISshScpFileAccess access)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_GetLocalFilePermissions_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_Collections_Generic_IReadOnlyList_System_String__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.GetLocalFilePermissions(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess%2CSystem.Collections.Generic.IReadOnlyList%7BSystem.String%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L93">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_GetLocalFilePermissions_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.GetLocalFilePermissions*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_GetLocalFilePermissions_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_Collections_Generic_IReadOnlyList_System_String__" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.GetLocalFilePermissions(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess,System.Collections.Generic.IReadOnlyList{System.String})">GetLocalFilePermissions(ISshScpFileAccess, IReadOnlyList&lt;string&gt;)</h4>
+  <div class="markdown level1 summary"><p>Allows the application to filter or rewrite local file permissions reported to SCP clients.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IReadOnlyList&lt;string&gt; GetLocalFilePermissions(ISshScpFileAccess access, IReadOnlyList&lt;string&gt; permissions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td><span class="parametername">permissions</span></td>
+        <td><p>The default permission names.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td><p>The permission names to use.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_GetMatchingFilesToSend_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_Collections_Generic_IReadOnlyList_System_String__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.GetMatchingFilesToSend(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess%2CSystem.Collections.Generic.IReadOnlyList%7BSystem.String%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L46">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_GetMatchingFilesToSend_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.GetMatchingFilesToSend*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_GetMatchingFilesToSend_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_Collections_Generic_IReadOnlyList_System_String__" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.GetMatchingFilesToSend(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess,System.Collections.Generic.IReadOnlyList{System.String})">GetMatchingFilesToSend(ISshScpFileAccess, IReadOnlyList&lt;string&gt;)</h4>
+  <div class="markdown level1 summary"><p>Filters or rewrites files that match an outgoing SCP pattern.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IReadOnlyList&lt;string&gt; GetMatchingFilesToSend(ISshScpFileAccess access, IReadOnlyList&lt;string&gt; resolvedPaths)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td><span class="parametername">resolvedPaths</span></td>
+        <td><p>The default matching local paths.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td><p>The local paths that may be sent.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_IsPathAllowed_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.IsPathAllowed(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L51">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_IsPathAllowed_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.IsPathAllowed*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_IsPathAllowed_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.IsPathAllowed(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess)">IsPathAllowed(ISshScpFileAccess)</h4>
+  <div class="markdown level1 summary"><p>Returns whether the requested SCP path or operation is allowed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IsPathAllowed(ISshScpFileAccess access)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><code>true</code> to allow the operation; otherwise <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_OpenRead_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.OpenRead(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L98">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_OpenRead_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.OpenRead*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_OpenRead_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.OpenRead(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess)">OpenRead(ISshScpFileAccess)</h4>
+  <div class="markdown level1 summary"><p>Called before a local file is opened for SCP read/send.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OpenRead(ISshScpFileAccess access)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_OpenWrite_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.OpenWrite(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L104">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_OpenWrite_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.OpenWrite*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_OpenWrite_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.OpenWrite(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess)">OpenWrite(ISshScpFileAccess)</h4>
+  <div class="markdown level1 summary"><p>Called before a local file is opened for SCP write/receive.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OpenWrite(ISshScpFileAccess access)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ReadLocalBasicFileAttributes_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ReadLocalBasicFileAttributes(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess%2CSystem.Collections.Generic.IReadOnlyDictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L88">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ReadLocalBasicFileAttributes_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ReadLocalBasicFileAttributes*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ReadLocalBasicFileAttributes_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ReadLocalBasicFileAttributes(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">ReadLocalBasicFileAttributes(ISshScpFileAccess, IReadOnlyDictionary&lt;string, object&gt;)</h4>
+  <div class="markdown level1 summary"><p>Allows the application to filter or rewrite file attributes reported to SCP clients.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IReadOnlyDictionary&lt;string, object&gt; ReadLocalBasicFileAttributes(ISshScpFileAccess access, IReadOnlyDictionary&lt;string, object&gt; attributes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
+        <td><span class="parametername">attributes</span></td>
+        <td><p>The default attributes.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
+        <td><p>The attributes to use.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ResolveIncomingFilePath_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_String_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ResolveIncomingFilePath(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L37">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ResolveIncomingFilePath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ResolveIncomingFilePath*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ResolveIncomingFilePath_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ResolveIncomingFilePath(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess,System.String)">ResolveIncomingFilePath(ISshScpFileAccess, string)</h4>
+  <div class="markdown level1 summary"><p>Allows the application to rewrite the destination path for an incoming file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string ResolveIncomingFilePath(ISshScpFileAccess access, string resolvedPath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">resolvedPath</span></td>
+        <td><p>The default resolved path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The local path to use for the incoming file.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ResolveIncomingReceiveLocation_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_String_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ResolveIncomingReceiveLocation(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L40">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ResolveIncomingReceiveLocation_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ResolveIncomingReceiveLocation*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ResolveIncomingReceiveLocation_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ResolveIncomingReceiveLocation(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess,System.String)">ResolveIncomingReceiveLocation(ISshScpFileAccess, string)</h4>
+  <div class="markdown level1 summary"><p>Allows the application to rewrite the receive location for incoming SCP data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string ResolveIncomingReceiveLocation(ISshScpFileAccess access, string resolvedPath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">resolvedPath</span></td>
+        <td><p>The default resolved path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The local receive location to use.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ResolveLocalPath_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_String_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ResolveLocalPath(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L34">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ResolveLocalPath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ResolveLocalPath*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ResolveLocalPath_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ResolveLocalPath(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess,System.String)">ResolveLocalPath(ISshScpFileAccess, string)</h4>
+  <div class="markdown level1 summary"><p>Allows the application to rewrite a client path into a local path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string ResolveLocalPath(ISshScpFileAccess access, string resolvedPath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">resolvedPath</span></td>
+        <td><p>The default resolved path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The local path to use.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ResolveOutgoingFilePath_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_String_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ResolveOutgoingFilePath(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L43">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ResolveOutgoingFilePath_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ResolveOutgoingFilePath*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ResolveOutgoingFilePath_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ResolveOutgoingFilePath(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess,System.String)">ResolveOutgoingFilePath(ISshScpFileAccess, string)</h4>
+  <div class="markdown level1 summary"><p>Allows the application to rewrite the source path for an outgoing file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string ResolveOutgoingFilePath(ISshScpFileAccess access, string resolvedPath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">resolvedPath</span></td>
+        <td><p>The default resolved path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The local path to send.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ShouldIncludeDirectoryEntry_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ShouldIncludeDirectoryEntry(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L82">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ShouldIncludeDirectoryEntry_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ShouldIncludeDirectoryEntry*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ShouldIncludeDirectoryEntry_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ShouldIncludeDirectoryEntry(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess)">ShouldIncludeDirectoryEntry(ISshScpFileAccess)</h4>
+  <div class="markdown level1 summary"><p>Returns whether a directory entry should be visible during recursive SCP.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool ShouldIncludeDirectoryEntry(ISshScpFileAccess access)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><code>true</code> to include the entry; otherwise <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ShouldSendAsDirectory_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_Boolean_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ShouldSendAsDirectory(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L79">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ShouldSendAsDirectory_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ShouldSendAsDirectory*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ShouldSendAsDirectory_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_Boolean_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ShouldSendAsDirectory(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess,System.Boolean)">ShouldSendAsDirectory(ISshScpFileAccess, bool)</h4>
+  <div class="markdown level1 summary"><p>Returns whether the path should be sent as a directory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool ShouldSendAsDirectory(ISshScpFileAccess access, bool defaultValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td><p>The default server decision.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>The decision to use.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ShouldSendAsRegularFile_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_Boolean_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ShouldSendAsRegularFile(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L76">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ShouldSendAsRegularFile_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ShouldSendAsRegularFile*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener_ShouldSendAsRegularFile_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshScpFileAccess_System_Boolean_" data-uid="ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener.ShouldSendAsRegularFile(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess,System.Boolean)">ShouldSendAsRegularFile(ISshScpFileAccess, bool)</h4>
+  <div class="markdown level1 summary"><p>Returns whether the path should be sent as a regular file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool ShouldSendAsRegularFile(ISshScpFileAccess access, bool defaultValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshScpFileAccess.html">ISshScpFileAccess</a></td>
+        <td><span class="parametername">access</span></td>
+        <td><p>Operation metadata for the SCP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td><p>The default server decision.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>The decision to use.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetScpFileOpener.html">IAMNetScpFileOpener</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_Abstractions_AMNetScpFileOpener.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.Abstractions.AMNetScpFileOpener%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/Abstractions/AMNetScpFileOpener.cs/#L10" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

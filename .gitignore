@@ -1,7 +1,9 @@
-# Build output
+# Build output and generated docs
 **/bin/
 **/obj/
 artifacts/
+docs/.docfx/obj/
+docs/.docfx/_site/
 
 # IDE and local user state
 .vs/

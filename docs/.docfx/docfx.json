@@ -1,0 +1,25 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": ["ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj"],
+          "src": "../.."
+        }
+      ],
+      "dest": "obj/api"
+    }
+  ],
+  "build": {
+    "content": [
+      { "files": ["**/*.{md,yml}", "toc.yml"], "src": "obj/api", "dest": "." }
+    ],
+    "globalMetadata": {
+      "_appTitle": "ApacheMinaSSHD.NET API Reference",
+      "_appFooter": "",
+      "_enableSearch": true
+    },
+    "template": ["default"],
+    "dest": "../api"
+  }
+}

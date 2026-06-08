@@ -1,0 +1,2353 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class AMNetSshServer | ApacheMinaSSHD.NET API Reference </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class AMNetSshServer | ApacheMinaSSHD.NET API Reference ">
+    
+    <meta name="description" content="Main .NET-facing SSH server wrapper used to host SFTP and SCP services.">
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer">
+
+
+
+  <h1 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer" class="text-break">Class AMNetSshServer</h1>
+  <div class="markdown level0 summary"><p>Main .NET-facing SSH server wrapper used to host SFTP and SCP services.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">AMNetSshServer</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ApacheMinaSSHD.html">ApacheMinaSSHD</a>.<a class="xref" href="ApacheMinaSSHD.NET.html">NET</a>.<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.html">Wrapper</a></h6>
+  <h6><strong>Assembly</strong>: ApacheMinaSSHD.NET.Wrapper.dll</h6>
+  <h5 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class AMNetSshServer : IDisposable</code></pre>
+  </div>
+  <h5 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>This type hides the underlying Apache MINA SSHD server from application code.
+Configure authentication, host keys, filesystem policy, and enabled subsystems
+before calling <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.html#ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Start">Start()</a>.</p>
+</div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Config.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Config%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L34">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Config_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Config*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Config" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Config">Config</h4>
+  <div class="markdown level1 summary"><p>Gets server configuration helpers for resource limits, timeouts, and cryptographic algorithms.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AMNetSshServerConfig Config { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.AMNetSshServerConfig.html">AMNetSshServerConfig</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Host.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Host%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L122">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Host_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Host*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Host" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Host">Host</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the bind address. Use <code>null</code> to use the server default.
+Accepts IPv4, IPv6, or valid hostname. Rejects empty/whitespace-only values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? Host { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Port.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Port%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L103">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Port_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Port*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Port" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Port">Port</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the TCP port the SSH server listens on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Port { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Dispose.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Dispose%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L233">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Dispose_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Dispose*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Dispose" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Stops the server if it was started.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_GetConfiguredAuthenticationMethods.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.GetConfiguredAuthenticationMethods%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L47">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_GetConfiguredAuthenticationMethods_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.GetConfiguredAuthenticationMethods*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_GetConfiguredAuthenticationMethods" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.GetConfiguredAuthenticationMethods">GetConfiguredAuthenticationMethods()</h4>
+  <div class="markdown level1 summary"><p>Gets the configured authentication method chains in evaluation order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;IReadOnlyList&lt;string&gt;&gt; GetConfiguredAuthenticationMethods()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_IsClosed.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.IsClosed%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L226">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_IsClosed_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.IsClosed*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_IsClosed" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.IsClosed">IsClosed()</h4>
+  <div class="markdown level1 summary"><p>Returns whether the server has been closed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsClosed()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_IsStarted.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.IsStarted%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L216">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_IsStarted_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.IsStarted*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_IsStarted" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.IsStarted">IsStarted()</h4>
+  <div class="markdown level1 summary"><p>Returns whether the server has been started.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsStarted()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthenticationMethodGroups_System_Collections_Generic_IEnumerable_System_String____.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthenticationMethodGroups(System.Collections.Generic.IEnumerable%7BSystem.String%7D%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L95">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthenticationMethodGroups_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthenticationMethodGroups*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthenticationMethodGroups_System_Collections_Generic_IEnumerable_System_String____" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthenticationMethodGroups(System.Collections.Generic.IEnumerable{System.String}[])">SetAuthenticationMethodGroups(params IEnumerable&lt;string&gt;[])</h4>
+  <div class="markdown level1 summary"><p>Sets the authentication method policy using one or more required method groups.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAuthenticationMethodGroups(params IEnumerable&lt;string&gt;[] authenticationMethodGroups)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;[]</td>
+        <td><span class="parametername">authenticationMethodGroups</span></td>
+        <td><p>Each group contains methods that must all succeed in order. The outer set
+represents alternative groups.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthenticationMethods_System_String___.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthenticationMethods(System.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L71">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthenticationMethods_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthenticationMethods*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthenticationMethods_System_String___" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthenticationMethods(System.String[])">SetAuthenticationMethods(params string[])</h4>
+  <div class="markdown level1 summary"><p>Sets the authentication method policy using one or more pre-built method chains.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAuthenticationMethods(params string[] authenticationChains)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
+        <td><span class="parametername">authenticationChains</span></td>
+        <td><p>Authentication chains such as <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.AMNetSshAuthenticationMethods.html#ApacheMinaSSHD_NET_Wrapper_AMNetSshAuthenticationMethods_PublicKey">PublicKey</a>
+or values returned by <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.AMNetSshAuthenticationMethods.html#ApacheMinaSSHD_NET_Wrapper_AMNetSshAuthenticationMethods_RequireAll_System_String___">RequireAll(params string[])</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthorizedKeysAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetAuthorizedKeysAuthenticator_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthorizedKeysAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetAuthorizedKeysAuthenticator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L594">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthorizedKeysAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthorizedKeysAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthorizedKeysAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetAuthorizedKeysAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthorizedKeysAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetAuthorizedKeysAuthenticator)">SetAuthorizedKeysAuthenticator(IAMNetAuthorizedKeysAuthenticator)</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication backed by an authorized_keys file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAuthorizedKeysAuthenticator(IAMNetAuthorizedKeysAuthenticator authorizedKeysAuthenticator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetAuthorizedKeysAuthenticator.html">IAMNetAuthorizedKeysAuthenticator</a></td>
+        <td><span class="parametername">authorizedKeysAuthenticator</span></td>
+        <td><p>The authorized keys configuration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthorizedKeysAuthenticator_System_String_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthorizedKeysAuthenticator(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L621">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthorizedKeysAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthorizedKeysAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthorizedKeysAuthenticator_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthorizedKeysAuthenticator(System.String)">SetAuthorizedKeysAuthenticator(string)</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication backed by an authorized_keys file path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAuthorizedKeysAuthenticator(string path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>The authorized_keys file path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthorizedkeyAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetAuthorizedKeysAuthenticator_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthorizedkeyAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetAuthorizedKeysAuthenticator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L585">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthorizedkeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthorizedkeyAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthorizedkeyAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetAuthorizedKeysAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthorizedkeyAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetAuthorizedKeysAuthenticator)">SetAuthorizedkeyAuthenticator(IAMNetAuthorizedKeysAuthenticator)</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication backed by an authorized_keys file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAuthorizedkeyAuthenticator(IAMNetAuthorizedKeysAuthenticator authorizedKeysAuthenticator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetAuthorizedKeysAuthenticator.html">IAMNetAuthorizedKeysAuthenticator</a></td>
+        <td><span class="parametername">authorizedKeysAuthenticator</span></td>
+        <td><p>The authorized keys configuration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthorizedkeyAuthenticator_System_String_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthorizedkeyAuthenticator(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L612">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthorizedkeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthorizedkeyAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetAuthorizedkeyAuthenticator_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetAuthorizedkeyAuthenticator(System.String)">SetAuthorizedkeyAuthenticator(string)</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication backed by an authorized_keys file path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAuthorizedkeyAuthenticator(string path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>The authorized_keys file path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetCompositePasswordAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPasswordAuthenticator___.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetCompositePasswordAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPasswordAuthenticator%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L389">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetCompositePasswordAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetCompositePasswordAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetCompositePasswordAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPasswordAuthenticator___" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetCompositePasswordAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPasswordAuthenticator[])">SetCompositePasswordAuthenticator(params IAMNetPasswordAuthenticator[])</h4>
+  <div class="markdown level1 summary"><p>Enables username/password authentication using multiple modules evaluated in order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetCompositePasswordAuthenticator(params IAMNetPasswordAuthenticator[] authenticators)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPasswordAuthenticator.html">IAMNetPasswordAuthenticator</a>[]</td>
+        <td><span class="parametername">authenticators</span></td>
+        <td><p>The password authenticators to try.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetCompositePublicKeyAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPublickeyAuthenticator___.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetCompositePublicKeyAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L488">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetCompositePublicKeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetCompositePublicKeyAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetCompositePublicKeyAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPublickeyAuthenticator___" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetCompositePublicKeyAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator[])">SetCompositePublicKeyAuthenticator(params IAMNetPublickeyAuthenticator[])</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication using multiple modules evaluated in order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetCompositePublicKeyAuthenticator(params IAMNetPublickeyAuthenticator[] authenticators)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator.html">IAMNetPublickeyAuthenticator</a>[]</td>
+        <td><span class="parametername">authenticators</span></td>
+        <td><p>The public key authenticators to try.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetCompositePublickeyAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPublickeyAuthenticator___.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetCompositePublickeyAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L479">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetCompositePublickeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetCompositePublickeyAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetCompositePublickeyAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPublickeyAuthenticator___" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetCompositePublickeyAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator[])">SetCompositePublickeyAuthenticator(params IAMNetPublickeyAuthenticator[])</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication using multiple modules evaluated in order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetCompositePublickeyAuthenticator(params IAMNetPublickeyAuthenticator[] authenticators)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator.html">IAMNetPublickeyAuthenticator</a>[]</td>
+        <td><span class="parametername">authenticators</span></td>
+        <td><p>The public key authenticators to try.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetDelegateKeyboardInteractiveAuthenticator_System_Action_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshChallenge__System_Func_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_IResponseList_System_Boolean__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetDelegateKeyboardInteractiveAuthenticator(System.Action%7BSystem.String%2CApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshChallenge%7D%2CSystem.Func%7BApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession%2CSystem.String%2CApacheMinaSSHD.NET.Wrapper.Abstractions.Models.IResponseList%2CSystem.Boolean%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L303">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetDelegateKeyboardInteractiveAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetDelegateKeyboardInteractiveAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetDelegateKeyboardInteractiveAuthenticator_System_Action_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshChallenge__System_Func_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_IResponseList_System_Boolean__" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetDelegateKeyboardInteractiveAuthenticator(System.Action{System.String,ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshChallenge},System.Func{ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession,System.String,ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.IResponseList,System.Boolean})">SetDelegateKeyboardInteractiveAuthenticator(Action&lt;string, ISshChallenge&gt;, Func&lt;ISshSession, string, IResponseList, bool&gt;)</h4>
+  <div class="markdown level1 summary"><p>Enables keyboard-interactive authentication using .NET callbacks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDelegateKeyboardInteractiveAuthenticator(Action&lt;string, ISshChallenge&gt; generateChallenge, Func&lt;ISshSession, string, IResponseList, bool&gt; authenticate)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-2">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshChallenge.html">ISshChallenge</a>&gt;</td>
+        <td><span class="parametername">generateChallenge</span></td>
+        <td><p>Callback that populates prompts sent to the client.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.IResponseList.html">IResponseList</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</td>
+        <td><span class="parametername">authenticate</span></td>
+        <td><p>Callback that validates the client responses.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetDelegatePasswordAuthenticator_System_Func_System_String_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_Boolean__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetDelegatePasswordAuthenticator(System.Func%7BSystem.String%2CSystem.String%2CApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession%2CSystem.Boolean%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L413">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetDelegatePasswordAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetDelegatePasswordAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetDelegatePasswordAuthenticator_System_Func_System_String_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_Boolean__" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetDelegatePasswordAuthenticator(System.Func{System.String,System.String,ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession,System.Boolean})">SetDelegatePasswordAuthenticator(Func&lt;string, string, ISshSession, bool&gt;)</h4>
+  <div class="markdown level1 summary"><p>Enables username/password authentication using a .NET callback.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDelegatePasswordAuthenticator(Func&lt;string, string, ISshSession, bool&gt; authenticate)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</td>
+        <td><span class="parametername">authenticate</span></td>
+        <td><p>Callback that receives username, password, and session metadata and returns
+whether the credentials should be accepted.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetDelegatePublicKeyAuthenticator_System_Func_System_String_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_Boolean__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetDelegatePublicKeyAuthenticator(System.Func%7BSystem.String%2CSystem.String%2CApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession%2CSystem.Boolean%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L524">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetDelegatePublicKeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetDelegatePublicKeyAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetDelegatePublicKeyAuthenticator_System_Func_System_String_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_Boolean__" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetDelegatePublicKeyAuthenticator(System.Func{System.String,System.String,ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession,System.Boolean})">SetDelegatePublicKeyAuthenticator(Func&lt;string, string, ISshSession, bool&gt;)</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication using a .NET callback.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDelegatePublicKeyAuthenticator(Func&lt;string, string, ISshSession, bool&gt; authenticate)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</td>
+        <td><span class="parametername">authenticate</span></td>
+        <td><p>Callback that receives username, public key fingerprint, and session metadata
+and returns whether the key should be accepted.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetDelegatePublickeyAuthenticator_System_Func_System_String_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_Boolean__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetDelegatePublickeyAuthenticator(System.Func%7BSystem.String%2CSystem.String%2CApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession%2CSystem.Boolean%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L512">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetDelegatePublickeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetDelegatePublickeyAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetDelegatePublickeyAuthenticator_System_Func_System_String_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_Boolean__" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetDelegatePublickeyAuthenticator(System.Func{System.String,System.String,ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession,System.Boolean})">SetDelegatePublickeyAuthenticator(Func&lt;string, string, ISshSession, bool&gt;)</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication using a .NET callback.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDelegatePublickeyAuthenticator(Func&lt;string, string, ISshSession, bool&gt; authenticate)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</td>
+        <td><span class="parametername">authenticate</span></td>
+        <td><p>Callback that receives username, public key fingerprint, and session metadata
+and returns whether the key should be accepted.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetFingerprintPublicKeyAuthenticator_System_String_System_String___.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetFingerprintPublicKeyAuthenticator(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L566">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetFingerprintPublicKeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetFingerprintPublicKeyAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetFingerprintPublicKeyAuthenticator_System_String_System_String___" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetFingerprintPublicKeyAuthenticator(System.String,System.String[])">SetFingerprintPublicKeyAuthenticator(string, params string[])</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication for one username and one or more accepted fingerprints.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetFingerprintPublicKeyAuthenticator(string username, params string[] acceptedFingerprints)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">username</span></td>
+        <td><p>The exact username to accept.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
+        <td><span class="parametername">acceptedFingerprints</span></td>
+        <td><p>One or more accepted public key fingerprints.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetFingerprintPublickeyAuthenticator_System_String_System_String___.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetFingerprintPublickeyAuthenticator(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L556">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetFingerprintPublickeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetFingerprintPublickeyAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetFingerprintPublickeyAuthenticator_System_String_System_String___" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetFingerprintPublickeyAuthenticator(System.String,System.String[])">SetFingerprintPublickeyAuthenticator(string, params string[])</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication for one username and one or more accepted fingerprints.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetFingerprintPublickeyAuthenticator(string username, params string[] acceptedFingerprints)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">username</span></td>
+        <td><p>The exact username to accept.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
+        <td><span class="parametername">acceptedFingerprints</span></td>
+        <td><p>One or more accepted public key fingerprints.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetFixedKeyboardInteractiveAuthenticator_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetFixedKeyboardInteractiveAuthenticator(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L342">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetFixedKeyboardInteractiveAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetFixedKeyboardInteractiveAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetFixedKeyboardInteractiveAuthenticator_System_String_System_String_System_String_System_String_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetFixedKeyboardInteractiveAuthenticator(System.String,System.String,System.String,System.String,System.String)">SetFixedKeyboardInteractiveAuthenticator(string, string?, string, string, string)</h4>
+  <div class="markdown level1 summary"><p>Enables keyboard-interactive authentication with a single fixed response.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetFixedKeyboardInteractiveAuthenticator(string expectedResponse, string? username = null, string prompt = &quot;Verification code&quot;, string interactionName = &quot;Authentication&quot;, string instruction = &quot;Enter the verification code.&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">expectedResponse</span></td>
+        <td><p>The exact response to accept.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">username</span></td>
+        <td><p>Optional exact username to accept.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">prompt</span></td>
+        <td><p>Prompt text shown to the client.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">interactionName</span></td>
+        <td><p>Challenge name shown to the client.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">instruction</span></td>
+        <td><p>Instruction text shown with the challenge.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetFixedPasswordAuthenticator_System_String_System_String_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetFixedPasswordAuthenticator(System.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L433">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetFixedPasswordAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetFixedPasswordAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetFixedPasswordAuthenticator_System_String_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetFixedPasswordAuthenticator(System.String,System.String)">SetFixedPasswordAuthenticator(string, string)</h4>
+  <div class="markdown level1 summary"><p>Enables a single fixed username/password pair.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetFixedPasswordAuthenticator(string username, string password)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">username</span></td>
+        <td><p>The exact username to accept.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">password</span></td>
+        <td><p>The exact password to accept.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetKeyboardInteractiveAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetKeyboardInteractiveAuthenticator_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetKeyboardInteractiveAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetKeyboardInteractiveAuthenticator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L280">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetKeyboardInteractiveAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetKeyboardInteractiveAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetKeyboardInteractiveAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetKeyboardInteractiveAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetKeyboardInteractiveAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetKeyboardInteractiveAuthenticator)">SetKeyboardInteractiveAuthenticator(IAMNetKeyboardInteractiveAuthenticator)</h4>
+  <div class="markdown level1 summary"><p>Enables keyboard-interactive authentication.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetKeyboardInteractiveAuthenticator(IAMNetKeyboardInteractiveAuthenticator keyboardInteractiveAuthenticator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetKeyboardInteractiveAuthenticator.html">IAMNetKeyboardInteractiveAuthenticator</a></td>
+        <td><span class="parametername">keyboardInteractiveAuthenticator</span></td>
+        <td><p>The application authenticator.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetPasswordAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPasswordAuthenticator_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetPasswordAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPasswordAuthenticator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L371">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetPasswordAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetPasswordAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetPasswordAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPasswordAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetPasswordAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPasswordAuthenticator)">SetPasswordAuthenticator(IAMNetPasswordAuthenticator)</h4>
+  <div class="markdown level1 summary"><p>Enables username/password authentication.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPasswordAuthenticator(IAMNetPasswordAuthenticator passwordAuthenticator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPasswordAuthenticator.html">IAMNetPasswordAuthenticator</a></td>
+        <td><span class="parametername">passwordAuthenticator</span></td>
+        <td><p>The application authenticator.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetPublicKeyAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPublickeyAuthenticator_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetPublicKeyAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L461">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetPublicKeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetPublicKeyAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetPublicKeyAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPublickeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetPublicKeyAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator)">SetPublicKeyAuthenticator(IAMNetPublickeyAuthenticator)</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPublicKeyAuthenticator(IAMNetPublickeyAuthenticator publickeyAuthenticator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator.html">IAMNetPublickeyAuthenticator</a></td>
+        <td><span class="parametername">publickeyAuthenticator</span></td>
+        <td><p>The application authenticator.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetPublickeyAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPublickeyAuthenticator_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetPublickeyAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L452">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetPublickeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetPublickeyAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetPublickeyAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPublickeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetPublickeyAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator)">SetPublickeyAuthenticator(IAMNetPublickeyAuthenticator)</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPublickeyAuthenticator(IAMNetPublickeyAuthenticator publickeyAuthenticator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator.html">IAMNetPublickeyAuthenticator</a></td>
+        <td><span class="parametername">publickeyAuthenticator</span></td>
+        <td><p>The application authenticator.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetUpDefaultServer.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetUpDefaultServer%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L152">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetUpDefaultServer_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetUpDefaultServer*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_SetUpDefaultServer" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetUpDefaultServer">SetUpDefaultServer()</h4>
+  <div class="markdown level1 summary"><p>Creates a server with the default SSH server factories.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AMNetSshServer SetUpDefaultServer()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.html">AMNetSshServer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Start.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Start%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L184">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Start_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Start*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Start" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Start">Start()</h4>
+  <div class="markdown level1 summary"><p>Starts accepting SSH connections.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Start()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Stop.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Stop%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L194">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Stop_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Stop*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Stop" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Stop">Stop()</h4>
+  <div class="markdown level1 summary"><p>Stops the server and closes active resources using the server default shutdown behavior.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Stop()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Stop_System_Boolean_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Stop(System.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L206">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Stop_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Stop*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_Stop_System_Boolean_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.Stop(System.Boolean)">Stop(bool)</h4>
+  <div class="markdown level1 summary"><p>Stops the server.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Stop(bool immediately)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">immediately</span></td>
+        <td><p>When <code>true</code>, closes active sessions immediately.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_addSessionListener_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSessionListener_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.addSessionListener(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSessionListener)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L650">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_addSessionListener_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.addSessionListener*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_addSessionListener_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetSessionListener_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.addSessionListener(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSessionListener)">addSessionListener(IAMNetSessionListener)</h4>
+  <div class="markdown level1 summary"><p>Registers session lifecycle callbacks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void addSessionListener(IAMNetSessionListener sessionListener)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetSessionListener.html">IAMNetSessionListener</a></td>
+        <td><span class="parametername">sessionListener</span></td>
+        <td><p>The session listener to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_getConfiguredAuthenticationMethods.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.getConfiguredAuthenticationMethods%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L39">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_getConfiguredAuthenticationMethods_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.getConfiguredAuthenticationMethods*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_getConfiguredAuthenticationMethods" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.getConfiguredAuthenticationMethods">getConfiguredAuthenticationMethods()</h4>
+  <div class="markdown level1 summary"><p>Gets the configured authentication method chains in evaluation order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;IReadOnlyList&lt;string&gt;&gt; getConfiguredAuthenticationMethods()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_getHost.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.getHost%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L174">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_getHost_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.getHost*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_getHost" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.getHost">getHost()</h4>
+  <div class="markdown level1 summary"><p>Gets the configured bind address.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? getHost()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_getPort.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.getPort%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L163">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_getPort_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.getPort*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_getPort" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.getPort">getPort()</h4>
+  <div class="markdown level1 summary"><p>Gets the TCP port the SSH server listens on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int getPort()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_isClosed.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.isClosed%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L221">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_isClosed_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.isClosed*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_isClosed" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.isClosed">isClosed()</h4>
+  <div class="markdown level1 summary"><p>Returns whether the server has been closed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool isClosed()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_isStarted.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.isStarted%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L211">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_isStarted_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.isStarted*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_isStarted" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.isStarted">isStarted()</h4>
+  <div class="markdown level1 summary"><p>Returns whether the server has been started.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool isStarted()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setAuthenticationMethodGroups_System_Collections_Generic_IEnumerable_System_String____.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setAuthenticationMethodGroups(System.Collections.Generic.IEnumerable%7BSystem.String%7D%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L83">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setAuthenticationMethodGroups_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setAuthenticationMethodGroups*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setAuthenticationMethodGroups_System_Collections_Generic_IEnumerable_System_String____" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setAuthenticationMethodGroups(System.Collections.Generic.IEnumerable{System.String}[])">setAuthenticationMethodGroups(params IEnumerable&lt;string&gt;[])</h4>
+  <div class="markdown level1 summary"><p>Sets the authentication method policy using one or more required method groups.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setAuthenticationMethodGroups(params IEnumerable&lt;string&gt;[] authenticationMethodGroups)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;[]</td>
+        <td><span class="parametername">authenticationMethodGroups</span></td>
+        <td><p>Each group contains methods that must all succeed in order. The outer set
+represents alternative groups.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setAuthenticationMethods_System_String___.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setAuthenticationMethods(System.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L59">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setAuthenticationMethods_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setAuthenticationMethods*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setAuthenticationMethods_System_String___" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setAuthenticationMethods(System.String[])">setAuthenticationMethods(params string[])</h4>
+  <div class="markdown level1 summary"><p>Sets the authentication method policy using one or more pre-built method chains.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setAuthenticationMethods(params string[] authenticationChains)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
+        <td><span class="parametername">authenticationChains</span></td>
+        <td><p>Authentication chains such as <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.AMNetSshAuthenticationMethods.html#ApacheMinaSSHD_NET_Wrapper_AMNetSshAuthenticationMethods_PublicKey">PublicKey</a>
+or values returned by <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.AMNetSshAuthenticationMethods.html#ApacheMinaSSHD_NET_Wrapper_AMNetSshAuthenticationMethods_RequireAll_System_String___">RequireAll(params string[])</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setAuthorizedkeyAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetAuthorizedKeysAuthenticator_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setAuthorizedkeyAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetAuthorizedKeysAuthenticator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L575">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setAuthorizedkeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setAuthorizedkeyAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setAuthorizedkeyAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetAuthorizedKeysAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setAuthorizedkeyAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetAuthorizedKeysAuthenticator)">setAuthorizedkeyAuthenticator(IAMNetAuthorizedKeysAuthenticator)</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication backed by an authorized_keys file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setAuthorizedkeyAuthenticator(IAMNetAuthorizedKeysAuthenticator authorizedKeysAuthenticator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetAuthorizedKeysAuthenticator.html">IAMNetAuthorizedKeysAuthenticator</a></td>
+        <td><span class="parametername">authorizedKeysAuthenticator</span></td>
+        <td><p>The authorized keys configuration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setAuthorizedkeyAuthenticator_System_String_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setAuthorizedkeyAuthenticator(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L603">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setAuthorizedkeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setAuthorizedkeyAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setAuthorizedkeyAuthenticator_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setAuthorizedkeyAuthenticator(System.String)">setAuthorizedkeyAuthenticator(string)</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication backed by an authorized_keys file path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setAuthorizedkeyAuthenticator(string path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>The authorized_keys file path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setCommandFactory_ApacheMinaSSHD_NET_Wrapper_Factories_AMNetScpCommandFactory_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setCommandFactory(ApacheMinaSSHD.NET.Wrapper.Factories.AMNetScpCommandFactory)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L670">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setCommandFactory_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setCommandFactory*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setCommandFactory_ApacheMinaSSHD_NET_Wrapper_Factories_AMNetScpCommandFactory_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setCommandFactory(ApacheMinaSSHD.NET.Wrapper.Factories.AMNetScpCommandFactory)">setCommandFactory(AMNetScpCommandFactory)</h4>
+  <div class="markdown level1 summary"><p>Enables SCP command handling for incoming SSH sessions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setCommandFactory(AMNetScpCommandFactory scpFactory)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Factories.AMNetScpCommandFactory.html">AMNetScpCommandFactory</a></td>
+        <td><span class="parametername">scpFactory</span></td>
+        <td><p>The SCP command factory.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setCompositePasswordAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPasswordAuthenticator___.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setCompositePasswordAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPasswordAuthenticator%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L380">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setCompositePasswordAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setCompositePasswordAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setCompositePasswordAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPasswordAuthenticator___" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setCompositePasswordAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPasswordAuthenticator[])">setCompositePasswordAuthenticator(params IAMNetPasswordAuthenticator[])</h4>
+  <div class="markdown level1 summary"><p>Enables username/password authentication using multiple modules evaluated in order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setCompositePasswordAuthenticator(params IAMNetPasswordAuthenticator[] authenticators)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPasswordAuthenticator.html">IAMNetPasswordAuthenticator</a>[]</td>
+        <td><span class="parametername">authenticators</span></td>
+        <td><p>The password authenticators to try.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setCompositePublickeyAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPublickeyAuthenticator___.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setCompositePublickeyAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L470">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setCompositePublickeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setCompositePublickeyAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setCompositePublickeyAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPublickeyAuthenticator___" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setCompositePublickeyAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator[])">setCompositePublickeyAuthenticator(params IAMNetPublickeyAuthenticator[])</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication using multiple modules evaluated in order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setCompositePublickeyAuthenticator(params IAMNetPublickeyAuthenticator[] authenticators)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator.html">IAMNetPublickeyAuthenticator</a>[]</td>
+        <td><span class="parametername">authenticators</span></td>
+        <td><p>The public key authenticators to try.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setDelegateKeyboardInteractiveAuthenticator_System_Action_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshChallenge__System_Func_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_IResponseList_System_Boolean__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setDelegateKeyboardInteractiveAuthenticator(System.Action%7BSystem.String%2CApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshChallenge%7D%2CSystem.Func%7BApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession%2CSystem.String%2CApacheMinaSSHD.NET.Wrapper.Abstractions.Models.IResponseList%2CSystem.Boolean%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L290">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setDelegateKeyboardInteractiveAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setDelegateKeyboardInteractiveAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setDelegateKeyboardInteractiveAuthenticator_System_Action_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshChallenge__System_Func_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_IResponseList_System_Boolean__" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setDelegateKeyboardInteractiveAuthenticator(System.Action{System.String,ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshChallenge},System.Func{ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession,System.String,ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.IResponseList,System.Boolean})">setDelegateKeyboardInteractiveAuthenticator(Action&lt;string, ISshChallenge&gt;, Func&lt;ISshSession, string, IResponseList, bool&gt;)</h4>
+  <div class="markdown level1 summary"><p>Enables keyboard-interactive authentication using .NET callbacks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setDelegateKeyboardInteractiveAuthenticator(Action&lt;string, ISshChallenge&gt; generateChallenge, Func&lt;ISshSession, string, IResponseList, bool&gt; authenticate)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-2">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshChallenge.html">ISshChallenge</a>&gt;</td>
+        <td><span class="parametername">generateChallenge</span></td>
+        <td><p>Callback that populates prompts sent to the client.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.IResponseList.html">IResponseList</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</td>
+        <td><span class="parametername">authenticate</span></td>
+        <td><p>Callback that validates the client responses.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setDelegatePasswordAuthenticator_System_Func_System_String_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_Boolean__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setDelegatePasswordAuthenticator(System.Func%7BSystem.String%2CSystem.String%2CApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession%2CSystem.Boolean%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L401">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setDelegatePasswordAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setDelegatePasswordAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setDelegatePasswordAuthenticator_System_Func_System_String_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_Boolean__" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setDelegatePasswordAuthenticator(System.Func{System.String,System.String,ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession,System.Boolean})">setDelegatePasswordAuthenticator(Func&lt;string, string, ISshSession, bool&gt;)</h4>
+  <div class="markdown level1 summary"><p>Enables username/password authentication using a .NET callback.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setDelegatePasswordAuthenticator(Func&lt;string, string, ISshSession, bool&gt; authenticate)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</td>
+        <td><span class="parametername">authenticate</span></td>
+        <td><p>Callback that receives username, password, and session metadata and returns
+whether the credentials should be accepted.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setDelegatePublickeyAuthenticator_System_Func_System_String_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_Boolean__.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setDelegatePublickeyAuthenticator(System.Func%7BSystem.String%2CSystem.String%2CApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession%2CSystem.Boolean%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L500">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setDelegatePublickeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setDelegatePublickeyAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setDelegatePublickeyAuthenticator_System_Func_System_String_System_String_ApacheMinaSSHD_NET_Wrapper_Abstractions_Models_ISshSession_System_Boolean__" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setDelegatePublickeyAuthenticator(System.Func{System.String,System.String,ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession,System.Boolean})">setDelegatePublickeyAuthenticator(Func&lt;string, string, ISshSession, bool&gt;)</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication using a .NET callback.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setDelegatePublickeyAuthenticator(Func&lt;string, string, ISshSession, bool&gt; authenticate)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession.html">ISshSession</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</td>
+        <td><span class="parametername">authenticate</span></td>
+        <td><p>Callback that receives username, public key fingerprint, and session metadata
+and returns whether the key should be accepted.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setFileSystemFactory_ApacheMinaSSHD_NET_Wrapper_Factories_AMNetVirtualFileSystemFactory_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setFileSystemFactory(ApacheMinaSSHD.NET.Wrapper.Factories.AMNetVirtualFileSystemFactory)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L260">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setFileSystemFactory_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setFileSystemFactory*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setFileSystemFactory_ApacheMinaSSHD_NET_Wrapper_Factories_AMNetVirtualFileSystemFactory_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setFileSystemFactory(ApacheMinaSSHD.NET.Wrapper.Factories.AMNetVirtualFileSystemFactory)">setFileSystemFactory(AMNetVirtualFileSystemFactory)</h4>
+  <div class="markdown level1 summary"><p>Sets the virtual filesystem factory used to map users to server-side home directories.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setFileSystemFactory(AMNetVirtualFileSystemFactory fileSystemFactory)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Factories.AMNetVirtualFileSystemFactory.html">AMNetVirtualFileSystemFactory</a></td>
+        <td><span class="parametername">fileSystemFactory</span></td>
+        <td><p>The filesystem factory configuration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setFingerprintPublickeyAuthenticator_System_String_System_String___.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setFingerprintPublickeyAuthenticator(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L534">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setFingerprintPublickeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setFingerprintPublickeyAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setFingerprintPublickeyAuthenticator_System_String_System_String___" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setFingerprintPublickeyAuthenticator(System.String,System.String[])">setFingerprintPublickeyAuthenticator(string, params string[])</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication for one username and one or more accepted fingerprints.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setFingerprintPublickeyAuthenticator(string username, params string[] acceptedFingerprints)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">username</span></td>
+        <td><p>The exact username to accept.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
+        <td><span class="parametername">acceptedFingerprints</span></td>
+        <td><p>One or more accepted public key fingerprints.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setFixedKeyboardInteractiveAuthenticator_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setFixedKeyboardInteractiveAuthenticator(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L318">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setFixedKeyboardInteractiveAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setFixedKeyboardInteractiveAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setFixedKeyboardInteractiveAuthenticator_System_String_System_String_System_String_System_String_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setFixedKeyboardInteractiveAuthenticator(System.String,System.String,System.String,System.String,System.String)">setFixedKeyboardInteractiveAuthenticator(string, string?, string, string, string)</h4>
+  <div class="markdown level1 summary"><p>Enables keyboard-interactive authentication with a single fixed response.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setFixedKeyboardInteractiveAuthenticator(string expectedResponse, string? username = null, string prompt = &quot;Verification code&quot;, string interactionName = &quot;Authentication&quot;, string instruction = &quot;Enter the verification code.&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">expectedResponse</span></td>
+        <td><p>The exact response to accept.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">username</span></td>
+        <td><p>Optional exact username to accept.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">prompt</span></td>
+        <td><p>Prompt text shown to the client.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">interactionName</span></td>
+        <td><p>Challenge name shown to the client.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">instruction</span></td>
+        <td><p>Instruction text shown with the challenge.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setFixedPasswordAuthenticator_System_String_System_String_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setFixedPasswordAuthenticator(System.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L423">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setFixedPasswordAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setFixedPasswordAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setFixedPasswordAuthenticator_System_String_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setFixedPasswordAuthenticator(System.String,System.String)">setFixedPasswordAuthenticator(string, string)</h4>
+  <div class="markdown level1 summary"><p>Enables a single fixed username/password pair.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setFixedPasswordAuthenticator(string username, string password)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">username</span></td>
+        <td><p>The exact username to accept.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">password</span></td>
+        <td><p>The exact password to accept.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setHost_System_String_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setHost(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L169">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setHost_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setHost*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setHost_System_String_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setHost(System.String)">setHost(string?)</h4>
+  <div class="markdown level1 summary"><p>Sets the bind address. Use <code>null</code> to use the server default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setHost(string? host)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">host</span></td>
+        <td><p>The IP address or host name to bind.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setIoServiceEventListener_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetIoServiceEventListener_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setIoServiceEventListener(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetIoServiceEventListener)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L640">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setIoServiceEventListener_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setIoServiceEventListener*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setIoServiceEventListener_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetIoServiceEventListener_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setIoServiceEventListener(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetIoServiceEventListener)">setIoServiceEventListener(IAMNetIoServiceEventListener)</h4>
+  <div class="markdown level1 summary"><p>Registers low-level I/O service callbacks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setIoServiceEventListener(IAMNetIoServiceEventListener serverIoServiceEventListener)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetIoServiceEventListener.html">IAMNetIoServiceEventListener</a></td>
+        <td><span class="parametername">serverIoServiceEventListener</span></td>
+        <td><p>The low-level connection listener.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setKeyPairProvider_ApacheMinaSSHD_NET_Wrapper_Factories_AMNetSimpleGeneratorHostKeyProvider_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setKeyPairProvider(ApacheMinaSSHD.NET.Wrapper.Factories.AMNetSimpleGeneratorHostKeyProvider)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L250">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setKeyPairProvider_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setKeyPairProvider*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setKeyPairProvider_ApacheMinaSSHD_NET_Wrapper_Factories_AMNetSimpleGeneratorHostKeyProvider_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setKeyPairProvider(ApacheMinaSSHD.NET.Wrapper.Factories.AMNetSimpleGeneratorHostKeyProvider)">setKeyPairProvider(AMNetSimpleGeneratorHostKeyProvider)</h4>
+  <div class="markdown level1 summary"><p>Sets the host key provider used to identify this SSH server to clients.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setKeyPairProvider(AMNetSimpleGeneratorHostKeyProvider keyProvider)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Factories.AMNetSimpleGeneratorHostKeyProvider.html">AMNetSimpleGeneratorHostKeyProvider</a></td>
+        <td><span class="parametername">keyProvider</span></td>
+        <td><p>The host key provider configuration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setKeyboardInteractiveAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetKeyboardInteractiveAuthenticator_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setKeyboardInteractiveAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetKeyboardInteractiveAuthenticator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L270">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setKeyboardInteractiveAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setKeyboardInteractiveAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setKeyboardInteractiveAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetKeyboardInteractiveAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setKeyboardInteractiveAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetKeyboardInteractiveAuthenticator)">setKeyboardInteractiveAuthenticator(IAMNetKeyboardInteractiveAuthenticator)</h4>
+  <div class="markdown level1 summary"><p>Enables keyboard-interactive authentication.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setKeyboardInteractiveAuthenticator(IAMNetKeyboardInteractiveAuthenticator keyboardInteractiveAuthenticator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetKeyboardInteractiveAuthenticator.html">IAMNetKeyboardInteractiveAuthenticator</a></td>
+        <td><span class="parametername">keyboardInteractiveAuthenticator</span></td>
+        <td><p>The application authenticator.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setPasswordAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPasswordAuthenticator_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setPasswordAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPasswordAuthenticator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L361">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setPasswordAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setPasswordAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setPasswordAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPasswordAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setPasswordAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPasswordAuthenticator)">setPasswordAuthenticator(IAMNetPasswordAuthenticator)</h4>
+  <div class="markdown level1 summary"><p>Enables username/password authentication.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setPasswordAuthenticator(IAMNetPasswordAuthenticator passwordAuthenticator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPasswordAuthenticator.html">IAMNetPasswordAuthenticator</a></td>
+        <td><span class="parametername">passwordAuthenticator</span></td>
+        <td><p>The application authenticator.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setPort_System_Int32_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setPort(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L158">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setPort_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setPort*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setPort_System_Int32_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setPort(System.Int32)">setPort(int)</h4>
+  <div class="markdown level1 summary"><p>Sets the TCP port the SSH server listens on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setPort(int port)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">port</span></td>
+        <td><p>The TCP port number.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setPublickeyAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPublickeyAuthenticator_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setPublickeyAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L442">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setPublickeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setPublickeyAuthenticator*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setPublickeyAuthenticator_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetPublickeyAuthenticator_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setPublickeyAuthenticator(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator)">setPublickeyAuthenticator(IAMNetPublickeyAuthenticator)</h4>
+  <div class="markdown level1 summary"><p>Enables public key authentication.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setPublickeyAuthenticator(IAMNetPublickeyAuthenticator publickeyAuthenticator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetPublickeyAuthenticator.html">IAMNetPublickeyAuthenticator</a></td>
+        <td><span class="parametername">publickeyAuthenticator</span></td>
+        <td><p>The application authenticator.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setServerProxyAcceptor_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetServerProxyAcceptor_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setServerProxyAcceptor(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetServerProxyAcceptor)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L630">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setServerProxyAcceptor_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setServerProxyAcceptor*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setServerProxyAcceptor_ApacheMinaSSHD_NET_Wrapper_Abstractions_IAMNetServerProxyAcceptor_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setServerProxyAcceptor(ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetServerProxyAcceptor)">setServerProxyAcceptor(IAMNetServerProxyAcceptor)</h4>
+  <div class="markdown level1 summary"><p>Enables PROXY protocol metadata handling before the SSH handshake.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setServerProxyAcceptor(IAMNetServerProxyAcceptor serverProxyAcceptor)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Abstractions.IAMNetServerProxyAcceptor.html">IAMNetServerProxyAcceptor</a></td>
+        <td><span class="parametername">serverProxyAcceptor</span></td>
+        <td><p>The acceptor that parses and validates proxy metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setSubsystemFactories_ApacheMinaSSHD_NET_Wrapper_Factories_AMNetSftpSubsystemFactory_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setSubsystemFactories(ApacheMinaSSHD.NET.Wrapper.Factories.AMNetSftpSubsystemFactory)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L660">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setSubsystemFactories_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setSubsystemFactories*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setSubsystemFactories_ApacheMinaSSHD_NET_Wrapper_Factories_AMNetSftpSubsystemFactory_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setSubsystemFactories(ApacheMinaSSHD.NET.Wrapper.Factories.AMNetSftpSubsystemFactory)">setSubsystemFactories(AMNetSftpSubsystemFactory)</h4>
+  <div class="markdown level1 summary"><p>Enables the SFTP subsystem for incoming SSH sessions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setSubsystemFactories(AMNetSftpSubsystemFactory sftpFactory)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.Factories.AMNetSftpSubsystemFactory.html">AMNetSftpSubsystemFactory</a></td>
+        <td><span class="parametername">sftpFactory</span></td>
+        <td><p>The SFTP subsystem factory.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setUpDefaultServer.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setUpDefaultServer%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L144">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setUpDefaultServer_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setUpDefaultServer*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_setUpDefaultServer" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.setUpDefaultServer">setUpDefaultServer()</h4>
+  <div class="markdown level1 summary"><p>Creates a server with the default SSH server factories.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AMNetSshServer setUpDefaultServer()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.html">AMNetSshServer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_start.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.start%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L179">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_start_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.start*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_start" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.start">start()</h4>
+  <div class="markdown level1 summary"><p>Starts accepting SSH connections.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void start()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_stop.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.stop%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L189">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_stop_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.stop*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_stop" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.stop">stop()</h4>
+  <div class="markdown level1 summary"><p>Stops the server and closes active resources using the server default shutdown behavior.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void stop()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_stop_System_Boolean_.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.stop(System.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L200">View Source</a>
+  </span>
+  <a id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_stop_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.stop*"></a>
+  <h4 id="ApacheMinaSSHD_NET_Wrapper_AMNetSshServer_stop_System_Boolean_" data-uid="ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.stop(System.Boolean)">stop(bool)</h4>
+  <div class="markdown level1 summary"><p>Stops the server.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void stop(bool immediately)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">immediately</span></td>
+        <td><p>When <code>true</code>, closes active sessions immediately.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/new/main/apiSpec/new?filename=ApacheMinaSSHD_NET_Wrapper_AMNetSshServer.md&amp;value=---%0Auid%3A%20ApacheMinaSSHD.NET.Wrapper.AMNetSshServer%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/ApacheMinaSSHD.NET.Wrapper/AMNetSshServer.cs/#L19" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>
