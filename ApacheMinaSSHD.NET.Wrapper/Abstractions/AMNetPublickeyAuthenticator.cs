@@ -2,6 +2,7 @@
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.OpenSsl;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -62,13 +63,28 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             {
                 var authKeyFingerprint = GetSecureFingerprint(keyPath);
 
-                if (string.Equals(incomingFingerprint, authKeyFingerprint, System.StringComparison.OrdinalIgnoreCase))
+                if (ConstantTimeEquals(incomingFingerprint, authKeyFingerprint))
                 {
                     return true;
                 }
             }
 
             return false;
+        }
+
+        private static bool ConstantTimeEquals(string a, string b)
+        {
+            if (a == null || b == null)
+            {
+                return false;
+            }
+
+            byte[] ab = Encoding.UTF8.GetBytes(a);
+            byte[] bb = Encoding.UTF8.GetBytes(b);
+            bool result = CryptographicOperations.FixedTimeEquals(ab, bb);
+            CryptographicOperations.ZeroMemory(ab);
+            CryptographicOperations.ZeroMemory(bb);
+            return result;
         }
 
         /// <summary>

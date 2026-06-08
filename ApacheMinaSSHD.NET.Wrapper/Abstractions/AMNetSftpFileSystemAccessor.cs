@@ -109,7 +109,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(
-                    $"[{nameof(AMNetSftpFileSystemAccessor)}] ResolveFinalTarget failed for '{path}': {ex.Message}");
+                    $"[{nameof(AMNetSftpFileSystemAccessor)}] ResolveFinalTarget failed: {ex.GetType().Name}");
                 return Path.GetFullPath(path);
             }
         }
@@ -142,7 +142,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(
-                    $"[{nameof(AMNetSftpFileSystemAccessor)}] GetFinalPathNameByHandle failed: {ex.Message}");
+                    $"[{nameof(AMNetSftpFileSystemAccessor)}] GetFinalPathNameByHandle failed: {ex.GetType().Name}");
                 return null;
             }
         }
@@ -339,7 +339,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(
-                    $"[{nameof(AMNetSftpFileSystemAccessor)}] IsVisibleByDefault failed for '{localPath}': {ex.Message}");
+                    $"[{nameof(AMNetSftpFileSystemAccessor)}] IsVisibleByDefault failed: {ex.GetType().Name}");
                 return false;
             }
 

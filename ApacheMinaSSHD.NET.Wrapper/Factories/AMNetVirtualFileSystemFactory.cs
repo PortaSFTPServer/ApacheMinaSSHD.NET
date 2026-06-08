@@ -69,7 +69,14 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
                 }
             }
 
-            return safe.Length == 0 ? "_" : safe.ToString();
+            string result = safe.Length == 0 ? "_" : safe.ToString();
+
+            if (result == "." || result == ".." || result.Contains("/") || result.Contains("\\"))
+            {
+                result = "_";
+            }
+
+            return result;
         }
 
         internal FileSystemFactory ToJavaFileSystemFactory()

@@ -117,11 +117,25 @@ namespace ApacheMinaSSHD.NET.Wrapper
 
         /// <summary>
         /// Gets or sets the bind address. Use <c>null</c> to use the server default.
+        /// Accepts IPv4, IPv6, or valid hostname. Rejects empty/whitespace-only values.
         /// </summary>
         public string? Host
         {
             get => server.getHost();
-            set => server.setHost(value);
+            set
+            {
+                if (value != null && string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Host cannot be empty or whitespace. Use null to bind to all interfaces.", nameof(value));
+                }
+
+                if (value != null && value.Length > 255)
+                {
+                    throw new ArgumentException("Host value exceeds maximum length of 255 characters.", nameof(value));
+                }
+
+                server.setHost(value);
+            }
         }
 
         /// <summary>

@@ -15,6 +15,17 @@ EnsureDirectory(encryptedDir);
 EnsureDirectory(stagingDir);
 EnsureDirectory(userDir);
 
+Console.Error.WriteLine("""
+WARNING: This sample uses a hardcoded master key derivation password for DEMO purposes only.
+In production:
+  1. Use a Key Management Service (KMS) or hardware security module (HSM).
+  2. Store the master key in a secure vault, not in source code.
+  3. Persist the PBKDF2 salt alongside the encrypted data.
+  4. Rotate keys periodically.
+Press Ctrl+C to abort, or wait 3 seconds to continue...
+""");
+Thread.Sleep(3000);
+
 var masterKey = DeriveMasterKey("change-me-in-production-use-kms-instead");
 using var crypto = new DareEncryptionService(masterKey);
 
