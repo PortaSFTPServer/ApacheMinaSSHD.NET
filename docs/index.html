@@ -167,7 +167,7 @@ footer a { color: #e94560; text-decoration: none; }
 <nav>
 <div class="logo"><a href="/ApacheMinaSSHD.NET/">Apache<span class="hl">MinaSSHD</span>.NET</a></div>
 <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
-<div class="nav-links">
+<div class="nav-links" onclick="if(event.target.tagName==='A')this.classList.remove('open')">
 <a href="#features">Features</a>
 <a href="#samples">Samples</a>
 <a href="#quickstart">Quick Start</a>
