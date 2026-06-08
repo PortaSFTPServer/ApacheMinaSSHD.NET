@@ -108,18 +108,18 @@ Browse ready-to-run C# SFTP server examples that demonstrate real scenarios:
 
 | Sample | What it shows |
 |--------|--------------|
-| [MinimalServer](Sample/MinimalServer) | Minimal C# SFTP server — simplest way to embed an SFTP server in .NET (~15 lines) |
 | [AuthenticationServer](Sample/AuthenticationServer) | Password, public key, fingerprint, authorized_keys, keyboard-interactive, and MFA auth — pick via CLI arg |
 | [AvaloniaSftpServer](Sample/AvaloniaSftpServer) | Cross-platform Avalonia UI SFTP server manager — start/stop, sessions, live log |
 | [ConsoleSftpServer](Sample/ConsoleSftpServer) | Lightweight console-based SFTP server |
-| [VirtualFileSystemServer](Sample/VirtualFileSystemServer) | Root jail isolation, hidden-file filtering, path access control for SFTP and SCP |
-| [ScpServer](Sample/ScpServer) | SCP server with custom file opener, transfer audit, and directory filtering |
-| [SftpEventServer](Sample/SftpEventServer) | SFTP event listeners — track open/close/read/write/create/remove/move operations |
-| [SessionMonitorServer](Sample/SessionMonitorServer) | Session lifecycle, connection monitoring, proxy metadata inspection |
 | [DareSftpServer](Sample/DareSftpServer) | Data-at-rest encryption with AES-256-GCM chunked encryption |
+| [MinimalServer](Sample/MinimalServer) | Minimal C# SFTP server — simplest way to embed an SFTP server in .NET (~15 lines) |
 | [PhotinoSftpServer](Sample/PhotinoSftpServer) | Cross-platform Photino Blazor desktop app — Blazor UI, start/stop, sessions, live log |
 | [ProductionServer](Sample/ProductionServer) | Production-ready: external JSON config, algorithm selection, combined listeners |
-| [SimpleSSHDSever](Sample/SimpleSSHDSever) | Windows Forms GUI server with integration test harness |
+| [ScpServer](Sample/ScpServer) | SCP server with custom file opener, transfer audit, and directory filtering |
+| [SessionMonitorServer](Sample/SessionMonitorServer) | Session lifecycle, connection monitoring, proxy metadata inspection |
+| [SftpEventServer](Sample/SftpEventServer) | SFTP event listeners — track open/close/read/write/create/remove/move operations |
+| [SimpleSSHDSever](Sample/SimpleSSHDSever) | Windows Forms GUI server with FIPS mode and integration test harness |
+| [VirtualFileSystemServer](Sample/VirtualFileSystemServer) | Root jail isolation, hidden-file filtering, path access control for SFTP and SCP |
 
 All samples target .NET 10 and reference the wrapper NuGet package directly.
 
