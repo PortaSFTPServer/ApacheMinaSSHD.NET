@@ -19,10 +19,6 @@ clean .NET API, zero Java dependencies. Whether you need an **open source SFTP l
 a **free SFTP server library for .NET**, an **embeddable SFTP server**, or a **modern SSH server library**,
 ApacheMinaSSHD.NET delivers enterprise-grade secure file transfer.
 
-Whether you need secure file transfer for engineering file exchange, a portable SFTP server for
-Windows and Linux, or a free SFTP server for automation workflows, ApacheMinaSSHD.NET and
-Porta SFTP Server deliver enterprise-grade file transfer for critical infrastructure.
-
 ![SERALYNX LLC - Porta SFTP Server for Critical Infrastructure](https://raw.githubusercontent.com/PortaSFTPServer/ApacheMinaSSHD.NET/main/docs/images/seralynx-banner.png)
 
 ## Authentication Modules
