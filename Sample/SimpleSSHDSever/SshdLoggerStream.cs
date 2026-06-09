@@ -111,7 +111,7 @@ namespace SimpleSSHDSever
 
                     // Updated \colortbl to include all used colors ---
                     // This is the primary fix for "Cannot load the text" when using Color.IndianRed.
-                    _box.SelectedRtf = $@"{{\rtf1\ansi\deff0{{\colortbl ;\red0\green0\blue0;\red255\green0\blue0;\red255\green165\blue0;\red128\green128\blue128;\red205\green92\blue92;\red0\green0\blue139;}}{rtfBuilder}}}";
+                    _box.SelectedRtf = $@"{{\rtf1\ansi\deff0{{\colortbl ;\red0\green0\blue0;\red255\green0\blue0;\red255\green165\blue0;\red105\green105\blue105;\red205\green92\blue92;\red0\green0\blue139;}}{rtfBuilder}}}";
 
                     _box.ScrollToCaret();
                 }
@@ -128,7 +128,7 @@ namespace SimpleSSHDSever
         {
             if (c == Color.Red) return "2";        // ERROR
             if (c == Color.OrangeRed) return "3";  // WARN
-            if (c == Color.LightSlateGray) return "4";   // DEBUG
+            if (c == Color.DimGray) return "4";          // DEBUG
             if (c == Color.IndianRed) return "5";  // TRACE
             if (c == Color.DarkBlue) return "6";   // ADD THIS LINE FOR DarkBlue/INFO
             return "1";                            // INFO (Black/Default) - this would be a fallback
@@ -161,7 +161,7 @@ namespace SimpleSSHDSever
         {
             if (line.IndexOf("ERROR", StringComparison.OrdinalIgnoreCase) >= 0) return Color.Red;
             if (line.IndexOf("WARN", StringComparison.OrdinalIgnoreCase) >= 0) return Color.OrangeRed;
-            if (line.IndexOf("DEBUG", StringComparison.OrdinalIgnoreCase) >= 0) return Color.LightSlateGray;
+            if (line.IndexOf("DEBUG", StringComparison.OrdinalIgnoreCase) >= 0) return Color.DimGray;
             if (line.IndexOf("TRACE", StringComparison.OrdinalIgnoreCase) >= 0) return Color.IndianRed;
             return Color.DarkBlue; //info
         }

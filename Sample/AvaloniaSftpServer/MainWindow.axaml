@@ -9,7 +9,7 @@
       <Grid ColumnDefinitions="Auto,*,Auto" VerticalAlignment="Center">
         <TextBlock Grid.Column="0" FontSize="20" FontWeight="Bold" Foreground="White" VerticalAlignment="Center"
                    Text="ApacheMinaSSHD.NET" />
-        <TextBlock Grid.Column="1" FontSize="13" Foreground="#DDD" VerticalAlignment="Center" Margin="12,0,0,0"
+        <TextBlock Grid.Column="1" FontSize="13" Foreground="White" VerticalAlignment="Center" Margin="12,0,0,0"
                    Text="Cross-platform SFTP Server Manager" />
       </Grid>
     </Border>
@@ -34,8 +34,8 @@
                   Background="{StaticResource SystemAccentColor}" Opacity="0.08">
             <StackPanel Orientation="Horizontal" Spacing="8">
               <TextBlock Text="Status:" VerticalAlignment="Center" FontWeight="SemiBold" />
-              <TextBlock x:Name="StatusText" Text="Stopped" VerticalAlignment="Center" Foreground="Gray" />
-              <TextBlock x:Name="UptimeText" Text="" VerticalAlignment="Center" Foreground="Gray" Margin="20,0,0,0" />
+              <TextBlock x:Name="StatusText" Text="Stopped" VerticalAlignment="Center" Foreground="#999" />
+              <TextBlock x:Name="UptimeText" Text="" VerticalAlignment="Center" Foreground="#999" Margin="20,0,0,0" />
             </StackPanel>
           </Border>
 
@@ -62,7 +62,7 @@
           <TextBlock Grid.Row="0" x:Name="SessionCount" Text="0 active sessions" FontWeight="SemiBold" Margin="0,0,0,8" />
           <DataGrid Grid.Row="1" x:Name="SessionGrid"
                     AutoGenerateColumns="False" IsReadOnly="True"
-                    Background="#1A1A1A" BorderBrush="{StaticResource SystemAccentColor}" BorderThickness="1">
+                    BorderBrush="{StaticResource SystemAccentColor}" BorderThickness="1">
             <DataGrid.Columns>
               <DataGridTextColumn Header="Session ID" Binding="{Binding Id, StringFormat='{}{0:N}'}" Width="*" />
               <DataGridTextColumn Header="Remote Address" Binding="{Binding RemoteAddress}" Width="2*" />
@@ -76,7 +76,7 @@
         <Grid RowDefinitions="Auto,*" Margin="8">
           <Button Grid.Row="0" x:Name="ClearLogBtn" Content="Clear" HorizontalAlignment="Right"
                   Click="OnClearLogClick" Margin="0,0,0,4" />
-          <ListBox Grid.Row="1" x:Name="LogList" Background="#1A1A1A" BorderBrush="#333" BorderThickness="1" />
+          <ListBox Grid.Row="1" x:Name="LogList" BorderBrush="#333" BorderThickness="1" />
         </Grid>
       </TabItem>
     </TabControl>
