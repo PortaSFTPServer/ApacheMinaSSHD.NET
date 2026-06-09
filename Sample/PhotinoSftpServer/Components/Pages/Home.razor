@@ -1,3 +1,8 @@
+@page "/"
+@rendermode InteractiveServer
+@inject ServerState State
+@implements IDisposable
+
 <div class="container">
     <div class="header">
         <h1>ApacheMinaSSHD.NET</h1>
@@ -13,10 +18,10 @@
             <label>Port:</label>
             <input @bind="Port" type="number" />
         </div>
-        <button class="btn start" @onclick="StartServer" disabled="@(_server != null)">
+        <button class="btn start" @onclick="StartServer" disabled="@(State.Server is not null)">
             Start
         </button>
-        <button class="btn stop" @onclick="StopServer" disabled="@(_server is null)">
+        <button class="btn stop" @onclick="StopServer" disabled="@(State.Server is null)">
             Stop
         </button>
         <span class="status @StatusClass">@StatusText</span>
@@ -33,7 +38,7 @@
         </div>
         <div class="panel">
             <h3>Active Sessions</h3>
-            @if (_sessions.Count == 0)
+            @if (State.Sessions.Count == 0)
             {
                 <p class="muted">No active sessions</p>
             }
@@ -42,7 +47,7 @@
                 <table>
                     <thead><tr><th>ID</th><th>Remote</th><th>Since</th></tr></thead>
                     <tbody>
-                        @foreach (var s in _sessions)
+                        @foreach (var s in State.Sessions)
                         {
                             <tr><td>@s.Id.ToString("N")[..8]</td><td>@s.RemoteAddress</td><td>@s.StartedAt</td></tr>
                         }
@@ -53,7 +58,7 @@
         <div class="panel log-panel">
             <h3>Log</h3>
             <div class="log-box">
-                @foreach (var entry in _log)
+                @foreach (var entry in State.Log)
                 {
                     <div class="log-entry">[@entry.Timestamp] @entry.Text</div>
                 }
@@ -63,7 +68,7 @@
 
     <div class="footer">
         <span>ApacheMinaSSHD.NET by SERALYNX LLC</span>
-        <button class="btn" @onclick="ClearLog">Clear Log</button>
+        <button class="btn clear-log" @onclick="ClearLog">Clear Log</button>
     </div>
 </div>
 
@@ -86,6 +91,8 @@
     .btn.start:hover:not(:disabled) { background: #388e3c; }
     .btn.stop { background: #c62828; color: #fff; }
     .btn.stop:hover:not(:disabled) { background: #d32f2f; }
+    .clear-log { font-size: .8rem; background: #333; color: #ccc; }
+    .clear-log:hover { background: #444; }
     .status { font-weight: 600; font-size: .85rem; margin-left: auto; }
     .status.running { color: #66bb6a; }
     .status.stopped { color: #aaa; }
@@ -103,15 +110,11 @@
     .log-entry { padding: 1px 4px; }
     .log-entry:nth-child(odd) { background: #1e1e32; }
     .footer { display: flex; justify-content: space-between; align-items: center; color: #888; font-size: .8rem; }
-    .footer .btn { font-size: .8rem; background: #333; color: #ccc; }
 </style>
 
 @code {
-    private ApacheMinaSSHD.NET.Wrapper.AMNetSshServer? _server;
-    private readonly List<LogEntry> _log = [];
-    private readonly List<SessionInfo> _sessions = [];
     private string _statusText = "Stopped";
-    private string _statusClass = "stopped";
+    private bool _statusRunning;
 
     private string Host { get; set; } = "127.0.0.1";
     private string Port { get; set; } = "2222";
@@ -122,40 +125,46 @@
     private bool UseModernAlgos { get; set; } = true;
 
     private string StatusText => _statusText;
-    private string StatusClass => _statusClass;
+    private string StatusClass => _statusRunning ? "running" : "stopped";
+
+    protected override void OnInitialized()
+    {
+        State.Changed += OnStateChanged;
+    }
+
+    private void OnStateChanged() => InvokeAsync(StateHasChanged);
 
     private void StartServer()
     {
         try
         {
-            _server = ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetUpDefaultServer();
-            _server.Host = Host;
-            _server.Port = int.Parse(Port);
+            State.Server = ApacheMinaSSHD.NET.Wrapper.AMNetSshServer.SetUpDefaultServer();
+            State.Server.Host = Host;
+            State.Server.Port = int.Parse(Port);
 
-            if (UseProductionDefaults) _server.Config.ApplyProductionDefaults();
-            if (UseModernAlgos) _server.Config.ApplyModernAlgorithmDefaults();
-            _server.Config.WELCOME_BANNER = "ApacheMinaSSHD.NET — Photino Manager";
+            if (UseProductionDefaults) State.Server.Config.ApplyProductionDefaults();
+            if (UseModernAlgos) State.Server.Config.ApplyModernAlgorithmDefaults();
+            State.Server.Config.WELCOME_BANNER = "ApacheMinaSSHD.NET — Photino Manager";
 
-            _server.SetFixedPasswordAuthenticator("admin", Password);
-            _server.setKeyPairProvider(
+            State.Server.SetFixedPasswordAuthenticator("admin", Password);
+            State.Server.setKeyPairProvider(
                 new ApacheMinaSSHD.NET.Wrapper.Factories.AMNetSimpleGeneratorHostKeyProvider(HostKey));
 
-            EnsureDir(StorageRoot);
-            _server.setFileSystemFactory(
+            if (!Directory.Exists(StorageRoot)) Directory.CreateDirectory(StorageRoot);
+            State.Server.setFileSystemFactory(
                 new ApacheMinaSSHD.NET.Wrapper.Factories.AMNetVirtualFileSystemFactory(StorageRoot));
 
-            _server.addSessionListener(new PhotinoSessionListener(this));
-            _server.Start();
+            State.Server.setSubsystemFactories(new ApacheMinaSSHD.NET.Wrapper.Factories.AMNetSftpSubsystemFactory());
+            State.Server.addSessionListener(new PhotinoSessionListener(State));
+            State.Server.Start();
 
             _statusText = "Running";
-            _statusClass = "running";
-            Log("Server started");
-            StateHasChanged();
+            _statusRunning = true;
+            State.LogMessage("Server started");
         }
         catch (Exception ex)
         {
-            Log($"Start failed: {ex.Message}");
-            StateHasChanged();
+            State.LogMessage($"Start failed: {ex.Message}");
         }
     }
 
@@ -163,61 +172,20 @@
     {
         try
         {
-            _server?.Stop();
-            _server = null;
-            _sessions.Clear();
+            State.Server?.Stop();
+            State.Server = null;
+            State.Sessions.Clear();
             _statusText = "Stopped";
-            _statusClass = "stopped";
-            Log("Server stopped");
-            StateHasChanged();
+            _statusRunning = false;
+            State.LogMessage("Server stopped");
         }
         catch (Exception ex)
         {
-            Log($"Stop error: {ex.Message}");
-            StateHasChanged();
+            State.LogMessage($"Stop error: {ex.Message}");
         }
     }
 
-    private void ClearLog()
-    {
-        _log.Clear();
-        StateHasChanged();
-    }
+    private void ClearLog() => State.ClearLog();
 
-    internal void Log(string message)
-    {
-        _log.Add(new LogEntry(message));
-        if (_log.Count > 500) _log.RemoveAt(0);
-        InvokeAsync(StateHasChanged);
-    }
-
-    internal void AddSession(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession session)
-    {
-        _sessions.Add(new SessionInfo(session));
-        InvokeAsync(StateHasChanged);
-    }
-
-    internal void RemoveSession(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession session)
-    {
-        _sessions.RemoveAll(s => s.Id == session.SessionId);
-        InvokeAsync(StateHasChanged);
-    }
-
-    private static void EnsureDir(string path)
-    {
-        if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-    }
-
-    public class LogEntry(string text)
-    {
-        public string Timestamp { get; } = DateTime.Now.ToString("HH:mm:ss");
-        public string Text { get; } = text;
-    }
-
-    public class SessionInfo(ApacheMinaSSHD.NET.Wrapper.Abstractions.Models.ISshSession session)
-    {
-        public Guid Id => session.SessionId;
-        public string RemoteAddress => session.RemoteAddress ?? "unknown";
-        public string StartedAt => DateTime.Now.ToString("HH:mm:ss");
-    }
+    public void Dispose() => State.Changed -= OnStateChanged;
 }

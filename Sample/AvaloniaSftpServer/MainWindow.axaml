@@ -24,9 +24,11 @@
               <TextBlock Text="Port:" VerticalAlignment="Center" Margin="12,0,0,0" />
               <TextBox x:Name="PortBox" Text="2222" Width="80" />
               <Button x:Name="StartBtn" Content="Start" Margin="12,0,0,0"
-                      Click="OnStartClick" IsEnabled="True" />
+                      Click="OnStartClick" IsEnabled="True"
+                      Background="#2e7d32" Foreground="White" />
               <Button x:Name="StopBtn" Content="Stop" Margin="8,0,0,0"
-                      Click="OnStopClick" IsEnabled="False" />
+                      Click="OnStopClick" IsEnabled="False"
+                      Background="#c62828" Foreground="White" />
             </StackPanel>
           </Border>
 

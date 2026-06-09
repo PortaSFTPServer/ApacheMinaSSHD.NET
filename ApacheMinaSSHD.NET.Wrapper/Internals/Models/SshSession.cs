@@ -10,7 +10,7 @@
         }
 
         public string RemoteAddress => _javaSession.getIoSession().getRemoteAddress().toString();
-        public Guid SessionId => Guid.Parse(_javaSession.getSessionId().ToString()!);
+        public Guid SessionId { get; } = Guid.NewGuid();
     }
 
 }
