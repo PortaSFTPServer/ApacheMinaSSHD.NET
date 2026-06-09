@@ -52,11 +52,11 @@
 
 	<Target Name="IncludeBindingsDlls" BeforeTargets="GenerateNuspec">
 		<ItemGroup>
-			<_PackageFiles Include="$(MSBuildProjectDirectory)\..\ApacheMinaSSHD.NET.Bindings\bin\$(Configuration)\net9.0\*.dll" Exclude="$(MSBuildProjectDirectory)\..\ApacheMinaSSHD.NET.Bindings\bin\$(Configuration)\net9.0\ApacheMinaSSHD.NET.Bindings.dll">
+			<_PackageFiles Include="$(MSBuildProjectDirectory)\..\ApacheMinaSSHD.NET.Bindings\bin\$(Configuration)\net9.0\*.dll">
 				<PackagePath>lib/net9.0/</PackagePath>
 				<Visible>false</Visible>
 			</_PackageFiles>
-			<_PackageFiles Include="$(MSBuildProjectDirectory)\..\ApacheMinaSSHD.NET.Bindings\bin\$(Configuration)\net10.0\*.dll" Exclude="$(MSBuildProjectDirectory)\..\ApacheMinaSSHD.NET.Bindings\bin\$(Configuration)\net10.0\ApacheMinaSSHD.NET.Bindings.dll">
+			<_PackageFiles Include="$(MSBuildProjectDirectory)\..\ApacheMinaSSHD.NET.Bindings\bin\$(Configuration)\net10.0\*.dll">
 				<PackagePath>lib/net10.0/</PackagePath>
 				<Visible>false</Visible>
 			</_PackageFiles>
