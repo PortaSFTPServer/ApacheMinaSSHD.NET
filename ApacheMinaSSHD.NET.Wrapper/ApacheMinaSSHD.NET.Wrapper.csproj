@@ -50,12 +50,17 @@
 	  <None Include="..\docs\images\seralynx-banner.png" Pack="true" PackagePath="docs\images\" />
 	</ItemGroup>
 
-	<Target Name="IncludeBindingsContent" BeforeTargets="_GetPackageFiles">
+	<Target Name="IncludeBindingsDlls" BeforeTargets="GenerateNuspec">
 		<ItemGroup>
-			<None Include="..\ApacheMinaSSHD.NET.Bindings\bin\$(Configuration)\$(TargetFramework)\*.dll"
-				  Pack="true"
-				  PackagePath="lib\$(TargetFramework)\"
-				  Visible="false" />
+			<_PackageFiles Include="$(MSBuildProjectDirectory)\..\ApacheMinaSSHD.NET.Bindings\bin\$(Configuration)\net9.0\*.dll" Exclude="$(MSBuildProjectDirectory)\..\ApacheMinaSSHD.NET.Bindings\bin\$(Configuration)\net9.0\ApacheMinaSSHD.NET.Bindings.dll">
+				<PackagePath>lib/net9.0/</PackagePath>
+				<Visible>false</Visible>
+			</_PackageFiles>
+			<_PackageFiles Include="$(MSBuildProjectDirectory)\..\ApacheMinaSSHD.NET.Bindings\bin\$(Configuration)\net10.0\*.dll" Exclude="$(MSBuildProjectDirectory)\..\ApacheMinaSSHD.NET.Bindings\bin\$(Configuration)\net10.0\ApacheMinaSSHD.NET.Bindings.dll">
+				<PackagePath>lib/net10.0/</PackagePath>
+				<Visible>false</Visible>
+			</_PackageFiles>
 		</ItemGroup>
 	</Target>
 </Project>
+

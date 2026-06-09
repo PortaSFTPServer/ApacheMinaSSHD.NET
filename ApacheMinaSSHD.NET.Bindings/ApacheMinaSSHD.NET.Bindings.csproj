@@ -57,14 +57,18 @@
 		<None Include="..\licenses\SLF4J-MIT.txt" Pack="true" PackagePath="licenses\" />
 	</ItemGroup>
 
-	<Target Name="AddIkvmGeneratedAssembliesToPackage" BeforeTargets="_GetPackageFiles">
+	<Target Name="AddIkvmGeneratedAssembliesToPackage" BeforeTargets="GenerateNuspec">
 		<ItemGroup>
-			<None Include="$(TargetDir)*.dll"
-				  Exclude="$(TargetPath)"
-				  Pack="true"
-				  PackagePath="lib/$(TargetFramework)/"
-				  Visible="false" />
+			<_PackageFiles Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\net9.0\*.dll" Exclude="$(MSBuildProjectDirectory)\bin\$(Configuration)\net9.0\ApacheMinaSSHD.NET.Bindings.dll">
+				<PackagePath>lib/net9.0/</PackagePath>
+				<Visible>false</Visible>
+			</_PackageFiles>
+			<_PackageFiles Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\net10.0\*.dll" Exclude="$(MSBuildProjectDirectory)\bin\$(Configuration)\net10.0\ApacheMinaSSHD.NET.Bindings.dll">
+				<PackagePath>lib/net10.0/</PackagePath>
+				<Visible>false</Visible>
+			</_PackageFiles>
 		</ItemGroup>
+		<Message Text="AddIkvm: net9.0 DLLs: @(_PackageFiles->'%(Filename)%(Extension)',' ')" Importance="high" />
 	</Target>
 
 </Project>
