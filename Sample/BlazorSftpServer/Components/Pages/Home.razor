@@ -1,0 +1,193 @@
+@page "/"
+@rendermode InteractiveServer
+@inject ServerState State
+
+<div class="container">
+    <div class="header">
+        <h1>ApacheMinaSSHD.NET</h1>
+        <span class="subtitle">Blazor SFTP Server Manager</span>
+    </div>
+
+    <div class="toolbar">
+        <div class="field">
+            <label>Host:</label>
+            <input @bind="Host" />
+        </div>
+        <div class="field">
+            <label>Port:</label>
+            <input @bind="Port" type="number" min="1" max="65535" />
+        </div>
+        <button class="btn start" @onclick="StartServer" disabled="@(State.Server is not null)">
+            Start
+        </button>
+        <button class="btn stop" @onclick="StopServer" disabled="@(State.Server is null)">
+            Stop
+        </button>
+        <span class="status @StatusClass">@StatusText</span>
+    </div>
+
+    <div class="panels">
+        <div class="panel">
+            <h3>Configuration</h3>
+            <div class="field"><label>Password:</label><input @bind="Password" type="password" /></div>
+            <div class="field"><label>Storage root:</label><input @bind="StorageRoot" /></div>
+            <div class="field"><label>Host key:</label><input @bind="HostKey" /></div>
+            <label class="chk"><input @bind="UseProductionDefaults" type="checkbox" /> Production defaults</label>
+            <label class="chk"><input @bind="UseModernAlgos" type="checkbox" /> Modern algorithms</label>
+        </div>
+        <div class="panel">
+            <h3>Active Sessions</h3>
+            @if (State.Sessions.Count == 0)
+            {
+                <p class="muted">No active sessions</p>
+            }
+            else
+            {
+                <table>
+                    <thead><tr><th>ID</th><th>Remote</th><th>Since</th></tr></thead>
+                    <tbody>
+                        @foreach (var s in State.Sessions)
+                        {
+                            <tr><td>@s.Id.ToString("N")[..8]</td><td>@s.RemoteAddress</td><td>@s.StartedAt</td></tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+        <div class="panel log-panel">
+            <h3>Log</h3>
+            <div class="log-box">
+                @foreach (var entry in State.Log)
+                {
+                    <div class="log-entry">[@entry.Timestamp] @entry.Text</div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <span>ApacheMinaSSHD.NET by SERALYNX LLC</span>
+        <button class="btn clear-log" @onclick="ClearLog">Clear Log</button>
+    </div>
+</div>
+
+<style>
+    @@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0f0f1a; color: #e0e0e0; font: 14px/1.5 'Segoe UI', system-ui, sans-serif; }
+    .container { display: flex; flex-direction: column; height: 100vh; padding: 12px; gap: 8px; }
+    .header h1 { font-size: 1.3rem; color: #fff; }
+    .subtitle { color: #888; font-size: .85rem; }
+    .toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; background: #1a1a2e; padding: 10px; border-radius: 6px; }
+    .field { display: flex; align-items: center; gap: 4px; }
+    .field label { color: #aaa; font-size: .85rem; white-space: nowrap; }
+    .field input { background: #2a2a3e; border: 1px solid #3a3a4e; color: #eee; padding: 4px 8px; border-radius: 4px; width: 100px; }
+    .field input[type=number] { width: 70px; }
+    .field input[type=password] { width: 110px; }
+    input { width: 140px; }
+    .btn { padding: 5px 16px; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; }
+    .btn:disabled { opacity: .4; cursor: default; }
+    .btn.start { background: #2e7d32; color: #fff; }
+    .btn.start:hover:not(:disabled) { background: #388e3c; }
+    .btn.stop { background: #c62828; color: #fff; }
+    .btn.stop:hover:not(:disabled) { background: #d32f2f; }
+    .clear-log { font-size: .8rem; background: #333; color: #ccc; }
+    .clear-log:hover { background: #444; }
+    .status { font-weight: 600; font-size: .85rem; margin-left: auto; }
+    .status.running { color: #66bb6a; }
+    .status.stopped { color: #888; }
+    .panels { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 8px; flex: 1; min-height: 0; }
+    .panel { background: #1a1a2e; border-radius: 6px; padding: 10px; display: flex; flex-direction: column; gap: 6px; overflow: hidden; }
+    .panel h3 { font-size: .9rem; color: #aaa; margin-bottom: 4px; }
+    .muted { color: #666; font-style: italic; font-size: .85rem; }
+    table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+    th { text-align: left; color: #888; border-bottom: 1px solid #2a2a3e; padding: 4px 0; }
+    td { padding: 3px 0; border-bottom: 1px solid #222; }
+    .chk { display: flex; align-items: center; gap: 6px; font-size: .85rem; color: #aaa; }
+    .chk input { width: auto; }
+    .log-panel { grid-column: 1 / -1; }
+    .log-box { flex: 1; overflow-y: auto; font-family: 'Cascadia Code', 'Fira Code', monospace; font-size: .8rem; }
+    .log-entry { padding: 1px 4px; }
+    .log-entry:nth-child(odd) { background: #1e1e32; }
+    .footer { display: flex; justify-content: space-between; align-items: center; color: #555; font-size: .8rem; }
+
+    @@media (max-width: 768px) {
+        .panels { grid-template-columns: 1fr; }
+        .toolbar { flex-direction: column; align-items: stretch; }
+        .field input { width: 100%; }
+    }
+</style>
+
+@code {
+    private string _statusText = "Stopped";
+    private bool _statusRunning;
+
+    private string Host { get; set; } = "127.0.0.1";
+    private string Port { get; set; } = "2222";
+    private string Password { get; set; } = "changeme";
+    private string StorageRoot { get; set; } = "sftp-storage";
+    private string HostKey { get; set; } = "hostkey.ser";
+    private bool UseProductionDefaults { get; set; } = true;
+    private bool UseModernAlgos { get; set; } = true;
+
+    private string StatusText => _statusText;
+    private string StatusClass => _statusRunning ? "running" : "stopped";
+
+    protected override void OnInitialized()
+    {
+        State.Changed += StateHasChanged;
+    }
+
+    private void StartServer()
+    {
+        try
+        {
+            var server = AMNetSshServer.SetUpDefaultServer();
+            server.Host = Host;
+            server.Port = int.Parse(Port);
+
+            if (UseProductionDefaults) server.Config.ApplyProductionDefaults();
+            if (UseModernAlgos) server.Config.ApplyModernAlgorithmDefaults();
+            server.Config.WELCOME_BANNER = "ApacheMinaSSHD.NET — Blazor Manager";
+
+            server.SetFixedPasswordAuthenticator("admin", Password);
+            server.setKeyPairProvider(new AMNetSimpleGeneratorHostKeyProvider(HostKey));
+
+            if (!Directory.Exists(StorageRoot)) Directory.CreateDirectory(StorageRoot);
+            server.setFileSystemFactory(new AMNetVirtualFileSystemFactory(StorageRoot));
+            server.setSubsystemFactories(new AMNetSftpSubsystemFactory());
+
+            server.addSessionListener(new BlazorSessionListener(State));
+            server.Start();
+
+            State.Server = server;
+            _statusText = "Running";
+            _statusRunning = true;
+            State.LogMessage("Server started");
+        }
+        catch (Exception ex)
+        {
+            State.LogMessage($"Start failed: {ex.Message}");
+        }
+    }
+
+    private void StopServer()
+    {
+        try
+        {
+            State.Server?.Stop();
+            State.Server = null;
+            State.Sessions.Clear();
+            _statusText = "Stopped";
+            _statusRunning = false;
+            State.LogMessage("Server stopped");
+        }
+        catch (Exception ex)
+        {
+            State.LogMessage($"Stop error: {ex.Message}");
+        }
+    }
+
+    private void ClearLog() => State.ClearLog();
+}

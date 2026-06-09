@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>BlazorSftpServer</RootNamespace>
+    <Description>Blazor Server web app SFTP server manager for .NET — start/stop, session monitoring, and live log viewer from any browser. Manage your SFTP server remotely via a web UI. By SERALYNX LLC (Porta SFTP Server).</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />
+  </ItemGroup>
+</Project>

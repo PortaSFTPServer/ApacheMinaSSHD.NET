@@ -110,6 +110,7 @@ Browse ready-to-run C# SFTP server examples that demonstrate real scenarios:
 |--------|--------------|
 | [AuthenticationServer](Sample/AuthenticationServer) | Password, public key, fingerprint, authorized_keys, keyboard-interactive, and MFA auth — pick via CLI arg |
 | [AvaloniaSftpServer](Sample/AvaloniaSftpServer) | Cross-platform Avalonia UI SFTP server manager — start/stop, sessions, live log |
+| [BlazorSftpServer](Sample/BlazorSftpServer) | Blazor Server web app — manage SFTP server from any browser, sessions, live log |
 | [ConsoleSftpServer](Sample/ConsoleSftpServer) | Lightweight console-based SFTP server |
 | [DareSftpServer](Sample/DareSftpServer) | Data-at-rest encryption with AES-256-GCM chunked encryption |
 | [MinimalServer](Sample/MinimalServer) | Minimal C# SFTP server — simplest way to embed an SFTP server in .NET (~15 lines) |
