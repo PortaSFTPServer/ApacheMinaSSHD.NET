@@ -1,0 +1,58 @@
+name: CodeQL
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+  schedule:
+    - cron: 0 12 * * 1
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: windows-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language:
+          - csharp
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          config-file: ./.github/codeql/codeql-config.yml
+
+      - name: Restore
+        shell: pwsh
+        run: |
+          dotnet restore ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj
+          dotnet restore ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj
+          dotnet restore ApacheMinaSSHD.NET.Wrapper.Tests/ApacheMinaSSHD.NET.Wrapper.Tests.csproj
+
+      - name: Build
+        shell: pwsh
+        run: |
+          dotnet build ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj -c Release --no-restore
+          dotnet build ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj -c Release --no-restore
+          dotnet build ApacheMinaSSHD.NET.Wrapper.Tests/ApacheMinaSSHD.NET.Wrapper.Tests.csproj -c Release --no-restore
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3

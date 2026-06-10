@@ -1,0 +1,6 @@
+name: CodeQL Configuration
+
+paths:
+  - ApacheMinaSSHD.NET.Wrapper
+  - ApacheMinaSSHD.NET.Wrapper.Tests
+  - Sample
