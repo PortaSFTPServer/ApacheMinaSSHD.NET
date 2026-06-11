@@ -2,6 +2,8 @@
 
 [![NuGet](https://img.shields.io/nuget/v/ApacheMinaSSHD.NET.Wrapper)](https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper)
 
+> **🔒 FIPS 140-2/140-3 compliant** — Enable FIPS mode via `AMNSecurityUtils.SetFipsMode()` for NIST-approved cryptographic algorithms. Call once at application startup before creating any server instance.
+
 > **⚠️ Security disclaimer:** This is a wrapper library around Apache MINA SSHD — it wraps SFTP and SCP only. This is to support a secure transfer in transit by default. It does not implement FTP, FTPS, TFTP, or any other insecure protocol. Like any wrapper library, security depends on how you use it. You are responsible for configuring authentication, encryption algorithms, access controls, and limits appropriately for your environment. Review the [Security Best Practices guide](docs/guide/07-security.md) before deploying to production.
 
 ## Table of Contents
