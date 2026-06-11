@@ -204,7 +204,6 @@ class SecurityAuditListener : AMNetSftpEventListener
 - [ ] Apply sensible session limits
 - [ ] Add SFTP event listeners for audit logging
 - [ ] Run `./eng/security-scan.ps1` in CI
-- [ ] Keep the library updated via NuGet
 - [ ] Restrict network access at the firewall level
 
 ---
