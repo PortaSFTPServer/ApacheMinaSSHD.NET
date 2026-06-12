@@ -172,9 +172,14 @@ sftp.setFileSystemAccessor(new MyFileAccessor());
 server.setSubsystemFactories(sftp);
 
 server.setCommandFactory(new AMNetScpCommandFactory(
-    new AMNetScpFileOpener(rootPath)));
+    new MyScpOpener(rootPath)));
 
 server.start();
+
+class MyScpOpener : AMNetScpFileOpener
+{
+    public MyScpOpener(string rootPath) : base(rootPath) { }
+}
 ```
 
 ## Directory Entry Filtering
