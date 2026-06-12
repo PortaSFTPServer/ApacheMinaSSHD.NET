@@ -19,6 +19,8 @@ namespace ApacheMinaSSHD.NET.Wrapper
     public sealed class AMNetSshServer : IDisposable
     {
         private readonly SshServer server;
+        private IAMNetIoServiceEventListener? _userIoServiceEventListener;
+        private IAmNetConnectionRateLimiter? _rateLimiter;
 
         private AMNetSshServer(SshServer server)
         {
@@ -640,7 +642,30 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void setIoServiceEventListener(IAMNetIoServiceEventListener serverIoServiceEventListener)
         {
             ArgumentNullException.ThrowIfNull(serverIoServiceEventListener);
-            server.setIoServiceEventListener(new InternalIoServiceEventListener(serverIoServiceEventListener));
+            _userIoServiceEventListener = serverIoServiceEventListener;
+            ApplyIoServiceEventListener();
+        }
+
+        /// <summary>
+        /// Sets a per-IP connection rate limiter that is evaluated before any
+        /// registered <see cref="IAMNetIoServiceEventListener"/>.
+        /// Pass <c>null</c> to disable rate limiting.
+        /// </summary>
+        public void SetRateLimiter(IAmNetConnectionRateLimiter? rateLimiter)
+        {
+            _rateLimiter = rateLimiter;
+            ApplyIoServiceEventListener();
+        }
+
+        private void ApplyIoServiceEventListener()
+        {
+            var effective = _userIoServiceEventListener ?? new AMNetIoServiceEventListener();
+            if (_rateLimiter != null)
+            {
+                effective = new RateLimitingIoServiceEventListener(effective, _rateLimiter);
+            }
+
+            server.setIoServiceEventListener(new InternalIoServiceEventListener(effective));
         }
 
         /// <summary>

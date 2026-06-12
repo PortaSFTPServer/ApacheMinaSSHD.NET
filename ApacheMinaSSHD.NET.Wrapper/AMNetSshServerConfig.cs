@@ -29,6 +29,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
             AUTH_TIMEOUT = TimeSpan.FromSeconds(60);
             MAX_CONCURRENT_SESSIONS = 10;
             MAX_CONCURRENT_CHANNELS = 10;
+            NIO_WORKERS = Environment.ProcessorCount * 2;
             IDLE_TIMEOUT = TimeSpan.FromMinutes(10);
             HEARTBEAT_INTERVAL = TimeSpan.FromSeconds(45);
             REKEY_BYTES_LIMIT = 1024L * 1024L * 1024L;
@@ -194,6 +195,81 @@ namespace ApacheMinaSSHD.NET.Wrapper
                 value);
         }
 
+        /// <summary>
+        /// NIO_WORKERS ("nio-workers"): Number of NIO worker threads for I/O operations.
+        /// Must be positive. Default 2 workers per CPU core is typical.
+        /// </summary>
+        public int NIO_WORKERS
+        {
+            get => PropertyResolverUtils.getIntProperty(
+                manager,
+                CoreModuleProperties.NIO_WORKERS.getName(),
+                Environment.ProcessorCount * 2);
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), value,
+                        "NIO worker count must be positive.");
+                }
+
+                PropertyResolverUtils.updateProperty(
+                    manager,
+                    CoreModuleProperties.NIO_WORKERS.getName(),
+                    value);
+            }
+        }
+
+        #endregion
+
+        #region "--- SOCKET OPTIONS ---"
+
+        /// <summary>
+        /// SOCKET_BACKLOG ("socket-backlog"): TCP socket backlog queue size.
+        /// Default is 0 (system default).
+        /// </summary>
+        public int SOCKET_BACKLOG
+        {
+            get => PropertyResolverUtils.getIntProperty(
+                manager,
+                "socket-backlog",
+                0);
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), value,
+                        "Socket backlog must be non-negative.");
+                }
+
+                PropertyResolverUtils.updateProperty(manager, "socket-backlog", value);
+            }
+        }
+
+        /// <summary>
+        /// SOCKET_KEEPALIVE ("socket-keepalive"): Enable TCP keepalive on server sockets.
+        /// </summary>
+        public bool SOCKET_KEEPALIVE
+        {
+            get => PropertyResolverUtils.getBooleanProperty(
+                manager,
+                "socket-keepalive",
+                false);
+            set => PropertyResolverUtils.updateProperty(manager, "socket-keepalive", value);
+        }
+
+        /// <summary>
+        /// TCP_NODELAY ("tcp-nodelay"): Disable Nagle's algorithm for lower-latency I/O.
+        /// </summary>
+        public bool TCP_NODELAY
+        {
+            get => PropertyResolverUtils.getBooleanProperty(
+                manager,
+                "tcp-nodelay",
+                true);
+            set => PropertyResolverUtils.updateProperty(manager, "tcp-nodelay", value);
+        }
+
         #endregion
 
         #region "--- TIMEOUTS & KEEP-ALIVES ---"
@@ -220,6 +296,8 @@ namespace ApacheMinaSSHD.NET.Wrapper
 
         /// <summary>
         /// HEARTBEAT_INTERVAL ("heartbeat-interval"): Server keep-alive interval.
+        /// Default is 45 seconds to prevent idle session resource exhaustion.
+        /// Set to <see cref="TimeSpan.Zero"/> to disable heartbeats.
         /// </summary>
         public TimeSpan HEARTBEAT_INTERVAL
         {
@@ -228,7 +306,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
                 long ms = PropertyResolverUtils.getLongProperty(
                     manager,
                     CoreModuleProperties.HEARTBEAT_INTERVAL.getName(),
-                    0L);
+                    45000L);
 
                 return TimeSpan.FromMilliseconds(ms);
             }

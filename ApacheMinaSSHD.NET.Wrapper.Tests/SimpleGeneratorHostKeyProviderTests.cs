@@ -105,4 +105,91 @@ public class SimpleGeneratorHostKeyProviderTests
         Assert.Equal(4096, provider.KeySize);
         Assert.False(provider.StrictFilePermissions);
     }
+
+    [Fact]
+    public void Path_traversal_sequences_are_rejected()
+    {
+        var ex = Assert.Throws<ArgumentException>(() =>
+            new AMNetSimpleGeneratorHostKeyProvider("../../etc/hostkey.ser"));
+        Assert.Contains("directory traversal", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public void Path_traversal_with_backslashes_is_rejected()
+    {
+        var ex = Assert.Throws<ArgumentException>(() =>
+            new AMNetSimpleGeneratorHostKeyProvider("..\\..\\etc\\hostkey.ser"));
+        Assert.Contains("directory traversal", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public void Normal_absolute_path_is_accepted()
+    {
+        string tempFile = Path.Combine(Path.GetTempPath(), "hostkey_" + Guid.NewGuid() + ".ser");
+        try
+        {
+            var provider = new AMNetSimpleGeneratorHostKeyProvider(tempFile);
+            Assert.Equal(tempFile, provider.KeyPath);
+        }
+        finally
+        {
+            try { File.Delete(tempFile); } catch { }
+        }
+    }
+
+    [Fact]
+    public void Normal_relative_path_is_accepted()
+    {
+        var provider = new AMNetSimpleGeneratorHostKeyProvider("hostkey.ser");
+        Assert.Equal("hostkey.ser", provider.KeyPath);
+    }
+
+    [Fact]
+    public void ResolveKeyPath_sets_resolved_path()
+    {
+        string tempDir = Path.Combine(Path.GetTempPath(), "KeyProviderTest_" + Guid.NewGuid());
+        Directory.CreateDirectory(tempDir);
+        try
+        {
+            string keyPath = Path.Combine(tempDir, "hostkey.ser");
+            var provider = new AMNetSimpleGeneratorHostKeyProvider(keyPath);
+            Assert.Equal("", provider.ResolvedKeyPath);
+
+            provider.ResolveKeyPath();
+
+            Assert.Equal(Path.GetFullPath(keyPath), provider.ResolvedKeyPath);
+        }
+        finally
+        {
+            try { Directory.Delete(tempDir, true); } catch { }
+        }
+    }
+
+    [Fact]
+    public void Empty_keyPath_has_no_resolved_path()
+    {
+        var provider = new AMNetSimpleGeneratorHostKeyProvider();
+        provider.ResolveKeyPath();
+        Assert.Equal("", provider.ResolvedKeyPath);
+    }
+
+    [Fact]
+    public void Symbolically_nested_path_is_resolved_canonically()
+    {
+        string tempDir = Path.Combine(Path.GetTempPath(), "KeyNestedTest_" + Guid.NewGuid());
+        string subDir = Path.Combine(tempDir, "sub", "dir");
+        Directory.CreateDirectory(subDir);
+        try
+        {
+            // Use a path with ".." that stays within the temp dir
+            string pathWithDotDot = Path.Combine(subDir, "..", "hostkey.ser");
+            var ex = Assert.Throws<ArgumentException>(() =>
+                new AMNetSimpleGeneratorHostKeyProvider(pathWithDotDot));
+            Assert.Contains("directory traversal", ex.Message, StringComparison.OrdinalIgnoreCase);
+        }
+        finally
+        {
+            try { Directory.Delete(tempDir, true); } catch { }
+        }
+    }
 }

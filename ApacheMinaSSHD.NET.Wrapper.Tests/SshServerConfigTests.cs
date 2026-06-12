@@ -25,6 +25,7 @@ public class SshServerConfigTests : IDisposable
         Assert.Equal(TimeSpan.FromSeconds(60), _config.AUTH_TIMEOUT);
         Assert.Equal(10, _config.MAX_CONCURRENT_SESSIONS);
         Assert.Equal(10, _config.MAX_CONCURRENT_CHANNELS);
+        Assert.Equal(Environment.ProcessorCount * 2, _config.NIO_WORKERS);
         Assert.Equal(TimeSpan.FromMinutes(10), _config.IDLE_TIMEOUT);
         Assert.Equal(TimeSpan.FromSeconds(45), _config.HEARTBEAT_INTERVAL);
         Assert.Equal(1024L * 1024L * 1024L, _config.REKEY_BYTES_LIMIT);
@@ -128,6 +129,80 @@ public class SshServerConfigTests : IDisposable
     }
 
     [Fact]
+    public void NIO_WORKERS_default()
+    {
+        Assert.Equal(Environment.ProcessorCount * 2, _config.NIO_WORKERS);
+    }
+
+    [Fact]
+    public void NIO_WORKERS_roundtrip()
+    {
+        _config.NIO_WORKERS = 8;
+        Assert.Equal(8, _config.NIO_WORKERS);
+    }
+
+    [Fact]
+    public void NIO_WORKERS_zero_throws()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => _config.NIO_WORKERS = 0);
+    }
+
+    [Fact]
+    public void NIO_WORKERS_negative_throws()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => _config.NIO_WORKERS = -1);
+    }
+
+    [Fact]
+    public void SOCKET_BACKLOG_default()
+    {
+        Assert.Equal(0, _config.SOCKET_BACKLOG);
+    }
+
+    [Fact]
+    public void SOCKET_BACKLOG_roundtrip()
+    {
+        _config.SOCKET_BACKLOG = 128;
+        Assert.Equal(128, _config.SOCKET_BACKLOG);
+    }
+
+    [Fact]
+    public void SOCKET_BACKLOG_negative_throws()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => _config.SOCKET_BACKLOG = -1);
+    }
+
+    [Fact]
+    public void SOCKET_KEEPALIVE_default()
+    {
+        Assert.False(_config.SOCKET_KEEPALIVE);
+    }
+
+    [Fact]
+    public void SOCKET_KEEPALIVE_roundtrip()
+    {
+        _config.SOCKET_KEEPALIVE = true;
+        Assert.True(_config.SOCKET_KEEPALIVE);
+        _config.SOCKET_KEEPALIVE = false;
+        Assert.False(_config.SOCKET_KEEPALIVE);
+    }
+
+    [Fact]
+    public void TCP_NODELAY_default()
+    {
+        Assert.True(_config.TCP_NODELAY);
+    }
+
+    [Fact]
+    public void TCP_NODELAY_roundtrip()
+    {
+        _config.TCP_NODELAY = false;
+        Assert.False(_config.TCP_NODELAY);
+        _config.TCP_NODELAY = true;
+        Assert.True(_config.TCP_NODELAY);
+    }
+
+    [Fact]
     public void IDLE_TIMEOUT_default()
     {
         Assert.Equal(TimeSpan.FromMilliseconds(600000), _config.IDLE_TIMEOUT);
@@ -143,6 +218,13 @@ public class SshServerConfigTests : IDisposable
     [Fact]
     public void HEARTBEAT_INTERVAL_default()
     {
+        Assert.Equal(TimeSpan.FromSeconds(45), _config.HEARTBEAT_INTERVAL);
+    }
+
+    [Fact]
+    public void HEARTBEAT_INTERVAL_can_be_disabled()
+    {
+        _config.HEARTBEAT_INTERVAL = TimeSpan.Zero;
         Assert.Equal(TimeSpan.Zero, _config.HEARTBEAT_INTERVAL);
     }
 
