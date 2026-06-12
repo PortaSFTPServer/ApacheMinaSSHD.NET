@@ -255,7 +255,7 @@ available for advanced scenarios.
 
 ## Powered by Apache MINA SSHD
 
-[![Apache MINA SSHD](https://mina.apache.org/assets/img/header-sshd.png)](https://mina.apache.org/sshd-project/)
+[![Apache MINA SSHD](https://raw.githubusercontent.com/PortaSFTPServer/ApacheMinaSSHD.NET/main/docs/images/apache-mina-sshd.png)](https://mina.apache.org/sshd-project/)
 
 ApacheMinaSSHD.NET is a **.NET wrapper** around **[Apache MINA SSHD](https://mina.apache.org/sshd-project/)**, the
 production-grade SSH/SFTP/SCP server library maintained by the **[Apache Software Foundation](https://www.apache.org/)**.
@@ -277,7 +277,7 @@ Project code is MIT licensed. See `LICENSE`, `THIRD-PARTY-NOTICES.md`, and the
 
 ApacheMinaSSHD.NET is made possible by these exceptional open source projects:
 
-| [![Bouncy Castle](https://www.bouncycastle.org/wp-content/uploads/2023/12/logo-bc.svg)](https://www.bouncycastle.org/) | [![SLF4J](https://upload.wikimedia.org/wikipedia/commons/d/d5/SLF4J_Logo.png)](https://www.slf4j.org/) |
+| [![Bouncy Castle](https://raw.githubusercontent.com/PortaSFTPServer/ApacheMinaSSHD.NET/main/docs/images/bouncycastle-logo.svg)](https://www.bouncycastle.org/) | [![SLF4J](https://raw.githubusercontent.com/PortaSFTPServer/ApacheMinaSSHD.NET/main/docs/images/slf4j-logo.png)](https://www.slf4j.org/) |
 |---|---|
 | Cryptography library (MIT / Bouncy Castle) | Logging facade (MIT) |
 
