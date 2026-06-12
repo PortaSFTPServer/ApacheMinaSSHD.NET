@@ -175,11 +175,6 @@ server.setCommandFactory(new AMNetScpCommandFactory(
     new MyScpOpener(rootPath)));
 
 server.start();
-
-class MyScpOpener : AMNetScpFileOpener
-{
-    public MyScpOpener(string rootPath) : base(rootPath) { }
-}
 ```
 
 ## Directory Entry Filtering
@@ -212,6 +207,8 @@ class MyFileAccessor : AMNetSftpFileSystemAccessor
 // Same for SCP:
 class MyScpOpener : AMNetScpFileOpener
 {
+    public MyScpOpener(string rootPath) : base(rootPath) { }
+
     public override bool ShouldIncludeDirectoryEntry(ISshScpFileAccess access)
     {
         var name = Path.GetFileName(access.Path);
