@@ -172,7 +172,7 @@ sftp.setFileSystemAccessor(new MyFileAccessor());
 server.setSubsystemFactories(sftp);
 
 server.setCommandFactory(new AMNetScpCommandFactory(
-    new MyScpFileOpener(rootPath)));
+    new AMNetScpFileOpener(rootPath)));
 
 server.start();
 ```
