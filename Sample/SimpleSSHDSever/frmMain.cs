@@ -139,9 +139,6 @@ namespace SimpleSSHDSever
 
 
 
-                        // this needed to be implemented in the bridge / internals
-                        // sshd.addSessionListener(new MyDynamicAuthListener());
-
                         // attatch the intance of the server
                         // Keep the sample closed by default. Set AMNET_SAMPLE_PASSWORD to enable password auth.
                         if (string.IsNullOrWhiteSpace(samplePassword))
