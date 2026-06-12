@@ -144,6 +144,9 @@ For complete, organized documentation on building SFTP/SCP servers with ApacheMi
 
 ## Quick Start
 
+The sample classes `MyFileAccessor` and `MyScpOpener` used below are defined in the
+[Directory Entry Filtering](#directory-entry-filtering) section.
+
 ```csharp
 using ApacheMinaSSHD.NET.Wrapper;
 using ApacheMinaSSHD.NET.Wrapper.Abstractions;
