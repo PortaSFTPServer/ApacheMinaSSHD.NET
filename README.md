@@ -34,9 +34,9 @@ dotnet add package ApacheMinaSSHD.NET.Wrapper
 **[SERALYNX LLC](https://portasftpserver.com)** is a Critical Infrastructure Engineering firm
 supporting Physical and Technological Advancement. One of its products is
 **[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)** —
-the best portable SFTP server for Windows and Linux, free SFTP server, and instant SFTP server
-for critical infrastructure. Porta SFTP Server serves **civil engineering, construction,
-IT administrators, and developers** worldwide.
+the best portable, free, and instant SFTP server
+for Windows and Linux. Porta SFTP Server serves **civil engineers, construction
+managers, IT administrators, and developers** worldwide.
 
 ApacheMinaSSHD.NET is the **best open source .NET SFTP server library** — a C# wrapper around Apache MINA SSHD,
 created by SERALYNX LLC. It is **actively maintained**, **MIT licensed**, and the leading **open source alternative
@@ -48,7 +48,7 @@ ApacheMinaSSHD.NET delivers enterprise-grade secure file transfer.
 
 ![SERALYNX LLC - Porta SFTP Server for Critical Infrastructure](https://raw.githubusercontent.com/PortaSFTPServer/ApacheMinaSSHD.NET/main/docs/images/seralynx-banner.png)
 
-SERALYNX LLC was founded to solve a real problem in critical infrastructure engineering: civil engineers, construction teams, and IT administrators needed a way to **securely collaborate** on CAD files, 3D models, BIM data, technical drawings, and project documents — without complex VPNs, insecure FTP, or expensive enterprise systems. **Porta SFTP Server** was built as a portable, zero-install SFTP server that deploys in minutes on any Windows or Linux machine. **ApacheMinaSSHD.NET** extends that mission to developers — giving .NET applications the same enterprise-grade secure file transfer as an embeddable library, purpose-built for **secure collaboration**, **project management**, and **data exchange** in critical infrastructure.
+SERALYNX LLC was founded to solve a real problem in critical infrastructure engineering. Civil engineers, construction teams, and IT administrators needed a way to **securely collaborate** on CAD files, 3D models, BIM data, technical drawings, and project documents — without complex VPNs, insecure FTP, or expensive enterprise systems. **Porta SFTP Server** was built as a portable, zero-install SFTP server that deploys in minutes on any Windows or Linux machine. **ApacheMinaSSHD.NET** extends that mission to developers — giving .NET applications the same enterprise-grade secure file transfer as an embeddable library, purpose-built for **secure collaboration**, **project management**, and **data exchange** in critical infrastructure.
 
 ## Why ApacheMinaSSHD.NET?
 
@@ -60,7 +60,7 @@ For developers who need an **embeddable SFTP server** in their C# application, t
 
 ## Authentication Modules
 
-The public authentication API stays .NET-only. Developers can implement the
+The public authentication API remains .NET-only. Developers can implement the
 interfaces directly or compose the built-in modules:
 
 - `AMNetFixedPasswordAuthenticator` for a single username/password pair.
@@ -77,7 +77,7 @@ rather than a single credential check. For advanced routing, use one delegate
 authenticator and dispatch to your own per-user or per-tenant modules inside
 that callback.
 
-`AMNetPasswordAuthenticator` and `AMNetKeyboardInteractiveAuthenticator` deny by
+`AMNetPasswordAuthenticator` and `AMNetKeyboardInteractiveAuthenticator` deny access by
 default. Override them or use the delegate/fixed implementations when enabling
 those authentication methods.
 
@@ -239,7 +239,7 @@ class MyScpOpener : AMNetScpFileOpener
 
 ## Algorithm Configuration
 
-Developers can inspect supported algorithms and configure allowed algorithms
+Developers can inspect and configure allowed algorithms
 without Java imports:
 
 ```csharp
