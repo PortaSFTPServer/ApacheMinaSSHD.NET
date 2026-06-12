@@ -186,7 +186,7 @@ footer a { color: #e94560; text-decoration: none; }
 
 <section class="hero">
 <h1>Apache<span>MinaSSHD</span>.NET</h1>
-<p class="subtitle">The <strong>best open source .NET SFTP server library</strong> — actively maintained, MIT licensed. A C# wrapper around Apache MINA SSHD — the leading <strong>open source alternative to commercial SFTP libraries</strong> for .NET developers. Embed secure SFTP, SCP, and SSH file transfer in your C# applications with <strong>zero Java dependencies</strong>. The go-to <strong>modern SFTP library for .NET</strong>.</p>
+<p class="subtitle">The <strong>only open source full SSH/SFTP/SCP server library for .NET</strong> — actively maintained, MIT licensed. A C# wrapper around <strong>Apache MINA SSHD</strong> from the Apache Software Foundation. Embed secure SFTP, SCP, and SSH file transfer in your C# applications with <strong>zero Java dependencies</strong>. The go-to <strong>modern SFTP server library for .NET</strong>.</p>
 <p style="max-width:720px;margin:0 auto 1.8rem;font-size:.88rem;background:rgba(233,69,96,.15);border:1px solid rgba(233,69,96,.4);border-radius:8px;padding:.8rem 1.2rem;color:#f0b4b4;text-align:left">
 <strong>&#128274; FIPS 140-2/140-3 compliant</strong> — Enable FIPS mode via <code>AMNSecurityUtils.SetFipsMode()</code> for NIST-approved cryptographic algorithms. Call once at application startup before creating any server instance.<br><br>
 <strong>&#9888;&#65039; Security disclaimer:</strong> This is a wrapper library around Apache MINA SSHD — it wraps SFTP and SCP only. This is to support a secure transfer in transit by default. It does not implement FTP, FTPS, TFTP, or any other insecure protocol. Like any wrapper library, security depends on how you use it. You are responsible for configuring authentication, encryption algorithms, access controls, and limits appropriately for your environment. See the <a href="https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/07-security.md" style="color:#e94560">Security Best Practices guide</a> before deploying to production.
@@ -223,6 +223,7 @@ footer a { color: #e94560; text-decoration: none; }
 <div class="feature-row"><div class="icon-box">&#10003;</div><div class="text"><h3>Open Source &amp; MIT</h3><p>Full source on GitHub. Free for personal, commercial, and enterprise use. Contribute, fork, or customize.</p></div></div>
 <div class="feature-row"><div class="icon-box">&#10003;</div><div class="text"><h3>Cross-Platform</h3><p>Targets .NET 10. Runs on Windows, Linux, and macOS. Deploy as a console app, Windows Service, or Docker container.</p></div></div>
 <div class="feature-row"><div class="icon-box">&#10003;</div><div class="text"><h3>Real SSH Compatibility</h3><p>Tested against OpenSSH and WinSCP clients. Supports SFTP v3, SCP, and standard SSH authentication flows.</p></div></div>
+<div class="feature-row"><div class="icon-box">&#9889;</div><div class="text"><h3>The Only Open Source Full Server</h3><p>ApacheMinaSSHD.NET is powered by <strong>Apache MINA SSHD</strong> from the Apache Software Foundation — the only open source library providing a full SSH/SFTP/SCP <em>server</em> for .NET. The .NET ecosystem has SSH client libraries but no other server.</p></div></div>
 </div>
 </div>
 </section>

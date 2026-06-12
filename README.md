@@ -16,6 +16,7 @@ dotnet add package ApacheMinaSSHD.NET.Wrapper
 
 - [Installation](#installation)
 - [Introduction](#introduction)
+- [Why ApacheMinaSSHD.NET?](#why-apacheminasshdnet)
 - [Authentication Modules](#authentication-modules)
 - [Use Cases](#use-cases)
 - [Version Compatibility](#version-compatibility)
@@ -48,6 +49,14 @@ ApacheMinaSSHD.NET delivers enterprise-grade secure file transfer.
 ![SERALYNX LLC - Porta SFTP Server for Critical Infrastructure](https://raw.githubusercontent.com/PortaSFTPServer/ApacheMinaSSHD.NET/main/docs/images/seralynx-banner.png)
 
 SERALYNX LLC was founded to solve a real problem in critical infrastructure engineering: civil engineers, construction teams, and IT administrators needed a way to **securely collaborate** on CAD files, 3D models, BIM data, technical drawings, and project documents — without complex VPNs, insecure FTP, or expensive enterprise systems. **Porta SFTP Server** was built as a portable, zero-install SFTP server that deploys in minutes on any Windows or Linux machine. **ApacheMinaSSHD.NET** extends that mission to developers — giving .NET applications the same enterprise-grade secure file transfer as an embeddable library, purpose-built for **secure collaboration**, **project management**, and **data exchange** in critical infrastructure.
+
+## Why ApacheMinaSSHD.NET?
+
+ApacheMinaSSHD.NET is built on **[Apache MINA SSHD](https://mina.apache.org/sshd-project/)** — the production-grade SSH library from the Apache Software Foundation. Every SSH handshake, cryptographic operation, and protocol message is handled by Apache MINA SSHD, the same engine used by enterprise Java applications worldwide.
+
+**ApacheMinaSSHD.NET is the only open source library that provides a full SSH/SFTP/SCP *server* for .NET.** The .NET ecosystem has several SSH *client* libraries (SSH.NET being the most popular), but none implement the server side. Other open source options like KeenSystemsNL's SFTPServer are minimal SFTP subsystem handlers that require an external SSH daemon.
+
+For developers who need an **embeddable SFTP server** in their C# application, the alternatives are all commercial products. ApacheMinaSSHD.NET delivers the same enterprise-grade server capability — powered by Apache MINA SSHD — as **free, open source, MIT-licensed software**.
 
 ## Authentication Modules
 
