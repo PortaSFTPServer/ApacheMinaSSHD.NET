@@ -23,5 +23,5 @@
     <Platform Solution="*|x86" Project="x86" />
   </Project>
   <Project Path="Sample/VirtualFileSystemServer/VirtualFileSystemServer.csproj" />
-  <Project Path="SFTPServerWithNuget/SFTPServerWithNuget.csproj" Id="b3f16543-c10d-4eb1-b525-34df3240c3fa" />
+  <Project Path="Sample/SFTPServerWithNuget/SFTPServerWithNuget.csproj" Id="b3f16543-c10d-4eb1-b525-34df3240c3fa" />
 </Solution>

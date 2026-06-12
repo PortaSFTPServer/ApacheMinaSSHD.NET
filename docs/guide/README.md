@@ -52,6 +52,7 @@ The repository includes sample projects in the `Sample/` folder for every scenar
 | [BlazorSftpServer](../../Sample/BlazorSftpServer/) | Blazor Server web app — manage SFTP server from any browser, sessions, live log |
 | [PhotinoSftpServer](../../Sample/PhotinoSftpServer/) | Cross-platform Photino Blazor desktop app — Blazor UI, start/stop, sessions, live log |
 | [ConsoleSftpServer](../../Sample/ConsoleSftpServer/) | Lightweight console-based SFTP server |
+| [SFTPServerWithNuget](../../Sample/SFTPServerWithNuget/) | Minimal SFTP server consuming the published NuGet package  |
 | [SimpleSSHDSever](../../Sample/SimpleSSHDSever/) | Windows Forms GUI server with integration test harness |
 
 ## Installation
