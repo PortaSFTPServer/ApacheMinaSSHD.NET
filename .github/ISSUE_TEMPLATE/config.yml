@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security Issue
+    url: https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/security/policy
+    about: Please report security vulnerabilities via our SECURITY.md policy.
+  - name: Documentation
+    url: https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/tree/main/docs
+    about: Check the documentation and guides before opening an issue.

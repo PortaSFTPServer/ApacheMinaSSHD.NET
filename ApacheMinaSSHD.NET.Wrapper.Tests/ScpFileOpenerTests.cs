@@ -1,8 +1,12 @@
+// Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors.
+// Licensed under the MIT License. See LICENSE file in the repository root for full license text.
+
 using ApacheMinaSSHD.NET.Wrapper.Abstractions;
 using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Tests;
 
+[Trait("Category", "Unit")]
 public class ScpFileOpenerTests : IDisposable
 {
     private readonly string _tempDir;

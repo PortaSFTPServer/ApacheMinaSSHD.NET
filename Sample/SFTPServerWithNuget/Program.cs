@@ -1,4 +1,7 @@
-﻿using ApacheMinaSSHD.NET.Wrapper;
+// Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors.
+// Licensed under the MIT License. See LICENSE file in the repository root for full license text.
+
+using ApacheMinaSSHD.NET.Wrapper;
 using ApacheMinaSSHD.NET.Wrapper.Factories;
 
 string rootPath = Path.Combine(AppContext.BaseDirectory, "sftp-root");
@@ -25,7 +28,7 @@ if (!string.IsNullOrWhiteSpace(password))
 }
 else
 {
-    Console.WriteLine("WARNING: No SFTP_PASSWORD set — authentication disabled");
+    Console.WriteLine("WARNING: No SFTP_PASSWORD set � authentication disabled");
 }
 
 server.setFileSystemFactory(new AMNetVirtualFileSystemFactory(rootPath));

@@ -1,4 +1,7 @@
-﻿using org.apache.sshd.common.util.security;
+// Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors.
+// Licensed under the MIT License. See LICENSE file in the repository root for full license text.
+
+using org.apache.sshd.common.util.security;
 using org.apache.sshd.common.util.security.bouncycastle;
 
 namespace ApacheMinaSSHD.NET.Helpers

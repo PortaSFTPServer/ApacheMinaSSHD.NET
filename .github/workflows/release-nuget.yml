@@ -81,6 +81,10 @@ jobs:
           dotnet build ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj -c Release --no-restore /p:Version=${{ steps.version.outputs.package_version }} /p:PackageVersion=${{ steps.version.outputs.package_version }}
           dotnet build Sample/SimpleSSHDSever/SimpleSSHDSever.csproj -c Release --no-restore /p:Version=${{ steps.version.outputs.package_version }} /p:PackageVersion=${{ steps.version.outputs.package_version }}
 
+      - name: Code style check
+        shell: pwsh
+        run: dotnet format ApacheMinaSSHD.NET.slnx --verify-no-changes --verbosity diagnostic
+
       - name: Public API guard
         shell: pwsh
         run: ./eng/verify-public-api.ps1 -Configuration Release
@@ -103,11 +107,45 @@ jobs:
           dotnet pack ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj -c Release --no-restore -o artifacts/nuget /p:Version=${{ steps.version.outputs.package_version }} /p:PackageVersion=${{ steps.version.outputs.package_version }}
           dotnet pack ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj -c Release --no-restore -o artifacts/nuget /p:Version=${{ steps.version.outputs.package_version }} /p:PackageVersion=${{ steps.version.outputs.package_version }}
 
+      - name: Generate SBOM
+        shell: pwsh
+        continue-on-error: true
+        run: |
+          dotnet tool install --global Microsoft.Sbom.DotNetTool
+          $packages = @(Get-ChildItem -LiteralPath "artifacts/nuget" -Filter "*.nupkg")
+          foreach ($pkg in $packages) {
+            $componentPath = Join-Path "artifacts/sbom" $pkg.BaseName
+            New-Item -ItemType Directory -Path $componentPath -Force
+            Copy-Item -LiteralPath $pkg.FullName -Destination $componentPath
+            sbom-tool generate -b $componentPath -bc $componentPath -pn $pkg.BaseName -pv ${{ steps.version.outputs.package_version }} -ps "SERALYNX LLC" -nsb https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET
+          }
+
+      - name: Sign NuGet packages (if certificate available)
+        shell: pwsh
+        continue-on-error: true
+        env:
+          NUGET_CERT: ${{ secrets.NUGET_CERT }}
+          NUGET_CERT_PASSWORD: ${{ secrets.NUGET_CERT_PASSWORD }}
+        run: |
+          if (-not [string]::IsNullOrWhiteSpace($env:NUGET_CERT)) {
+            $certPath = "$env:RUNNER_TEMP/cert.pfx"
+            [System.IO.File]::WriteAllBytes($certPath, [System.Convert]::FromBase64String($env:NUGET_CERT))
+            $packages = @(Get-ChildItem -LiteralPath "artifacts/nuget" -Filter "*.nupkg")
+            foreach ($pkg in $packages) {
+              nuget sign $pkg.FullName -CertificatePath $certPath -CertificatePassword $env:NUGET_CERT_PASSWORD -Timestamper http://timestamp.digicert.com
+            }
+            Remove-Item -LiteralPath $certPath -Force
+          } else {
+            Write-Host "No signing certificate configured — skipping package signing."
+          }
+
       - name: Upload NuGet artifacts
         uses: actions/upload-artifact@v4
         with:
           name: nuget-${{ steps.version.outputs.package_version }}
-          path: artifacts/nuget/*.nupkg
+          path: |
+            artifacts/nuget/*.nupkg
+            artifacts/sbom/**/*
           if-no-files-found: error
 
       - name: Create GitHub Release

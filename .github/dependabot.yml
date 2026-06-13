@@ -1,6 +1,12 @@
 version: 2
 updates:
   - package-ecosystem: nuget
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: nuget
     directory: /ApacheMinaSSHD.NET.Bindings
     schedule:
       interval: weekly
@@ -13,7 +19,127 @@ updates:
     open-pull-requests-limit: 5
 
   - package-ecosystem: nuget
+    directory: /ApacheMinaSSHD.NET.Wrapper.Tests
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /ApacheMinaSSHD.NET.Service
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /ApacheMinaSSHD.NET.Shared
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /FileSystemHelper
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /PortaSFTPServer
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /Sample/AuthenticationServer
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /Sample/AvaloniaSftpServer
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /Sample/BlazorSftpServer
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /Sample/ConsoleSftpServer
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /Sample/DareSftpServer
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /Sample/MinimalServer
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /Sample/PhotinoSftpServer
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /Sample/PortForwardingServer
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /Sample/ProductionServer
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /Sample/ScpServer
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /Sample/SessionMonitorServer
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /Sample/SftpEventServer
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /Sample/SFTPServerWithNuget
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
     directory: /Sample/SimpleSSHDSever
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /Sample/VirtualFileSystemServer
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /Benchmarks
     schedule:
       interval: weekly
     open-pull-requests-limit: 5

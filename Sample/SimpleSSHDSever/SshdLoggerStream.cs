@@ -1,4 +1,7 @@
-﻿using ApacheMinaSSHD.NET.Wrapper.Logging;
+// Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors.
+// Licensed under the MIT License. See LICENSE file in the repository root for full license text.
+
+using ApacheMinaSSHD.NET.Wrapper.Logging;
 using System.Collections.Concurrent;
 using System.Drawing; // Make sure this is included for Color
 using System.Runtime.InteropServices;

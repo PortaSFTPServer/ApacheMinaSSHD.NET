@@ -25,4 +25,5 @@
   </Project>
   <Project Path="Sample/VirtualFileSystemServer/VirtualFileSystemServer.csproj" />
   <Project Path="Sample/SFTPServerWithNuget/SFTPServerWithNuget.csproj" Id="b3f16543-c10d-4eb1-b525-34df3240c3fa" />
+  <Project Path="Benchmarks/Benchmarks.csproj" />
 </Solution>

@@ -1,4 +1,7 @@
-﻿namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
+// Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors.
+// Licensed under the MIT License. See LICENSE file in the repository root for full license text.
+
+namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
 {
     internal class SshSession : Abstractions.Models.ISshSession
     {

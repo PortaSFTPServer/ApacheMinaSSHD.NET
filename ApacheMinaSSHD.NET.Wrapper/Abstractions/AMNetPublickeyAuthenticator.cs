@@ -1,4 +1,7 @@
-﻿using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
+// Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors.
+// Licensed under the MIT License. See LICENSE file in the repository root for full license text.
+
+using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.OpenSsl;
@@ -119,7 +122,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                 return Convert.FromBase64String(string.Concat(lines));
             }
 
-            // OpenSSH public key format: "keytype base64data [comment]" — fast path
+            // OpenSSH public key format: "keytype base64data [comment]" � fast path
             string[] parts = content.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
             if (parts.Length >= 2 && IsSshKeyType(parts[0]))
             {
@@ -195,7 +198,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             //   kdfname          = string
             //   kdfoptions       = string
             //   number_of_keys   = uint32
-            //   public_key       = string  (SSH wire format — what we want)
+            //   public_key       = string  (SSH wire format � what we want)
             //   encrypted_...    = ...     (skipped)
             using var ms = new MemoryStream(decoded);
             byte[] magicBytes = ReadBytes(ms, 15);
