@@ -52,7 +52,7 @@ SERALYNX LLC was founded to solve a real problem in critical infrastructure engi
 
 ## Why ApacheMinaSSHD.NET?
 
-ApacheMinaSSHD.NET is built on **[Apache MINA SSHD](https://mina.apache.org/sshd-project/)** — the production-grade SSH library from the Apache Software Foundation. Every SSH handshake, cryptographic operation, and protocol message is handled by Apache MINA SSHD, the same engine used by enterprise Java applications worldwide.
+ApacheMinaSSHD.NET exists because building an SSH server from scratch is neither practical nor safe. The SSH protocol suite (RFC 4251–4254) involves dozens of cryptographic handshake variants, channel multiplexing, port forwarding, agent forwarding, and a dozen subsystem protocols — each a potential vulnerability surface. Even mature libraries have had CVEs; a from-scratch implementation would inevitably introduce more. Rather than reimplementing a decade of protocol engineering, ApacheMinaSSHD.NET wraps **Apache MINA SSHD** — the production-grade SSH library from the Apache Software Foundation. Every SSH handshake, cryptographic operation, and protocol message is handled by Apache MINA SSHD, the same engine used by enterprise Java applications worldwide. This means you get battle-tested SSH protocol handling without the burden of writing or maintaining SSH protocol code.
 
 **ApacheMinaSSHD.NET is the only open source library that provides a full SSH/SFTP/SCP *server* for .NET.** The .NET ecosystem has several SSH *client* libraries (SSH.NET being the most popular), but none implement the server side. Other open source options like KeenSystemsNL's SFTPServer are minimal SFTP subsystem handlers that require an external SSH daemon.
 
