@@ -51,6 +51,7 @@ The repository includes sample projects in the `Sample/` folder for every scenar
 | [AvaloniaSftpServer](../../Sample/AvaloniaSftpServer/) | Cross-platform Avalonia UI SFTP server manager — start/stop, sessions, live log |
 | [BlazorSftpServer](../../Sample/BlazorSftpServer/) | Blazor Server web app — manage SFTP server from any browser, sessions, live log |
 | [PhotinoSftpServer](../../Sample/PhotinoSftpServer/) | Cross-platform Photino Blazor desktop app — Blazor UI, start/stop, sessions, live log |
+| [PortForwardingServer](../../Sample/PortForwardingServer/) | SSH port forwarding / tunneling — TCP forwarding policy, remote and local port forwarding, data flow through tunnels via SSH.NET |
 | [ConsoleSftpServer](../../Sample/ConsoleSftpServer/) | Lightweight console-based SFTP server |
 | [SFTPServerWithNuget](../../Sample/SFTPServerWithNuget/) | Minimal SFTP server consuming the published NuGet package  |
 | [SimpleSSHDSever](../../Sample/SimpleSSHDSever/) | Windows Forms GUI server with integration test harness |

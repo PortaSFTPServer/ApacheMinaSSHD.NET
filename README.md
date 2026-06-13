@@ -133,6 +133,7 @@ Browse ready-to-run C# SFTP server examples that demonstrate real scenarios:
 | [DareSftpServer](Sample/DareSftpServer) | Data-at-rest encryption with AES-256-GCM chunked encryption |
 | [MinimalServer](Sample/MinimalServer) | Minimal C# SFTP server — simplest way to embed an SFTP server in .NET (~15 lines) |
 | [PhotinoSftpServer](Sample/PhotinoSftpServer) | Cross-platform Photino Blazor desktop app — Blazor UI, start/stop, sessions, live log |
+| [PortForwardingServer](Sample/PortForwardingServer) | SSH port forwarding / tunneling — TCP forwarding policy, remote and local port forwarding, data flow through tunnels via SSH.NET |
 | [ProductionServer](Sample/ProductionServer) | Production-ready: external JSON config, algorithm selection, combined listeners |
 | [ScpServer](Sample/ScpServer) | SCP server with custom file opener, transfer audit, and directory filtering |
 | [SessionMonitorServer](Sample/SessionMonitorServer) | Session lifecycle, connection monitoring, proxy metadata inspection |

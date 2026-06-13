@@ -391,6 +391,54 @@ namespace ApacheMinaSSHD.NET.Wrapper
 
         #endregion
 
+        #region "--- PORT FORWARDING ---"
+
+        /// <summary>
+        /// FORWARDER_BUFFER_SIZE ("forwarder-buffer-size"): Buffer size in bytes for port forwarding.
+        /// Default is 32768. Minimum is 4096, maximum is 65536.
+        /// </summary>
+        public int FORWARDER_BUFFER_SIZE
+        {
+            get => PropertyResolverUtils.getIntProperty(
+                manager,
+                CoreModuleProperties.FORWARDER_BUFFER_SIZE.getName(),
+                CoreModuleProperties.DEFAULT_FORWARDER_BUF_SIZE);
+            set
+            {
+                if (value < CoreModuleProperties.MIN_FORWARDER_BUF_SIZE || value > CoreModuleProperties.MAX_FORWARDER_BUF_SIZE)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), value,
+                        $"FORWARDER_BUFFER_SIZE must be between {CoreModuleProperties.MIN_FORWARDER_BUF_SIZE} and {CoreModuleProperties.MAX_FORWARDER_BUF_SIZE}.");
+                }
+                PropertyResolverUtils.updateProperty(
+                    manager,
+                    CoreModuleProperties.FORWARDER_BUFFER_SIZE.getName(),
+                    value);
+            }
+        }
+
+        /// <summary>
+        /// FORWARD_REQUEST_TIMEOUT ("tcpip-forward-request-timeout"): Maximum time to wait for a
+        /// TCP/IP forwarding request to be processed. Set to <see cref="TimeSpan.Zero"/> for no timeout.
+        /// </summary>
+        public TimeSpan FORWARD_REQUEST_TIMEOUT
+        {
+            get
+            {
+                long ms = PropertyResolverUtils.getLongProperty(
+                    manager,
+                    CoreModuleProperties.FORWARD_REQUEST_TIMEOUT.getName(),
+                    30000L);
+                return TimeSpan.FromMilliseconds(ms);
+            }
+            set => PropertyResolverUtils.updateProperty(
+                manager,
+                CoreModuleProperties.FORWARD_REQUEST_TIMEOUT.getName(),
+                (long)value.TotalMilliseconds);
+        }
+
+        #endregion
+
         #region "--- CRYPTOGRAPHIC ALGORITHMS ---"
 
         /// <summary>

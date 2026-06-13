@@ -14,6 +14,7 @@
   <Project Path="Sample/DareSftpServer/DareSftpServer.csproj" />
   <Project Path="Sample/MinimalServer/MinimalServer.csproj" />
   <Project Path="Sample/PhotinoSftpServer/PhotinoSftpServer.csproj" />
+  <Project Path="Sample/PortForwardingServer/PortForwardingServer.csproj" />
   <Project Path="Sample/ProductionServer/ProductionServer.csproj" />
   <Project Path="Sample/ScpServer/ScpServer.csproj" />
   <Project Path="Sample/SessionMonitorServer/SessionMonitorServer.csproj" />

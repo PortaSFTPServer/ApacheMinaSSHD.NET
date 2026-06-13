@@ -21,6 +21,10 @@ namespace ApacheMinaSSHD.NET.Wrapper
         private readonly SshServer server;
         private IAMNetIoServiceEventListener? _userIoServiceEventListener;
         private IAmNetConnectionRateLimiter? _rateLimiter;
+        private IAMNetForwardingFilter? _forwardingFilter;
+        private IAMNetTcpForwardingFilter? _tcpForwardingFilter;
+        private IAMNetAgentForwardingFilter? _agentForwardingFilter;
+        private IAMNetX11ForwardingFilter? _x11ForwardingFilter;
 
         private AMNetSshServer(SshServer server)
         {
@@ -655,6 +659,86 @@ namespace ApacheMinaSSHD.NET.Wrapper
         {
             _rateLimiter = rateLimiter;
             ApplyIoServiceEventListener();
+        }
+
+        public void setTcpForwardingPolicy(AMNetTcpForwardingPolicy policy)
+        {
+            _forwardingFilter = null;
+            _tcpForwardingFilter = new AMNetTcpForwardingFilter(policy);
+            _agentForwardingFilter = null;
+            _x11ForwardingFilter = null;
+            ApplyForwardingFilter();
+        }
+
+        public void SetTcpForwardingPolicy(AMNetTcpForwardingPolicy policy)
+            => setTcpForwardingPolicy(policy);
+
+        public void setForwardingFilter(IAMNetForwardingFilter filter)
+        {
+            ArgumentNullException.ThrowIfNull(filter);
+            _forwardingFilter = filter;
+            _tcpForwardingFilter = null;
+            _agentForwardingFilter = null;
+            _x11ForwardingFilter = null;
+            ApplyForwardingFilter();
+        }
+
+        public void SetForwardingFilter(IAMNetForwardingFilter filter)
+            => setForwardingFilter(filter);
+
+        public void setTcpForwardingFilter(IAMNetTcpForwardingFilter filter)
+        {
+            ArgumentNullException.ThrowIfNull(filter);
+            _tcpForwardingFilter = filter;
+            _forwardingFilter = null;
+            ApplyForwardingFilter();
+        }
+
+        public void SetTcpForwardingFilter(IAMNetTcpForwardingFilter filter)
+            => setTcpForwardingFilter(filter);
+
+        public void setAgentForwardingFilter(IAMNetAgentForwardingFilter filter)
+        {
+            ArgumentNullException.ThrowIfNull(filter);
+            _agentForwardingFilter = filter;
+            _forwardingFilter = null;
+            ApplyForwardingFilter();
+        }
+
+        public void SetAgentForwardingFilter(IAMNetAgentForwardingFilter filter)
+            => setAgentForwardingFilter(filter);
+
+        public void setX11ForwardingFilter(IAMNetX11ForwardingFilter filter)
+        {
+            ArgumentNullException.ThrowIfNull(filter);
+            _x11ForwardingFilter = filter;
+            _forwardingFilter = null;
+            ApplyForwardingFilter();
+        }
+
+        public void SetX11ForwardingFilter(IAMNetX11ForwardingFilter filter)
+            => setX11ForwardingFilter(filter);
+
+        private void ApplyForwardingFilter()
+        {
+            if (_forwardingFilter != null)
+            {
+                server.setForwardingFilter(new InternalForwardingFilter(_forwardingFilter));
+                return;
+            }
+
+            var hasTcp = _tcpForwardingFilter != null;
+            var hasAgent = _agentForwardingFilter != null;
+            var hasX11 = _x11ForwardingFilter != null;
+
+            if (!hasTcp && !hasAgent && !hasX11)
+                return;
+
+            var tcp = _tcpForwardingFilter;
+            var agent = _agentForwardingFilter;
+            var x11 = _x11ForwardingFilter;
+
+            server.setForwardingFilter(new InternalForwardingFilter(tcp, agent, x11));
         }
 
         private void ApplyIoServiceEventListener()
