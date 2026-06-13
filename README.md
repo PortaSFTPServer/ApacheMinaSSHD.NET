@@ -50,7 +50,7 @@ ApacheMinaSSHD.NET delivers enterprise-grade secure file transfer.
 
 SERALYNX LLC was founded to solve a real problem in critical infrastructure engineering. Civil engineers, construction teams, and IT administrators needed a way to **securely collaborate** on CAD files, 3D models, BIM data, technical drawings, and project documents — without complex VPNs, insecure FTP, or expensive enterprise systems. **Porta SFTP Server** was built as a portable, zero-install SFTP server that deploys in minutes on any Windows or Linux machine. **ApacheMinaSSHD.NET** extends that mission to developers — giving .NET applications the same enterprise-grade secure file transfer as an embeddable library, purpose-built for **secure collaboration**, **project management**, and **data exchange** in critical infrastructure.
 
-SERALYNX LLC / Porta SFTP Server is also developing a next-generation secure transfer protocol — **HACLEX™** — designed to address limitations in the classic SSH/SFTP model for modern critical infrastructure workflows. HACLEX™ is currently in internal research and testing and will be revealed after an extended validation period (months to years). No ETA is available at this time.
+SERALYNX LLC / Porta SFTP Server is also developing a next-generation secure transfer protocol — **HACLEX™** (TCP + UDP) — designed to address limitations in the classic SSH/SFTP model for modern critical infrastructure workflows. HACLEX™ is currently in internal research and testing and will be revealed after an extended validation period (months to years). No ETA is available at this time.
 
 ## Why ApacheMinaSSHD.NET?
 
