@@ -51,24 +51,14 @@ class EnterpriseScpOpener : AMNetScpFileOpener
 ```csharp
 class AuditScpListener : AMNetScpTransferEventListener
 {
-    public override void OnOpenRead(ISshScpTransferEvent e)
+    public override void OnStartFile(ISshScpTransferEvent e)
     {
-        Log($"SCP download started: {e.Path} by {e.Session.RemoteAddress}");
+        Log($"SCP transfer started: {e.Path} by {e.Session.RemoteAddress}");
     }
 
-    public override void OnCloseRead(ISshScpTransferEvent e)
+    public override void OnEndFile(ISshScpTransferEvent e)
     {
-        Log($"SCP download completed: {e.Path}");
-    }
-
-    public override void OnOpenWrite(ISshScpTransferEvent e)
-    {
-        Log($"SCP upload started: {e.Path} by {e.Session.RemoteAddress}");
-    }
-
-    public override void OnCloseWrite(ISshScpTransferEvent e)
-    {
-        Log($"SCP upload completed: {e.Path}");
+        Log($"SCP transfer completed: {e.Path}");
     }
 }
 ```
@@ -78,7 +68,7 @@ Register the listener:
 ```csharp
 var scpFactory = new AMNetScpCommandFactory(
     new EnterpriseScpOpener(rootPath));
-scpFactory.addScpTransferEventListener(new AuditScpListener());
+scpFactory.addEventListener(new AuditScpListener());
 server.setCommandFactory(scpFactory);
 ```
 

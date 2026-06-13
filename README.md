@@ -212,7 +212,7 @@ class MyFileAccessor : AMNetSftpFileSystemAccessor
 
     public override bool ShouldIncludeDirectoryEntry(ISshFileSystemAccess context)
     {
-        var name = Path.GetFileName(context.Path);
+        var name = Path.GetFileName(context.RemotePath);
         if (string.IsNullOrWhiteSpace(name)) return true;
 
         if (HideDotFiles && name.StartsWith(".")) return false;
@@ -232,7 +232,7 @@ class MyScpOpener : AMNetScpFileOpener
 
     public override bool ShouldIncludeDirectoryEntry(ISshScpFileAccess access)
     {
-        var name = Path.GetFileName(access.Path);
+        var name = Path.GetFileName(access.LocalPath);
         if (name != null && name.StartsWith(".")) return false;
         return base.ShouldIncludeDirectoryEntry(access);
     }

@@ -18,32 +18,32 @@ class AuditSftpListener : AMNetSftpEventListener
 {
     public override void OnOpen(ISshEvent e)
     {
-        Log($"File opened: {e.SshHandle?.File} by {e.Session.RemoteAddress}");
+        Log($"File opened: {e.SshHandle?.PhysicalPath} by {e.Session.RemoteAddress}");
     }
 
     public override void OnRead(ISshReadWrite e)
     {
-        Log($"Read {e.Length} bytes from {e.SshHandle?.File}");
+        Log($"Read {e.Length} bytes from {e.SshHandle?.PhysicalPath}");
     }
 
     public override void OnWrite(ISshReadWrite e)
     {
-        Log($"Wrote {e.Length} bytes to {e.SshHandle?.File}");
+        Log($"Wrote {e.Length} bytes to {e.SshHandle?.PhysicalPath}");
     }
 
-    public override void OnRemove(ISshEvent e)
+    public override void OnRemoved(ISshPath e)
     {
         Log($"File removed by {e.Session.RemoteAddress}");
     }
 
-    public override void OnRename(ISshMove e)
+    public override void OnMoved(ISshMove e)
     {
         Log($"File renamed: {e.SourcePath} -> {e.DestPath}");
     }
 
-    public override void OnCreateDirectory(ISshEvent e)
+    public override void OnCreated(ISshPath e)
     {
-        Log($"Directory created: {e.SshHandle?.File}");
+        Log($"Directory created: {e.SshHandle?.PhysicalPath}");
     }
 }
 
@@ -59,9 +59,9 @@ Available events:
 | `OnClose` / `OnClosing` | File close |
 | `OnRead` / `OnReading` | File read |
 | `OnWrite` / `OnWriting` | File write |
-| `OnCreate` / `OnCreating` | File/directory creation |
-| `OnRemove` / `OnRemoving` | File/directory removal |
-| `OnRename` / `OnMoving` / `OnMoved` | File rename/move |
+| `OnCreated` / `OnCreating` | File/directory creation |
+| `OnRemoved` / `OnRemoving` | File/directory removal |
+| `OnMoved` / `OnMoving` | File rename/move |
 | `OnLink` / `OnLinking` | Symlink operations |
 | `OnReadEntries` / `OnReadingEntries` | Directory listing |
 

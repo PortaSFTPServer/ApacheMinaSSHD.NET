@@ -31,8 +31,8 @@ server.Port = 2222;
 
 ```csharp
 var hostKeys = new AMNetSimpleGeneratorHostKeyProvider("hostkey.ser");
-hostKeys.Algorithm = AMNetSshAlgorithms.HostKeyAlgorithms.Rsa;
-hostKeys.KeySize = 3072;
+hostKeys.setAlgorithm(AMNetSshAlgorithms.HostKeyAlgorithms.Rsa);
+hostKeys.setKeySize(3072);
 
 server.setKeyPairProvider(hostKeys);
 ```
@@ -85,8 +85,8 @@ server.Host = "127.0.0.1";
 server.Port = 2222;
 
 var hostKeys = new AMNetSimpleGeneratorHostKeyProvider("hostkey.ser");
-hostKeys.Algorithm = AMNetSshAlgorithms.HostKeyAlgorithms.Rsa;
-hostKeys.KeySize = 3072;
+hostKeys.setAlgorithm(AMNetSshAlgorithms.HostKeyAlgorithms.Rsa);
+hostKeys.setKeySize(3072);
 server.setKeyPairProvider(hostKeys);
 
 server.SetFixedPasswordAuthenticator("demo", "your-password-here");

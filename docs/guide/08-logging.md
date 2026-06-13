@@ -70,21 +70,21 @@ For detailed operational audit, attach an SFTP event listener:
 ```csharp
 class OperationalAudit : AMNetSftpEventListener
 {
-    public void OnOpen(ISshEvent e)
+    public override void OnOpen(ISshEvent e)
     {
-        Logger.Info($"OPEN {e.Session.RemoteAddress} {e.SshHandle?.File}");
+        Logger.Info($"OPEN {e.Session.RemoteAddress} {e.SshHandle?.PhysicalPath}");
     }
 
-    public void OnWrite(ISshReadWrite e)
+    public override void OnWrite(ISshReadWrite e)
     {
         Logger.Info($"WRITE {e.Session.RemoteAddress} " +
-                    $"{e.SshHandle?.File} offset={e.Offset} len={e.Length}");
+                    $"{e.SshHandle?.PhysicalPath} offset={e.Offset} len={e.Length}");
     }
 
-    public void OnReadEntries(ISshEntries e)
+    public override void OnReadEntries(ISshEntries e)
     {
         Logger.Debug($"LIST {e.Session.RemoteAddress} " +
-                     $"{e.localHandle?.File} entries={e.Entries?.Count}");
+                     $"{e.localHandle?.PhysicalPath} entries={e.Entries?.Count}");
     }
 }
 ```

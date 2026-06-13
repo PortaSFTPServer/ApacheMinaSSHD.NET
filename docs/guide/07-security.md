@@ -61,9 +61,9 @@ AMNSecurityUtils.SetFipsMode(true);
 
 ```csharp
 var hostKeys = new AMNetSimpleGeneratorHostKeyProvider("hostkey.ser");
-hostKeys.Algorithm = AMNetSshAlgorithms.HostKeyAlgorithms.Rsa;
-hostKeys.KeySize = 3072;        // At least 3072 bits
-hostKeys.StrictFilePermissions = true;  // Verify key file permissions
+hostKeys.setAlgorithm(AMNetSshAlgorithms.HostKeyAlgorithms.Rsa);
+hostKeys.setKeySize(3072);        // At least 3072 bits
+hostKeys.setStrictFilePermissions(true);  // Verify key file permissions
 ```
 
 **Best practices:**
@@ -170,13 +170,13 @@ class SecurityAuditListener : AMNetSftpEventListener
 {
     public override void OnOpen(ISshEvent e)
     {
-        AuditLog("FILE_OPEN", e.Session.RemoteAddress, e.SshHandle?.File);
+        AuditLog("FILE_OPEN", e.Session.RemoteAddress, e.SshHandle?.PhysicalPath);
     }
 
     public override void OnWrite(ISshReadWrite e)
     {
         AuditLog("FILE_WRITE", e.Session.RemoteAddress,
-            e.SshHandle?.File, bytes: e.Length);
+            e.SshHandle?.PhysicalPath, bytes: e.Length);
     }
 
     public override void OnOpenFailed(ISshIOFailure e)
@@ -192,7 +192,7 @@ class SecurityAuditListener : AMNetSftpEventListener
 |-------|-------|-----|
 | FIPS mode throws on second server instance | `SetFipsMode` is one-shot per JVM lifetime | The library handles this internally with a static sentinel — ensure you only call it once |
 | "Weak algorithm" warning | Legacy cipher in default set | Call `ApplyModernAlgorithmDefaults()` to restrict to modern ciphers, MACs, and KEX |
-| Host key file permissions too permissive | Default file permissions may be loose | Set `hostKeys.StrictFilePermissions = true` to enforce access control on the key file |
+| Host key file permissions too permissive | Default file permissions may be loose | Set `hostKeys.setStrictFilePermissions(true)` to enforce access control on the key file |
 
 ## Production Checklist
 
