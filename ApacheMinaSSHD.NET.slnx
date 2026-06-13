@@ -18,6 +18,7 @@
   <Project Path="Sample/ProductionServer/ProductionServer.csproj" />
   <Project Path="Sample/ScpServer/ScpServer.csproj" />
   <Project Path="Sample/SessionMonitorServer/SessionMonitorServer.csproj" />
+  <Project Path="Sample/SftpClientServer/SftpClientServer.csproj" />
   <Project Path="Sample/SftpEventServer/SftpEventServer.csproj" />
   <Project Path="Sample/SimpleSSHDSever/SimpleSSHDSever.csproj">
     <Platform Solution="*|x64" Project="x64" />
