@@ -141,6 +141,7 @@ Browse ready-to-run C# SFTP server examples that demonstrate real scenarios:
 | [SftpEventServer](Sample/SftpEventServer) | SFTP event listeners — track open/close/read/write/create/remove/move operations |
 | [SimpleSSHDSever](Sample/SimpleSSHDSever) | Windows Forms GUI server with FIPS mode and integration test harness |
 | [VirtualFileSystemServer](Sample/VirtualFileSystemServer) | Root jail isolation, hidden-file filtering, path access control for SFTP and SCP |
+| [SftpClientServer](Sample/SftpClientServer) | SFTP/SCP client example — connects to the server via SSH.NET to upload, download, and verify files over SFTP and SCP |
 
 All samples target .NET 10 and reference the wrapper NuGet package directly.
 

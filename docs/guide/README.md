@@ -55,6 +55,7 @@ The repository includes sample projects in the `Sample/` folder for every scenar
 | [ConsoleSftpServer](../../Sample/ConsoleSftpServer/) | Lightweight console-based SFTP server |
 | [SFTPServerWithNuget](../../Sample/SFTPServerWithNuget/) | Minimal SFTP server consuming the published NuGet package  |
 | [SimpleSSHDSever](../../Sample/SimpleSSHDSever/) | Windows Forms GUI server with integration test harness |
+| [SftpClientServer](../../Sample/SftpClientServer/) | SFTP/SCP client example — connects to the server via SSH.NET to upload, download, and verify files over SFTP and SCP |
 
 ## Installation
 
