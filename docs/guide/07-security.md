@@ -54,6 +54,8 @@ server.Config.SetHostKeyAlgorithms(
 Enable FIPS-compliant provider selection for regulated environments:
 
 ```csharp
+using ApacheMinaSSHD.NET.Wrapper.Helpers;
+
 AMNSecurityUtils.SetFipsMode(true);
 ```
 
@@ -208,7 +210,7 @@ class SecurityAuditListener : AMNetSftpEventListener
 
 ---
 
-**Next:** [Logging & Monitoring](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/08-logging.md) — SLF4J bridge, audit events, and custom loggers.
+**Next:** [Logging & Monitoring](08-logging.md) — SLF4J bridge, audit events, and custom loggers.
 
 ---
 

@@ -23,7 +23,6 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
         public ISshSession Session { get; set; } = null!;
         public string RemoteHandle { get; set; } = string.Empty;
 
-        // public string LocalPath { get; set; }
         public ISshHandle SshHandle { get; set; } = null!;
         public Exception Exception { get; set; } = null!;
 

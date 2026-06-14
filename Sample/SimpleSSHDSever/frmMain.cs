@@ -11,7 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using ApacheMinaSSHD.NET.Helpers;
+using ApacheMinaSSHD.NET.Wrapper.Helpers;
 using ApacheMinaSSHD.NET.Wrapper;
 using ApacheMinaSSHD.NET.Wrapper.Abstractions;
 using ApacheMinaSSHD.NET.Wrapper.Factories;

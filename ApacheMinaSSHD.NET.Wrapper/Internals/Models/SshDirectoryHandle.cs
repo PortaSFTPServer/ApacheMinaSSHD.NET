@@ -24,8 +24,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
         /// <summary>
         /// Internal constructor: Client cannot instantiate this directly
         /// </summary>
-        /// <param name="handle"></param>
-        /// <exception cref="ArgumentNullException"></exception>
+        /// <param name="handle">The Java DirectoryHandle instance to wrap.</param>
+        /// <exception cref="ArgumentNullException">Thrown when handle is null.</exception>
         internal SshDirectoryHandle(DirectoryHandle handle)
         {
             _handle = handle ?? throw new ArgumentNullException(nameof(handle));
@@ -46,7 +46,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
         /// <summary>
         /// Mapping methods
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The next directory entry path, or null if no more entries.</returns>
         public string Next()
         {
             java.nio.file.Path path = _handle.next();

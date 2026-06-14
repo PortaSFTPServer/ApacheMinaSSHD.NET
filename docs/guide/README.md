@@ -23,16 +23,16 @@ This guide walks you through creating production-ready SSH file transfer servers
 
 | Guide | Description |
 |-------|-------------|
-| [Quick Start](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/01-quickstart.md) | Build your first SFTP server in under 5 minutes |
-| [Server Configuration](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/02-configuration.md) | Timeouts, limits, banners, and algorithm tuning |
-| [Authentication](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/03-authentication.md) | Password, public key, keyboard-interactive, and multi-factor auth |
-| [Virtual Filesystem](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/04-virtual-filesystem.md) | Root jail isolation, user home directories, path containment |
-| [SFTP Subsystem](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/05-sftp-subsystem.md) | File operations, directory filtering, event hooks |
-| [SCP Subsystem](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/06-scp-subsystem.md) | SCP file opener, transfer events, permission mapping |
-| [Security Best Practices](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/07-security.md) | Crypto algorithms, hardening, symlink containment |
-| [Logging & Monitoring](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/08-logging.md) | SLF4J bridge, audit events, custom loggers |
-| [Production Deployment](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/09-production-deployment.md) | Windows Service, Docker, high availability, monitoring |
-| [PROXY Protocol](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/10-proxy-protocol.md) | Load balancer integration, PROXY v1/v2, custom acceptors |
+| [Quick Start](01-quickstart.md) | Build your first SFTP server in under 5 minutes |
+| [Server Configuration](02-configuration.md) | Timeouts, limits, banners, and algorithm tuning |
+| [Authentication](03-authentication.md) | Password, public key, keyboard-interactive, and multi-factor auth |
+| [Virtual Filesystem](04-virtual-filesystem.md) | Root jail isolation, user home directories, path containment |
+| [SFTP Subsystem](05-sftp-subsystem.md) | File operations, directory filtering, event hooks |
+| [SCP Subsystem](06-scp-subsystem.md) | SCP file opener, transfer events, permission mapping |
+| [Security Best Practices](07-security.md) | Crypto algorithms, hardening, symlink containment |
+| [Logging & Monitoring](08-logging.md) | SLF4J bridge, audit events, custom loggers |
+| [Production Deployment](09-production-deployment.md) | Windows Service, Docker, high availability, monitoring |
+| [PROXY Protocol](10-proxy-protocol.md) | Load balancer integration, PROXY v1/v2, custom acceptors |
 
 ## Sample Projects
 

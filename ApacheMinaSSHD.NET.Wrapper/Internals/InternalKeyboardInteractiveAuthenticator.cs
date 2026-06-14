@@ -29,12 +29,12 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         }
 
         /// <summary>
-        /// This is authentication method is called after the generateChallenge has been process / called.
+        /// Called after generateChallenge to verify the client's responses.
         /// </summary>
-        /// <param name="session">This is the current server session context for the client</param>
-        /// <param name="username">This is username that is derived from the client side</param>
-        /// <param name="responses">This is the list of responses e.g generated challenge, TOTP, 2FA, etc.</param>
-        /// <returns></returns>
+        /// <param name="session">The current server session context for the client.</param>
+        /// <param name="username">The username provided by the client.</param>
+        /// <param name="responses">The list of responses, e.g., challenge response, TOTP, 2FA, etc.</param>
+        /// <returns>True if authentication succeeds, false otherwise.</returns>
         public bool authenticate(ServerSession session, string username, List responses)
         {
             var wrappedSession = new SshSession(session);
@@ -48,11 +48,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         /// <summary>
         /// This method is called first before the authentication
         /// </summary>
-        /// <param name="session">This is the current server session context for the client</param>
-        /// <param name="username">This is username that is derived from the client side</param>
-        /// <param name="lang">This is the language the is preferred by the client, default is en-US</param>
-        /// <param name="subMethod">This the submethod specified such as if for the TOTP/2FA, RADIUS, etc.</param>
-        /// <returns></returns>
+        /// <param name="session">The current server session context for the client.</param>
+        /// <param name="username">The username provided by the client.</param>
+        /// <param name="lang">The language preferred by the client; defaults to en-US.</param>
+        /// <param name="subMethod">The submethod specified, e.g., TOTP/2FA, RADIUS, etc.</param>
+        /// <returns>An InteractiveChallenge defining the prompts for the client.</returns>
         public InteractiveChallenge generateChallenge(ServerSession session, string username, string lang, string subMethod)
         {
 

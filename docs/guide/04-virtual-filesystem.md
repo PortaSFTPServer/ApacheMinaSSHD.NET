@@ -145,7 +145,7 @@ See [VirtualFileSystemServer](../../Sample/VirtualFileSystemServer/) for a compl
 
 ---
 
-**Next:** [SFTP Subsystem](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/05-sftp-subsystem.md) — file operations, event hooks, and access control.
+**Next:** [SFTP Subsystem](05-sftp-subsystem.md) — file operations, event hooks, and access control.
 
 ---
 

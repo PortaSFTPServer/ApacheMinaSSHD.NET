@@ -19,7 +19,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Helpers
     internal static class AMNetCollections
     {
 
-        public static List getftpFactorySingleton(AMNetSftpSubsystemFactory sftpFactory)
+        public static List GetSftpFactorySingleton(AMNetSftpSubsystemFactory sftpFactory)
         {
             return Collections.singletonList(sftpFactory.JavaFactory);
         }

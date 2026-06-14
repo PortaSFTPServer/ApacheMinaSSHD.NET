@@ -674,6 +674,10 @@ namespace ApacheMinaSSHD.NET.Wrapper
             ApplyIoServiceEventListener();
         }
 
+        /// <summary>
+        /// Sets the TCP forwarding policy (Java-style naming).
+        /// </summary>
+        /// <param name="policy">The forwarding policy to apply.</param>
         public void setTcpForwardingPolicy(AMNetTcpForwardingPolicy policy)
         {
             _forwardingFilter = null;
@@ -683,9 +687,17 @@ namespace ApacheMinaSSHD.NET.Wrapper
             ApplyForwardingFilter();
         }
 
+        /// <summary>
+        /// Sets the TCP forwarding policy.
+        /// </summary>
+        /// <param name="policy">The forwarding policy to apply.</param>
         public void SetTcpForwardingPolicy(AMNetTcpForwardingPolicy policy)
             => setTcpForwardingPolicy(policy);
 
+        /// <summary>
+        /// Sets a combined forwarding filter (Java-style naming).
+        /// </summary>
+        /// <param name="filter">The combined forwarding filter.</param>
         public void setForwardingFilter(IAMNetForwardingFilter filter)
         {
             ArgumentNullException.ThrowIfNull(filter);
@@ -696,9 +708,17 @@ namespace ApacheMinaSSHD.NET.Wrapper
             ApplyForwardingFilter();
         }
 
+        /// <summary>
+        /// Sets a combined forwarding filter.
+        /// </summary>
+        /// <param name="filter">The combined forwarding filter.</param>
         public void SetForwardingFilter(IAMNetForwardingFilter filter)
             => setForwardingFilter(filter);
 
+        /// <summary>
+        /// Sets the TCP forwarding filter (Java-style naming).
+        /// </summary>
+        /// <param name="filter">The TCP forwarding filter.</param>
         public void setTcpForwardingFilter(IAMNetTcpForwardingFilter filter)
         {
             ArgumentNullException.ThrowIfNull(filter);
@@ -707,9 +727,17 @@ namespace ApacheMinaSSHD.NET.Wrapper
             ApplyForwardingFilter();
         }
 
+        /// <summary>
+        /// Sets the TCP forwarding filter.
+        /// </summary>
+        /// <param name="filter">The TCP forwarding filter.</param>
         public void SetTcpForwardingFilter(IAMNetTcpForwardingFilter filter)
             => setTcpForwardingFilter(filter);
 
+        /// <summary>
+        /// Sets the agent forwarding filter (Java-style naming).
+        /// </summary>
+        /// <param name="filter">The agent forwarding filter.</param>
         public void setAgentForwardingFilter(IAMNetAgentForwardingFilter filter)
         {
             ArgumentNullException.ThrowIfNull(filter);
@@ -718,9 +746,17 @@ namespace ApacheMinaSSHD.NET.Wrapper
             ApplyForwardingFilter();
         }
 
+        /// <summary>
+        /// Sets the agent forwarding filter.
+        /// </summary>
+        /// <param name="filter">The agent forwarding filter.</param>
         public void SetAgentForwardingFilter(IAMNetAgentForwardingFilter filter)
             => setAgentForwardingFilter(filter);
 
+        /// <summary>
+        /// Sets the X11 forwarding filter (Java-style naming).
+        /// </summary>
+        /// <param name="filter">The X11 forwarding filter.</param>
         public void setX11ForwardingFilter(IAMNetX11ForwardingFilter filter)
         {
             ArgumentNullException.ThrowIfNull(filter);
@@ -729,6 +765,10 @@ namespace ApacheMinaSSHD.NET.Wrapper
             ApplyForwardingFilter();
         }
 
+        /// <summary>
+        /// Sets the X11 forwarding filter.
+        /// </summary>
+        /// <param name="filter">The X11 forwarding filter.</param>
         public void SetX11ForwardingFilter(IAMNetX11ForwardingFilter filter)
             => setX11ForwardingFilter(filter);
 

@@ -208,7 +208,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             //   kdfname          = string
             //   kdfoptions       = string
             //   number_of_keys   = uint32
-            //   public_key       = string  (SSH wire format � what we want)
+            //   public_key       = string  (SSH wire format -- what we want)
             //   encrypted_...    = ...     (skipped)
             using var ms = new MemoryStream(decoded);
             byte[] magicBytes = ReadBytes(ms, 15);

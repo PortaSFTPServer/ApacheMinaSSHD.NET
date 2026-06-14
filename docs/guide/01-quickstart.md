@@ -46,7 +46,7 @@ The host key is automatically persisted to `hostkey.ser` and reused across resta
 server.SetFixedPasswordAuthenticator("demo", "your-password-here");
 ```
 
-For production, implement `IAMNetPasswordAuthenticator` against your identity store — see the [Authentication guide](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/03-authentication.md).
+For production, implement `IAMNetPasswordAuthenticator` against your identity store — see the [Authentication guide](03-authentication.md).
 
 ## Step 5: Configure the Filesystem
 
@@ -126,16 +126,16 @@ sftp> put test-file.txt
 
 Your server works — now harden it for real use:
 
-1. **[Configure production limits](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/02-configuration.md)** — apply `ApplyProductionDefaults()` and tune timeouts, limits, and algorithms
-2. **[Add proper authentication](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/03-authentication.md)** — replace the hardcoded password with delegate or custom authenticators against your identity store
-3. **[Set up a virtual filesystem](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/04-virtual-filesystem.md)** — enable root jail isolation so users cannot escape their home directories
-4. **[Enable audit logging](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/08-logging.md)** — attach SFTP event listeners to track file operations
+1. **[Configure production limits](02-configuration.md)** — apply `ApplyProductionDefaults()` and tune timeouts, limits, and algorithms
+2. **[Add proper authentication](03-authentication.md)** — replace the hardcoded password with delegate or custom authenticators against your identity store
+3. **[Set up a virtual filesystem](04-virtual-filesystem.md)** — enable root jail isolation so users cannot escape their home directories
+4. **[Enable audit logging](08-logging.md)** — attach SFTP event listeners to track file operations
 
 See [MinimalServer](../../Sample/MinimalServer/) for a complete, runnable version of this example.
 
 ---
 
-**Next:** [Server Configuration](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/02-configuration.md) — tune timeouts, limits, and crypto algorithms.
+**Next:** [Server Configuration](02-configuration.md) — tune timeouts, limits, and crypto algorithms.
 
 ---
 

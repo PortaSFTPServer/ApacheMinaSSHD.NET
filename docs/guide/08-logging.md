@@ -72,19 +72,19 @@ class OperationalAudit : AMNetSftpEventListener
 {
     public override void OnOpen(ISshEvent e)
     {
-        Logger.Info($"OPEN {e.Session.RemoteAddress} {e.SshHandle?.PhysicalPath}");
+        Console.WriteLine($"OPEN {e.Session.RemoteAddress} {e.SshHandle?.PhysicalPath}");
     }
 
     public override void OnWrite(ISshReadWrite e)
     {
-        Logger.Info($"WRITE {e.Session.RemoteAddress} " +
-                    $"{e.SshHandle?.PhysicalPath} offset={e.Offset} len={e.Length}");
+        Console.WriteLine($"WRITE {e.Session.RemoteAddress} " +
+                          $"{e.SshHandle?.PhysicalPath} offset={e.Offset} len={e.Length}");
     }
 
     public override void OnReadEntries(ISshEntries e)
     {
-        Logger.Debug($"LIST {e.Session.RemoteAddress} " +
-                     $"{e.localHandle?.PhysicalPath} entries={e.Entries?.Count}");
+        Console.WriteLine($"LIST {e.SshSession.RemoteAddress} " +
+                          $"{e.localHandle?.PhysicalPath} entries={e.Entries?.Count}");
     }
 }
 ```
@@ -96,14 +96,14 @@ Track session lifecycle and connection events:
 ```csharp
 class SessionMonitor : AMNetSessionListener
 {
-    public override void OnSessionCreated(ISshSessionEvent e)
+    public override void OnSessionCreated(ISshSession session)
     {
-        Logger.Info($"SESSION_CREATED {e.Session.RemoteAddress}");
+        Console.WriteLine($"SESSION_CREATED {session.RemoteAddress}");
     }
 
-    public override void OnSessionClosed(ISshSessionEvent e)
+    public override void OnSessionClosed(ISshSession session)
     {
-        Logger.Info($"SESSION_CLOSED {e.Session.RemoteAddress}");
+        Console.WriteLine($"SESSION_CLOSED {session.RemoteAddress}");
     }
 }
 
@@ -120,17 +120,10 @@ server.setIoServiceEventListener(new AMNetIoServiceEventListener());
 
 ## Java Logging Redirection
 
-For debugging Apache MINA SSHD internals, Java log output can be redirected:
+For debugging Apache MINA SSHD internals, Java log output from the SLF4J bridge can be captured via the `AMNetLogger` instance by setting the log level to `Trace`:
 
 ```csharp
-class JavaLogRedirect
-{
-    public JavaLogRedirect(TextBox output)
-    {
-        var stream = new SshdLoggerStream(output);
-        // Java stdout/stderr is redirected to the text box
-    }
-}
+var logger = new AMNetLogger(typeof(MyClass), AMNetLogger.LogLevel.Trace);
 ```
 
 ## Common Pitfalls
@@ -154,7 +147,7 @@ See [SessionMonitorServer](../../Sample/SessionMonitorServer/) for a logging and
 
 ---
 
-**Next:** [Production Deployment](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/09-production-deployment.md) — Windows Service, Docker, monitoring, and CI/CD.
+**Next:** [Production Deployment](09-production-deployment.md) — Windows Service, Docker, monitoring, and CI/CD.
 
 ---
 

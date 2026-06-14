@@ -123,7 +123,7 @@ See [SessionMonitorServer](../../Sample/SessionMonitorServer/) for a complete ex
 
 ---
 
-**Next:** See [Production Deployment](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/09-production-deployment.md) for high-availability configurations with PROXY protocol.
+**Next:** See [Production Deployment](09-production-deployment.md) for high-availability configurations with PROXY protocol.
 
 ---
 

@@ -26,9 +26,9 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         /// <summary>
         /// Path must be absolute for AuthorizedKeysAuthenticator to work in IKVM.
         /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        /// <exception cref="System.ArgumentException"></exception>
+        /// <param name="path">The filesystem path to convert to a Java Path.</param>
+        /// <returns>A java.nio.file.Path for the given string path.</returns>
+        /// <exception cref="System.ArgumentException">Thrown when path is not absolute.</exception>
         private static java.nio.file.Path GetJavaPath(string path)
         {
             if (!System.IO.Path.IsPathRooted(path))

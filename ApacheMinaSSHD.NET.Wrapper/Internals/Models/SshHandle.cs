@@ -26,8 +26,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
         /// <summary>
         /// java server handle
         /// </summary>
-        /// <param name="javaHandle"></param>
-        /// <exception cref="ArgumentNullException"></exception>
+        /// <param name="javaHandle">The Java Handle instance to wrap.</param>
+        /// <exception cref="ArgumentNullException">Thrown when javaHandle is null.</exception>
         internal SshHandle(Handle javaHandle)
         {
             _javaHandle = javaHandle ?? throw new ArgumentNullException(nameof(javaHandle));

@@ -14,7 +14,7 @@
 using org.apache.sshd.common.util.security;
 using org.apache.sshd.common.util.security.bouncycastle;
 
-namespace ApacheMinaSSHD.NET.Helpers
+namespace ApacheMinaSSHD.NET.Wrapper.Helpers
 {
     /// <summary>
     /// Provides security-provider helper methods for the SSH runtime.

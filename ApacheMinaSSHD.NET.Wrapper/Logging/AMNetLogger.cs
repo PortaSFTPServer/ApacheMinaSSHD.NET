@@ -81,8 +81,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Logging
 
             slf4JLogger = LoggerFactory.getLogger(type.FullName);
 
-            // Force load the binding assembly to prevent "Failed to load class"
-            //_ = org.slf4j.impl.StaticLoggerBinder.getSingleton();
+            // SLF4J bridge is initialized by EnsureSlf4jConfigured above
 
         }
         /// <inheritdoc />

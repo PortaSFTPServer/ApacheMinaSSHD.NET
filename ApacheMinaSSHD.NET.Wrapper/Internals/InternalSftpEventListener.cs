@@ -21,7 +21,7 @@ using org.apache.sshd.sftp.server;
 namespace ApacheMinaSSHD.NET.Wrapper.Internals
 {
     /// <summary>
-    /// This is the 
+    /// Bridges SFTP event callbacks from Apache MINA SSHD to the .NET IAMNetSftpEventListener abstraction.
     /// </summary>
     internal class InternalSftpEventListener : AbstractSftpEventListenerAdapter
     {
@@ -247,7 +247,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             {
                 Session = new SshSession(s),
                 Path = p.toString(),
-                IsDirectory = Directory.Exists(p.toString()), // File.GetAttributes(p.toString()).HasFlag(FileAttributes.Directory),
+                IsDirectory = Directory.Exists(p.toString()),
                 Attributes = TranslateJavaMapToDictionary(attrs),
                 Exception = t != null ? new System.Exception(t.Message) : null!
             };
@@ -258,15 +258,14 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
             Session = new SshSession(s),
             RemoteHandle = rh,
-            SshHandle = new SshHandle(lh), // we can also use SshFileHandle BUT not need. This is Orginally LocalPath = lh?.getFile()?.toString() ?? "unknown",
+            SshHandle = new SshHandle(lh),
             Offset = off,
             Length = len,
             Data = data,
             Exception = t
         };
 
-        // private Exception MapEx(java.lang.Throwable t) => t != null ? new Exception(t.getMessage()) : null!;
-
+        
         private IReadOnlyDictionary<string, object> TranslateJavaMapToDictionary(java.util.Map map)
         {
             // translate to java dictionary

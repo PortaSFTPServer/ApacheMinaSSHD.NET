@@ -37,10 +37,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         /// <summary>
         /// This is the mapping for the Public key Authenticaton using the PublickeyAuthenticator
         /// </summary>
-        /// <param name="str"></param>
-        /// <param name="pk"></param>
-        /// <param name="session"></param>
-        /// <returns></returns>
+        /// <param name="username">The username from the SSH session.</param>
+        /// <param name="pk">The public key provided by the client.</param>
+        /// <param name="session">The current server session.</param>
+        /// <returns>True if authentication succeeds, false otherwise.</returns>
         public bool authenticate(string username, PublicKey pk, ServerSession session)
         {
             var wrappedSession = new SshSession(session);

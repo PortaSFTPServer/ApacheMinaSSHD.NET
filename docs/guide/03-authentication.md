@@ -209,7 +209,7 @@ See [AuthenticationServer](../../Sample/AuthenticationServer/) for runnable exam
 
 ---
 
-**Next:** [Virtual Filesystem](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/04-virtual-filesystem.md) — root jail isolation, user home directories, and path containment.
+**Next:** [Virtual Filesystem](04-virtual-filesystem.md) — root jail isolation, user home directories, and path containment.
 
 ---
 

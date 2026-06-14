@@ -112,7 +112,7 @@ See [ProductionServer](../../Sample/ProductionServer/) for a real-world configur
 
 ---
 
-**Next:** [Authentication](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/03-authentication.md) — password, public key, keyboard-interactive, and multi-factor authentication.
+**Next:** [Authentication](03-authentication.md) — password, public key, keyboard-interactive, and multi-factor authentication.
 
 ---
 

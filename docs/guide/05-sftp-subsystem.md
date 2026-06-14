@@ -43,7 +43,7 @@ class AuditSftpListener : AMNetSftpEventListener
 
     public override void OnCreated(ISshPath e)
     {
-        Log($"Directory created: {e.SshHandle?.PhysicalPath}");
+        Log($"Directory created: {e.Path}");
     }
 }
 
@@ -92,7 +92,7 @@ class PolicyAccessor : AMNetSftpFileSystemAccessor
 public override bool IsPathAllowed(ISshFileSystemAccess context)
 {
     // Block write operations to system directories
-    if (context.Operation == SshFileSystemOperation.WriteFile &&
+    if (context.Operation == SshFileSystemOperation.OpenFile &&
         context.LocalPath?.Contains("system") == true)
         return false;
 
@@ -163,7 +163,7 @@ See [SftpEventServer](../../Sample/SftpEventServer/) for a complete event-driven
 
 ---
 
-**Next:** [SCP Subsystem](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/blob/main/docs/guide/06-scp-subsystem.md) — SCP file transfer setup and event handling.
+**Next:** [SCP Subsystem](06-scp-subsystem.md) — SCP file transfer setup and event handling.
 
 ---
 
