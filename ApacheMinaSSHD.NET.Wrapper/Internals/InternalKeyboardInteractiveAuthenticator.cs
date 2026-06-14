@@ -69,11 +69,6 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
 
             // Check if the user is in the "optional" 2FA list.
-            // this is usefull if we want to NOT set multi-step auth for some user.
-            // if (username == "test")
-            // {
-            //    return javaChallenge; // Return null to skip sending a visual challenge
-            // }
 
             // Sets the "Name" of the interaction (often displayed in terminal headers)
             ic.setInteractionName(sshChallenge.InteractionName);

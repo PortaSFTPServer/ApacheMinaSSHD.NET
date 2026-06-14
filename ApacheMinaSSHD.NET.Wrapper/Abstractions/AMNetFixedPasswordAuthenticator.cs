@@ -35,6 +35,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// </summary>
         /// <param name="username">The exact username to accept.</param>
         /// <param name="password">The exact password to accept.</param>
+        /// <exception cref="ArgumentException">Thrown when <paramref name="username"/> is null or whitespace.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="password"/> is null.</exception>
         public AMNetFixedPasswordAuthenticator(string username, string password)
         {
             if (string.IsNullOrWhiteSpace(username))

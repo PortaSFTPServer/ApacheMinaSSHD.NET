@@ -13,7 +13,7 @@ server.Config.ApplyModernAlgorithmDefaults();
 ### Terrapin Attack (CVE-2023-48795) Mitigation
 
 Apache MINA SSHD 2.12.0+ (bundled in this wrapper) implements the strict key
-exchange extension (`kex-strict-*` VH identifiers) that prevents the Terrapin
+exchange extension (`kex-strict-*` version-header identifiers) that prevents the Terrapin
 prefix-truncation attack. This wrapper uses Apache MINA SSHD 2.18.0, so the
 mitigation is active by default — no configuration needed.
 

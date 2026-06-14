@@ -51,6 +51,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <param name="username">The exact username to accept.</param>
         /// <param name="fingerprint">The public key fingerprint to accept for the user.</param>
         /// <returns>The current authenticator so calls can be chained.</returns>
+        /// <exception cref="ArgumentException">Thrown when <paramref name="username"/> or <paramref name="fingerprint"/> is null or whitespace.</exception>
         public AMNetFingerprintPublickeyAuthenticator AddFingerprint(string username, string fingerprint)
         {
             if (string.IsNullOrWhiteSpace(username))

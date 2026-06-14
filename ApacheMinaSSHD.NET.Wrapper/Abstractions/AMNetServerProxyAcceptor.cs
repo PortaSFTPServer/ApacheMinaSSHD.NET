@@ -35,7 +35,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             byte[] rawBytes = proxyMetadata.GetRawBytes();
             if (rawBytes.Length < 5)
             {
-                return false; // Wait for the network card to finish buffering
+                return false; // Wait for the network stack to finish buffering
             }
 
             // =========================================================================

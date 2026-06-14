@@ -35,7 +35,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         }
 
         /// <summary>
-        /// This is the mapping for the Public key Authenticaton using the PublickeyAuthenticator
+        /// This is the mapping for the Public key Authentication using the PublickeyAuthenticator
         /// </summary>
         /// <param name="username">The username from the SSH session.</param>
         /// <param name="pk">The public key provided by the client.</param>
@@ -48,8 +48,6 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             string incomingFingerprint = KeyUtils.getFingerPrint(pk);
 
             var result = _publickeyAuthenticator.Authenticate(username, incomingFingerprint, wrappedSession);
-
-            //PropertyResolverUtils.updateProperty(session, "auth-methods", "publickey,keyboard-interactive");
 
             return result;
         }

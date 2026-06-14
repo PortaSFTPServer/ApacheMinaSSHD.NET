@@ -21,7 +21,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
     /// </summary>
     public class AMNetIoServiceEventListener : IAMNetIoServiceEventListener
     {
-        IAMNetLogger logger = new AMNetLogger(typeof(AMNetIoServiceEventListener), AMNetLogger.LogLevel.Info);
+        readonly IAMNetLogger logger = new AMNetLogger(typeof(AMNetIoServiceEventListener), AMNetLogger.LogLevel.Info);
 
         /// <summary>
         /// Creates a default low-level connection listener.
@@ -41,12 +41,6 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         {
             // The developer sees clean properties via the interface
             logger.Info($"Evaluating connection from {context.RemoteEndPoint.Address}...");
-
-            if (context.IoService.IsAcceptor)
-            {
-                // Access properties of the nested interface
-                var currentLoad = context.IoService.BoundAddresses.Count();
-            }
 
             return true;
         }

@@ -36,6 +36,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// </summary>
         /// <param name="path">The authorized_keys file path used to validate public keys.</param>
         /// <param name="allowedBasePath">Optional base path. When set, the resolved path must be within this directory to prevent path traversal.</param>
+        /// <exception cref="ArgumentException">Thrown when <paramref name="path"/> is null or whitespace.</exception>
         public AMNetAuthorizedKeysAuthenticator(string path, string? allowedBasePath = null)
         {
             if (string.IsNullOrWhiteSpace(path))

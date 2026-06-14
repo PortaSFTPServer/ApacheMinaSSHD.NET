@@ -113,6 +113,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Authentication chains such as <see cref="AMNetSshAuthenticationMethods.PublicKey"/>
         /// or values returned by <see cref="AMNetSshAuthenticationMethods.RequireAll(string[])"/>.
         /// </param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="authenticationChains"/> is null.</exception>
         public void SetAuthenticationMethods(params string[] authenticationChains)
         {
             SetAuthenticationMethods((IEnumerable<string>)authenticationChains);
@@ -137,6 +138,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Each group contains methods that must all succeed in order. The outer set
         /// represents alternative groups.
         /// </param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="authenticationMethodGroups"/> is null.</exception>
         public void SetAuthenticationMethodGroups(params IEnumerable<string>[] authenticationMethodGroups)
         {
             ArgumentNullException.ThrowIfNull(authenticationMethodGroups);
@@ -560,12 +562,15 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Sets allowed cipher algorithms in preference order.
         /// </summary>
         /// <param name="ciphers">Cipher names such as values from <see cref="AMNetSshAlgorithms.Ciphers"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="ciphers"/> is null.</exception>
+        /// <exception cref="ArgumentException">Thrown when any requested cipher is not supported.</exception>
         public void SetCiphers(params string[] ciphers) => SetCiphers((IEnumerable<string>)ciphers);
 
         /// <summary>
         /// Sets allowed cipher algorithms in preference order.
         /// </summary>
         /// <param name="ciphers">Cipher names such as values from <see cref="AMNetSshAlgorithms.Ciphers"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="ciphers"/> is null.</exception>
         /// <exception cref="ArgumentException">Thrown when any requested cipher is not supported.</exception>
         public void SetCiphers(IEnumerable<string> ciphers)
         {
@@ -576,12 +581,15 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Sets allowed MAC algorithms in preference order.
         /// </summary>
         /// <param name="macs">MAC names such as values from <see cref="AMNetSshAlgorithms.Macs"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="macs"/> is null.</exception>
+        /// <exception cref="ArgumentException">Thrown when any requested MAC is not supported.</exception>
         public void SetMacs(params string[] macs) => SetMacs((IEnumerable<string>)macs);
 
         /// <summary>
         /// Sets allowed MAC algorithms in preference order.
         /// </summary>
         /// <param name="macs">MAC names such as values from <see cref="AMNetSshAlgorithms.Macs"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="macs"/> is null.</exception>
         /// <exception cref="ArgumentException">Thrown when any requested MAC is not supported.</exception>
         public void SetMacs(IEnumerable<string> macs)
         {
@@ -592,6 +600,8 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Sets allowed key exchange algorithms in preference order.
         /// </summary>
         /// <param name="keyExchangeAlgorithms">Key exchange names such as values from <see cref="AMNetSshAlgorithms.KeyExchange"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="keyExchangeAlgorithms"/> is null.</exception>
+        /// <exception cref="ArgumentException">Thrown when any requested key exchange algorithm is not supported.</exception>
         public void SetKeyExchangeAlgorithms(params string[] keyExchangeAlgorithms) =>
             SetKeyExchangeAlgorithms((IEnumerable<string>)keyExchangeAlgorithms);
 
@@ -599,6 +609,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Sets allowed key exchange algorithms in preference order.
         /// </summary>
         /// <param name="keyExchangeAlgorithms">Key exchange names such as values from <see cref="AMNetSshAlgorithms.KeyExchange"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="keyExchangeAlgorithms"/> is null.</exception>
         /// <exception cref="ArgumentException">Thrown when any requested key exchange algorithm is not supported.</exception>
         public void SetKeyExchangeAlgorithms(IEnumerable<string> keyExchangeAlgorithms)
         {
@@ -612,6 +623,8 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Sets allowed host key/signature algorithms in preference order.
         /// </summary>
         /// <param name="hostKeyAlgorithms">Host key names such as values from <see cref="AMNetSshAlgorithms.HostKeys"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="hostKeyAlgorithms"/> is null.</exception>
+        /// <exception cref="ArgumentException">Thrown when any requested host key algorithm is not supported.</exception>
         public void SetHostKeyAlgorithms(params string[] hostKeyAlgorithms) =>
             SetHostKeyAlgorithms((IEnumerable<string>)hostKeyAlgorithms);
 
@@ -619,6 +632,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Sets allowed host key/signature algorithms in preference order.
         /// </summary>
         /// <param name="hostKeyAlgorithms">Host key names such as values from <see cref="AMNetSshAlgorithms.HostKeys"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="hostKeyAlgorithms"/> is null.</exception>
         /// <exception cref="ArgumentException">Thrown when any requested host key algorithm is not supported.</exception>
         public void SetHostKeyAlgorithms(IEnumerable<string> hostKeyAlgorithms)
         {

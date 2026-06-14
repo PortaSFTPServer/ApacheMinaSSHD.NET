@@ -69,17 +69,13 @@ The `IProxyMetadata` interface provides access to connection details at the prox
 | `GetHostname()` | Remote hostname when resolvable |
 | `ForceDisconnect(reason)` | Reject the connection with a reason |
 
-The real client address (after PROXY header parsing) is available through the session:
-
-```csharp
-var realIp = proxyMetadata.RemoteAddress; // After SetRealClientAddressAndPort
-```
+The real client address (after PROXY header parsing) is automatically set on the underlying SSH session — not on `IProxyMetadata.RemoteAddress` (which always reflects the raw load balancer endpoint).
 
 ## Load Balancer Configuration
 
 ### HAProxy
 
-```
+```haproxy
 frontend sftp
     bind *:22
     mode tcp
@@ -93,7 +89,7 @@ backend sftp_servers
 
 ### Nginx Stream Module
 
-```
+```nginx
 stream {
     server {
         listen 22;

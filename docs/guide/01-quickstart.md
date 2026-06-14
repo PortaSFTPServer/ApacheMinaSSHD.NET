@@ -108,7 +108,7 @@ sftp -P 2222 demo@127.0.0.1
 ```
 
 Enter your password and try:
-```
+```text
 sftp> pwd
 sftp> ls
 sftp> put test-file.txt

@@ -139,7 +139,7 @@ server.SetDelegateKeyboardInteractiveAuthenticator(
     },
     authenticate: (session, username, responses) =>
     {
-        return responses[0] == "1234" && responses[1] == "5678";
+        return responses.GetResponses()[0] == "1234" && responses.GetResponses()[1] == "5678";
     });
 ```
 

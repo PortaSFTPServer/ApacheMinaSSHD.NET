@@ -26,7 +26,7 @@ class TenantFileSystemFactory : AMNetVirtualFileSystemFactory
     {
         // Group users by first letter for directory distribution
         string prefix = username.Length > 0
-            ? username[0].ToString().ToLower()
+            ? username[0].ToString().ToLowerInvariant()
             : "_";
         return Path.Combine(BasePath, prefix, username);
     }

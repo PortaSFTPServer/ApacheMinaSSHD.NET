@@ -607,8 +607,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                     return;
                 }
             }
-            catch (java.io.IOException)
+            catch (java.io.IOException ex)
             {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[{nameof(InternalSftpFileSystemAccessor)}] toRealPath() failed for '{pathStr}': {ex.getMessage()}");
             }
 
             if (OperatingSystem.IsWindows() && TryResolveSymlinkTargetViaNativeApi(pathStr, out string? nativeTarget))
@@ -638,8 +640,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                     }
                 }
             }
-            catch (java.io.IOException)
+            catch (java.io.IOException ex)
             {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[{nameof(InternalSftpFileSystemAccessor)}] readSymbolicLink() failed for '{pathStr}': {ex.getMessage()}");
             }
 
             // .NET-based symlink detection (most reliable on Windows for IKVM interop)

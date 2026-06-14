@@ -46,6 +46,8 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// </summary>
         /// <param name="authenticationMethods">Authentication methods such as <see cref="Password"/> or <see cref="PublicKey"/>.</param>
         /// <returns>A comma-separated authentication chain.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="authenticationMethods"/> is null.</exception>
+        /// <exception cref="ArgumentException">Thrown when <paramref name="authenticationMethods"/> is empty.</exception>
         public static string RequireAll(params string[] authenticationMethods)
         {
             return RequireAll((IEnumerable<string>)authenticationMethods);
@@ -74,6 +76,8 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// </summary>
         /// <param name="authenticationChains">Authentication chains such as <see cref="PublicKey"/> or values returned by <see cref="RequireAll(string[])"/>.</param>
         /// <returns>A space-separated authentication policy string.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="authenticationChains"/> is null.</exception>
+        /// <exception cref="ArgumentException">Thrown when <paramref name="authenticationChains"/> is empty.</exception>
         public static string AllowAny(params string[] authenticationChains)
         {
             return AllowAny((IEnumerable<string>)authenticationChains);
@@ -101,7 +105,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Parses an authentication policy into alternative chains.
         /// </summary>
         /// <param name="authenticationPolicy">The SSH authentication policy string.</param>
-        /// <returns>Authentication chains in evaluation order.</returns>
+        /// <returns>Authentication chains in evaluation order. Returns an empty list when <paramref name="authenticationPolicy"/> is null or whitespace.</returns>
         public static IReadOnlyList<IReadOnlyList<string>> Parse(string? authenticationPolicy)
         {
             if (string.IsNullOrWhiteSpace(authenticationPolicy))

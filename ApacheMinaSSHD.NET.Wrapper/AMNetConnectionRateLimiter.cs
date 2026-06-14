@@ -28,6 +28,7 @@ public sealed class AMNetConnectionRateLimiter : IAmNetConnectionRateLimiter
     private readonly int _maxConnections;
     private readonly TimeSpan _window;
     private readonly TimeSpan _cleanupInterval;
+    private readonly object _cleanupLock = new();
     private DateTime _lastCleanup = DateTime.UtcNow;
 
     /// <summary>
@@ -94,10 +95,13 @@ public sealed class AMNetConnectionRateLimiter : IAmNetConnectionRateLimiter
 
     private void PeriodicCleanup(DateTime now)
     {
-        if ((now - _lastCleanup) < _cleanupInterval)
-            return;
+        lock (_cleanupLock)
+        {
+            if ((now - _lastCleanup) < _cleanupInterval)
+                return;
 
-        _lastCleanup = now;
+            _lastCleanup = now;
+        }
         var cutoff = now - _window - _cleanupInterval;
 
         foreach (var kvp in _attempts)

@@ -109,9 +109,6 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         public override void reading(ServerSession session, string remoteHandle, FileHandle localHandle,
             long offset, byte[] data, int dataOffset, int dataLen)
         {
-            // we can pass this for the custom handler to provide more use case
-            // var sshFileHandle = new SshFileHandle(localHandle);
-
             sftpEventListener.OnReading(CreateReadWriteModel(session, remoteHandle, localHandle, offset, data, dataLen));
 
         }
@@ -223,7 +220,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             {
                 Session = new SshSession(s),
                 RemoteHandle = rh,
-                SshHandle = new SshHandle(lh),// LocalPath = lh?.getFile()?.toString() ?? "unknown",
+                SshHandle = new SshHandle(lh),
                 Exception = t != null ? new System.Exception(t.Message) : null!
 
             };

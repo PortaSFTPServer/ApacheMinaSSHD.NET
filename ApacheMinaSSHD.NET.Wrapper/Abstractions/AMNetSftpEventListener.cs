@@ -21,7 +21,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
     /// </summary>
     public class AMNetSftpEventListener : IAMNetSftpEventListener
     {
-        IAMNetLogger logger = new AMNetLogger(typeof(AMNetSftpEventListener), AMNetLogger.LogLevel.Info);
+        readonly IAMNetLogger logger = new AMNetLogger(typeof(AMNetSftpEventListener), AMNetLogger.LogLevel.Info);
 
         /// <summary>
         /// Creates a default SFTP event listener.
@@ -38,7 +38,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <inheritdoc />
         public virtual void OnModifiedAttributes(ISshPath ctx)
         {
-            logger.Debug($"The file {ctx.Path} attributes has been modified");
+            logger.Debug($"The file {ctx.Path} attributes have been modified");
         }
 
         /// <inheritdoc />
@@ -81,7 +81,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <inheritdoc />
         public virtual void OnOpenFailed(ISshIOFailure ctx)
         {
-            logger.Debug($"Opening the file {ctx.LocalPath} is failed");
+            logger.Debug($"Opening the file {ctx.LocalPath} failed");
         }
 
         /// <inheritdoc />
@@ -104,7 +104,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <inheritdoc />
         public virtual void OnCreated(ISshPath ctx)
         {
-            logger.Debug($"The path created on {ctx.Path}");
+            logger.Debug($"Created path {ctx.Path}");
         }
 
         /// <inheritdoc />

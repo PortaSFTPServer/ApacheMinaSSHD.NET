@@ -44,7 +44,12 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
                 var iterator = javaAttrs.iterator();
                 while (iterator.hasNext())
                 {
-                    var attr = iterator.next();
+                    var entry = (java.util.Map.Entry)iterator.next();
+                    string? key = entry.getKey()?.ToString();
+                    if (!string.IsNullOrWhiteSpace(key))
+                    {
+                        dict[key] = entry.getValue();
+                    }
                 }
                 return dict;
             }

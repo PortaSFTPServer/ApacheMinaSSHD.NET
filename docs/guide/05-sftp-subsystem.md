@@ -56,7 +56,7 @@ Available events:
 |-------|-------------|
 | `OnInitialized` | SFTP session initialized |
 | `OnOpen` / `OnOpening` | File open |
-| `OnClose` / `OnClosing` | File close |
+| `OnClosed` / `OnClosing` | File close |
 | `OnRead` / `OnReading` | File read |
 | `OnWrite` / `OnWriting` | File write |
 | `OnCreated` / `OnCreating` | File/directory creation |

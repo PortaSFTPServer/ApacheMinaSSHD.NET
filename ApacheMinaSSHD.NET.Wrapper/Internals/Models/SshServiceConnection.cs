@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
 {
     /// <summary>
-    /// This class encapsulates the parementers from the IoServiceEventListener.
+    /// This class encapsulates the parameters from the IoServiceEventListener.
     /// These are the <strong>IoConnector connector, SocketAddress local, AttributeRepository context, 
     /// SocketAddress remote, Exception reason</strong>.
     /// </summary>

@@ -21,6 +21,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Helpers
     /// </summary>
     public static class AMNSecurityUtils
     {
+        private static readonly object _fipsLock = new();
         private static bool fipsConfigured;
 
         /// <summary>
@@ -36,21 +37,24 @@ namespace ApacheMinaSSHD.NET.Wrapper.Helpers
         /// </remarks>
         public static void SetFipsMode(bool state)
         {
-            if (fipsConfigured)
+            lock (_fipsLock)
             {
-                return;
+                if (fipsConfigured)
+                {
+                    return;
+                }
+
+                if (state)
+                {
+                    SecurityUtils.setFipsMode();
+                }
+
+                SecurityUtils.setAPrioriDisabledProvider("BCFIPS", !state);
+
+                SecurityUtils.setAPrioriDisabledProvider("BC", state);
+
+                fipsConfigured = true;
             }
-
-            if (state)
-            {
-                SecurityUtils.setFipsMode();
-            }
-
-            SecurityUtils.setAPrioriDisabledProvider("BCFIPS", !state);
-
-            SecurityUtils.setAPrioriDisabledProvider("BC", state);
-
-            fipsConfigured = true;
         }
 
     }

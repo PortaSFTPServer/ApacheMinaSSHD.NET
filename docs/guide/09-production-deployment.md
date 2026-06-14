@@ -94,7 +94,7 @@ server.setServerProxyAcceptor(new AMNetServerProxyAcceptor());
 
 HAProxy configuration:
 
-```
+```haproxy
 frontend sftp
     bind *:22
     mode tcp

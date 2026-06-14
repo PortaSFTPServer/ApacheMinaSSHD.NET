@@ -26,7 +26,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Logging
         }
 
         /// <summary>Gets or sets the log message text.</summary>
-        public string Message = string.Empty;
+        public string Message { get; set; } = string.Empty;
 
         /// <summary>Gets or sets the preferred display color name (e.g. "Red", "Green").</summary>
         public string? ColorName { get; set; }

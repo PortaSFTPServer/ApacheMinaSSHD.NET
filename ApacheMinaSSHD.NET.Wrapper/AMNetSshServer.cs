@@ -75,6 +75,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Authentication chains such as <see cref="AMNetSshAuthenticationMethods.PublicKey"/>
         /// or values returned by <see cref="AMNetSshAuthenticationMethods.RequireAll(string[])"/>.
         /// </param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="authenticationChains"/> is null.</exception>
         public void setAuthenticationMethods(params string[] authenticationChains)
         {
             Config.SetAuthenticationMethods(authenticationChains);
@@ -99,6 +100,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Each group contains methods that must all succeed in order. The outer set
         /// represents alternative groups.
         /// </param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="authenticationMethodGroups"/> is null.</exception>
         public void setAuthenticationMethodGroups(params IEnumerable<string>[] authenticationMethodGroups)
         {
             Config.SetAuthenticationMethodGroups(authenticationMethodGroups);
@@ -266,6 +268,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Sets the host key provider used to identify this SSH server to clients.
         /// </summary>
         /// <param name="keyProvider">The host key provider configuration.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="keyProvider"/> is null.</exception>
         public void setKeyPairProvider(AMNetSimpleGeneratorHostKeyProvider keyProvider)
         {
             ArgumentNullException.ThrowIfNull(keyProvider);
@@ -276,6 +279,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Sets the virtual filesystem factory used to map users to server-side home directories.
         /// </summary>
         /// <param name="fileSystemFactory">The filesystem factory configuration.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="fileSystemFactory"/> is null.</exception>
         public void setFileSystemFactory(AMNetVirtualFileSystemFactory fileSystemFactory)
         {
             ArgumentNullException.ThrowIfNull(fileSystemFactory);
@@ -286,6 +290,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Enables keyboard-interactive authentication.
         /// </summary>
         /// <param name="keyboardInteractiveAuthenticator">The application authenticator.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="keyboardInteractiveAuthenticator"/> is null.</exception>
         public void setKeyboardInteractiveAuthenticator(IAMNetKeyboardInteractiveAuthenticator keyboardInteractiveAuthenticator)
         {
             ArgumentNullException.ThrowIfNull(keyboardInteractiveAuthenticator);
@@ -377,6 +382,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Enables username/password authentication.
         /// </summary>
         /// <param name="passwordAuthenticator">The application authenticator.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="passwordAuthenticator"/> is null.</exception>
         public void setPasswordAuthenticator(IAMNetPasswordAuthenticator passwordAuthenticator)
         {
             ArgumentNullException.ThrowIfNull(passwordAuthenticator);
@@ -458,6 +464,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Enables public key authentication.
         /// </summary>
         /// <param name="publickeyAuthenticator">The application authenticator.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="publickeyAuthenticator"/> is null.</exception>
         public void setPublickeyAuthenticator(IAMNetPublickeyAuthenticator publickeyAuthenticator)
         {
             ArgumentNullException.ThrowIfNull(publickeyAuthenticator);
@@ -591,6 +598,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Enables public key authentication backed by an authorized_keys file.
         /// </summary>
         /// <param name="authorizedKeysAuthenticator">The authorized keys configuration.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="authorizedKeysAuthenticator"/> is null.</exception>
         public void setAuthorizedkeyAuthenticator(IAMNetAuthorizedKeysAuthenticator authorizedKeysAuthenticator)
         {
             ArgumentNullException.ThrowIfNull(authorizedKeysAuthenticator);
@@ -646,6 +654,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Enables PROXY protocol metadata handling before the SSH handshake.
         /// </summary>
         /// <param name="serverProxyAcceptor">The acceptor that parses and validates proxy metadata.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="serverProxyAcceptor"/> is null.</exception>
         public void setServerProxyAcceptor(IAMNetServerProxyAcceptor serverProxyAcceptor)
         {
             ArgumentNullException.ThrowIfNull(serverProxyAcceptor);
@@ -656,6 +665,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Registers low-level I/O service callbacks.
         /// </summary>
         /// <param name="serverIoServiceEventListener">The low-level connection listener.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="serverIoServiceEventListener"/> is null.</exception>
         public void setIoServiceEventListener(IAMNetIoServiceEventListener serverIoServiceEventListener)
         {
             ArgumentNullException.ThrowIfNull(serverIoServiceEventListener);
@@ -809,6 +819,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Registers session lifecycle callbacks.
         /// </summary>
         /// <param name="sessionListener">The session listener to add.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="sessionListener"/> is null.</exception>
         public void addSessionListener(IAMNetSessionListener sessionListener)
         {
             ArgumentNullException.ThrowIfNull(sessionListener);
@@ -819,6 +830,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Enables the SFTP subsystem for incoming SSH sessions.
         /// </summary>
         /// <param name="sftpFactory">The SFTP subsystem factory.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="sftpFactory"/> is null.</exception>
         public void setSubsystemFactories(AMNetSftpSubsystemFactory sftpFactory)
         {
             ArgumentNullException.ThrowIfNull(sftpFactory);
@@ -829,6 +841,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Enables SCP command handling for incoming SSH sessions.
         /// </summary>
         /// <param name="scpFactory">The SCP command factory.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="scpFactory"/> is null.</exception>
         public void setCommandFactory(AMNetScpCommandFactory scpFactory)
         {
             ArgumentNullException.ThrowIfNull(scpFactory);
