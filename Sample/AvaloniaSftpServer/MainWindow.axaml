@@ -64,7 +64,8 @@
           <TextBlock Grid.Row="0" x:Name="SessionCount" Text="0 active sessions" FontWeight="SemiBold" Margin="0,0,0,8" />
           <DataGrid Grid.Row="1" x:Name="SessionGrid"
                     AutoGenerateColumns="False" IsReadOnly="True"
-                    BorderBrush="{StaticResource SystemAccentColor}" BorderThickness="1">
+                    BorderBrush="{StaticResource SystemAccentColor}" BorderThickness="1"
+                    x:CompileBindings="False">
             <DataGrid.Columns>
               <DataGridTextColumn Header="Session ID" Binding="{Binding Id, StringFormat='{}{0:N}'}" Width="*" />
               <DataGridTextColumn Header="Remote Address" Binding="{Binding RemoteAddress}" Width="2*" />
