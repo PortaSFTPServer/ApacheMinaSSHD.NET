@@ -21,7 +21,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
     {
         private readonly IAMNetServerProxyAcceptor acceptor;
 
-        public InternalServerProxyAcceptor(IAMNetServerProxyAcceptor  acceptor)
+        public InternalServerProxyAcceptor(IAMNetServerProxyAcceptor acceptor)
         {
             this.acceptor = acceptor;
         }
@@ -30,7 +30,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         {
 
             // this will call the implementation from IAMNetServerProxyAcceptor/ acceptor provider
-            return acceptor.acceptServerProxyMetadata(new ProxyMetadata(ss,b));
+            return acceptor.acceptServerProxyMetadata(new ProxyMetadata(ss, b));
         }
     }
 }

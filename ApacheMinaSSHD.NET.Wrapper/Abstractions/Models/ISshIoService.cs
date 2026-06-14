@@ -15,7 +15,7 @@ using System.Net;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Abstractions.Models
 {
-  
+
     /// <summary>
     /// Provides metadata about the low-level I/O service handling a connection.
     /// </summary>
@@ -35,6 +35,6 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions.Models
     }
 
 
-   
+
 
 }

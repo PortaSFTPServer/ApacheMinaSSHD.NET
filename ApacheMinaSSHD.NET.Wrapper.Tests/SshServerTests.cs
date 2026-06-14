@@ -403,7 +403,107 @@ public class SshServerTests : IDisposable
         server.Start();
         Assert.True(server.IsStarted());
         server.Dispose();
-        // After dispose, calling IsClosed should return true
-        // (server.stop() was called in Dispose)
+    }
+
+    private sealed class AcceptAllForwardingFilter : IAMNetForwardingFilter
+    {
+        public bool CanListen(string host, int port, ISshSession session) => true;
+        public bool CanConnect(AMNetForwardingType type, string host, int port, ISshSession session) => true;
+        public bool CanForwardAgent(ISshSession session, string requestType) => true;
+        public bool CanForwardX11(ISshSession session, string requestType) => true;
+    }
+
+    private sealed class AcceptAllTcpFilter : IAMNetTcpForwardingFilter
+    {
+        public bool CanListen(string host, int port, ISshSession session) => true;
+        public bool CanConnect(AMNetForwardingType type, string host, int port, ISshSession session) => true;
+    }
+
+    private sealed class AcceptAllAgentFilter : IAMNetAgentForwardingFilter
+    {
+        public bool CanForwardAgent(ISshSession session, string requestType) => true;
+    }
+
+    private sealed class AcceptAllX11Filter : IAMNetX11ForwardingFilter
+    {
+        public bool CanForwardX11(ISshSession session, string requestType) => true;
+    }
+
+    [Fact]
+    public void setForwardingFilter_accepts()
+    {
+        _server.setForwardingFilter(new AcceptAllForwardingFilter());
+    }
+
+    [Fact]
+    public void SetForwardingFilter_accepts()
+    {
+        _server.SetForwardingFilter(new AcceptAllForwardingFilter());
+    }
+
+    [Fact]
+    public void setForwardingFilter_null_throws()
+    {
+        Assert.Throws<ArgumentNullException>(() => _server.setForwardingFilter(null!));
+    }
+
+    [Fact]
+    public void SetForwardingFilter_null_throws()
+    {
+        Assert.Throws<ArgumentNullException>(() => _server.SetForwardingFilter(null!));
+    }
+
+    [Fact]
+    public void setTcpForwardingFilter_accepts()
+    {
+        _server.setTcpForwardingFilter(new AcceptAllTcpFilter());
+    }
+
+    [Fact]
+    public void SetTcpForwardingFilter_accepts()
+    {
+        _server.SetTcpForwardingFilter(new AcceptAllTcpFilter());
+    }
+
+    [Fact]
+    public void setTcpForwardingFilter_null_throws()
+    {
+        Assert.Throws<ArgumentNullException>(() => _server.setTcpForwardingFilter(null!));
+    }
+
+    [Fact]
+    public void setTcpForwardingPolicy_accepts()
+    {
+        _server.setTcpForwardingPolicy(AMNetTcpForwardingPolicy.All);
+    }
+
+    [Fact]
+    public void SetTcpForwardingPolicy_accepts()
+    {
+        _server.SetTcpForwardingPolicy(AMNetTcpForwardingPolicy.All);
+    }
+
+    [Fact]
+    public void setAgentForwardingFilter_accepts()
+    {
+        _server.setAgentForwardingFilter(new AcceptAllAgentFilter());
+    }
+
+    [Fact]
+    public void setAgentForwardingFilter_null_throws()
+    {
+        Assert.Throws<ArgumentNullException>(() => _server.setAgentForwardingFilter(null!));
+    }
+
+    [Fact]
+    public void setX11ForwardingFilter_accepts()
+    {
+        _server.setX11ForwardingFilter(new AcceptAllX11Filter());
+    }
+
+    [Fact]
+    public void setX11ForwardingFilter_null_throws()
+    {
+        Assert.Throws<ArgumentNullException>(() => _server.setX11ForwardingFilter(null!));
     }
 }

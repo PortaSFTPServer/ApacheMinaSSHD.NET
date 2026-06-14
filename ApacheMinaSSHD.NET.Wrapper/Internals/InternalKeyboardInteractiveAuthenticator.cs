@@ -60,7 +60,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             // Let the C# user define their requirements
             // this can come from the database / per user if necessary
 
-            var sshChallenge = new SshChallenge(); 
+            var sshChallenge = new SshChallenge();
 
             interactiveAuthenticator.GenerateChallenge(username, sshChallenge);
 

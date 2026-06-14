@@ -189,7 +189,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         }
 
         // --- Helper Mappers ---
-        private ISshSysLink CreateLinkContext(ServerSession session, java.nio.file.Path src, java.nio.file.Path dst, bool symLink, Exception thrown = null!)
+        private static ISshSysLink CreateLinkContext(ServerSession session, java.nio.file.Path src, java.nio.file.Path dst, bool symLink, Exception thrown = null!)
         {
             return new SshSysLink
             {
@@ -212,7 +212,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             };
         }
 
-        private ISshEvent CreateHandleModel(ServerSession s, string rh, Handle lh, Exception t)
+        private static ISshEvent CreateHandleModel(ServerSession s, string rh, Handle lh, Exception t)
         {
 
 
@@ -226,7 +226,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             };
         }
 
-        private ISshIOFailure CreateIOFailureModel(ServerSession s, string rh, java.nio.file.Path path, Exception t)
+        private static ISshIOFailure CreateIOFailureModel(ServerSession s, string rh, java.nio.file.Path path, Exception t)
         {
             return new SshIOFailure
             {
@@ -250,7 +250,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             };
         }
 
-        private ISshReadWrite CreateReadWriteModel(ServerSession s, string rh, FileHandle lh, long off, byte[] data, int len, Exception t = null!) => new SshReadWrite()
+        private static ISshReadWrite CreateReadWriteModel(ServerSession s, string rh, FileHandle lh, long off, byte[] data, int len, Exception t = null!) => new SshReadWrite()
         {
 
             Session = new SshSession(s),
@@ -262,8 +262,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             Exception = t
         };
 
-        
-        private IReadOnlyDictionary<string, object> TranslateJavaMapToDictionary(java.util.Map map)
+
+        private static IReadOnlyDictionary<string, object> TranslateJavaMapToDictionary(java.util.Map map)
         {
             // translate to java dictionary
             var dict = new Dictionary<string, object>();
@@ -283,17 +283,17 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
         private ISshEntries CreateEntriesModel(ServerSession session, string remoteHandle, DirectoryHandle localHandle, java.util.Map entries)
         {
-           return  new SshEntries()
+            return new SshEntries()
             {
                 SshSession = new SshSession(session),
                 RemoteHandle = remoteHandle,
                 localHandle = new SshDirectoryHandle(localHandle),
-                Entries = entries==null? new Dictionary<string, object>() : TranslateJavaMapToDictionary(entries)
+                Entries = entries == null ? new Dictionary<string, object>() : TranslateJavaMapToDictionary(entries)
             };
 
         }
 
-        private ISshReceived CreateReceivedModel(ServerSession session, int type, string extension, int id)
+        private static ISshReceived CreateReceivedModel(ServerSession session, int type, string extension, int id)
         {
             return new SshReceived
             {
@@ -304,7 +304,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             };
         }
 
-        private IEnumerable<string> MapCollection(java.util.Collection col)
+        private static IEnumerable<string> MapCollection(java.util.Collection col)
         {
             if (col == null) yield break;
             var iterator = col.iterator();

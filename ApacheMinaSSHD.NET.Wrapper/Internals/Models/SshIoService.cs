@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
 {
-    internal class SshIoService: ISshIoService
+    internal class SshIoService : ISshIoService
     {
 
         // We store the Java object internally but don't expose it

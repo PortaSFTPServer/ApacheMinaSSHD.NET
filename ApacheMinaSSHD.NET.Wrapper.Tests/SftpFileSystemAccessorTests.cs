@@ -139,8 +139,10 @@ public class SftpFileSystemAccessorTests : IDisposable
     [Fact]
     public void IsVisibleByDefault_custom_hidden_name_works()
     {
-        var acc = new TestableAccessor();
-        acc.HiddenNamesOverride = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "custom_pattern" };
+        var acc = new TestableAccessor
+        {
+            HiddenNamesOverride = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "custom_pattern" }
+        };
         string file = Path.Combine(_tempDir, "custom_pattern.cs");
         File.WriteAllText(file, "");
         Assert.False(acc.CallIsVisibleByDefault(file));
@@ -329,5 +331,126 @@ public class SftpFileSystemAccessorTests : IDisposable
         var ctx = new MockSshFileSystemAccess();
         Assert.True(acc.NoFollow(ctx, true));
         Assert.False(acc.NoFollow(ctx, false));
+    }
+
+    [Fact]
+    public void ResolveFileAccessLinkOptions_passthrough()
+    {
+        var opts = new List<string> { "no-follow" };
+        var result = new AMNetSftpFileSystemAccessor().ResolveFileAccessLinkOptions(new MockSshFileSystemAccess(), opts);
+        Assert.Same(opts, result);
+    }
+
+    [Fact]
+    public void ResolveReportedFileAttributes_passthrough()
+    {
+        var attrs = new Dictionary<string, object> { ["size"] = 42L };
+        var result = new AMNetSftpFileSystemAccessor().ResolveReportedFileAttributes(new MockSshFileSystemAccess(), attrs);
+        Assert.Same(attrs, result);
+    }
+
+    [Fact]
+    public void ReadFileAttributes_passthrough()
+    {
+        var attrs = new Dictionary<string, object> { ["mtime"] = 1000L };
+        var result = new AMNetSftpFileSystemAccessor().ReadFileAttributes(new MockSshFileSystemAccess(), attrs);
+        Assert.Same(attrs, result);
+    }
+
+    [Fact]
+    public void ResolveLinkTarget_passthrough()
+    {
+        var result = new AMNetSftpFileSystemAccessor().ResolveLinkTarget(new MockSshFileSystemAccess(), "/target");
+        Assert.Equal("/target", result);
+    }
+
+    [Fact]
+    public void ApplyExtensionFileAttributes_noop()
+    {
+        new AMNetSftpFileSystemAccessor().ApplyExtensionFileAttributes(new MockSshFileSystemAccess());
+    }
+
+    [Fact]
+    public void PutRemoteFileName_noop()
+    {
+        new AMNetSftpFileSystemAccessor().PutRemoteFileName(new MockSshFileSystemAccess());
+    }
+
+    [Fact]
+    public void OpenFile_noop()
+    {
+        new AMNetSftpFileSystemAccessor().OpenFile(new MockSshFileSystemAccess());
+    }
+
+    [Fact]
+    public void TryLock_noop()
+    {
+        new AMNetSftpFileSystemAccessor().TryLock(new MockSshFileSystemAccess());
+    }
+
+    [Fact]
+    public void SyncFileData_noop()
+    {
+        new AMNetSftpFileSystemAccessor().SyncFileData(new MockSshFileSystemAccess());
+    }
+
+    [Fact]
+    public void CloseFile_noop()
+    {
+        new AMNetSftpFileSystemAccessor().CloseFile(new MockSshFileSystemAccess());
+    }
+
+    [Fact]
+    public void OpenDirectory_noop()
+    {
+        new AMNetSftpFileSystemAccessor().OpenDirectory(new MockSshFileSystemAccess());
+    }
+
+    [Fact]
+    public void CloseDirectory_noop()
+    {
+        new AMNetSftpFileSystemAccessor().CloseDirectory(new MockSshFileSystemAccess());
+    }
+
+    [Fact]
+    public void SetFileAttribute_noop()
+    {
+        new AMNetSftpFileSystemAccessor().SetFileAttribute(new MockSshFileSystemAccess());
+    }
+
+    [Fact]
+    public void ResolveFileOwner_noop()
+    {
+        new AMNetSftpFileSystemAccessor().ResolveFileOwner(new MockSshFileSystemAccess());
+    }
+
+    [Fact]
+    public void SetFileOwner_noop()
+    {
+        new AMNetSftpFileSystemAccessor().SetFileOwner(new MockSshFileSystemAccess());
+    }
+
+    [Fact]
+    public void ResolveGroupOwner_noop()
+    {
+        new AMNetSftpFileSystemAccessor().ResolveGroupOwner(new MockSshFileSystemAccess());
+    }
+
+    [Fact]
+    public void SetGroupOwner_noop()
+    {
+        new AMNetSftpFileSystemAccessor().SetGroupOwner(new MockSshFileSystemAccess());
+    }
+
+    [Fact]
+    public void SetFilePermissions_noop()
+    {
+        new AMNetSftpFileSystemAccessor().SetFilePermissions(new MockSshFileSystemAccess());
+    }
+
+    [Fact]
+    public void SetFileAccessControl_noop()
+    {
+        new AMNetSftpFileSystemAccessor().SetFileAccessControl(new MockSshFileSystemAccess());
     }
 }

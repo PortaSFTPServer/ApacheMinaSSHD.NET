@@ -15,7 +15,7 @@ using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 using org.apache.sshd.sftp.server;
 namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
 {
-    internal class SshHandle: ISshHandle
+    internal class SshHandle : ISshHandle
     {
 
         // Reference to the Java Handle

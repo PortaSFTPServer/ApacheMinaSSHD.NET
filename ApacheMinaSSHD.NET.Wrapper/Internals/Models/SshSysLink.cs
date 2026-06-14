@@ -15,7 +15,7 @@ using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
 {
-    internal class SshSysLink: ISshSysLink
+    internal class SshSysLink : ISshSysLink
     {
 
         public ISshSession Session { get; set; } = null!;

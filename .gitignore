@@ -14,7 +14,7 @@ docs/.docfx/_site/
 # Local test output and logs
 .winscp-stress-logs/
 .public-repo-staging*/
-Sample/SimpleSSHDSever/obfuscar.xml
+Sample/SimpleSSHDServer/obfuscar.xml
 *.log
 
 # Private keys, host keys, certificates, and local auth fixtures

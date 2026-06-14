@@ -38,7 +38,7 @@ jobs:
           dotnet restore ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj
           dotnet restore ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj
           dotnet restore ApacheMinaSSHD.NET.Wrapper.Tests/ApacheMinaSSHD.NET.Wrapper.Tests.csproj
-          dotnet restore Sample/SimpleSSHDSever/SimpleSSHDSever.csproj
+          dotnet restore Sample/SimpleSSHDServer/SimpleSSHDServer.csproj
 
       - name: Build
         shell: pwsh
@@ -46,7 +46,7 @@ jobs:
           dotnet build ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj -c Release --no-restore
           dotnet build ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj -c Release --no-restore
           dotnet build ApacheMinaSSHD.NET.Wrapper.Tests/ApacheMinaSSHD.NET.Wrapper.Tests.csproj -c Release --no-restore
-          dotnet build Sample/SimpleSSHDSever/SimpleSSHDSever.csproj -c Release --no-restore
+          dotnet build Sample/SimpleSSHDServer/SimpleSSHDServer.csproj -c Release --no-restore
 
       - name: Code style check
         shell: pwsh
@@ -86,7 +86,7 @@ jobs:
 
       - name: Client integration and stress tests
         shell: pwsh
-        run: dotnet run -c Release --no-build --project Sample/SimpleSSHDSever/SimpleSSHDSever.csproj -- --integration-tests
+        run: dotnet run -c Release --no-build --project Sample/SimpleSSHDServer/SimpleSSHDServer.csproj -- --integration-tests
 
       - name: Dependency and CVE scan
         shell: pwsh

@@ -49,8 +49,10 @@ public class ScpCommandFactoryTests
     [Fact]
     public void SendBufferSize_roundtrip()
     {
-        var factory = new AMNetScpCommandFactory();
-        factory.SendBufferSize = 65536;
+        var factory = new AMNetScpCommandFactory
+        {
+            SendBufferSize = 65536
+        };
         Assert.Equal(65536, factory.SendBufferSize);
     }
 
@@ -64,8 +66,10 @@ public class ScpCommandFactoryTests
     [Fact]
     public void ReceiveBufferSize_roundtrip()
     {
-        var factory = new AMNetScpCommandFactory();
-        factory.ReceiveBufferSize = 32768;
+        var factory = new AMNetScpCommandFactory
+        {
+            ReceiveBufferSize = 32768
+        };
         Assert.Equal(32768, factory.ReceiveBufferSize);
     }
 

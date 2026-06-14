@@ -22,7 +22,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
 {
     internal class SshMove : ISshMove
     {
-        public ISshSession Session {  get; set; } = null!;
+        public ISshSession Session { get; set; } = null!;
 
         public string SourcePath { get; set; } = string.Empty;
 

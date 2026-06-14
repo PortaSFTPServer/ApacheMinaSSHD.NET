@@ -28,7 +28,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         static readonly IAMNetLogger logger = new AMNetLogger(typeof(InternalIoServiceEventListener), AMNetLogger.LogLevel.Info);
 
 
-        public InternalIoServiceEventListener(IAMNetIoServiceEventListener ioServiceEventListener )
+        public InternalIoServiceEventListener(IAMNetIoServiceEventListener ioServiceEventListener)
         {
             this.ioServiceEventListener = ioServiceEventListener;
         }
@@ -97,14 +97,14 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             };
         }
 
-        private System.Net.IPEndPoint Map(SocketAddress addr)
+        private static System.Net.IPEndPoint Map(SocketAddress addr)
         {
             if (addr is InetSocketAddress isa)
                 return new System.Net.IPEndPoint(System.Net.IPAddress.Parse(isa.getAddress().getHostAddress()), isa.getPort());
             return null!;
         }
 
-        private IReadOnlyDictionary<string, object> MapAttributes(AttributeRepository repo)
+        private static IReadOnlyDictionary<string, object> MapAttributes(AttributeRepository repo)
         {
             var dict = new Dictionary<string, object>();
             if (repo == null) return dict;

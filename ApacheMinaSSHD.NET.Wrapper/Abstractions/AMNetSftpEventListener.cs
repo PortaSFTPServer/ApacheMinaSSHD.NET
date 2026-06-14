@@ -158,8 +158,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <inheritdoc />
         public virtual void OnReadingEntries(ISshEntries sshEntries)
         {
-           
-            
+
+
             logger.Debug($"Session from IP {sshEntries.SshSession.RemoteAddress} is reading entries: {sshEntries.RemoteHandle}");
         }
 

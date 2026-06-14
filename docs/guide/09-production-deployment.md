@@ -112,7 +112,7 @@ ApacheMinaSSHD.NET includes real OpenSSH integration tests. Run them to validate
 
 ```powershell
 # Windows Forms sample
-dotnet run --project Sample\SimpleSSHDSever\SimpleSSHDSever.csproj -- --integration-tests
+dotnet run --project Sample\SimpleSSHDServer\SimpleSSHDServer.csproj -- --integration-tests
 
 # Console sample (lightweight, no GUI)
 dotnet run --project Sample\ConsoleSftpServer\ConsoleSftpServer.csproj

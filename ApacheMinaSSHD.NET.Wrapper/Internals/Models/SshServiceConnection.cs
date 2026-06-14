@@ -26,7 +26,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
     /// These are the <strong>IoConnector connector, SocketAddress local, AttributeRepository context, 
     /// SocketAddress remote, Exception reason</strong>.
     /// </summary>
-    internal class SshServiceConnection: ISshServiceConnection
+    internal class SshServiceConnection : ISshServiceConnection
     {
         /// <summary>
         /// Local end point properties
@@ -44,7 +44,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
         /// The I/O Manager (Acceptor/Connector)
         /// </summary>
         public ISshIoService IoService { get; set; } = null!;
-        public IReadOnlyDictionary<string, object> Attributes { get;  set; } =
+        public IReadOnlyDictionary<string, object> Attributes { get; set; } =
             new Dictionary<string, object>();
 
         /// <summary>

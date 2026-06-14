@@ -20,7 +20,7 @@
   <Project Path="Sample/SessionMonitorServer/SessionMonitorServer.csproj" />
   <Project Path="Sample/SftpClientServer/SftpClientServer.csproj" />
   <Project Path="Sample/SftpEventServer/SftpEventServer.csproj" />
-  <Project Path="Sample/SimpleSSHDSever/SimpleSSHDSever.csproj">
+  <Project Path="Sample/SimpleSSHDServer/SimpleSSHDServer.csproj">
     <Platform Solution="*|x64" Project="x64" />
     <Platform Solution="*|x86" Project="x86" />
   </Project>

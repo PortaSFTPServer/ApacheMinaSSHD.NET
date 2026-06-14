@@ -133,7 +133,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             }
 
             string fileName = Path.GetFileName(path);
-            if (fileName.StartsWith(".", StringComparison.Ordinal))
+            if (fileName.StartsWith('.'))
             {
                 return false;
             }

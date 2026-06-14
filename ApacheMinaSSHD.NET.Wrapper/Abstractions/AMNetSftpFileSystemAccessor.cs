@@ -329,7 +329,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
                 return true;
             }
 
-            if (fileName.StartsWith(".", StringComparison.Ordinal) &&
+            if (fileName.StartsWith('.') &&
                 fileName != "." &&
                 fileName != "..")
             {

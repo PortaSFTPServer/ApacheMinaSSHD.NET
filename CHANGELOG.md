@@ -53,7 +53,7 @@
 - Initial public release
 - Full SSH/SFTP/SCP server via Apache MINA SSHD 2.17.1 IKVM interop
 - Wrapper API: `AMNetSshServer`, `AMNetSshServerConfig`, authenticators, host key providers, file system factories
-- `Sample/` projects: MinimalServer, ConsoleSftpServer, AuthenticationServer, ProductionServer, ScpServer, SftpEventServer, SessionMonitorServer, VirtualFileSystemServer, SimpleSSHDSever, BlazorSftpServer, PhotinoSftpServer, AvaloniaSftpServer, DareSftpServer, SFTPServerWithNuget
+- `Sample/` projects: MinimalServer, ConsoleSftpServer, AuthenticationServer, ProductionServer, ScpServer, SftpEventServer, SessionMonitorServer, VirtualFileSystemServer, SimpleSSHDServer, BlazorSftpServer, PhotinoSftpServer, AvaloniaSftpServer, DareSftpServer, SFTPServerWithNuget
 - CI/CD: build, test, pack, release workflows
 - Documentation: guides, API reference site, SEO
 

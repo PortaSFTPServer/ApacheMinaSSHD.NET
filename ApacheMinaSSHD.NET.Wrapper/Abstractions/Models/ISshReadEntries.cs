@@ -31,7 +31,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions.Models
         /// <summary>Gets the local directory handle wrapper.</summary>
         ISshDirectoryHandle DirectoryHandle { get; }
         /// <summary>Gets the directory entries returned to the client.</summary>
-        public IReadOnlyDictionary<string, object> Entries { get;  }
+        public IReadOnlyDictionary<string, object> Entries { get; }
         /// <summary>Gets the exception associated with the read when available.</summary>
         public Exception Exception { get; }
 

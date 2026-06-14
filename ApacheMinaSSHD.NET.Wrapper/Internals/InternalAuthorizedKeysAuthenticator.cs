@@ -20,7 +20,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
     internal class InternalAuthorizedKeysAuthenticator : AuthorizedKeysAuthenticator
     {
 
-        public InternalAuthorizedKeysAuthenticator(IAMNetAuthorizedKeysAuthenticator authorizedKeysAuthenticator) 
+        public InternalAuthorizedKeysAuthenticator(IAMNetAuthorizedKeysAuthenticator authorizedKeysAuthenticator)
             : base(GetJavaPath(authorizedKeysAuthenticator.KeysFilePath)) { }
 
         /// <summary>

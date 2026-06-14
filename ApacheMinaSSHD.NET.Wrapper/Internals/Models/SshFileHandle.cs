@@ -31,7 +31,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
 
         public int AccessMask => _handle.getAccessMask();
         public bool IsOpenAppend => _handle.isOpenAppend();
-        public  ISshHandle SshHandle => new SshHandle(_handle);
+        public ISshHandle SshHandle => new SshHandle(_handle);
 
         public IReadOnlyDictionary<string, object> Attributes
         {
@@ -99,15 +99,15 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
             }
         }
         public void Unlock(long offset, long length)
+        {
+            try
             {
-                try
-                {
-                    _handle.unlock(offset, length);
-                }
-                catch (java.io.IOException ex)
-                {
-                    throw new System.IO.IOException(ex.getMessage(), ex);
-                }
+                _handle.unlock(offset, length);
+            }
+            catch (java.io.IOException ex)
+            {
+                throw new System.IO.IOException(ex.getMessage(), ex);
+            }
         }
         public void Close() => Dispose();
 

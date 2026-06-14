@@ -25,10 +25,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions.Models
     public interface ISshReadWrite : ISshEvent
     {
         /// <summary>Gets the file offset for the read or write operation.</summary>
-        public long Offset { get;}
+        public long Offset { get; }
         /// <summary>Gets the number of bytes requested or processed.</summary>
-        public int Length { get;  }
+        public int Length { get; }
         /// <summary>Gets the data buffer associated with the read or write operation.</summary>
-        public byte[] Data { get;  }
+        public byte[] Data { get; }
     }
 }

@@ -253,4 +253,17 @@ public class ScpFileOpenerTests : IDisposable
         var result = opener.GetMatchingFilesToSend(new MockScpFileAccess(), paths);
         Assert.Equal(paths, result);
     }
+
+    [Fact]
+    public void ResolveIncomingReceiveLocation_passthrough()
+    {
+        var opener = new AMNetScpFileOpener();
+        Assert.Equal("/incoming", opener.ResolveIncomingReceiveLocation(new MockScpFileAccess(), "/incoming"));
+    }
+
+    [Fact]
+    public void OpenRead_noop()
+    {
+        new AMNetScpFileOpener().OpenRead(new MockScpFileAccess());
+    }
 }

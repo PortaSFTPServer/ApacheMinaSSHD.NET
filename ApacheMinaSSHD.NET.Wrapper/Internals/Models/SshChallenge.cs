@@ -15,7 +15,7 @@ using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
 {
-    internal class SshChallenge: ISshChallenge
+    internal class SshChallenge : ISshChallenge
     {
 
         public string InteractionName { get; set; } = "Authentication";

@@ -127,7 +127,7 @@ updates:
     open-pull-requests-limit: 5
 
   - package-ecosystem: nuget
-    directory: /Sample/SimpleSSHDSever
+    directory: /Sample/SimpleSSHDServer
     schedule:
       interval: weekly
     open-pull-requests-limit: 5

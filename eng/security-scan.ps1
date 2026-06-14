@@ -11,7 +11,7 @@ $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $ProjectFiles = @(
     "ApacheMinaSSHD.NET.Bindings/ApacheMinaSSHD.NET.Bindings.csproj",
     "ApacheMinaSSHD.NET.Wrapper/ApacheMinaSSHD.NET.Wrapper.csproj",
-    "Sample/SimpleSSHDSever/SimpleSSHDSever.csproj"
+    "Sample/SimpleSSHDServer/SimpleSSHDServer.csproj"
 )
 
 $Failures = [System.Collections.Generic.List[string]]::new()

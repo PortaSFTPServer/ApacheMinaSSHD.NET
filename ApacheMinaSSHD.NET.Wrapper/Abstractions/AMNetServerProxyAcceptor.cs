@@ -62,7 +62,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 
             if (isV2Binary)
             {
-                return ProcessV2BinaryFormat(proxyMetadata, rawBytes, readPosition);
+                return AMNetServerProxyAcceptor.ProcessV2BinaryFormat(proxyMetadata, rawBytes, readPosition);
             }
 
             // =========================================================================
@@ -103,7 +103,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             proxyMetadata.ForceDisconnect("Protocol violation. Unrecognized initial payload.");
             throw new InvalidOperationException("Malformed transport layout protocol.");
         }
-        private bool ProcessV2BinaryFormat(IProxyMetadata proxyMetadata, byte[] rawBytes, int startPos)
+        private static bool ProcessV2BinaryFormat(IProxyMetadata proxyMetadata, byte[] rawBytes, int startPos)
         {
             // Byte offset 12 dictates protocol command, byte 13 dictates address family profiles
             byte commandByte = rawBytes[12];

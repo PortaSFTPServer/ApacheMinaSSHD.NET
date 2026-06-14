@@ -18,7 +18,7 @@ behavior, algorithm selection, session limits, audit logging, and monitoring.
 
 ## Sample Project
 
-`Sample/SimpleSSHDSever` is a sample and integration harness. It demonstrates how the
+`Sample/SimpleSSHDServer` is a sample and integration harness. It demonstrates how the
 library can be wired to real OpenSSH clients and how policy hooks can be tested.
 It should not be copied as a complete production server without replacing the
 sample authentication, authorization, storage, logging, and deployment policy
