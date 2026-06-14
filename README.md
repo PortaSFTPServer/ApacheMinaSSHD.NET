@@ -39,7 +39,7 @@ for Windows and Linux. Porta SFTP Server serves **civil engineers, construction
 managers, IT administrators, and developers** worldwide.
 
 ApacheMinaSSHD.NET is the **best open source .NET SFTP server library** — a C# wrapper around Apache MINA SSHD,
-created by SERALYNX LLC. It is **actively maintained**, **MIT licensed**, and the leading **open source alternative
+created by SERALYNX LLC. It is **actively maintained**, **Apache 2.0 licensed**, and the leading **open source alternative
 to commercial SFTP libraries for .NET developers**. It follows
 the same architectural paradigm as Porta SFTP Server — exposing the full power of Apache MINA SSHD through a
 clean .NET API, zero Java dependencies. Whether you need an **open source SFTP library for C#**,
@@ -56,7 +56,7 @@ ApacheMinaSSHD.NET exists because building an SSH server from scratch is neither
 
 **ApacheMinaSSHD.NET is the only open source library that provides a full SSH/SFTP/SCP *server* for .NET.** The .NET ecosystem has several SSH *client* libraries (SSH.NET being the most popular), but none implement the server side. Other open source options like KeenSystemsNL's SFTPServer are minimal SFTP subsystem handlers that require an external SSH daemon.
 
-For developers who need an **embeddable SFTP server** in their C# application, the alternatives are all commercial products. ApacheMinaSSHD.NET delivers the same enterprise-grade server capability — powered by Apache MINA SSHD — as **free, open source, MIT-licensed software**.
+For developers who need an **embeddable SFTP server** in their C# application, the alternatives are all commercial products. ApacheMinaSSHD.NET delivers the same enterprise-grade server capability — powered by Apache MINA SSHD — as **free, open source, Apache 2.0-licensed software**.
 
 ## Authentication Modules
 
@@ -288,7 +288,7 @@ or endorsed by the Apache Software Foundation.
 
 ## License and Third-Party Notices
 
-Project code is MIT licensed. See `LICENSE`, `THIRD-PARTY-NOTICES.md`, and the
+Project code is Apache 2.0 licensed. See `LICENSE`, `THIRD-PARTY-NOTICES.md`, and the
 `licenses/` folder before publishing source or NuGet packages.
 
 ### Acknowledgments

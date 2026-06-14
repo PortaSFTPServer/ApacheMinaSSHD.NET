@@ -4,7 +4,7 @@ ApacheMinaSSHD.NET is created by **[SERALYNX LLC](https://portasftpserver.com)**
 a Critical Infrastructure Engineering firm supporting Physical and Technological Advancement.
 One of its products is **[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)**,
 a portable SFTP server for Windows and Linux serving critical infrastructure. Project code
-is licensed under the MIT License. See `LICENSE`.
+is licensed under the Apache 2.0 License. See `LICENSE`.
 
 This file summarizes third-party software used by the source tree and NuGet
 packages. It is provided to make package review easier for downstream
@@ -44,7 +44,7 @@ and license files.
   dependencies.
 - Preserve upstream license texts and notice text when redistributing generated
   or compiled third-party binaries.
-- Keep `PackageLicenseExpression` set to `MIT` only for the ApacheMinaSSHD.NET
+- Keep `PackageLicenseExpression` set to `Apache-2.0` for the ApacheMinaSSHD.NET
   project code. Third-party licenses are documented here and shipped as package
   content.
 - Re-run package verification after changing dependency versions so the notice

@@ -5,7 +5,7 @@ ApacheMinaSSHD.NET — a .NET SFTP server library and C# wrapper by
 supporting Physical and Technological Advancement. One of its products is
 **[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)**,
 the best portable SFTP server for Windows and Linux and free SFTP server for critical infrastructure —
-is open source under the MIT License and maintained by SERALYNX LLC.
+is open source under the Apache 2.0 License and maintained by SERALYNX LLC.
 
 External issues and pull requests are welcome, but SERALYNX LLC decides what is
 accepted, merged, released, or included in the project roadmap. This keeps the
@@ -16,7 +16,7 @@ application code.
 ## Contribution Terms
 
 By submitting a pull request or other contribution, you agree that your
-contribution may be distributed under the project's MIT License unless SERALYNX
+contribution may be distributed under the project's Apache 2.0 License unless SERALYNX
 LLC explicitly agrees to different terms in writing.
 
 ## Review Priorities
