@@ -7,7 +7,6 @@
 - `InternalForwardingFilter` Java bridge implementing `ForwardingFilter`
 - `FORWARDER_BUFFER_SIZE` and `FORWARD_REQUEST_TIMEOUT` config properties
 - 27 new tests (14 unit + 13 integration with SSH.NET)
-- `PortForwardingServer` sample project
 - `[Trait("Category", ...)]` on all test classes (Unit/Integration/Stress)
 - `.editorconfig` with C# code-style rules
 - Issue templates (bug report, feature request) and PR template

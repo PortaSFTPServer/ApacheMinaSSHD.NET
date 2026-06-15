@@ -13,7 +13,7 @@ This guide walks you through creating a working SFTP/SCP server with ApacheMinaS
 dotnet add package ApacheMinaSSHD.NET.Wrapper
 ```
 
-No additional packages are needed — the Wrapper bundles all IKVM bindings, Apache MINA SSHD 2.18.0, SLF4J, and Bouncy Castle assemblies. Compatible with .NET 6.0, 8.0, 9.0, and 10.0.
+No additional packages are needed — the Wrapper bundles all IKVM bindings, Apache MINA SSHD 2.18.0, SLF4J, and Bouncy Castle assemblies. Compatible with .NET 9.0 and 10.0.
 
 ## Step 2: Create the Server
 

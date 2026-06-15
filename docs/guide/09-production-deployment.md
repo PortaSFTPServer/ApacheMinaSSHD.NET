@@ -59,7 +59,7 @@ RUN dotnet publish "MyServer/MyServer.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build /app/publish .
 EXPOSE 22
 ENTRYPOINT ["dotnet", "MyServer.dll"]
 ```
