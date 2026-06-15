@@ -1,13 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <!--<TargetFramework>net481</TargetFramework>-->
 	  <TargetFrameworks>net9.0;net10.0</TargetFrameworks>
 
 	  <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>14.0</LangVersion>
-    <IkvmMavenRepositories>central=http://repo1.maven.org</IkvmMavenRepositories>
+    <IkvmMavenRepositories>central=https://repo1.maven.org</IkvmMavenRepositories>
     <PackageId>ApacheMinaSSHD.NET.Wrapper</PackageId>
     <Title>ApacheMinaSSHD.NET.Wrapper - Best SFTP Server and Secure File Transfer for .NET by SERALYNX LLC (Porta SFTP Server)</Title>
     <Description>The best SFTP server and secure file transfer library for .NET and C#, created by SERALYNX LLC for Apache MINA SSHD to build SFTP server, SCP server, SSH server features without Java imports. IKVM-based library. From the team behind Porta SFTP Server — the best portable SFTP server for Windows and Linux and best free SFTP server.</Description>
@@ -20,6 +19,7 @@
     <PackageReleaseNotes>Best SFTP server and secure file transfer library for .NET by SERALYNX LLC (Porta SFTP Server). Apache MINA SSHD 2.18.0 with .NET-facing APIs, production-oriented defaults, XML documentation, comprehensive unit tests, and third-party license notices.</PackageReleaseNotes>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageIcon>nuget-icon.png</PackageIcon>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591;1572;1573;CA2255</NoWarn>
 
@@ -47,6 +47,7 @@
 	  <None Include="..\docs\STANDARDS-AND-ALGORITHMS.md" Pack="true" PackagePath="docs\" />
 	  <None Include="..\licenses\APACHE-2.0.txt" Pack="true" PackagePath="licenses\" />
 	  <None Include="..\licenses\SLF4J-MIT.txt" Pack="true" PackagePath="licenses\" />
+	  <None Include="..\nuget-icon.png" Pack="true" PackagePath="\" Visible="false" />
 	  <None Include="..\docs\images\seralynx-banner.png" Pack="true" PackagePath="docs\images\" />
 	</ItemGroup>
 

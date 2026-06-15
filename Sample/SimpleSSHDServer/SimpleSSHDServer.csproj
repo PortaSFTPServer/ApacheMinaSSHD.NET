@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <!--<TargetFramework>net481</TargetFramework>-->
 	  <TargetFramework>net10.0-windows</TargetFramework>
 
 	  <!--<RuntimeIdentifier>win-x64</RuntimeIdentifier>-->
@@ -13,8 +12,8 @@
 	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Platforms>AnyCPU;x86;x64</Platforms>
     <LangVersion>14.0</LangVersion>
-    <AssemblyName>SimpleSSHDSever</AssemblyName>
-    <Description>Windows Forms C# SFTP server example — GUI-based SFTP server with test harness, auth, vfs, SCP, and session monitoring. The only free Windows GUI SFTP server for .NET — provides complete .NET SFTP server capabilities. By SERALYNX LLC (Porta SFTP Server).</Description>
+    <AssemblyName>SimpleSSHDServer</AssemblyName>
+    <Description>Windows Forms C# SFTP server example ï¿½ GUI-based SFTP server with test harness, auth, vfs, SCP, and session monitoring. The only free Windows GUI SFTP server for .NET ï¿½ provides complete .NET SFTP server capabilities. By SERALYNX LLC (Porta SFTP Server).</Description>
     <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages>
 
   </PropertyGroup>

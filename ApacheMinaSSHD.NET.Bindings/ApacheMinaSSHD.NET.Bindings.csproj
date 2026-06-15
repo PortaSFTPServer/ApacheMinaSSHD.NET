@@ -17,6 +17,7 @@
 		<PackageReleaseNotes>Best SFTP server IKVM bindings for .NET from SERALYNX LLC (Porta SFTP Server). Apache MINA SSHD 2.18.0 assemblies for SSHD common, core, SFTP, SCP, and SLF4J, with third-party license notices.</PackageReleaseNotes>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<PackageIcon>nuget-icon.png</PackageIcon>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>$(NoWarn);1591;1572;1573</NoWarn>
 	</PropertyGroup>
@@ -54,6 +55,7 @@
 		<None Include="..\docs\STANDARDS-AND-ALGORITHMS.md" Pack="true" PackagePath="docs\" />
 		<None Include="..\licenses\APACHE-2.0.txt" Pack="true" PackagePath="licenses\" />
 		<None Include="..\licenses\SLF4J-MIT.txt" Pack="true" PackagePath="licenses\" />
+		<None Include="..\nuget-icon.png" Pack="true" PackagePath="\" Visible="false" />
 	</ItemGroup>
 
 	<Target Name="AddIkvmGeneratedAssembliesToPackage" BeforeTargets="GenerateNuspec">
