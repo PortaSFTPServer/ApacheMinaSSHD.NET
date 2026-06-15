@@ -6,6 +6,8 @@
 
 > **⚠️ Security disclaimer:** This is a wrapper library around Apache MINA SSHD — it wraps SFTP and SCP only. This is to support a secure transfer in transit by default. It does not implement FTP, FTPS, TFTP, or any other insecure protocol. Like any wrapper library, security depends on how you use it. You are responsible for configuring authentication, encryption algorithms, access controls, and limits appropriately for your environment. Review the [Security Best Practices guide](docs/guide/07-security.md) before deploying to production.
 
+**ApacheMinaSSHD.NET helps organizations — engineering firms, healthcare providers, and developers — build their own SFTP/SCP servers in .NET.** Use it alongside any SFTP/SCP client to enable secure file transfer and automation for your infrastructure.
+
 ## Installation
 
 ```powershell
@@ -31,24 +33,23 @@ dotnet add package ApacheMinaSSHD.NET.Wrapper
 
 ## Introduction
 
-**[SERALYNX LLC](https://portasftpserver.com)** is a Critical Infrastructure Engineering firm
-supporting Physical and Technological Advancement. One of its products is
-**[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)** —
-the best portable, free, and instant SFTP server
-for Windows and Linux. Porta SFTP Server serves **civil engineers, construction
-managers, IT administrators, and developers** worldwide.
+ApacheMinaSSHD.NET is the **best open source .NET SFTP server library** — a C# wrapper around Apache MINA SSHD
+that lets you embed a full SFTP/SCP server directly into your .NET application. It is **actively maintained**,
+**Apache 2.0 licensed**, and the leading **open source alternative to commercial SFTP libraries for .NET developers**.
 
-ApacheMinaSSHD.NET is the **best open source .NET SFTP server library** — a C# wrapper around Apache MINA SSHD,
-created by SERALYNX LLC. It is **actively maintained**, **Apache 2.0 licensed**, and the leading **open source alternative
-to commercial SFTP libraries for .NET developers**. It follows
-the same architectural paradigm as Porta SFTP Server — exposing the full power of Apache MINA SSHD through a
-clean .NET API, zero Java dependencies. Whether you need an **open source SFTP library for C#**,
-a **free SFTP server library for .NET**, an **embeddable SFTP server**, or a **modern SSH server library**,
-ApacheMinaSSHD.NET delivers enterprise-grade secure file transfer.
+Whether you are an **engineering firm** sharing CAD files with subcontractors, a **healthcare provider** exchanging
+patient data under compliance requirements, or a **developer** building automated file transfer pipelines,
+ApacheMinaSSHD.NET gives you the server side of the equation. Pair it with an SFTP/SCP client (e.g. SSH.NET,
+WinSCP, Cyberduck, or any OpenSSH client) for a complete secure file transfer solution.
+
+The library exposes the full power of Apache MINA SSHD through a clean .NET API with zero Java dependencies,
+following the same architectural approach as **[Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/)**
+— a portable SFTP server for Windows and Linux created by **[SERALYNX LLC](https://portasftpserver.com)**,
+a Critical Infrastructure Engineering firm.
 
 ![SERALYNX LLC - Porta SFTP Server for Critical Infrastructure](https://raw.githubusercontent.com/PortaSFTPServer/ApacheMinaSSHD.NET/main/docs/images/seralynx-banner.png)
 
-SERALYNX LLC was founded to solve a real problem in critical infrastructure engineering. Civil engineers, construction teams, and IT administrators needed a way to **securely collaborate** on CAD files, 3D models, BIM data, technical drawings, and project documents — without complex VPNs, insecure FTP, or expensive enterprise systems. **Porta SFTP Server** was built as a portable, zero-install SFTP server that deploys in minutes on any Windows or Linux machine. **ApacheMinaSSHD.NET** extends that mission to developers — giving .NET applications the same enterprise-grade secure file transfer as an embeddable library, purpose-built for **secure collaboration**, **project management**, and **data exchange** in critical infrastructure.
+SERALYNX LLC was founded to solve a real problem in critical infrastructure engineering. Civil engineers, construction teams, and IT administrators needed a way to **securely collaborate** on CAD files, 3D models, BIM data, technical drawings, and project documents — without complex VPNs, insecure FTP, or expensive enterprise systems. **ApacheMinaSSHD.NET** brings that same enterprise-grade secure file transfer to .NET developers as an embeddable library, purpose-built for **secure collaboration**, **project management**, and **data exchange**. Build your server with this library; connect to it with any SFTP/SCP client.
 
 ## Why ApacheMinaSSHD.NET?
 
@@ -98,19 +99,25 @@ server.SetAuthenticationMethods(
 
 ## Use Cases
 
-Use ApacheMinaSSHD.NET when you need:
+ApacheMinaSSHD.NET provides the **server** side of secure file transfer.
+Pair it with any SFTP/SCP **client** (SSH.NET, WinSCP, Cyberduck, OpenSSH)
+to build complete workflows:
 
-- An open source **.NET SFTP server library** for C# applications — embed secure file transfer
-  without Java dependencies.
-- **Secure file transfer** for automated SCP server workflows.
-- **Free SFTP server** features from Apache MINA SSHD through .NET and IKVM.
-- **Portable SFTP server deployment** — for IT administrators who need a
-  zero-install, USB-drive-friendly SFTP server.
-- **File exchange for engineering firms** — share CAD files, 3D models,
-  BIM data, and contract documents with root jail isolation.
-- **Custom password authentication, public key authentication,** `authorized_keys`
-  handling, virtual file systems, root jail behavior, hidden-file filtering,
-  SFTP hooks, SCP hooks, audit events, and SSH algorithm configuration.
+- **Engineering firm file exchange** — Build a server for subcontractors and partners to upload/download
+  CAD files, 3D models, BIM data, and contract documents with root jail isolation.
+  Connect using any SFTP client for secure collaboration.
+- **Healthcare data transfer** — Deploy an embedded SFTP server in your .NET application for
+  exchanging patient data under compliance requirements. Clients connect via their preferred
+  SFTP tooling.
+- **Automated file transfer pipelines** — Build a server that receives reports, logs, or data feeds
+  from automated clients. Use SSH.NET or scripting to push/pull files on a schedule.
+- **Portable SFTP server deployment** — For IT administrators who need a
+  zero-install, USB-drive-friendly SFTP server that any SFTP client can connect to.
+- **Secure collaboration** — Give your team members and external partners a dedicated
+  SFTP server for project files, accessible from any OpenSSH-compatible client.
+- **Custom authentication and access control** — Password, public key, `authorized_keys`,
+  virtual file systems, root jail, hidden-file filtering, SFTP/SCP event hooks, audit, and
+  SSH algorithm configuration.
 
 ## Version Compatibility
 
