@@ -116,7 +116,7 @@ Use ApacheMinaSSHD.NET when you need:
 
 | Component | Version |
 |-----------|---------|
-| .NET | 6.0, 8.0, 9.0, 10.0 |
+| .NET | 9.0, 10.0 |
 | Bundled Apache MINA SSHD | 2.18.0 |
 | IKVM | 8.12.0+ |
 
