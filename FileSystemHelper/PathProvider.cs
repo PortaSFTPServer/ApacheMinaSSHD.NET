@@ -15,7 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SimpleSSHDSever
+namespace SimpleSSHDServer
 {
     public class PathProvider
     {

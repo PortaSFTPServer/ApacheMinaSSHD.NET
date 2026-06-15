@@ -1,12 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<!--<TargetFramework>net481</TargetFramework>-->
 		<TargetFrameworks>net9.0;net10.0</TargetFrameworks>
 
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<IkvmMavenRepositories>central=http://repo1.maven.org</IkvmMavenRepositories>
+		<IkvmMavenRepositories>central=https://repo1.maven.org</IkvmMavenRepositories>
 		<LangVersion>14.0</LangVersion>
 		<PackageId>ApacheMinaSSHD.NET.Bindings</PackageId>
 		<Title>ApacheMinaSSHD.NET.Bindings - Best SFTP Server IKVM Bindings for .NET by SERALYNX LLC (Porta SFTP Server)</Title>
