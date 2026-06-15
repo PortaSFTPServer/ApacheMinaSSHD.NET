@@ -18,7 +18,7 @@ developers can consume the wrapper without importing Java or Apache MINA types.
 
 | Component | Version | Package contents | License |
 | --- | --- | --- | --- |
-| Apache MINA SSHD `sshd-common`, `sshd-core`, `sshd-scp`, `sshd-sftp` | 2.17.1 | `org.apache.sshd.common.dll`, `org.apache.sshd.core.dll`, `org.apache.sshd.scp.dll`, `org.apache.sshd.sftp.dll` | Apache License 2.0 |
+| Apache MINA SSHD `sshd-common`, `sshd-core`, `sshd-scp`, `sshd-sftp` | 2.18.0 | `org.apache.sshd.common.dll`, `org.apache.sshd.core.dll`, `org.apache.sshd.scp.dll`, `org.apache.sshd.sftp.dll` | Apache License 2.0 |
 | SLF4J API and Simple Binding | 1.7.36 | `org.slf4j.dll`, `org.slf4j.simple.dll` | MIT License |
 | JCL-over-SLF4J bridge | 1.7.36 | `org.apache.commons.logging.dll` | Apache License 2.0 according to the artifact POM |
 
