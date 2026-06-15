@@ -43,7 +43,7 @@ namespace SimpleSSHDSever
             // Force IKVM to search these assemblies for Java classes
             ikvm.runtime.Startup.addBootClassPathAssembly(apiAssembly);
             ikvm.runtime.Startup.addBootClassPathAssembly(simpleAssembly);
-            
+
             //ikvm.runtime.Startup.addBootClassPathAssembly(logbackAssembly);
             //ikvm.runtime.Startup.addBootClassPathAssembly(logbackCoreAssembly);
         }

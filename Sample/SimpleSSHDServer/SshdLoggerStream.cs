@@ -103,7 +103,8 @@ namespace SimpleSSHDSever
             // Perform UI update on the main thread
             if (_box.IsDisposed) return; // Final check before BeginInvoke
 
-            _box.BeginInvoke((MethodInvoker)delegate {
+            _box.BeginInvoke((MethodInvoker)delegate
+            {
                 if (_box.IsDisposed) return; // Final check inside BeginInvoke
 
                 SendMessage(_box.Handle, WM_SETREDRAW, IntPtr.Zero, IntPtr.Zero);

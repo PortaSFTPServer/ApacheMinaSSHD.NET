@@ -149,6 +149,11 @@ public class SshServerTests : IDisposable
     public void setPasswordAuthenticator_accepts_authenticator()
     {
         _server.setPasswordAuthenticator(new AMNetFixedPasswordAuthenticator("user", "pass"));
+    }
+
+    [Fact]
+    public void SetPasswordAuthenticator_accepts_authenticator()
+    {
         _server.SetPasswordAuthenticator(new AMNetFixedPasswordAuthenticator("user", "pass"));
     }
 
@@ -159,15 +164,33 @@ public class SshServerTests : IDisposable
     }
 
     [Fact]
+    public void SetPasswordAuthenticator_null_throws()
+    {
+        Assert.Throws<ArgumentNullException>(() => _server.SetPasswordAuthenticator(null!));
+    }
+
+    [Fact]
     public void setFixedPasswordAuthenticator()
     {
         _server.setFixedPasswordAuthenticator("admin", "secret");
     }
 
     [Fact]
+    public void SetFixedPasswordAuthenticator()
+    {
+        _server.SetFixedPasswordAuthenticator("admin", "secret");
+    }
+
+    [Fact]
     public void setDelegatePasswordAuthenticator()
     {
         _server.setDelegatePasswordAuthenticator((_, _, _) => true);
+    }
+
+    [Fact]
+    public void SetDelegatePasswordAuthenticator()
+    {
+        _server.SetDelegatePasswordAuthenticator((_, _, _) => true);
     }
 
     [Fact]
@@ -179,9 +202,29 @@ public class SshServerTests : IDisposable
     }
 
     [Fact]
+    public void SetCompositePasswordAuthenticator()
+    {
+        _server.SetCompositePasswordAuthenticator(
+            new AMNetFixedPasswordAuthenticator("user", "a"),
+            new AMNetFixedPasswordAuthenticator("user", "b"));
+    }
+
+    [Fact]
     public void setPublickeyAuthenticator_accepts_authenticator()
     {
         _server.setPublickeyAuthenticator(new AMNetFingerprintPublickeyAuthenticator("user", "SHA256:abc"));
+    }
+
+    [Fact]
+    public void SetPublickeyAuthenticator_accepts_authenticator()
+    {
+        _server.SetPublickeyAuthenticator(new AMNetFingerprintPublickeyAuthenticator("user", "SHA256:abc"));
+    }
+
+    [Fact]
+    public void SetPublicKeyAuthenticator_accepts_authenticator()
+    {
+        _server.SetPublicKeyAuthenticator(new AMNetFingerprintPublickeyAuthenticator("user", "SHA256:abc"));
     }
 
     [Fact]
@@ -191,9 +234,27 @@ public class SshServerTests : IDisposable
     }
 
     [Fact]
+    public void SetPublickeyAuthenticator_null_throws()
+    {
+        Assert.Throws<ArgumentNullException>(() => _server.SetPublickeyAuthenticator(null!));
+    }
+
+    [Fact]
     public void setDelegatePublickeyAuthenticator()
     {
         _server.setDelegatePublickeyAuthenticator((_, _, _) => true);
+    }
+
+    [Fact]
+    public void SetDelegatePublickeyAuthenticator()
+    {
+        _server.SetDelegatePublickeyAuthenticator((_, _, _) => true);
+    }
+
+    [Fact]
+    public void SetDelegatePublicKeyAuthenticator()
+    {
+        _server.SetDelegatePublicKeyAuthenticator((_, _, _) => true);
     }
 
     [Fact]
@@ -203,10 +264,23 @@ public class SshServerTests : IDisposable
     }
 
     [Fact]
+    public void SetFingerprintPublickeyAuthenticator()
+    {
+        _server.SetFingerprintPublickeyAuthenticator("user", "SHA256:abc", "SHA256:xyz");
+    }
+
+    [Fact]
     public void setFingerprintPublickeyAuthenticator_empty_throws()
     {
         Assert.Throws<ArgumentException>(() =>
             _server.setFingerprintPublickeyAuthenticator("user"));
+    }
+
+    [Fact]
+    public void SetFingerprintPublickeyAuthenticator_empty_throws()
+    {
+        Assert.Throws<ArgumentException>(() =>
+            _server.SetFingerprintPublickeyAuthenticator("user"));
     }
 
     [Fact]
@@ -218,9 +292,29 @@ public class SshServerTests : IDisposable
     }
 
     [Fact]
+    public void SetCompositePublickeyAuthenticator()
+    {
+        _server.SetCompositePublickeyAuthenticator(
+            new AMNetFingerprintPublickeyAuthenticator("user", "SHA256:a"),
+            new AMNetFingerprintPublickeyAuthenticator("user", "SHA256:b"));
+    }
+
+    [Fact]
     public void setAuthorizedkeyAuthenticator_with_instance()
     {
         _server.setAuthorizedkeyAuthenticator(new AMNetAuthorizedKeysAuthenticator("/tmp/authorized_keys"));
+    }
+
+    [Fact]
+    public void SetAuthorizedkeyAuthenticator_with_instance()
+    {
+        _server.SetAuthorizedkeyAuthenticator(new AMNetAuthorizedKeysAuthenticator("/tmp/authorized_keys"));
+    }
+
+    [Fact]
+    public void SetAuthorizedKeysAuthenticator_with_instance()
+    {
+        _server.SetAuthorizedKeysAuthenticator(new AMNetAuthorizedKeysAuthenticator("/tmp/authorized_keys"));
     }
 
     [Fact]
@@ -231,9 +325,28 @@ public class SshServerTests : IDisposable
     }
 
     [Fact]
+    public void SetAuthorizedkeyAuthenticator_null_throws()
+    {
+        Assert.Throws<ArgumentNullException>(() =>
+            _server.SetAuthorizedkeyAuthenticator((IAMNetAuthorizedKeysAuthenticator)null!));
+    }
+
+    [Fact]
     public void setAuthorizedkeyAuthenticator_with_path()
     {
         _server.setAuthorizedkeyAuthenticator("/etc/ssh/authorized_keys");
+    }
+
+    [Fact]
+    public void SetAuthorizedkeyAuthenticator_with_path()
+    {
+        _server.SetAuthorizedkeyAuthenticator("/etc/ssh/authorized_keys");
+    }
+
+    [Fact]
+    public void SetAuthorizedKeysAuthenticator_with_path()
+    {
+        _server.SetAuthorizedKeysAuthenticator("/etc/ssh/authorized_keys");
     }
 
     [Fact]
@@ -243,10 +356,23 @@ public class SshServerTests : IDisposable
     }
 
     [Fact]
+    public void SetKeyboardInteractiveAuthenticator_accepts()
+    {
+        _server.SetKeyboardInteractiveAuthenticator(new AMNetKeyboardInteractiveAuthenticator());
+    }
+
+    [Fact]
     public void setKeyboardInteractiveAuthenticator_null_throws()
     {
         Assert.Throws<ArgumentNullException>(() =>
             _server.setKeyboardInteractiveAuthenticator(null!));
+    }
+
+    [Fact]
+    public void SetKeyboardInteractiveAuthenticator_null_throws()
+    {
+        Assert.Throws<ArgumentNullException>(() =>
+            _server.SetKeyboardInteractiveAuthenticator(null!));
     }
 
     [Fact]
@@ -258,9 +384,23 @@ public class SshServerTests : IDisposable
     }
 
     [Fact]
+    public void SetDelegateKeyboardInteractiveAuthenticator()
+    {
+        _server.SetDelegateKeyboardInteractiveAuthenticator(
+            (_, _) => { },
+            (_, _, _) => true);
+    }
+
+    [Fact]
     public void setFixedKeyboardInteractiveAuthenticator()
     {
         _server.setFixedKeyboardInteractiveAuthenticator("response");
+    }
+
+    [Fact]
+    public void SetFixedKeyboardInteractiveAuthenticator()
+    {
+        _server.SetFixedKeyboardInteractiveAuthenticator("response");
     }
 
     [Fact]
@@ -490,9 +630,21 @@ public class SshServerTests : IDisposable
     }
 
     [Fact]
+    public void SetAgentForwardingFilter_accepts()
+    {
+        _server.SetAgentForwardingFilter(new AcceptAllAgentFilter());
+    }
+
+    [Fact]
     public void setAgentForwardingFilter_null_throws()
     {
         Assert.Throws<ArgumentNullException>(() => _server.setAgentForwardingFilter(null!));
+    }
+
+    [Fact]
+    public void SetAgentForwardingFilter_null_throws()
+    {
+        Assert.Throws<ArgumentNullException>(() => _server.SetAgentForwardingFilter(null!));
     }
 
     [Fact]
@@ -502,8 +654,39 @@ public class SshServerTests : IDisposable
     }
 
     [Fact]
+    public void SetX11ForwardingFilter_accepts()
+    {
+        _server.SetX11ForwardingFilter(new AcceptAllX11Filter());
+    }
+
+    [Fact]
     public void setX11ForwardingFilter_null_throws()
     {
         Assert.Throws<ArgumentNullException>(() => _server.setX11ForwardingFilter(null!));
+    }
+
+    [Fact]
+    public void SetX11ForwardingFilter_null_throws()
+    {
+        Assert.Throws<ArgumentNullException>(() => _server.SetX11ForwardingFilter(null!));
+    }
+
+    [Fact]
+    public void SetAuthenticationMethodGroups_accepts()
+    {
+        _server.SetAuthenticationMethodGroups(
+            new[] { AMNetSshAuthenticationMethods.PublicKey });
+    }
+
+    [Fact]
+    public void SetRateLimiter_accepts()
+    {
+        _server.SetRateLimiter(new AMNetConnectionRateLimiter(10, TimeSpan.FromSeconds(1)));
+    }
+
+    [Fact]
+    public void SetRateLimiter_null_is_allowed()
+    {
+        _server.SetRateLimiter(null);
     }
 }

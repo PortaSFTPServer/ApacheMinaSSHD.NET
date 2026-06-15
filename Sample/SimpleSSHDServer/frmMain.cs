@@ -30,7 +30,7 @@ namespace SimpleSSHDSever
         /// the customize logger class
         /// this class implements the methods that is only needed
         /// </summary>
-        IAMNetLogger logger = new AMNetLogger(typeof(frmMain), AMNetLogger.LogLevel.Debug);
+        readonly IAMNetLogger logger = new AMNetLogger(typeof(frmMain), AMNetLogger.LogLevel.Debug);
         public frmMain()
         {
             InitializeComponent();
@@ -65,7 +65,7 @@ namespace SimpleSSHDSever
 
         }
 
-     
+
 
         private void checkBox1_CheckStateChanged(object sender, EventArgs e)
         {
@@ -165,7 +165,7 @@ namespace SimpleSSHDSever
                                 AMNetSshAuthenticationMethods.Password);
                         }
                         sshd.Config.MAX_AUTH_REQUESTS = 10;
-                        sshd.Config.AUTH_TIMEOUT = TimeSpan.FromSeconds(60); 
+                        sshd.Config.AUTH_TIMEOUT = TimeSpan.FromSeconds(60);
                         sshd.Config.IDLE_TIMEOUT = TimeSpan.FromSeconds(120);
                         sshd.Config.HEARTBEAT_INTERVAL = TimeSpan.FromSeconds(45);
                         sshd.Config.MAX_CONCURRENT_CHANNELS = 10;
@@ -195,7 +195,7 @@ namespace SimpleSSHDSever
                         try
                         {
 
-              
+
 
                             sshd.stop();
                             int timeout = 0;
@@ -237,7 +237,7 @@ namespace SimpleSSHDSever
         }
 
 
-       
+
 
     }
 }

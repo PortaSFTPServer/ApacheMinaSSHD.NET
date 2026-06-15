@@ -461,4 +461,50 @@ public class SshServerConfigTests : IDisposable
         var ciphers = _config.GetConfiguredCiphers();
         Assert.Equal(2, ciphers.Count);
     }
+
+    [Fact]
+    public void FORWARDER_BUFFER_SIZE_has_default()
+    {
+        Assert.InRange(_config.FORWARDER_BUFFER_SIZE, 1, 65536);
+    }
+
+    [Fact]
+    public void FORWARDER_BUFFER_SIZE_roundtrip()
+    {
+        _config.FORWARDER_BUFFER_SIZE = 16384;
+        Assert.Equal(16384, _config.FORWARDER_BUFFER_SIZE);
+    }
+
+    [Fact]
+    public void FORWARDER_BUFFER_SIZE_below_min_throws()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => _config.FORWARDER_BUFFER_SIZE = 0);
+    }
+
+    [Fact]
+    public void FORWARDER_BUFFER_SIZE_above_max_throws()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => _config.FORWARDER_BUFFER_SIZE = 70000);
+    }
+
+    [Fact]
+    public void FORWARD_REQUEST_TIMEOUT_has_default()
+    {
+        Assert.Equal(TimeSpan.FromSeconds(30), _config.FORWARD_REQUEST_TIMEOUT);
+    }
+
+    [Fact]
+    public void FORWARD_REQUEST_TIMEOUT_can_be_disabled()
+    {
+        _config.FORWARD_REQUEST_TIMEOUT = TimeSpan.Zero;
+        Assert.Equal(TimeSpan.Zero, _config.FORWARD_REQUEST_TIMEOUT);
+    }
+
+    [Fact]
+    public void FORWARD_REQUEST_TIMEOUT_roundtrip()
+    {
+        _config.FORWARD_REQUEST_TIMEOUT = TimeSpan.FromSeconds(15);
+        Assert.Equal(TimeSpan.FromSeconds(15), _config.FORWARD_REQUEST_TIMEOUT);
+    }
+
 }
