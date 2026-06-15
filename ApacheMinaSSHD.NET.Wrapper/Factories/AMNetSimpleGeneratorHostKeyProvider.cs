@@ -72,6 +72,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         /// <summary>
         /// Gets the host key generation algorithm.
         /// </summary>
+        /// <returns>The algorithm name (e.g. <c>RSA</c>, <c>ECDSA</c>, <c>Ed25519</c>).</returns>
         public string getAlgorithm() => Algorithm;
 
         /// <summary>
@@ -91,6 +92,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         /// <summary>
         /// Gets the host key size in bits.
         /// </summary>
+        /// <returns>The key size in bits.</returns>
         public int getKeySize() => KeySize;
 
         /// <summary>
@@ -105,6 +107,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         /// <summary>
         /// Returns whether strict host key file permission checks are enabled.
         /// </summary>
+        /// <returns><c>true</c> if strict permission checks are enabled; otherwise <c>false</c>.</returns>
         public bool hasStrictFilePermissions() => StrictFilePermissions;
 
         /// <summary>

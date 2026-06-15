@@ -101,6 +101,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <summary>
         /// Gets the configured authentication method chains in evaluation order.
         /// </summary>
+        /// <returns>Read-only list of authentication method chains, where each inner list is a chain of method names.</returns>
         public IReadOnlyList<IReadOnlyList<string>> GetConfiguredAuthenticationMethods()
         {
             return AMNetSshAuthenticationMethods.Parse(AUTH_METHODS);
@@ -521,41 +522,49 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <summary>
         /// Gets cipher algorithm names supported by the current runtime.
         /// </summary>
+        /// <returns>Read-only list of supported cipher names.</returns>
         public IReadOnlyList<string> GetSupportedCiphers() => GetNamedResources(manager.getCipherFactories());
 
         /// <summary>
         /// Gets MAC algorithm names supported by the current runtime.
         /// </summary>
+        /// <returns>Read-only list of supported MAC names.</returns>
         public IReadOnlyList<string> GetSupportedMacs() => GetNamedResources(manager.getMacFactories());
 
         /// <summary>
         /// Gets key exchange algorithm names supported by the current runtime.
         /// </summary>
+        /// <returns>Read-only list of supported key exchange names.</returns>
         public IReadOnlyList<string> GetSupportedKeyExchangeAlgorithms() => GetNamedResources(manager.getKeyExchangeFactories());
 
         /// <summary>
         /// Gets host key/signature algorithm names supported by the current runtime.
         /// </summary>
+        /// <returns>Read-only list of supported host key names.</returns>
         public IReadOnlyList<string> GetSupportedHostKeyAlgorithms() => GetNamedResources(manager.getSignatureFactories());
 
         /// <summary>
         /// Gets the configured cipher algorithm names in preference order.
         /// </summary>
+        /// <returns>Read-only list of configured cipher names.</returns>
         public IReadOnlyList<string> GetConfiguredCiphers() => SplitAlgorithmList(CIPHERS);
 
         /// <summary>
         /// Gets the configured MAC algorithm names in preference order.
         /// </summary>
+        /// <returns>Read-only list of configured MAC names.</returns>
         public IReadOnlyList<string> GetConfiguredMacs() => SplitAlgorithmList(MACS);
 
         /// <summary>
         /// Gets the configured key exchange algorithm names in preference order.
         /// </summary>
+        /// <returns>Read-only list of configured key exchange names.</returns>
         public IReadOnlyList<string> GetConfiguredKeyExchangeAlgorithms() => SplitAlgorithmList(KEX_ALGORITHMS);
 
         /// <summary>
         /// Gets the configured host key/signature algorithm names in preference order.
         /// </summary>
+        /// <returns>Read-only list of configured host key names.</returns>
         public IReadOnlyList<string> GetConfiguredHostKeyAlgorithms() => SplitAlgorithmList(HOST_KEY_ALGORITHMS);
 
         /// <summary>

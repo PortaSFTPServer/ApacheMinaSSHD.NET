@@ -13,9 +13,12 @@
 
 namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 {
+    /// <summary>Defines the direction of a TCP forwarding connection.</summary>
     public enum AMNetForwardingType
     {
+        /// <summary>Outbound (direct) connection initiated by the server.</summary>
         Direct,
+        /// <summary>Inbound (forwarded) connection arriving from a remote peer.</summary>
         Forwarded
     }
 }

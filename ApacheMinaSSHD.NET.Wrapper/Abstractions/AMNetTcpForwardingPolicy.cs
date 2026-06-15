@@ -13,11 +13,16 @@
 
 namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 {
+    /// <summary>Defines the TCP forwarding policy for the SSH server.</summary>
     public enum AMNetTcpForwardingPolicy
     {
+        /// <summary>Disable all TCP forwarding.</summary>
         None,
+        /// <summary>Allow only local (outbound) TCP forwarding.</summary>
         Local,
+        /// <summary>Allow only remote (inbound) TCP forwarding.</summary>
         Remote,
+        /// <summary>Allow all TCP forwarding (both local and remote).</summary>
         All
     }
 }

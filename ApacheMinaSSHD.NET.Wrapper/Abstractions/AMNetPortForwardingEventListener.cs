@@ -16,30 +16,37 @@ using ApacheMinaSSHD.NET.Wrapper.Logging;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 {
+    /// <summary>Default implementation of <see cref="IAMNetPortForwardingEventListener"/> that logs tunnel lifecycle events.</summary>
     public class AMNetPortForwardingEventListener : IAMNetPortForwardingEventListener
     {
         private readonly IAMNetLogger _logger;
 
+        /// <summary>Creates a listener that logs tunnel events at the Info level.</summary>
+        /// <param name="logger">The logger to write events to, or <c>null</c> to use a default console logger.</param>
         public AMNetPortForwardingEventListener(IAMNetLogger? logger = null)
         {
             _logger = logger ?? new AMNetLogger(typeof(AMNetPortForwardingEventListener), AMNetLogger.LogLevel.Info);
         }
 
+        /// <inheritdoc />
         public virtual void OnEstablishingTunnel(string host, int port, bool isLocalForwarding, ISshSession session)
         {
             _logger.Info($"Establishing {(isLocalForwarding ? "local" : "remote")} tunnel to {host}:{port}");
         }
 
+        /// <inheritdoc />
         public virtual void OnEstablishedTunnel(string host, int port, bool isLocalForwarding, string boundAddress, ISshSession session)
         {
             _logger.Info($"Established {(isLocalForwarding ? "local" : "remote")} tunnel to {host}:{port} bound at {boundAddress}");
         }
 
+        /// <inheritdoc />
         public virtual void OnTearingDownTunnel(string host, int port, bool isLocalForwarding, ISshSession session)
         {
             _logger.Info($"Tearing down {(isLocalForwarding ? "local" : "remote")} tunnel to {host}:{port}");
         }
 
+        /// <inheritdoc />
         public virtual void OnTornDownTunnel(string host, int port, bool isLocalForwarding, ISshSession session)
         {
             _logger.Info($"Torn down {(isLocalForwarding ? "local" : "remote")} tunnel to {host}:{port}");

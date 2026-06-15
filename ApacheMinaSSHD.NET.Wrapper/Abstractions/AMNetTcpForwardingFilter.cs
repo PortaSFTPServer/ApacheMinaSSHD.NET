@@ -15,20 +15,25 @@ using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 {
+    /// <summary>Filters TCP port forwarding requests based on a configured policy.</summary>
     public class AMNetTcpForwardingFilter : IAMNetTcpForwardingFilter
     {
         private readonly AMNetTcpForwardingPolicy _policy;
 
+        /// <summary>Creates a filter with the specified TCP forwarding policy.</summary>
+        /// <param name="policy">The policy that governs listen and connect decisions.</param>
         public AMNetTcpForwardingFilter(AMNetTcpForwardingPolicy policy)
         {
             _policy = policy;
         }
 
+        /// <inheritdoc />
         public virtual bool CanListen(string host, int port, ISshSession session)
         {
             return _policy != AMNetTcpForwardingPolicy.None;
         }
 
+        /// <inheritdoc />
         public virtual bool CanConnect(AMNetForwardingType type, string host, int port, ISshSession session)
         {
             return type switch
@@ -39,7 +44,9 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             };
         }
 
+        /// <summary>Gets a filter that accepts all TCP forwarding requests.</summary>
         public static AMNetTcpForwardingFilter AcceptAll => new(AMNetTcpForwardingPolicy.All);
+        /// <summary>Gets a filter that rejects all TCP forwarding requests.</summary>
         public static AMNetTcpForwardingFilter RejectAll => new(AMNetTcpForwardingPolicy.None);
     }
 }

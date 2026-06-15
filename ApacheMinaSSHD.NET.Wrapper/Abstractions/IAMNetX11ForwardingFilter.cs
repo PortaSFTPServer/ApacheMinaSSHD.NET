@@ -15,8 +15,13 @@ using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 {
+    /// <summary>Provides a filter to control whether X11 forwarding is permitted for a session.</summary>
     public interface IAMNetX11ForwardingFilter
     {
+        /// <summary>Determines whether X11 forwarding is allowed for the given session and request type.</summary>
+        /// <param name="session">The SSH session requesting X11 forwarding.</param>
+        /// <param name="requestType">The type of X11 forwarding request.</param>
+        /// <returns><c>true</c> if X11 forwarding is permitted; otherwise <c>false</c>.</returns>
         bool CanForwardX11(ISshSession session, string requestType);
     }
 }

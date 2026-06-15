@@ -15,8 +15,13 @@ using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 {
+    /// <summary>Provides a filter to control whether SSH agent forwarding is permitted for a session.</summary>
     public interface IAMNetAgentForwardingFilter
     {
+        /// <summary>Determines whether agent forwarding is allowed for the given session and request type.</summary>
+        /// <param name="session">The SSH session requesting agent forwarding.</param>
+        /// <param name="requestType">The type of agent forwarding request.</param>
+        /// <returns><c>true</c> if agent forwarding is permitted; otherwise <c>false</c>.</returns>
         bool CanForwardAgent(ISshSession session, string requestType);
     }
 }

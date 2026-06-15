@@ -55,6 +55,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <summary>
         /// Gets the configured authentication method chains in evaluation order.
         /// </summary>
+        /// <returns>Read-only list of authentication method chains, where each inner list is a chain of method names.</returns>
         public IReadOnlyList<IReadOnlyList<string>> getConfiguredAuthenticationMethods()
         {
             return Config.GetConfiguredAuthenticationMethods();
@@ -63,6 +64,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <summary>
         /// Gets the configured authentication method chains in evaluation order.
         /// </summary>
+        /// <returns>Read-only list of authentication method chains, where each inner list is a chain of method names.</returns>
         public IReadOnlyList<IReadOnlyList<string>> GetConfiguredAuthenticationMethods()
         {
             return getConfiguredAuthenticationMethods();
@@ -162,6 +164,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <summary>
         /// Creates a server with the default SSH server factories.
         /// </summary>
+        /// <returns>A new configured <see cref="AMNetSshServer"/> instance.</returns>
         public static AMNetSshServer setUpDefaultServer()
         {
             return new AMNetSshServer(SshServer.setUpDefaultServer());
@@ -170,6 +173,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <summary>
         /// Creates a server with the default SSH server factories.
         /// </summary>
+        /// <returns>A new configured <see cref="AMNetSshServer"/> instance.</returns>
         public static AMNetSshServer SetUpDefaultServer() => setUpDefaultServer();
 
         /// <summary>
@@ -181,6 +185,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <summary>
         /// Gets the TCP port the SSH server listens on.
         /// </summary>
+        /// <returns>The TCP port number.</returns>
         public int getPort() => Port;
 
         /// <summary>
@@ -192,6 +197,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <summary>
         /// Gets the configured bind address.
         /// </summary>
+        /// <returns>The bind address, or <c>null</c> if the server default is used.</returns>
         public string? getHost() => Host;
 
         /// <summary>
@@ -229,21 +235,25 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <summary>
         /// Returns whether the server has been started.
         /// </summary>
+        /// <returns><c>true</c> if the server is running; otherwise <c>false</c>.</returns>
         public bool isStarted() => server.isStarted();
 
         /// <summary>
         /// Returns whether the server has been started.
         /// </summary>
+        /// <returns><c>true</c> if the server is running; otherwise <c>false</c>.</returns>
         public bool IsStarted() => isStarted();
 
         /// <summary>
         /// Returns whether the server has been closed.
         /// </summary>
+        /// <returns><c>true</c> if the server is closed; otherwise <c>false</c>.</returns>
         public bool isClosed() => server.isClosed();
 
         /// <summary>
         /// Returns whether the server has been closed.
         /// </summary>
+        /// <returns><c>true</c> if the server is closed; otherwise <c>false</c>.</returns>
         public bool IsClosed() => isClosed();
 
         private bool disposed;
@@ -676,8 +686,8 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <summary>
         /// Sets a per-IP connection rate limiter that is evaluated before any
         /// registered <see cref="IAMNetIoServiceEventListener"/>.
-        /// Pass <c>null</c> to disable rate limiting.
         /// </summary>
+        /// <param name="rateLimiter">The rate limiter to apply, or <c>null</c> to disable rate limiting.</param>
         public void SetRateLimiter(IAmNetConnectionRateLimiter? rateLimiter)
         {
             _rateLimiter = rateLimiter;

@@ -13,6 +13,7 @@
 
 namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
 {
+    /// <summary>Aggregate interface combining TCP, agent, and X11 forwarding filters.</summary>
     public interface IAMNetForwardingFilter : IAMNetTcpForwardingFilter, IAMNetAgentForwardingFilter, IAMNetX11ForwardingFilter
     {
     }
