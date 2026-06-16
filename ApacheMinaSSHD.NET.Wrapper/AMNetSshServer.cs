@@ -213,7 +213,18 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <summary>
         /// Stops the server and closes active resources using the server default shutdown behavior.
         /// </summary>
-        public void stop() => server.stop();
+        public void stop()
+        {
+            try
+            {
+                server.stop();
+            }
+            catch (java.lang.IllegalStateException ex)
+            {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[AMNetSshServer] Suppressed exception during stop: {ex.Message}");
+            }
+        }
 
         /// <summary>
         /// Stops the server and closes active resources using the server default shutdown behavior.
@@ -224,7 +235,18 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// Stops the server.
         /// </summary>
         /// <param name="immediately">When <c>true</c>, closes active sessions immediately.</param>
-        public void stop(bool immediately) => server.stop(immediately);
+        public void stop(bool immediately)
+        {
+            try
+            {
+                server.stop(immediately);
+            }
+            catch (java.lang.IllegalStateException ex)
+            {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[AMNetSshServer] Suppressed exception during stop: {ex.Message}");
+            }
+        }
 
         /// <summary>
         /// Stops the server.
