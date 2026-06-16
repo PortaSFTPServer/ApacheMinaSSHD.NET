@@ -11,7 +11,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using java.io;
 using java.nio.file;
+using java.security;
+using org.apache.sshd.common.config.keys;
+using org.apache.sshd.common.config.keys.writer.openssh;
+using org.apache.sshd.common.util.io.resource;
+using org.apache.sshd.common.util.security;
 using org.apache.sshd.server.keyprovider;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Factories
@@ -21,6 +27,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
     /// </summary>
     public class AMNetSimpleGeneratorHostKeyProvider
     {
+        private static readonly string TempFilePrefix = "amnet-sshd-hostkey-";
+        private static readonly System.Collections.Concurrent.ConcurrentBag<string> _tempFiles = new();
+        private static bool _cleanupRegistered;
+
         /// <summary>
         /// Creates a generated host key provider.
         /// </summary>
@@ -182,8 +192,20 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
 
         internal SimpleGeneratorHostKeyProvider ToJavaKeyPairProvider()
         {
-            var provider = new SimpleGeneratorHostKeyProvider();
             ResolveKeyPath();
+
+            if (!string.IsNullOrWhiteSpace(ResolvedKeyPath)
+                && !string.IsNullOrEmpty(Password)
+                && System.IO.File.Exists(ResolvedKeyPath))
+            {
+                string? decryptedPath = TryDecryptHostKey(ResolvedKeyPath, Password);
+                if (decryptedPath != null)
+                {
+                    ResolvedKeyPath = decryptedPath;
+                }
+            }
+
+            var provider = new SimpleGeneratorHostKeyProvider();
             if (!string.IsNullOrWhiteSpace(ResolvedKeyPath))
             {
                 provider.setPath(Paths.get(ResolvedKeyPath));
@@ -193,12 +215,83 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
             provider.setKeySize(KeySize);
             provider.setStrictFilePermissions(StrictFilePermissions);
 
-            // Note: Password/passphrase protection for host keys is not supported
-            // by the upstream SimpleGeneratorHostKeyProvider in this SSHD version.
-            // If provided, the password is stored for future compatibility when/whether
-            // the upstream adds this capability.
-
             return provider;
+        }
+
+        private static string? TryDecryptHostKey(string keyPath, string password)
+        {
+            try
+            {
+                var path = Paths.get(keyPath);
+                var resourceKey = new PathResource(path);
+                var passwordProvider = FilePasswordProvider.of(password);
+
+                java.io.InputStream? inputStream = null;
+                java.io.OutputStream? os = null;
+                try
+                {
+                    inputStream = java.nio.file.Files.newInputStream(path);
+                    var keyPairs = SecurityUtils.loadKeyPairIdentities(
+                        null, resourceKey, inputStream, passwordProvider);
+
+                    if (keyPairs == null || !keyPairs.iterator().hasNext())
+                    {
+                        return null;
+                    }
+
+                    var kp = (KeyPair)keyPairs.iterator().next();
+                    string tempFile = System.IO.Path.Combine(
+                        System.IO.Path.GetTempPath(),
+                        TempFilePrefix + Guid.NewGuid() + ".openssh");
+
+                    var tempPath = Paths.get(tempFile);
+                    os = java.nio.file.Files.newOutputStream(tempPath);
+                    var writer = new OpenSSHKeyPairResourceWriter();
+                    writer.writePrivateKey(kp, "host key", null, os);
+
+                    RegisterTempFileCleanup(tempFile);
+                    return tempFile;
+                }
+                finally
+                {
+                    inputStream?.close();
+                    os?.close();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[AMNetSimpleGeneratorHostKeyProvider] Failed to decrypt host key '{keyPath}': {ex.Message}");
+                return null;
+            }
+        }
+
+        private static void RegisterTempFileCleanup(string path)
+        {
+            _tempFiles.Add(path);
+
+            if (!_cleanupRegistered)
+            {
+                _cleanupRegistered = true;
+                AppDomain.CurrentDomain.ProcessExit += (_, _) => CleanupTempFiles();
+            }
+        }
+
+        private static void CleanupTempFiles()
+        {
+            foreach (string file in _tempFiles)
+            {
+                try
+                {
+                    if (System.IO.File.Exists(file))
+                    {
+                        System.IO.File.Delete(file);
+                    }
+                }
+                catch
+                {
+                }
+            }
         }
     }
 }
