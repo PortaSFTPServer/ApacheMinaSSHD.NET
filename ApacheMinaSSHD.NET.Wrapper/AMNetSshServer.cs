@@ -200,10 +200,22 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <returns>The bind address, or <c>null</c> if the server default is used.</returns>
         public string? getHost() => Host;
 
+        private static bool _shutdownHandlerInstalled;
+
         /// <summary>
         /// Starts accepting SSH connections.
         /// </summary>
-        public void start() => server.start();
+        public void start()
+        {
+            if (!_shutdownHandlerInstalled)
+            {
+                var previous = java.lang.Thread.getDefaultUncaughtExceptionHandler();
+                java.lang.Thread.setDefaultUncaughtExceptionHandler(
+                    new Internals.SuppressShutdownExceptionHandler(previous));
+                _shutdownHandlerInstalled = true;
+            }
+            server.start();
+        }
 
         /// <summary>
         /// Starts accepting SSH connections.
