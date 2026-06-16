@@ -206,4 +206,40 @@ public class SimpleGeneratorHostKeyProviderTests
             try { Directory.Delete(tempDir, true); } catch { }
         }
     }
+
+    [Fact]
+    public void Password_default_is_null()
+    {
+        var provider = new AMNetSimpleGeneratorHostKeyProvider();
+        Assert.Null(provider.Password);
+        Assert.Null(provider.getPassword());
+    }
+
+    [Fact]
+    public void setPassword_accepts_string()
+    {
+        var provider = new AMNetSimpleGeneratorHostKeyProvider();
+        provider.setPassword("my-secret-passphrase");
+        Assert.Equal("my-secret-passphrase", provider.Password);
+        Assert.Equal("my-secret-passphrase", provider.getPassword());
+    }
+
+    [Fact]
+    public void setPassword_null_is_allowed()
+    {
+        var provider = new AMNetSimpleGeneratorHostKeyProvider();
+        provider.setPassword("pass");
+        provider.setPassword(null);
+        Assert.Null(provider.Password);
+    }
+
+    [Fact]
+    public void setPassword_clear_is_allowed()
+    {
+        var provider = new AMNetSimpleGeneratorHostKeyProvider();
+        provider.setPassword("secret");
+        provider.setPassword(null);
+        Assert.Null(provider.getPassword());
+    }
+
 }

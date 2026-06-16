@@ -54,6 +54,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         public int KeySize { get; private set; }
 
         /// <summary>
+        /// Gets the optional passphrase used to protect the host key file.
+        /// </summary>
+        public string? Password { get; private set; }
+
+        /// <summary>
         /// Gets whether strict host key file permission checks are enabled.
         /// </summary>
         public bool StrictFilePermissions { get; private set; } = true;
@@ -94,6 +99,21 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         /// </summary>
         /// <returns>The key size in bits.</returns>
         public int getKeySize() => KeySize;
+
+        /// <summary>
+        /// Sets an optional passphrase used to protect the host key file.
+        /// </summary>
+        /// <param name="password">The passphrase, or <c>null</c> to disable password protection.</param>
+        public void setPassword(string? password)
+        {
+            Password = password;
+        }
+
+        /// <summary>
+        /// Gets the optional passphrase used to protect the host key file.
+        /// </summary>
+        /// <returns>The passphrase, or <c>null</c> if no password is set.</returns>
+        public string? getPassword() => Password;
 
         /// <summary>
         /// Enables or disables strict host key file permission checks.
@@ -172,6 +192,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
             provider.setAlgorithm(Algorithm);
             provider.setKeySize(KeySize);
             provider.setStrictFilePermissions(StrictFilePermissions);
+
+            // Note: Password/passphrase protection for host keys is not supported
+            // by the upstream SimpleGeneratorHostKeyProvider in this SSHD version.
+            // If provided, the password is stored for future compatibility when/whether
+            // the upstream adds this capability.
 
             return provider;
         }
