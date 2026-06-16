@@ -229,12 +229,44 @@ namespace ApacheMinaSSHD.NET.Wrapper
         {
             try
             {
+                CloseAcceptorFirst();
                 server.stop();
             }
             catch (java.lang.IllegalStateException ex)
             {
                 System.Diagnostics.Debug.WriteLine(
                     $"[AMNetSshServer] Suppressed exception during stop: {ex.Message}");
+            }
+        }
+
+        private void CloseAcceptorFirst()
+        {
+            try
+            {
+                var type = server.GetType();
+                System.Reflection.FieldInfo? acceptorField = null;
+                while (type != null && acceptorField == null)
+                {
+                    acceptorField = type.GetField(
+                        "acceptor",
+                        System.Reflection.BindingFlags.Instance
+                            | System.Reflection.BindingFlags.NonPublic
+                            | System.Reflection.BindingFlags.Public);
+                    type = type.BaseType;
+                }
+
+                if (acceptorField?.GetValue(server) is org.apache.sshd.common.io.IoService acceptor)
+                {
+                    var closeBool = acceptor.GetType().GetMethod(
+                        "close",
+                        [typeof(bool)]);
+                    closeBool?.Invoke(acceptor, [true]);
+                    System.Threading.Thread.Sleep(300);
+                }
+            }
+            catch
+            {
+                // Reflection errors are non-fatal; server.stop() handles the full sequence.
             }
         }
 
