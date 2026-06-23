@@ -15,6 +15,7 @@ using ApacheMinaSSHD.NET.Wrapper.Abstractions;
 using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 using ApacheMinaSSHD.NET.Wrapper.FileSystem;
 using ApacheMinaSSHD.NET.Wrapper.Internals.Models;
+using ApacheMinaSSHD.NET.Wrapper.Logging;
 using java.nio.file;
 using java.nio.file.attribute;
 using org.apache.sshd.common.session;
@@ -36,6 +37,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
     {
         private readonly ScpFileOpener openerDelegate = DefaultScpFileOpener.INSTANCE;
         private readonly IAMNetScpFileOpener fileOpener;
+        static readonly IAMNetLogger logger = new AMNetLogger(typeof(InternalScpFileOpener), AMNetLogger.LogLevel.Info);
 
         public InternalScpFileOpener(IAMNetScpFileOpener fileOpener)
         {
@@ -50,6 +52,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             JavaSet permissions,
             ScpTimestampCommandDetails time)
         {
+            logger.Debug($"resolveIncomingFilePath({localPath}, name={name})");
             Path resolvedPath = openerDelegate.resolveIncomingFilePath(
                 session,
                 localPath,
@@ -295,6 +298,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             JavaSet permissions,
             params OpenOption[] options)
         {
+            logger.Debug($"openRead({file}, size={size})");
             var access = CreateAccess(
                 session,
                 SshScpFileOperation.OpenRead,
@@ -316,6 +320,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             JavaSet permissions,
             JavaInputStream stream)
         {
+            logger.Debug($"closeRead({file}, size={size})");
             var access = CreateAccess(
                 session,
                 SshScpFileOperation.CloseRead,
@@ -353,6 +358,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             JavaSet permissions,
             params OpenOption[] options)
         {
+            logger.Debug($"openWrite({file}, size={size})");
             var access = CreateAccess(
                 session,
                 SshScpFileOperation.OpenWrite,
@@ -374,6 +380,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             JavaSet permissions,
             JavaOutputStream stream)
         {
+            logger.Debug($"closeWrite({file}, size={size})");
             var access = CreateAccess(
                 session,
                 SshScpFileOperation.CloseWrite,

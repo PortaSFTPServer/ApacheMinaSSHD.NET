@@ -11,7 +11,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using java.io;
 using java.nio.file;
 using java.security;
 using org.apache.sshd.common.config.keys;
@@ -30,6 +29,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         private static readonly string TempFilePrefix = "amnet-sshd-hostkey-";
         private static readonly System.Collections.Concurrent.ConcurrentBag<string> _tempFiles = new();
         private static bool _cleanupRegistered;
+        private string? _fallbackPassword;
 
         /// <summary>
         /// Creates a generated host key provider.
@@ -126,6 +126,22 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         public string? getPassword() => Password;
 
         /// <summary>
+        /// Sets a fallback passphrase to try if the primary <see cref="Password"/> fails
+        /// (e.g., when the database-provided passphrase doesn't match the key's encryption).
+        /// </summary>
+        /// <param name="password">The fallback passphrase, or <c>null</c> to disable fallback.</param>
+        public void setFallbackPassword(string? password)
+        {
+            _fallbackPassword = password;
+        }
+
+        /// <summary>
+        /// Gets the fallback passphrase, if any.
+        /// </summary>
+        /// <returns>The fallback passphrase, or <c>null</c> if none set.</returns>
+        public string? getFallbackPassword() => _fallbackPassword;
+
+        /// <summary>
         /// Enables or disables strict host key file permission checks.
         /// </summary>
         /// <param name="strictFilePermissions">Whether strict file permission checks are enabled.</param>
@@ -194,14 +210,36 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         {
             ResolveKeyPath();
 
+            bool isPuttyFormat = false;
+
             if (!string.IsNullOrWhiteSpace(ResolvedKeyPath)
-                && !string.IsNullOrEmpty(Password)
                 && System.IO.File.Exists(ResolvedKeyPath))
             {
-                string? decryptedPath = TryDecryptHostKey(ResolvedKeyPath, Password);
+                isPuttyFormat = DetectPuttyFormat(ResolvedKeyPath);
+
+                string? decryptedPath = TryDecryptHostKey(ResolvedKeyPath, Password ?? "");
+                if (decryptedPath == null && isPuttyFormat && !string.IsNullOrEmpty(_fallbackPassword))
+                {
+                    System.Console.Error.WriteLine(
+                        $"[AMNetSimpleGeneratorHostKeyProvider] Primary password failed for PuTTY key, trying fallback...");
+                    decryptedPath = TryDecryptHostKey(ResolvedKeyPath, _fallbackPassword);
+                }
+
                 if (decryptedPath != null)
                 {
                     ResolvedKeyPath = decryptedPath;
+                }
+                else if (isPuttyFormat)
+                {
+                    string diversionPath = System.IO.Path.Combine(
+                        System.IO.Path.GetTempPath(),
+                        "Porta_SSHD_generated_key_" + Guid.NewGuid() + ".openssh");
+
+                    System.Console.Error.WriteLine(
+                        $"[AMNetSimpleGeneratorHostKeyProvider] WARNING: PuTTY key at '{ResolvedKeyPath}' could not be decrypted. " +
+                        $"SSHD will generate a new key at '{diversionPath}'. Original PuTTY key preserved.");
+
+                    ResolvedKeyPath = diversionPath;
                 }
             }
 
@@ -219,6 +257,54 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         }
 
         private static string? TryDecryptHostKey(string keyPath, string password)
+        {
+            try
+            {
+                string pemPath = System.IO.Path.ChangeExtension(keyPath, ".pem");
+                if (System.IO.File.Exists(pemPath))
+                {
+                    var result = LoadAndWriteSshdKey(pemPath, password);
+                    if (result != null)
+                        return result;
+                }
+
+                var ppkResult = LoadAndWriteSshdKey(keyPath, password);
+                if (ppkResult != null)
+                    return ppkResult;
+
+                string? puttyPem = ApacheMinaSSHD.NET.Wrapper.Helpers.PuttyKeyConverter.TryConvertToPem(keyPath, password);
+                if (puttyPem != null)
+                {
+                    var result = LoadAndWriteSshdKey(puttyPem, password);
+                    if (result != null)
+                        return result;
+                }
+
+                return null;
+            }
+            catch (System.Exception ex)
+            {
+                System.Console.Error.WriteLine(
+                    $"[AMNetSimpleGeneratorHostKeyProvider] Failed to decrypt host key '{keyPath}': {ex.Message}");
+                return null;
+            }
+        }
+
+        private static bool DetectPuttyFormat(string path)
+        {
+            try
+            {
+                using var reader = new System.IO.StreamReader(path);
+                string? firstLine = reader.ReadLine();
+                return firstLine != null && firstLine.StartsWith("PuTTY-User-Key-File-", StringComparison.Ordinal);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private static string? LoadAndWriteSshdKey(string keyPath, string password)
         {
             try
             {
@@ -260,8 +346,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
             }
             catch (System.Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(
-                    $"[AMNetSimpleGeneratorHostKeyProvider] Failed to decrypt host key '{keyPath}': {ex.Message}");
+                System.Console.Error.WriteLine(
+                    $"[AMNetSimpleGeneratorHostKeyProvider] Failed to load host key '{keyPath}': {ex.Message}");
                 return null;
             }
         }

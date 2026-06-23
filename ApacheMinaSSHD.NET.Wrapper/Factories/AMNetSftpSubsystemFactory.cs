@@ -12,35 +12,57 @@
 // limitations under the License.
 
 using ApacheMinaSSHD.NET.Wrapper.Abstractions;
+using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 using ApacheMinaSSHD.NET.Wrapper.Internals;
 using org.apache.sshd.sftp.server;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Factories
 {
-    /// <summary>
-    /// Configures the SFTP subsystem for an <see cref="AMNetSshServer"/>.
-    /// </summary>
     public class AMNetSftpSubsystemFactory
     {
         private readonly SftpSubsystemFactory factory = new();
 
-        /// <summary>
-        /// Creates an SFTP subsystem factory.
-        /// </summary>
+        public static readonly IAMNetSftpEventListener DefaultListener = new NoOpSftpEventListener();
+
         public AMNetSftpSubsystemFactory()
         {
         }
 
         internal SftpSubsystemFactory JavaFactory => factory;
 
-        /// <summary>
-        /// Registers an SFTP event listener.
-        /// </summary>
-        /// <param name="sftpEventListener">The listener that receives SFTP lifecycle and file events.</param>
-        public void addSftpEventListener(IAMNetSftpEventListener sftpEventListener)
+        public void addSftpEventListener(IAMNetSftpEventListener? sftpEventListener)
         {
-            ArgumentNullException.ThrowIfNull(sftpEventListener);
             factory.addSftpEventListener(new InternalSftpEventListener(sftpEventListener));
+        }
+
+        private sealed class NoOpSftpEventListener : IAMNetSftpEventListener
+        {
+            public void OnInitialized(ISshSession sshSession, int version) { }
+            public void OnDestroying(ISshSession sshSession) { }
+            public void OnReadingEntries(ISshEntries sshEntries) { }
+            public void OnReadEntries(ISshEntries sshEntries) { }
+            public void OnExiting(ISshSession sshSession, ISshHandle sshHandle) { }
+            public void OnReceivedExtension(ISshReceived sshReceived) { }
+            public void OnReceived(ISshReceived sshReceived) { }
+            public void OnOpening(ISshEvent ctx) { }
+            public void OnOpen(ISshEvent ctx) { }
+            public void OnOpenFailed(ISshIOFailure ctx) { }
+            public void OnClosing(ISshEvent ctx) { }
+            public void OnClosed(ISshEvent ctx) { }
+            public void OnReading(ISshReadWrite ctx) { }
+            public void OnRead(ISshReadWrite ctx) { }
+            public void OnWriting(ISshReadWrite ctx) { }
+            public void OnWrite(ISshReadWrite ctx) { }
+            public void OnCreating(ISshPath ctx) { }
+            public void OnCreated(ISshPath ctx) { }
+            public void OnRemoving(ISshPath ctx) { }
+            public void OnRemoved(ISshPath ctx) { }
+            public void OnMoving(ISshMove ctx) { }
+            public void OnMoved(ISshMove ctx) { }
+            public void OnModifyingAttributes(ISshPath ctx) { }
+            public void OnModifiedAttributes(ISshPath ctx) { }
+            public void OnLinking(ISshSysLink ctx) { }
+            public void OnLink(ISshSysLink ctx) { }
         }
 
         /// <summary>

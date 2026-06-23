@@ -65,6 +65,7 @@ public class SftpEventListenerTests
     {
         public string RemoteAddress => "10.0.0.5";
         public Guid SessionId => Guid.NewGuid();
+        public void Disconnect() { }
     }
 
     private sealed class MockHandle : ISshHandle

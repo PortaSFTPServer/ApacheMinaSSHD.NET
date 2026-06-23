@@ -12,7 +12,6 @@
 // limitations under the License.
 
 using org.apache.sshd.common.util.security;
-using org.apache.sshd.common.util.security.bouncycastle;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Helpers
 {

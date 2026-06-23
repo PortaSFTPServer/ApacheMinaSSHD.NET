@@ -13,7 +13,6 @@
 
 using ApacheMinaSSHD.NET.Wrapper.Abstractions;
 using ApacheMinaSSHD.NET.Wrapper.Internals.Models;
-using java.nio.file.attribute;
 using java.util;
 using org.apache.sshd.common.session;
 using org.apache.sshd.scp.common;

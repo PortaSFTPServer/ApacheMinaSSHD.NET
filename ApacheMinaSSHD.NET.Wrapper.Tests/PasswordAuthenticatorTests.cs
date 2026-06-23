@@ -127,5 +127,6 @@ public class PasswordAuthenticatorTests
         public static readonly DummySession Instance = new();
         public Guid SessionId => Guid.Empty;
         public string RemoteAddress => "127.0.0.1";
+        public void Disconnect() { }
     }
 }

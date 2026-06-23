@@ -55,12 +55,27 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         public bool CreateUserDirectory { get; }
 
         /// <summary>
+        /// Gets or sets an optional custom resolver for user home directories.
+        /// When set, overrides the default <see cref="ResolveUserHomeDirectory"/> behavior.
+        /// The delegate receives the authenticated username and should return the
+        /// full local directory path for that user.
+        /// </summary>
+        public Func<string, string?>? UserHomeResolver { get; set; }
+
+        /// <summary>
         /// Resolves the local home directory for an authenticated username.
         /// </summary>
         /// <param name="username">The authenticated username.</param>
         /// <returns>The local directory path to use as the user's home.</returns>
         public virtual string ResolveUserHomeDirectory(string username)
         {
+            if (UserHomeResolver != null)
+            {
+                var home = UserHomeResolver(username);
+                if (!string.IsNullOrWhiteSpace(home))
+                    return home;
+            }
+
             string sanitized = SanitizeUsername(username);
             return Path.Combine(BasePath, sanitized);
         }

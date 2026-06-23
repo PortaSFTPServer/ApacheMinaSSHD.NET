@@ -22,5 +22,17 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions.Models
         string RemoteAddress { get; }
         /// <summary>Gets the unique session identifier assigned by the wrapper.</summary>
         Guid SessionId { get; }
+        /// <summary>Gets the negotiated session cipher when available.</summary>
+        string? SessionCipher => null;
+        /// <summary>Gets the SSH algorithm identifier (e.g., "ssh-rsa", "ssh-ed25519") when available.</summary>
+        string? KeyAlgorithmId => null;
+        /// <summary>Gets the key algorithm name (e.g., "RSA", "ECDSA") when available.</summary>
+        string? KeyAlgorithm => null;
+        /// <summary>Gets the key size in bits when available.</summary>
+        int KeySize => 0;
+        /// <summary>Gets the client software version string (e.g., "SSH-2.0-OpenSSH_8.9p1").</summary>
+        string? ClientSoftwareIdentifier => null;
+        /// <summary>Forces the session to disconnect immediately.</summary>
+        void Disconnect();
     }
 }

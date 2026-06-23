@@ -47,6 +47,7 @@ public class ScpTransferEventListenerTests
     {
         public string RemoteAddress => "10.0.0.5";
         public Guid SessionId => Guid.NewGuid();
+        public void Disconnect() { }
     }
 
     [Fact] public void Constructor_default_logger() => new AMNetScpTransferEventListener();

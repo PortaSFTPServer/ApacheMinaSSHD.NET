@@ -25,18 +25,27 @@ namespace ApacheMinaSSHD.NET.Wrapper.Logging
     {
 
         private readonly Logger slf4JLogger;
+        private readonly LogLevel _level;
+
+        /// <summary>Global minimum log level across all wrapper loggers. Default <see cref="LogLevel.Info"/>.</summary>
+        public static LogLevel GlobalLevel { get; set; } = LogLevel.Info;
+
+        /// <summary>Optional callback invoked for every log message that passes level filtering.</summary>
+        public static Action<LogLevel, string, Exception?>? LogEvent { get; set; }
 
         /// <summary>
         /// Log levels supported by <see cref="AMNetLogger"/>.
         /// </summary>
         public enum LogLevel
         {
-            /// <summary>Informational logging.</summary>
-            Info,
-            /// <summary>Warning logging.</summary>
-            Warn,
+            /// <summary>No logging.</summary>
+            Off,
             /// <summary>Error logging.</summary>
             Error,
+            /// <summary>Warning logging.</summary>
+            Warn,
+            /// <summary>Informational logging.</summary>
+            Info,
             /// <summary>Debug logging.</summary>
             Debug,
             /// <summary>Trace logging.</summary>
@@ -46,7 +55,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Logging
         private static readonly object slf4jLock = new();
         private static bool slf4jConfigured;
 
-        private static void EnsureSlf4jConfigured(LogLevel logLevel)
+        private static void EnsureSlf4jConfigured()
         {
             if (slf4jConfigured)
             {
@@ -60,7 +69,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Logging
                     return;
                 }
 
-                java.lang.System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", logLevel.ToString().ToLowerInvariant());
+                // Set SLF4J Simple to the most verbose level so AMNetLogger's own
+                // per-instance level filtering is the sole gate for wrapper-originated messages.
+                // MINA SSHD internal logs also pass through at this level; consumers that
+                // don't want them should set a root-level threshold when switching backends.
+                java.lang.System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "trace");
                 java.lang.System.setProperty("org.slf4j.simpleLogger.showDateTime", "true");
                 java.lang.System.setProperty("org.slf4j.simpleLogger.dateTimeFormat", "yyyy-MM-dd HH:mm:ss.SSS |");
                 java.lang.System.setProperty("org.slf4j.simpleLogger.showThreadName", "false");
@@ -74,73 +87,92 @@ namespace ApacheMinaSSHD.NET.Wrapper.Logging
         /// Creates a logger for the supplied source type.
         /// </summary>
         /// <param name="type">The source type used as the logger name.</param>
-        /// <param name="logLevel">The default log level.</param>
+        /// <param name="logLevel">The minimum log level for this logger instance.</param>
         public AMNetLogger(Type type, LogLevel logLevel = LogLevel.Info)
         {
-            EnsureSlf4jConfigured(logLevel);
+            EnsureSlf4jConfigured();
 
             slf4JLogger = LoggerFactory.getLogger(type.FullName);
-
-            // SLF4J bridge is initialized by EnsureSlf4jConfigured above
-
+            _level = logLevel;
         }
+
+        private bool IsEnabled(LogLevel level) => level <= GlobalLevel;
+
         /// <inheritdoc />
         public void Info(string message)
         {
-            slf4JLogger.info(message);
+            if (IsEnabled(LogLevel.Info))
+            {
+                slf4JLogger.info(message);
+                LogEvent?.Invoke(LogLevel.Info, message, null);
+            }
         }
 
         /// <inheritdoc />
         public void Error(string message, Exception? ex = null)
         {
-            if (ex == null)
+            if (IsEnabled(LogLevel.Error))
             {
-                slf4JLogger.error(message);
-            }
-            else
-            {
-                // IKVM allows passing .NET Exceptions directly to Java methods in many cases
-                slf4JLogger.error(message, ikvm.runtime.Util.mapException(ex));
+                if (ex == null)
+                {
+                    slf4JLogger.error(message);
+                }
+                else
+                {
+                    slf4JLogger.error(message, ikvm.runtime.Util.mapException(ex));
+                }
+                LogEvent?.Invoke(LogLevel.Error, message, ex);
             }
         }
 
         /// <inheritdoc />
         public void Warn(string message, Exception? ex = null)
         {
-            if (ex == null)
+            if (IsEnabled(LogLevel.Warn))
             {
-                slf4JLogger.warn(message);
-            }
-            else
-            {
-                // IKVM allows passing .NET Exceptions directly to Java methods in many cases
-                slf4JLogger.warn(message, ikvm.runtime.Util.mapException(ex));
+                if (ex == null)
+                {
+                    slf4JLogger.warn(message);
+                }
+                else
+                {
+                    slf4JLogger.warn(message, ikvm.runtime.Util.mapException(ex));
+                }
+                LogEvent?.Invoke(LogLevel.Warn, message, ex);
             }
         }
 
         /// <inheritdoc />
         public void Debug(string message, Exception? ex = null)
         {
-            if (ex == null)
+            if (IsEnabled(LogLevel.Debug))
             {
-                slf4JLogger.debug(message);
-            }
-            else
-            {
-                slf4JLogger.debug(message, ikvm.runtime.Util.mapException(ex));
+                if (ex == null)
+                {
+                    slf4JLogger.debug(message);
+                }
+                else
+                {
+                    slf4JLogger.debug(message, ikvm.runtime.Util.mapException(ex));
+                }
+                LogEvent?.Invoke(LogLevel.Debug, message, ex);
             }
         }
 
         /// <inheritdoc />
         public void Trace(string message, Exception? ex = null)
         {
-            if (ex == null)
+            if (IsEnabled(LogLevel.Trace))
             {
-                slf4JLogger.trace(message);
-            }
-            else
-            {
-                slf4JLogger.trace(message, ikvm.runtime.Util.mapException(ex));
+                if (ex == null)
+                {
+                    slf4JLogger.trace(message);
+                }
+                else
+                {
+                    slf4JLogger.trace(message, ikvm.runtime.Util.mapException(ex));
+                }
+                LogEvent?.Invoke(LogLevel.Trace, message, ex);
             }
         }
 

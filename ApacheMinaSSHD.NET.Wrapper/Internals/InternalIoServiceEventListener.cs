@@ -34,12 +34,15 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         }
         public void abortAcceptedConnection(IoAcceptor acceptor, SocketAddress local, SocketAddress remote, SocketAddress service, Exception reason)
         {
+            var remoteEp = Map(remote);
+            logger.Warn($"Connection aborted from {remoteEp}: {reason?.Message}");
             ioServiceEventListener.OnConnectionAborted(CreateContext(acceptor, local, remote, service, reason));
 
         }
 
         public void abortEstablishedConnection(IoConnector connector, SocketAddress local, AttributeRepository context, SocketAddress remote, Exception reason)
         {
+            logger.Warn($"Outbound connection aborted to {remote}: {reason?.Message}");
             ioServiceEventListener.OnConnectionAborted(CreateClientContext(connector, local, remote, context, reason));
 
         }
@@ -47,23 +50,25 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
         public void connectionAccepted(IoAcceptor acceptor, SocketAddress local, SocketAddress remote, SocketAddress service)
         {
-
+            var remoteEp = Map(remote);
             var ctx = CreateContext(acceptor, local, remote, service, null!);
 
             if (!ioServiceEventListener.OnConnectionAccepted(ctx))
             {
+                logger.Warn($"Connection from {remoteEp} blocked by policy.");
                 throw new IOException("Blocked by policy.");
 
             }
             else
             {
-                logger.Info("A connection was accepted.");
+                logger.Info($"Connection accepted from {remoteEp}");
             }
 
         }
 
         public void connectionEstablished(IoConnector connector, SocketAddress local, AttributeRepository context, SocketAddress remote)
         {
+            logger.Info($"Outbound connection established to {remote}");
             ioServiceEventListener.OnOutboundConnectionEstablished(CreateClientContext(connector, local, remote, context, null!));
 
         }

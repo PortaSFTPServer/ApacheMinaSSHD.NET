@@ -182,6 +182,7 @@ public sealed class PortForwardingFilterTests
     {
         public string RemoteAddress => "127.0.0.1";
         public Guid SessionId { get; } = Guid.NewGuid();
+        public void Disconnect() { }
     }
 
     private sealed class AMNetAcceptAllAgentForwardingFilter : IAMNetAgentForwardingFilter

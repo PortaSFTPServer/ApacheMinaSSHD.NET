@@ -16,6 +16,7 @@ using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 using ApacheMinaSSHD.NET.Wrapper.Factories;
 using ApacheMinaSSHD.NET.Wrapper.FileSystem;
 using ApacheMinaSSHD.NET.Wrapper.Internals.Models;
+using ApacheMinaSSHD.NET.Wrapper.Logging;
 using java.nio.channels;
 using java.nio.file;
 using java.nio.file.attribute;
@@ -33,6 +34,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
     {
         private readonly SftpFileSystemAccessor accessorDelegate;
         private readonly IAMNetSftpFileSystemAccessor fileSystemAccessor;
+        static readonly IAMNetLogger logger = new AMNetLogger(typeof(InternalSftpFileSystemAccessor), AMNetLogger.LogLevel.Info);
 
         public InternalSftpFileSystemAccessor(IAMNetSftpFileSystemAccessor fileSystemAccessor, AMNetSftpSubsystemFactory factory)
         {
@@ -182,6 +184,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             Set options,
             params FileAttribute[] attrs)
         {
+            logger.Debug($"openFile({file})");
             fileSystemAccessor.OpenFile(CreateContext(
                 subsystem,
                 SshFileSystemOperation.OpenFile,
@@ -192,18 +195,21 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
             try
             {
-                return accessorDelegate.openFile(subsystem, fileHandle, file, handle, options, attrs);
+                // Bypass accessorDelegate.openFile() — the default MINA implementation calls
+                // Files.exists(file) whose IOException catch is lost through IKVM translation,
+                // causing NoSuchFileException to propagate for new files.
+                return FileChannel.open(file, options, attrs);
             }
             catch (java.lang.UnsupportedOperationException) when (attrs?.Length > 0)
             {
                 // Some Windows providers reject create-time attributes sent by clients such as WinSCP.
                 // Retry without attributes so the open can succeed while later policy hooks still run.
-                return accessorDelegate.openFile(subsystem, fileHandle, file, handle, options);
+                return FileChannel.open(file, options);
             }
             catch (NotSupportedException) when (attrs?.Length > 0)
             {
                 // Same compatibility path as the Java exception case, surfaced through IKVM as .NET.
-                return accessorDelegate.openFile(subsystem, fileHandle, file, handle, options);
+                return FileChannel.open(file, options);
             }
         }
 
@@ -253,6 +259,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             Channel channel,
             Set options)
         {
+            logger.Debug($"closeFile({file})");
             fileSystemAccessor.CloseFile(CreateContext(
                 subsystem,
                 SshFileSystemOperation.CloseFile,
@@ -446,6 +453,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
         public void createDirectory(SftpSubsystemProxy subsystem, Path path)
         {
+            logger.Info($"createDirectory({path})");
             fileSystemAccessor.CreateDirectory(CreateContext(
                 subsystem,
                 SshFileSystemOperation.CreateDirectory,
@@ -457,6 +465,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
         public void createLink(SftpSubsystemProxy subsystem, Path link, Path existing, bool symLink)
         {
+            logger.Debug($"createLink({link} -> {existing}, symLink={symLink})");
             fileSystemAccessor.CreateLink(CreateContext(
                 subsystem,
                 SshFileSystemOperation.CreateLink,
@@ -482,6 +491,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
         public void renameFile(SftpSubsystemProxy subsystem, Path oldPath, Path newPath, Collection opts)
         {
+            logger.Debug($"renameFile({oldPath} -> {newPath})");
             fileSystemAccessor.RenameFile(CreateContext(
                 subsystem,
                 SshFileSystemOperation.RenameFile,
@@ -495,6 +505,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
         public void copyFile(SftpSubsystemProxy subsystem, Path src, Path dst, Collection opts)
         {
+            logger.Debug($"copyFile({src} -> {dst})");
             fileSystemAccessor.CopyFile(CreateContext(
                 subsystem,
                 SshFileSystemOperation.CopyFile,
@@ -508,6 +519,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
         public void removeFile(SftpSubsystemProxy subsystem, Path path, bool isDirectory)
         {
+            logger.Debug($"removeFile({path}, isDirectory={isDirectory})");
             fileSystemAccessor.RemoveFile(CreateContext(
                 subsystem,
                 SshFileSystemOperation.RemoveFile,

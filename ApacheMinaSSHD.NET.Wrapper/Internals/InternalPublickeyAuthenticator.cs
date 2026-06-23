@@ -14,9 +14,8 @@
 using ApacheMinaSSHD.NET.Wrapper.Abstractions;
 using ApacheMinaSSHD.NET.Wrapper.Internals.Models;
 using java.security;
-using org.apache.sshd.common;
+using java.security.interfaces;
 using org.apache.sshd.common.config.keys;
-using org.apache.sshd.common.session;
 using org.apache.sshd.server.session;
 
 
@@ -47,9 +46,50 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
             string incomingFingerprint = KeyUtils.getFingerPrint(pk);
 
+            ExtractKeyInfo(pk, out var algorithmId, out var algorithm, out var keySize);
+            wrappedSession.SetKeyInfo(algorithmId, algorithm, keySize);
+
             var result = _publickeyAuthenticator.Authenticate(username, incomingFingerprint, wrappedSession);
 
             return result;
+        }
+
+        private static void ExtractKeyInfo(PublicKey pk, out string? algorithmId, out string? algorithm, out int keySize)
+        {
+            algorithm = pk.getAlgorithm();
+            algorithmId = null;
+            keySize = 0;
+
+            if (pk is RSAPublicKey rsaKey)
+            {
+                algorithmId = "ssh-rsa";
+                keySize = rsaKey.getModulus().bitLength();
+            }
+            else if (pk is DSAPublicKey dsaKey)
+            {
+                algorithmId = "ssh-dss";
+                keySize = dsaKey.getParams().getP().bitLength();
+            }
+            else if (pk is ECPublicKey ecKey)
+            {
+                keySize = ecKey.getParams().getCurve().getField().getFieldSize();
+                algorithmId = keySize switch
+                {
+                    256 => "ecdsa-sha2-nistp256",
+                    384 => "ecdsa-sha2-nistp384",
+                    521 => "ecdsa-sha2-nistp521",
+                    _ => "ecdsa-sha2-nistp256"
+                };
+            }
+            else
+            {
+                algorithmId = algorithm?.ToLowerInvariant() switch
+                {
+                    "eddsa" or "ed25519" => "ssh-ed25519",
+                    "ed448" => "ssh-ed448",
+                    _ => null
+                };
+            }
         }
 
     }
