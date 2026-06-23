@@ -14,6 +14,7 @@ internal sealed class FakeSession : ISshSession
     public string Username { get; set; } = string.Empty;
     public object? GetIoSession() => null;
     public T? GetNativeSession<T>() where T : class => null;
+    public void Disconnect() { }
 }
 
 [MemoryDiagnoser]

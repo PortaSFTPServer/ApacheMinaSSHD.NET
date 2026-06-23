@@ -20,17 +20,21 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
     {
         private readonly Func<string, int, ISshSession, bool> _canListen;
         private readonly Func<AMNetForwardingType, string, int, ISshSession, bool> _canConnect;
+        private readonly Func<string, int, ISshSession, bool>? _canForwardDynamic;
 
         /// <summary>Creates a filter that delegates forwarding decisions to the supplied functions.</summary>
         /// <param name="canListen">Function that determines whether listening on a given host and port is allowed.</param>
         /// <param name="canConnect">Function that determines whether a forwarding connection to a given host and port is allowed.</param>
+        /// <param name="canForwardDynamic">Optional function that determines whether dynamic forwarding is allowed.</param>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="canListen"/> or <paramref name="canConnect"/> is <c>null</c>.</exception>
         public AMNetDelegateTcpForwardingFilter(
             Func<string, int, ISshSession, bool> canListen,
-            Func<AMNetForwardingType, string, int, ISshSession, bool> canConnect)
+            Func<AMNetForwardingType, string, int, ISshSession, bool> canConnect,
+            Func<string, int, ISshSession, bool>? canForwardDynamic = null)
         {
             _canListen = canListen ?? throw new ArgumentNullException(nameof(canListen));
             _canConnect = canConnect ?? throw new ArgumentNullException(nameof(canConnect));
+            _canForwardDynamic = canForwardDynamic;
         }
 
         /// <inheritdoc />
@@ -40,5 +44,9 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <inheritdoc />
         public bool CanConnect(AMNetForwardingType type, string host, int port, ISshSession session)
             => _canConnect(type, host, port, session);
+
+        /// <inheritdoc />
+        public bool CanForwardDynamic(string host, int port, ISshSession session)
+            => _canForwardDynamic?.Invoke(host, port, session) ?? false;
     }
 }

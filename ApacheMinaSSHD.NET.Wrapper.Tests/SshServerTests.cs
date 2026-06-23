@@ -549,6 +549,7 @@ public class SshServerTests : IDisposable
     {
         public bool CanListen(string host, int port, ISshSession session) => true;
         public bool CanConnect(AMNetForwardingType type, string host, int port, ISshSession session) => true;
+        public bool CanForwardDynamic(string host, int port, ISshSession session) => true;
         public bool CanForwardAgent(ISshSession session, string requestType) => true;
         public bool CanForwardX11(ISshSession session, string requestType) => true;
     }
@@ -557,6 +558,7 @@ public class SshServerTests : IDisposable
     {
         public bool CanListen(string host, int port, ISshSession session) => true;
         public bool CanConnect(AMNetForwardingType type, string host, int port, ISshSession session) => true;
+        public bool CanForwardDynamic(string host, int port, ISshSession session) => true;
     }
 
     private sealed class AcceptAllAgentFilter : IAMNetAgentForwardingFilter

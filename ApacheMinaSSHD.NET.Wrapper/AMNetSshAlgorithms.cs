@@ -120,6 +120,19 @@ namespace ApacheMinaSSHD.NET.Wrapper
         }
 
         /// <summary>
+        /// SSH compression algorithm names.
+        /// </summary>
+        public static class Compression
+        {
+            /// <summary>No compression.</summary>
+            public const string None = "none";
+            /// <summary>ZLIB compression as described by RFC 4253.</summary>
+            public const string Zlib = "zlib";
+            /// <summary>OpenSSH delayed ZLIB compression.</summary>
+            public const string ZlibDelayed = "zlib@openssh.com";
+        }
+
+        /// <summary>
         /// Recommended algorithm preference lists.
         /// </summary>
         public static class Presets

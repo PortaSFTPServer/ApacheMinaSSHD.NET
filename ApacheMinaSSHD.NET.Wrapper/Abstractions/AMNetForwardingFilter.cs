@@ -45,6 +45,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             => _tcp?.CanConnect(type, host, port, session) ?? true;
 
         /// <inheritdoc />
+        public bool CanForwardDynamic(string host, int port, ISshSession session)
+            => _tcp?.CanForwardDynamic(host, port, session) ?? true;
+
+        /// <inheritdoc />
         public bool CanForwardAgent(ISshSession session, string requestType)
             => _agent?.CanForwardAgent(session, requestType) ?? false;
 

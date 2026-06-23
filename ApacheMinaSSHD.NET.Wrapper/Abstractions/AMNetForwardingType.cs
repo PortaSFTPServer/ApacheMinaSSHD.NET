@@ -19,6 +19,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <summary>Outbound (direct) connection initiated by the server.</summary>
         Direct,
         /// <summary>Inbound (forwarded) connection arriving from a remote peer.</summary>
-        Forwarded
+        Forwarded,
+        /// <summary>Dynamic SOCKS proxy forwarding.</summary>
+        Dynamic
     }
 }

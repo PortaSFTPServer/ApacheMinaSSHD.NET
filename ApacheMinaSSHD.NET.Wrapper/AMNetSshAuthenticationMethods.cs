@@ -42,6 +42,16 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public const string KeyboardInteractive = "keyboard-interactive";
 
         /// <summary>
+        /// GSSAPI/Kerberos authentication.
+        /// </summary>
+        public const string Gssapi = "gssapi-with-mic";
+
+        /// <summary>
+        /// Host-based authentication.
+        /// </summary>
+        public const string HostBased = "hostbased";
+
+        /// <summary>
         /// Builds a required authentication chain where every method must succeed in order.
         /// </summary>
         /// <param name="authenticationMethods">Authentication methods such as <see cref="Password"/> or <see cref="PublicKey"/>.</param>

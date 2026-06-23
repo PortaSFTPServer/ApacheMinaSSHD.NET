@@ -64,6 +64,18 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             return result;
         }
 
+        public bool canForwardDynamic(SshdSocketAddress address, Session session)
+        {
+            var host = address?.getHostName() ?? "";
+            var port = address?.getPort() ?? 0;
+            var sshSession = CreateSession(session);
+            var result = _composite?.CanForwardDynamic(host, port, sshSession)
+                ?? _tcp?.CanForwardDynamic(host, port, sshSession)
+                ?? false;
+            logger.Debug($"[{User(session)}] Forward dynamic {host}:{port} -> {result}");
+            return result;
+        }
+
         public bool canForwardAgent(Session session, string requestType)
         {
             var sshSession = CreateSession(session);

@@ -903,14 +903,111 @@ namespace ApacheMinaSSHD.NET.Wrapper
         }
 
         /// <summary>
-        /// Enables the SFTP subsystem for incoming SSH sessions.
+        /// Enables host-based authentication.
         /// </summary>
-        /// <param name="sftpFactory">The SFTP subsystem factory.</param>
-        /// <exception cref="ArgumentNullException">Thrown when <paramref name="sftpFactory"/> is null.</exception>
-        public void setSubsystemFactories(AMNetSftpSubsystemFactory sftpFactory)
+        /// <param name="hostBasedAuthenticator">The host-based authenticator.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="hostBasedAuthenticator"/> is null.</exception>
+        public void setHostBasedAuthenticator(IAMNetHostBasedAuthenticator hostBasedAuthenticator)
         {
-            ArgumentNullException.ThrowIfNull(sftpFactory);
-            server.setSubsystemFactories(Collections.singletonList(sftpFactory.JavaFactory));
+            ArgumentNullException.ThrowIfNull(hostBasedAuthenticator);
+            server.setHostBasedAuthenticator(new InternalHostBasedAuthenticator(hostBasedAuthenticator));
+        }
+
+        /// <summary>
+        /// Enables host-based authentication.
+        /// </summary>
+        /// <param name="hostBasedAuthenticator">The host-based authenticator.</param>
+        public void SetHostBasedAuthenticator(IAMNetHostBasedAuthenticator hostBasedAuthenticator)
+        {
+            setHostBasedAuthenticator(hostBasedAuthenticator);
+        }
+
+        /// <summary>
+        /// Enables host-based authentication using a .NET callback.
+        /// </summary>
+        /// <param name="authenticate">
+        /// Callback that receives username, public key fingerprint, client hostname, client username, and session metadata
+        /// and returns whether the host should be accepted.
+        /// </param>
+        public void setDelegateHostBasedAuthenticator(Func<string, string, string, string, ISshSession, bool> authenticate)
+        {
+            setHostBasedAuthenticator(new AMNetDelegateHostBasedAuthenticator(authenticate));
+        }
+
+        /// <summary>
+        /// Enables host-based authentication using a .NET callback.
+        /// </summary>
+        /// <param name="authenticate">
+        /// Callback that receives username, public key fingerprint, client hostname, client username, and session metadata
+        /// and returns whether the host should be accepted.
+        /// </param>
+        public void SetDelegateHostBasedAuthenticator(Func<string, string, string, string, ISshSession, bool> authenticate)
+        {
+            setDelegateHostBasedAuthenticator(authenticate);
+        }
+
+        /// <summary>
+        /// Enables GSSAPI/Kerberos authentication.
+        /// </summary>
+        /// <param name="gssapiAuthenticator">The GSSAPI authenticator.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="gssapiAuthenticator"/> is null.</exception>
+        public void setGssapiAuthenticator(IAMNetGssapiAuthenticator gssapiAuthenticator)
+        {
+            ArgumentNullException.ThrowIfNull(gssapiAuthenticator);
+            server.setGSSAuthenticator(new InternalGssapiAuthenticator(gssapiAuthenticator));
+        }
+
+        /// <summary>
+        /// Enables GSSAPI/Kerberos authentication.
+        /// </summary>
+        /// <param name="gssapiAuthenticator">The GSSAPI authenticator.</param>
+        public void SetGssapiAuthenticator(IAMNetGssapiAuthenticator gssapiAuthenticator)
+        {
+            setGssapiAuthenticator(gssapiAuthenticator);
+        }
+
+        /// <summary>
+        /// Enables GSSAPI/Kerberos authentication using a .NET callback.
+        /// </summary>
+        /// <param name="validateIdentity">
+        /// Callback that receives session and identity and returns whether the identity should be accepted.
+        /// </param>
+        public void setDelegateGssapiAuthenticator(Func<ISshSession, string, bool> validateIdentity)
+        {
+            setGssapiAuthenticator(new AMNetDelegateGssapiAuthenticator(validateIdentity));
+        }
+
+        /// <summary>
+        /// Enables GSSAPI/Kerberos authentication using a .NET callback.
+        /// </summary>
+        /// <param name="validateIdentity">
+        /// Callback that receives session and identity and returns whether the identity should be accepted.
+        /// </param>
+        public void SetDelegateGssapiAuthenticator(Func<ISshSession, string, bool> validateIdentity)
+        {
+            setDelegateGssapiAuthenticator(validateIdentity);
+        }
+
+        /// <summary>
+        /// Enables one or more SFTP subsystems for incoming SSH sessions.
+        /// </summary>
+        /// <param name="sftpFactories">One or more SFTP subsystem factories.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="sftpFactories"/> is null.</exception>
+        /// <exception cref="ArgumentException">Thrown when <paramref name="sftpFactories"/> is empty.</exception>
+        public void setSubsystemFactories(params AMNetSftpSubsystemFactory[] sftpFactories)
+        {
+            ArgumentNullException.ThrowIfNull(sftpFactories);
+            if (sftpFactories.Length == 0)
+                throw new ArgumentException("At least one subsystem factory is required.", nameof(sftpFactories));
+            if (sftpFactories.Length == 1)
+            {
+                server.setSubsystemFactories(Collections.singletonList(sftpFactories[0].JavaFactory));
+                return;
+            }
+            var list = new java.util.ArrayList();
+            foreach (var factory in sftpFactories)
+                list.add(factory.JavaFactory);
+            server.setSubsystemFactories(list);
         }
 
         /// <summary>
@@ -922,6 +1019,50 @@ namespace ApacheMinaSSHD.NET.Wrapper
         {
             ArgumentNullException.ThrowIfNull(scpFactory);
             server.setCommandFactory(scpFactory.JavaFactory);
+        }
+
+        /// <summary>
+        /// Enables shell/exec command handling with a .NET handler.
+        /// </summary>
+        /// <param name="handler">The command handler for exec and shell requests.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="handler"/> is null.</exception>
+        public void setCommandHandler(IAMNetCommandHandler handler)
+        {
+            ArgumentNullException.ThrowIfNull(handler);
+            server.setCommandFactory(new InternalCommandFactory(handler));
+        }
+
+        /// <summary>
+        /// Enables shell/exec command handling with a .NET handler.
+        /// </summary>
+        /// <param name="handler">The command handler for exec and shell requests.</param>
+        public void SetCommandHandler(IAMNetCommandHandler handler)
+        {
+            setCommandHandler(handler);
+        }
+
+        /// <summary>
+        /// Enables exec and/or shell command handling using .NET callbacks.
+        /// </summary>
+        /// <param name="execHandler">Callback for exec commands, or <c>null</c> to reject all exec requests.</param>
+        /// <param name="shellHandler">Callback for shell requests, or <c>null</c> to reject all shell requests.</param>
+        public void setDelegateCommandHandler(
+            Func<string, ISshSession, int>? execHandler = null,
+            Func<ISshSession, int>? shellHandler = null)
+        {
+            setCommandHandler(new AMNetDelegateCommandHandler(execHandler, shellHandler));
+        }
+
+        /// <summary>
+        /// Enables exec and/or shell command handling using .NET callbacks.
+        /// </summary>
+        /// <param name="execHandler">Callback for exec commands, or <c>null</c> to reject all exec requests.</param>
+        /// <param name="shellHandler">Callback for shell requests, or <c>null</c> to reject all shell requests.</param>
+        public void SetDelegateCommandHandler(
+            Func<string, ISshSession, int>? execHandler = null,
+            Func<ISshSession, int>? shellHandler = null)
+        {
+            setDelegateCommandHandler(execHandler, shellHandler);
         }
     }
 }

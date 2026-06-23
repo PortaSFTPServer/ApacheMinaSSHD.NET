@@ -40,8 +40,15 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
             {
                 AMNetForwardingType.Direct => _policy is AMNetTcpForwardingPolicy.All or AMNetTcpForwardingPolicy.Local,
                 AMNetForwardingType.Forwarded => _policy is AMNetTcpForwardingPolicy.All or AMNetTcpForwardingPolicy.Remote,
+                AMNetForwardingType.Dynamic => _policy is AMNetTcpForwardingPolicy.All,
                 _ => false
             };
+        }
+
+        /// <inheritdoc />
+        public virtual bool CanForwardDynamic(string host, int port, ISshSession session)
+        {
+            return _policy is AMNetTcpForwardingPolicy.All;
         }
 
         /// <summary>Gets a filter that accepts all TCP forwarding requests.</summary>

@@ -25,11 +25,18 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <returns><c>true</c> if listening is permitted; otherwise <c>false</c>.</returns>
         bool CanListen(string host, int port, ISshSession session);
         /// <summary>Determines whether a forwarding connection to the given host and port is permitted.</summary>
-        /// <param name="type">The direction of the forwarding (direct or forwarded).</param>
+        /// <param name="type">The direction of the forwarding (direct, forwarded, or dynamic).</param>
         /// <param name="host">The target host address.</param>
         /// <param name="port">The target port number.</param>
         /// <param name="session">The SSH session requesting the connection.</param>
         /// <returns><c>true</c> if the connection is permitted; otherwise <c>false</c>.</returns>
         bool CanConnect(AMNetForwardingType type, string host, int port, ISshSession session);
+
+        /// <summary>Determines whether dynamic (SOCKS) forwarding is permitted for the given session.</summary>
+        /// <param name="host">The SOCKS proxy target host.</param>
+        /// <param name="port">The SOCKS proxy target port.</param>
+        /// <param name="session">The SSH session requesting dynamic forwarding.</param>
+        /// <returns><c>true</c> if dynamic forwarding is permitted; otherwise <c>false</c>.</returns>
+        bool CanForwardDynamic(string host, int port, ISshSession session);
     }
 }

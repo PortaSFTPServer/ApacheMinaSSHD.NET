@@ -455,6 +455,50 @@ namespace ApacheMinaSSHD.NET.Wrapper
 
         #endregion
 
+        #region "--- COMPRESSION ---"
+
+        /// <summary>
+        /// Comma-separated list of allowed compression algorithms.
+        /// </summary>
+        public string COMPRESSION
+        {
+            get
+            {
+                string configuredValue = PropertyResolverUtils.getStringProperty(manager, "compression", null);
+                return string.IsNullOrEmpty(configuredValue)
+                    ? JoinNamedResources(manager.getCompressionFactories())
+                    : configuredValue;
+            }
+            set => PropertyResolverUtils.updateProperty(manager, "compression", value);
+        }
+
+        /// <summary>
+        /// Gets compression algorithm names supported by the current runtime.
+        /// </summary>
+        public IReadOnlyList<string> GetSupportedCompressionAlgorithms() => GetNamedResources(manager.getCompressionFactories());
+
+        /// <summary>
+        /// Gets the configured compression algorithm names in preference order.
+        /// </summary>
+        public IReadOnlyList<string> GetConfiguredCompressionAlgorithms() => SplitAlgorithmList(COMPRESSION);
+
+        /// <summary>
+        /// Sets allowed compression algorithms in preference order.
+        /// </summary>
+        /// <param name="algorithms">Compression names such as values from <see cref="AMNetSshAlgorithms.Compression"/>.</param>
+        public void SetCompressionAlgorithms(params string[] algorithms) => SetCompressionAlgorithms((IEnumerable<string>)algorithms);
+
+        /// <summary>
+        /// Sets allowed compression algorithms in preference order.
+        /// </summary>
+        /// <param name="algorithms">Compression names such as values from <see cref="AMNetSshAlgorithms.Compression"/>.</param>
+        public void SetCompressionAlgorithms(IEnumerable<string> algorithms)
+        {
+            COMPRESSION = BuildValidatedAlgorithmList(algorithms, GetSupportedCompressionAlgorithms(), "compression");
+        }
+
+        #endregion
+
         #region "--- CRYPTOGRAPHIC ALGORITHMS ---"
 
         /// <summary>
@@ -777,5 +821,65 @@ namespace ApacheMinaSSHD.NET.Wrapper
                 }
             }
         }
+
+        #region "--- PROPERTY CONFIGURATION ---"
+
+        /// <summary>
+        /// Sets a named property on the underlying server configuration.
+        /// Use for advanced settings not exposed by a dedicated wrapper property,
+        /// such as channel window sizes or bandwidth limits.
+        /// </summary>
+        /// <param name="key">The property key (e.g., "max-packet-size", "window-size").</param>
+        /// <param name="value">The property value (will be converted via <c>toString()</c>).</param>
+        public void SetProperty(string key, object value)
+        {
+            PropertyResolverUtils.updateProperty(manager, key, value);
+        }
+
+        /// <summary>
+        /// Gets a named property from the underlying server configuration as a string.
+        /// </summary>
+        /// <param name="key">The property key.</param>
+        /// <param name="defaultValue">Default value if the property is not set.</param>
+        /// <returns>The property value, or <paramref name="defaultValue"/> if unset.</returns>
+        public string GetProperty(string key, string? defaultValue = null)
+        {
+            return PropertyResolverUtils.getStringProperty(manager, key, defaultValue);
+        }
+
+        /// <summary>
+        /// Gets a named integer property from the underlying server configuration.
+        /// </summary>
+        /// <param name="key">The property key.</param>
+        /// <param name="defaultValue">Default value if the property is not set.</param>
+        /// <returns>The property value, or <paramref name="defaultValue"/> if unset.</returns>
+        public int GetIntProperty(string key, int defaultValue = 0)
+        {
+            return PropertyResolverUtils.getIntProperty(manager, key, defaultValue);
+        }
+
+        /// <summary>
+        /// Gets a named long integer property from the underlying server configuration.
+        /// </summary>
+        /// <param name="key">The property key.</param>
+        /// <param name="defaultValue">Default value if the property is not set.</param>
+        /// <returns>The property value, or <paramref name="defaultValue"/> if unset.</returns>
+        public long GetLongProperty(string key, long defaultValue = 0)
+        {
+            return PropertyResolverUtils.getLongProperty(manager, key, defaultValue);
+        }
+
+        /// <summary>
+        /// Gets a named boolean property from the underlying server configuration.
+        /// </summary>
+        /// <param name="key">The property key.</param>
+        /// <param name="defaultValue">Default value if the property is not set.</param>
+        /// <returns>The property value, or <paramref name="defaultValue"/> if unset.</returns>
+        public bool GetBoolProperty(string key, bool defaultValue = false)
+        {
+            return PropertyResolverUtils.getBooleanProperty(manager, key, defaultValue);
+        }
+
+        #endregion
     }
 }

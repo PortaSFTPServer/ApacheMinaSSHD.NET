@@ -14,6 +14,7 @@
 using ApacheMinaSSHD.NET.Wrapper.Abstractions;
 using ApacheMinaSSHD.NET.Wrapper.Abstractions.Models;
 using ApacheMinaSSHD.NET.Wrapper.Internals;
+using org.apache.sshd.common;
 using org.apache.sshd.sftp.server;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Factories
@@ -29,6 +30,24 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         }
 
         internal SftpSubsystemFactory JavaFactory => factory;
+
+        internal const string SftpMaxVersionProperty = "sftp-max-version";
+
+        /// <summary>
+        /// Gets or sets the maximum SFTP protocol version to negotiate with clients.
+        /// Valid range: 3–6. Must be set before the factory is passed to <c>setSubsystemFactories</c>.
+        /// Default is 6 (the highest supported by Apache MINA SSHD).
+        /// </summary>
+        public int MaximumVersion
+        {
+            get => PropertyResolverUtils.getIntProperty((PropertyResolver)(object)factory, SftpMaxVersionProperty, 6);
+            set
+            {
+                if (value < 3 || value > 6)
+                    throw new ArgumentOutOfRangeException(nameof(value), value, "SFTP version must be between 3 and 6.");
+                PropertyResolverUtils.updateProperty((PropertyResolver)(object)factory, SftpMaxVersionProperty, value);
+            }
+        }
 
         public void addSftpEventListener(IAMNetSftpEventListener? sftpEventListener)
         {
