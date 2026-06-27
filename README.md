@@ -312,3 +312,5 @@ ApacheMinaSSHD.NET is made possible by these exceptional open source projects:
 - **[IKVM](https://ikvm.org/)** — Java-to-.NET bridge
 
 ApacheMinaSSHD.NET is maintained by SERALYNX LLC. For a ready-to-use portable SFTP server, see [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).
+
+> **Disclaimer:** Porta SFTP Server Business Edition and Enterprise Edition do not use this library. They use their own proprietary SFTP, SCP, and Haclex protocols.
