@@ -1318,5 +1318,54 @@ namespace ApacheMinaSSHD.NET.Wrapper
         {
             setDelegateCommandHandler(execHandler, shellHandler);
         }
+
+        // --- Channel listeners ---
+
+        private readonly System.Collections.Generic.List<InternalChannelListener> _channelListeners = new();
+
+        /// <summary>
+        /// Registers a channel event listener.
+        /// </summary>
+        /// <param name="listener">The channel listener to add.</param>
+        public void addChannelListener(IAMNetChannelListener listener)
+        {
+            ArgumentNullException.ThrowIfNull(listener);
+            var internalListener = new InternalChannelListener(listener);
+            _channelListeners.Add(internalListener);
+            server.addChannelListener(internalListener);
+        }
+
+        /// <summary>
+        /// Registers a channel event listener.
+        /// </summary>
+        public void AddChannelListener(IAMNetChannelListener listener)
+            => addChannelListener(listener);
+
+        /// <summary>
+        /// Removes a previously registered channel listener.
+        /// </summary>
+        /// <param name="listener">The listener to remove.</param>
+        /// <returns><c>true</c> if found and removed; otherwise <c>false</c>.</returns>
+        public bool removeChannelListener(IAMNetChannelListener listener)
+        {
+            for (int i = _channelListeners.Count - 1; i >= 0; i--)
+            {
+                if (_channelListeners[i].WrappedListener == listener)
+                {
+                    server.removeChannelListener(_channelListeners[i]);
+                    _channelListeners.RemoveAt(i);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Removes a previously registered channel listener.
+        /// </summary>
+        public bool RemoveChannelListener(IAMNetChannelListener listener)
+            => removeChannelListener(listener);
+
+
     }
 }
