@@ -150,3 +150,4 @@ See [VirtualFileSystemServer](../../Sample/VirtualFileSystemServer/) for a compl
 ---
 
 *ApacheMinaSSHD.NET is developed by **SERALYNX LLC** — securing file transfer for critical infrastructure. Try [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/) for a complete portable solution with GUI management.*
+

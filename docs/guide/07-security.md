@@ -215,3 +215,4 @@ class SecurityAuditListener : AMNetSftpEventListener
 ---
 
 *ApacheMinaSSHD.NET is built by **SERALYNX LLC** — securing file transfer for critical infrastructure since 2015. For a production-ready portable SFTP server with built-in security features and GUI management, visit [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).*
+

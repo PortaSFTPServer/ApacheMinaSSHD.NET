@@ -183,3 +183,4 @@ See [SftpEventServer](../../Sample/SftpEventServer/) for a complete event-driven
 ---
 
 *ApacheMinaSSHD.NET is built by **SERALYNX LLC**. For a complete portable SFTP server solution with GUI management, see [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).*
+

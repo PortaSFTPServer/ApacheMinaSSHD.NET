@@ -29,6 +29,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             this.sessionListener = sessionListener;
         }
 
+        public IAMNetSessionListener WrappedListener => sessionListener;
+
         private static string SessionInfo(Session session)
         {
             var user = session.getUsername() ?? "?";

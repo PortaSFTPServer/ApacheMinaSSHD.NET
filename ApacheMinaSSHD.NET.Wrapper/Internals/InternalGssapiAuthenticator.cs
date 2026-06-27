@@ -12,12 +12,24 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         public InternalGssapiAuthenticator(IAMNetGssapiAuthenticator authenticator)
         {
             this.authenticator = authenticator;
+
+            if (authenticator.ServicePrincipalName != null)
+                setServicePrincipalName(authenticator.ServicePrincipalName);
+
+            if (authenticator.KeytabFile != null)
+                setKeytabFile(authenticator.KeytabFile);
         }
 
         public override bool validateIdentity(ServerSession session, string identity)
         {
             var wrappedSession = new SshSession(session);
             return authenticator.ValidateIdentity(wrappedSession, identity);
+        }
+
+        public override bool validateInitialUser(ServerSession session, string user)
+        {
+            var wrappedSession = new SshSession(session);
+            return authenticator.ValidateInitialUser(wrappedSession, user);
         }
     }
 }

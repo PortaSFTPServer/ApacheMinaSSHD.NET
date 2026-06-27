@@ -140,3 +140,4 @@ See [MinimalServer](../../Sample/MinimalServer/) for a complete, runnable versio
 ---
 
 *ApacheMinaSSHD.NET is developed by **SERALYNX LLC**. For a production-ready portable SFTP server with GUI management, visit [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).*
+

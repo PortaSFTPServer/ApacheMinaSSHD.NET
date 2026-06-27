@@ -24,6 +24,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
         private string? _keyAlgorithmId;
         private string? _keyAlgorithm;
         private int _keySize;
+        private string? _clientHostKeyAlgorithm;
+        private byte[]? _clientHostKeyData;
+        private IReadOnlyList<byte[]>? _clientCertificates;
+        private string? _clientUsername;
 
         public SshSession(org.apache.sshd.server.session.ServerSession javaSession)
         {
@@ -42,6 +46,14 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
             _keyAlgorithmId = algorithmId;
             _keyAlgorithm = algorithm;
             _keySize = keySize;
+        }
+
+        internal void SetHostKeyInfo(string? algorithmId, byte[]? keyData, IReadOnlyList<byte[]>? certificates, string? clientUsername)
+        {
+            _clientHostKeyAlgorithm = algorithmId;
+            _clientHostKeyData = keyData;
+            _clientCertificates = certificates;
+            _clientUsername = clientUsername;
         }
 
         public string RemoteAddress
@@ -131,6 +143,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals.Models
         public string? KeyAlgorithmId => _keyAlgorithmId;
         public string? KeyAlgorithm => _keyAlgorithm;
         public int KeySize => _keySize;
+        public string? ClientHostKeyAlgorithm => _clientHostKeyAlgorithm;
+        public byte[]? ClientHostKeyData => _clientHostKeyData;
+        public IReadOnlyList<byte[]>? ClientCertificates => _clientCertificates;
+        public string? ClientUsername => _clientUsername;
 
         public void Disconnect()
         {

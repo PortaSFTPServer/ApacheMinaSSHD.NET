@@ -157,3 +157,4 @@ See [ProductionServer](../../Sample/ProductionServer/) for a real-world configur
 ---
 
 *ApacheMinaSSHD.NET is developed by **SERALYNX LLC** — building secure file transfer for critical infrastructure. Deploy [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/) for a turnkey portable solution.*
+

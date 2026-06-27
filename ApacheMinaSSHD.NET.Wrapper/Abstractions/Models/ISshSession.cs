@@ -32,6 +32,14 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions.Models
         int KeySize => 0;
         /// <summary>Gets the client software version string (e.g., "SSH-2.0-OpenSSH_8.9p1").</summary>
         string? ClientSoftwareIdentifier => null;
+        /// <summary>Gets the host key algorithm identifier from host-based auth (e.g., "ssh-rsa", "ssh-ed25519").</summary>
+        string? ClientHostKeyAlgorithm => null;
+        /// <summary>Gets the raw host key data from host-based auth, or null if not available.</summary>
+        byte[]? ClientHostKeyData => null;
+        /// <summary>Gets the X.509 certificate chain from host-based auth, or null if not provided.</summary>
+        IReadOnlyList<byte[]>? ClientCertificates => null;
+        /// <summary>Gets the username on the client machine for host-based auth.</summary>
+        string? ClientUsername => null;
         /// <summary>Forces the session to disconnect immediately.</summary>
         void Disconnect();
     }

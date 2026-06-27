@@ -297,3 +297,4 @@ See [AuthenticationServer](../../Sample/AuthenticationServer/) for runnable exam
 ---
 
 *ApacheMinaSSHD.NET is maintained by **SERALYNX LLC**. For a turnkey portable SFTP server with enterprise authentication, monitoring, and GUI management, visit [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).*
+

@@ -38,6 +38,18 @@ namespace ApacheMinaSSHD.NET.Wrapper
         private IAMNetTcpForwardingFilter? _tcpForwardingFilter;
         private IAMNetAgentForwardingFilter? _agentForwardingFilter;
         private IAMNetX11ForwardingFilter? _x11ForwardingFilter;
+        private AMNetSimpleGeneratorHostKeyProvider? _keyPairProvider;
+        private AMNetVirtualFileSystemFactory? _fileSystemFactory;
+        private IAMNetPasswordAuthenticator? _passwordAuthenticator;
+        private IAMNetPublickeyAuthenticator? _publickeyAuthenticator;
+        private IAMNetKeyboardInteractiveAuthenticator? _keyboardInteractiveAuthenticator;
+        private IAMNetHostBasedAuthenticator? _hostBasedAuthenticator;
+        private IAMNetGssapiAuthenticator? _gssapiAuthenticator;
+        private IAMNetAuthorizedKeysAuthenticator? _authorizedKeysAuthenticator;
+        private AMNetScpCommandFactory? _scpCommandFactory;
+        private IAMNetCommandHandler? _commandHandler;
+        private IAMNetServerProxyAcceptor? _serverProxyAcceptor;
+        private AMNetSftpSubsystemFactory[]? _subsystemFactories;
 
         private AMNetSshServer(SshServer server)
         {
@@ -46,6 +58,11 @@ namespace ApacheMinaSSHD.NET.Wrapper
         }
 
         internal SshServer JavaServer => server;
+
+        /// <summary>
+        /// Gets the Apache MINA SSHD version string of the underlying Java library.
+        /// </summary>
+        public string Version => server.getVersion();
 
         /// <summary>
         /// Gets server configuration helpers for resource limits, timeouts, and cryptographic algorithms.
@@ -299,6 +316,48 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void Stop(bool immediately) => stop(immediately);
 
         /// <summary>
+        /// Gets the addresses the server is currently bound to, or an empty collection if not started.
+        /// </summary>
+        /// <returns>Read-only set of bound addresses as strings (e.g., "0.0.0.0/0.0.0.0:22").</returns>
+        public IReadOnlySet<string> getBoundAddresses()
+        {
+            var javaSet = server.getBoundAddresses();
+            var result = new HashSet<string>();
+            if (javaSet != null)
+            {
+                var iter = javaSet.iterator();
+                while (iter.hasNext())
+                {
+                    var addr = iter.next();
+                    if (addr != null)
+                        result.Add(addr.ToString());
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Gets the addresses the server is currently bound to, or an empty collection if not started.
+        /// </summary>
+        /// <returns>Read-only set of bound addresses as strings.</returns>
+        public IReadOnlySet<string> GetBoundAddresses() => getBoundAddresses();
+
+        /// <summary>
+        /// Gets the active session count.
+        /// </summary>
+        /// <returns>Number of currently active sessions.</returns>
+        public int getActiveSessionCount()
+        {
+            var sessions = server.getActiveSessions();
+            return sessions?.size() ?? 0;
+        }
+
+        /// <summary>
+        /// Gets the active session count.
+        /// </summary>
+        public int GetActiveSessionCount() => getActiveSessionCount();
+
+        /// <summary>
         /// Returns whether the server has been started.
         /// </summary>
         /// <returns><c>true</c> if the server is running; otherwise <c>false</c>.</returns>
@@ -348,8 +407,15 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void setKeyPairProvider(AMNetSimpleGeneratorHostKeyProvider keyProvider)
         {
             ArgumentNullException.ThrowIfNull(keyProvider);
+            _keyPairProvider = keyProvider;
             server.setKeyPairProvider(keyProvider.ToJavaKeyPairProvider());
         }
+
+        /// <summary>
+        /// Gets the configured host key provider.
+        /// </summary>
+        /// <returns>The host key provider, or <c>null</c> if not configured.</returns>
+        public AMNetSimpleGeneratorHostKeyProvider? getKeyPairProvider() => _keyPairProvider;
 
         /// <summary>
         /// Sets the virtual filesystem factory used to map users to server-side home directories.
@@ -359,8 +425,15 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void setFileSystemFactory(AMNetVirtualFileSystemFactory fileSystemFactory)
         {
             ArgumentNullException.ThrowIfNull(fileSystemFactory);
+            _fileSystemFactory = fileSystemFactory;
             server.setFileSystemFactory(fileSystemFactory.ToJavaFileSystemFactory());
         }
+
+        /// <summary>
+        /// Gets the configured virtual filesystem factory.
+        /// </summary>
+        /// <returns>The filesystem factory, or <c>null</c> if not configured.</returns>
+        public AMNetVirtualFileSystemFactory? getFileSystemFactory() => _fileSystemFactory;
 
         /// <summary>
         /// Enables keyboard-interactive authentication.
@@ -370,8 +443,15 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void setKeyboardInteractiveAuthenticator(IAMNetKeyboardInteractiveAuthenticator keyboardInteractiveAuthenticator)
         {
             ArgumentNullException.ThrowIfNull(keyboardInteractiveAuthenticator);
+            _keyboardInteractiveAuthenticator = keyboardInteractiveAuthenticator;
             server.setKeyboardInteractiveAuthenticator(new InternalKeyboardInteractiveAuthenticator(keyboardInteractiveAuthenticator));
         }
+
+        /// <summary>
+        /// Gets the configured keyboard-interactive authenticator.
+        /// </summary>
+        /// <returns>The keyboard-interactive authenticator, or <c>null</c> if not configured.</returns>
+        public IAMNetKeyboardInteractiveAuthenticator? getKeyboardInteractiveAuthenticator() => _keyboardInteractiveAuthenticator;
 
         /// <summary>
         /// Enables keyboard-interactive authentication.
@@ -462,8 +542,15 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void setPasswordAuthenticator(IAMNetPasswordAuthenticator passwordAuthenticator)
         {
             ArgumentNullException.ThrowIfNull(passwordAuthenticator);
+            _passwordAuthenticator = passwordAuthenticator;
             server.setPasswordAuthenticator(new InternalPasswordAuthenticator(passwordAuthenticator));
         }
+
+        /// <summary>
+        /// Gets the configured password authenticator.
+        /// </summary>
+        /// <returns>The password authenticator, or <c>null</c> if not configured.</returns>
+        public IAMNetPasswordAuthenticator? getPasswordAuthenticator() => _passwordAuthenticator;
 
         /// <summary>
         /// Enables username/password authentication.
@@ -544,8 +631,15 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void setPublickeyAuthenticator(IAMNetPublickeyAuthenticator publickeyAuthenticator)
         {
             ArgumentNullException.ThrowIfNull(publickeyAuthenticator);
+            _publickeyAuthenticator = publickeyAuthenticator;
             server.setPublickeyAuthenticator(new InternalPublickeyAuthenticator(publickeyAuthenticator));
         }
+
+        /// <summary>
+        /// Gets the configured public key authenticator.
+        /// </summary>
+        /// <returns>The public key authenticator, or <c>null</c> if not configured.</returns>
+        public IAMNetPublickeyAuthenticator? getPublickeyAuthenticator() => _publickeyAuthenticator;
 
         /// <summary>
         /// Enables public key authentication.
@@ -678,8 +772,15 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void setAuthorizedkeyAuthenticator(IAMNetAuthorizedKeysAuthenticator authorizedKeysAuthenticator)
         {
             ArgumentNullException.ThrowIfNull(authorizedKeysAuthenticator);
+            _authorizedKeysAuthenticator = authorizedKeysAuthenticator;
             server.setPublickeyAuthenticator(new InternalAuthorizedKeysAuthenticator(authorizedKeysAuthenticator));
         }
+
+        /// <summary>
+        /// Gets the configured authorized-keys authenticator.
+        /// </summary>
+        /// <returns>The authorized keys authenticator, or <c>null</c> if not configured.</returns>
+        public IAMNetAuthorizedKeysAuthenticator? getAuthorizedkeyAuthenticator() => _authorizedKeysAuthenticator;
 
         /// <summary>
         /// Enables public key authentication backed by an authorized_keys file.
@@ -734,8 +835,15 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void setServerProxyAcceptor(IAMNetServerProxyAcceptor serverProxyAcceptor)
         {
             ArgumentNullException.ThrowIfNull(serverProxyAcceptor);
+            _serverProxyAcceptor = serverProxyAcceptor;
             server.setServerProxyAcceptor(new InternalServerProxyAcceptor(serverProxyAcceptor));
         }
+
+        /// <summary>
+        /// Gets the configured server proxy acceptor.
+        /// </summary>
+        /// <returns>The proxy acceptor, or <c>null</c> if not configured.</returns>
+        public IAMNetServerProxyAcceptor? getServerProxyAcceptor() => _serverProxyAcceptor;
 
         /// <summary>
         /// Registers low-level I/O service callbacks.
@@ -858,6 +966,80 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void SetX11ForwardingFilter(IAMNetX11ForwardingFilter filter)
             => setX11ForwardingFilter(filter);
 
+        /// <summary>
+        /// Gets the configured combined forwarding filter, or <c>null</c>.
+        /// </summary>
+        public IAMNetForwardingFilter? getForwardingFilter() => _forwardingFilter;
+
+        /// <summary>
+        /// Gets the configured TCP forwarding filter, or <c>null</c>.
+        /// </summary>
+        public IAMNetTcpForwardingFilter? getTcpForwardingFilter() => _tcpForwardingFilter;
+
+        /// <summary>
+        /// Gets the configured agent forwarding filter, or <c>null</c>.
+        /// </summary>
+        public IAMNetAgentForwardingFilter? getAgentForwardingFilter() => _agentForwardingFilter;
+
+        /// <summary>
+        /// Gets the configured X11 forwarding filter, or <c>null</c>.
+        /// </summary>
+        public IAMNetX11ForwardingFilter? getX11ForwardingFilter() => _x11ForwardingFilter;
+
+        private readonly System.Collections.Generic.List<InternalPortForwardingEventListener> _portForwardingEventListeners = new();
+
+        /// <summary>
+        /// Registers a port forwarding event listener.
+        /// </summary>
+        /// <param name="listener">The port forwarding event listener.</param>
+        public void addPortForwardingEventListener(IAMNetPortForwardingEventListener listener)
+        {
+            var internalListener = new InternalPortForwardingEventListener(listener);
+            _portForwardingEventListeners.Add(internalListener);
+            server.addPortForwardingEventListener(internalListener);
+        }
+
+        /// <summary>
+        /// Registers a port forwarding event listener.
+        /// </summary>
+        public void AddPortForwardingEventListener(IAMNetPortForwardingEventListener listener)
+            => addPortForwardingEventListener(listener);
+
+        /// <summary>
+        /// Removes a previously registered port forwarding event listener.
+        /// </summary>
+        /// <param name="listener">The listener to remove.</param>
+        /// <returns><c>true</c> if found and removed; otherwise <c>false</c>.</returns>
+        public bool removePortForwardingEventListener(IAMNetPortForwardingEventListener listener)
+        {
+            for (int i = _portForwardingEventListeners.Count - 1; i >= 0; i--)
+            {
+                if (_portForwardingEventListeners[i].WrappedListener == listener)
+                {
+                    server.removePortForwardingEventListener(_portForwardingEventListeners[i]);
+                    _portForwardingEventListeners.RemoveAt(i);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Removes a previously registered port forwarding event listener.
+        /// </summary>
+        public bool RemovePortForwardingEventListener(IAMNetPortForwardingEventListener listener)
+            => removePortForwardingEventListener(listener);
+
+        /// <summary>
+        /// Gets the I/O service event listener, or <c>null</c> if not configured.
+        /// </summary>
+        public IAMNetIoServiceEventListener? getIoServiceEventListener() => _userIoServiceEventListener;
+
+        /// <summary>
+        /// Gets the connection rate limiter, or <c>null</c> if not configured.
+        /// </summary>
+        public IAmNetConnectionRateLimiter? getRateLimiter() => _rateLimiter;
+
         private void ApplyForwardingFilter()
         {
             if (_forwardingFilter != null)
@@ -896,11 +1078,44 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// </summary>
         /// <param name="sessionListener">The session listener to add.</param>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="sessionListener"/> is null.</exception>
+        private readonly System.Collections.Generic.List<InternalSessionListener> _sessionListeners = new();
+
+        /// <summary>
+        /// Registers session lifecycle callbacks.
+        /// </summary>
+        /// <param name="sessionListener">The session listener to add.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="sessionListener"/> is null.</exception>
         public void addSessionListener(IAMNetSessionListener sessionListener)
         {
             ArgumentNullException.ThrowIfNull(sessionListener);
-            server.addSessionListener(new InternalSessionListener(sessionListener));
+            var internalListener = new InternalSessionListener(sessionListener);
+            _sessionListeners.Add(internalListener);
+            server.addSessionListener(internalListener);
         }
+
+        /// <summary>
+        /// Removes a previously registered session listener.
+        /// </summary>
+        /// <param name="sessionListener">The session listener to remove.</param>
+        /// <returns><c>true</c> if the listener was found and removed; otherwise <c>false</c>.</returns>
+        public bool removeSessionListener(IAMNetSessionListener sessionListener)
+        {
+            for (int i = _sessionListeners.Count - 1; i >= 0; i--)
+            {
+                if (_sessionListeners[i].WrappedListener == sessionListener)
+                {
+                    server.removeSessionListener(_sessionListeners[i]);
+                    _sessionListeners.RemoveAt(i);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Removes a previously registered session listener.
+        /// </summary>
+        public bool RemoveSessionListener(IAMNetSessionListener sessionListener) => removeSessionListener(sessionListener);
 
         /// <summary>
         /// Enables host-based authentication.
@@ -910,8 +1125,15 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void setHostBasedAuthenticator(IAMNetHostBasedAuthenticator hostBasedAuthenticator)
         {
             ArgumentNullException.ThrowIfNull(hostBasedAuthenticator);
+            _hostBasedAuthenticator = hostBasedAuthenticator;
             server.setHostBasedAuthenticator(new InternalHostBasedAuthenticator(hostBasedAuthenticator));
         }
+
+        /// <summary>
+        /// Gets the configured host-based authenticator.
+        /// </summary>
+        /// <returns>The host-based authenticator, or <c>null</c> if not configured.</returns>
+        public IAMNetHostBasedAuthenticator? getHostBasedAuthenticator() => _hostBasedAuthenticator;
 
         /// <summary>
         /// Enables host-based authentication.
@@ -954,8 +1176,15 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void setGssapiAuthenticator(IAMNetGssapiAuthenticator gssapiAuthenticator)
         {
             ArgumentNullException.ThrowIfNull(gssapiAuthenticator);
+            _gssapiAuthenticator = gssapiAuthenticator;
             server.setGSSAuthenticator(new InternalGssapiAuthenticator(gssapiAuthenticator));
         }
+
+        /// <summary>
+        /// Gets the configured GSSAPI authenticator.
+        /// </summary>
+        /// <returns>The GSSAPI authenticator, or <c>null</c> if not configured.</returns>
+        public IAMNetGssapiAuthenticator? getGssapiAuthenticator() => _gssapiAuthenticator;
 
         /// <summary>
         /// Enables GSSAPI/Kerberos authentication.
@@ -999,6 +1228,9 @@ namespace ApacheMinaSSHD.NET.Wrapper
             ArgumentNullException.ThrowIfNull(sftpFactories);
             if (sftpFactories.Length == 0)
                 throw new ArgumentException("At least one subsystem factory is required.", nameof(sftpFactories));
+            _subsystemFactories = sftpFactories;
+            if (sftpFactories.Length == 1)
+                throw new ArgumentException("At least one subsystem factory is required.", nameof(sftpFactories));
             if (sftpFactories.Length == 1)
             {
                 server.setSubsystemFactories(Collections.singletonList(sftpFactories[0].JavaFactory));
@@ -1011,6 +1243,12 @@ namespace ApacheMinaSSHD.NET.Wrapper
         }
 
         /// <summary>
+        /// Gets the configured SFTP subsystem factories.
+        /// </summary>
+        /// <returns>The subsystem factories, or <c>null</c> if not configured.</returns>
+        public IReadOnlyList<AMNetSftpSubsystemFactory>? getSubsystemFactories() => _subsystemFactories;
+
+        /// <summary>
         /// Enables SCP command handling for incoming SSH sessions.
         /// </summary>
         /// <param name="scpFactory">The SCP command factory.</param>
@@ -1018,8 +1256,16 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void setCommandFactory(AMNetScpCommandFactory scpFactory)
         {
             ArgumentNullException.ThrowIfNull(scpFactory);
+            _scpCommandFactory = scpFactory;
+            _commandHandler = null;
             server.setCommandFactory(scpFactory.JavaFactory);
         }
+
+        /// <summary>
+        /// Gets the configured SCP command factory, or <c>null</c> if not configured or a command handler is set instead.
+        /// </summary>
+        /// <returns>The SCP command factory.</returns>
+        public AMNetScpCommandFactory? getCommandFactory() => _scpCommandFactory;
 
         /// <summary>
         /// Enables shell/exec command handling with a .NET handler.
@@ -1029,8 +1275,16 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void setCommandHandler(IAMNetCommandHandler handler)
         {
             ArgumentNullException.ThrowIfNull(handler);
+            _commandHandler = handler;
+            _scpCommandFactory = null;
             server.setCommandFactory(new InternalCommandFactory(handler));
         }
+
+        /// <summary>
+        /// Gets the configured command handler for shell/exec, or <c>null</c> if not configured.
+        /// </summary>
+        /// <returns>The command handler.</returns>
+        public IAMNetCommandHandler? getCommandHandler() => _commandHandler;
 
         /// <summary>
         /// Enables shell/exec command handling with a .NET handler.

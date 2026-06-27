@@ -352,6 +352,16 @@ namespace ApacheMinaSSHD.NET.Wrapper
         }
 
         /// <summary>
+        /// REKEY_PACKETS_LIMIT ("rekey-packets-limit"): Packet count before key renegotiation.
+        /// Default is 0 (disabled).
+        /// </summary>
+        public long REKEY_PACKETS_LIMIT
+        {
+            get => PropertyResolverUtils.getLongProperty(manager, "rekey-packets-limit", 0L);
+            set => PropertyResolverUtils.updateProperty(manager, "rekey-packets-limit", value);
+        }
+
+        /// <summary>
         /// REKEY_TIME_LIMIT ("rekey-time-limit"): Elapsed time before key renegotiation.
         /// </summary>
         public TimeSpan REKEY_TIME_LIMIT
@@ -369,6 +379,50 @@ namespace ApacheMinaSSHD.NET.Wrapper
                 manager,
                 CoreModuleProperties.REKEY_TIME_LIMIT.getName(),
                 (long)value.TotalMilliseconds);
+        }
+
+        /// <summary>
+        /// WINDOW_SIZE ("window-size"): Channel receive window size in bytes.
+        /// </summary>
+        public int WINDOW_SIZE
+        {
+            get => PropertyResolverUtils.getIntProperty(manager, "window-size", 0x200000);
+            set => PropertyResolverUtils.updateProperty(manager, "window-size", value);
+        }
+
+        /// <summary>
+        /// MAX_PACKET_SIZE ("max-packet-size"): Maximum SSH channel packet size in bytes.
+        /// </summary>
+        public int MAX_PACKET_SIZE
+        {
+            get => PropertyResolverUtils.getIntProperty(manager, "max-packet-size", 0x8000);
+            set => PropertyResolverUtils.updateProperty(manager, "max-packet-size", value);
+        }
+
+        /// <summary>
+        /// DISCONNECT_TIMEOUT ("disconnect-timeout"): Maximum time to wait for disconnect to complete.
+        /// </summary>
+        public TimeSpan DISCONNECT_TIMEOUT
+        {
+            get
+            {
+                long ms = PropertyResolverUtils.getLongProperty(manager, "disconnect-timeout", 10000L);
+                return TimeSpan.FromMilliseconds(ms);
+            }
+            set => PropertyResolverUtils.updateProperty(manager, "disconnect-timeout", (long)value.TotalMilliseconds);
+        }
+
+        /// <summary>
+        /// STOP_WAIT_TIME ("stop-wait-time"): Maximum time to wait for the server to stop.
+        /// </summary>
+        public TimeSpan STOP_WAIT_TIME
+        {
+            get
+            {
+                long ms = PropertyResolverUtils.getLongProperty(manager, "stop-wait-time", 60000L);
+                return TimeSpan.FromMilliseconds(ms);
+            }
+            set => PropertyResolverUtils.updateProperty(manager, "stop-wait-time", (long)value.TotalMilliseconds);
         }
 
         #endregion
@@ -391,6 +445,44 @@ namespace ApacheMinaSSHD.NET.Wrapper
         }
 
         /// <summary>
+        /// WELCOME_BANNER_LANGUAGE ("welcome-banner-language"): Language tag for the welcome banner (e.g., "en").
+        /// </summary>
+        public string WELCOME_BANNER_LANGUAGE
+        {
+            get => PropertyResolverUtils.getStringProperty(manager, "welcome-banner-language", "en");
+            set => PropertyResolverUtils.updateProperty(manager, "welcome-banner-language", value);
+        }
+
+        /// <summary>
+        /// WELCOME_BANNER_PHASE ("welcome-banner-phase"): When to send the welcome banner.
+        /// "IMMEDIATE" (before auth) or "POST_AUTH" (after authentication).
+        /// </summary>
+        public string WELCOME_BANNER_PHASE
+        {
+            get => PropertyResolverUtils.getStringProperty(manager, "welcome-banner-phase", "IMMEDIATE");
+            set => PropertyResolverUtils.updateProperty(manager, "welcome-banner-phase", value);
+        }
+
+        /// <summary>
+        /// SERVER_EXTRA_IDENTIFICATION_LINES ("server-extra-identification-lines"): Extra lines
+        /// sent before the SSH identification string.
+        /// </summary>
+        public string SERVER_EXTRA_IDENTIFICATION_LINES
+        {
+            get => PropertyResolverUtils.getStringProperty(manager, "server-extra-identification-lines", string.Empty);
+            set => PropertyResolverUtils.updateProperty(manager, "server-extra-identification-lines", value);
+        }
+
+        /// <summary>
+        /// HEARTBEAT_REQUEST ("heartbeat-request"): Whether the server sends heartbeat requests.
+        /// </summary>
+        public bool HEARTBEAT_REQUEST
+        {
+            get => PropertyResolverUtils.getBooleanProperty(manager, "heartbeat-request", false);
+            set => PropertyResolverUtils.updateProperty(manager, "heartbeat-request", value);
+        }
+
+        /// <summary>
         /// SERVER_IDENTIFICATION ("server-identification"): Optional server identification override.
         /// </summary>
         public string SERVER_IDENTIFICATION
@@ -403,6 +495,53 @@ namespace ApacheMinaSSHD.NET.Wrapper
                 manager,
                 CoreModuleProperties.SERVER_IDENTIFICATION.getName(),
                 value);
+        }
+
+        /// <summary>
+        /// PREFERRED_AUTHS ("preferred-auths"): Comma-separated list of preferred authentication
+        /// methods to advertise to the client.
+        /// </summary>
+        public string PREFERRED_AUTHS
+        {
+            get => PropertyResolverUtils.getStringProperty(manager, "preferred-auths", string.Empty);
+            set => PropertyResolverUtils.updateProperty(manager, "preferred-auths", value);
+        }
+
+        /// <summary>
+        /// PASSWORD_PROMPTS ("password-prompts"): Comma-separated list of password prompt strings.
+        /// </summary>
+        public string PASSWORD_PROMPTS
+        {
+            get => PropertyResolverUtils.getStringProperty(manager, "password-prompts", "Password:");
+            set => PropertyResolverUtils.updateProperty(manager, "password-prompts", value);
+        }
+
+        /// <summary>
+        /// IGNORE_MESSAGE_FREQUENCY ("ignore-message-frequency"): Max frequency of SSH_MSG_IGNORE
+        /// messages per second.
+        /// </summary>
+        public int IGNORE_MESSAGE_FREQUENCY
+        {
+            get => PropertyResolverUtils.getIntProperty(manager, "ignore-message-frequency", 0);
+            set => PropertyResolverUtils.updateProperty(manager, "ignore-message-frequency", value);
+        }
+
+        /// <summary>
+        /// IGNORE_MESSAGE_SIZE ("ignore-message-size"): Max size of SSH_MSG_IGNORE messages in bytes.
+        /// </summary>
+        public int IGNORE_MESSAGE_SIZE
+        {
+            get => PropertyResolverUtils.getIntProperty(manager, "ignore-message-size", 0);
+            set => PropertyResolverUtils.updateProperty(manager, "ignore-message-size", value);
+        }
+
+        /// <summary>
+        /// MAX_PROXY_JUMPS ("max-proxy-jumps"): Maximum number of proxy jumps allowed.
+        /// </summary>
+        public int MAX_PROXY_JUMPS
+        {
+            get => PropertyResolverUtils.getIntProperty(manager, "max-proxy-jumps", 0);
+            set => PropertyResolverUtils.updateProperty(manager, "max-proxy-jumps", value);
         }
 
         #endregion

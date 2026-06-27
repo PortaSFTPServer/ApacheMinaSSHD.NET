@@ -192,3 +192,4 @@ The `AMNetSimpleGeneratorHostKeyProvider` generates the key on first run. Ensure
 ---
 
 *ApacheMinaSSHD.NET is developed and maintained by **SERALYNX LLC**. For a production-ready portable SFTP server with GUI management, automated deployment, and enterprise support, visit [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).*
+

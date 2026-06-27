@@ -8,5 +8,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         {
             return false;
         }
+
+        public virtual bool ValidateInitialUser(ISshSession session, string username) => true;
+
+        public virtual string? ServicePrincipalName => null;
+
+        public virtual string? KeytabFile => null;
     }
 }

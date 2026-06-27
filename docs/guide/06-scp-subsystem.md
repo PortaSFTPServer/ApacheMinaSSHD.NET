@@ -135,3 +135,4 @@ server.setCommandFactory(new AMNetScpCommandFactory(
 ---
 
 *ApacheMinaSSHD.NET is maintained by **SERALYNX LLC**. For a turnkey portable SFTP server with built-in SCP support and GUI management, visit [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).*
+
