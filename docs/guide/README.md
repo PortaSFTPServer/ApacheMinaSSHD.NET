@@ -24,8 +24,8 @@ This guide walks you through creating production-ready SSH file transfer servers
 | Guide | Description |
 |-------|-------------|
 | [Quick Start](01-quickstart.md) | Build your first SFTP server in under 5 minutes |
-| [Server Configuration](02-configuration.md) | Timeouts, limits, banners, and algorithm tuning |
-| [Authentication](03-authentication.md) | Password, public key, keyboard-interactive, and multi-factor auth |
+| [Server Configuration](02-configuration.md) | Timeouts, limits, banners, compression, bandwidth, and algorithm tuning |
+| [Authentication](03-authentication.md) | Password, public key, host-based, GSSAPI/Kerberos, keyboard-interactive, and multi-factor auth |
 | [Virtual Filesystem](04-virtual-filesystem.md) | Root jail isolation, user home directories, path containment |
 | [SFTP Subsystem](05-sftp-subsystem.md) | File operations, directory filtering, event hooks |
 | [SCP Subsystem](06-scp-subsystem.md) | SCP file opener, transfer events, permission mapping |

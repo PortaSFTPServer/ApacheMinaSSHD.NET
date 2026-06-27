@@ -81,6 +81,46 @@ IReadOnlyList<string> kex = server.Config.GetSupportedKeyExchangeAlgorithms();
 IReadOnlyList<string> hostKeys = server.Config.GetSupportedHostKeyAlgorithms();
 ```
 
+## Compression
+
+Configure SSH transport compression:
+
+```csharp
+server.Config.SetCompressionAlgorithms(
+    AMNetSshAlgorithms.Compression.Zlib,
+    AMNetSshAlgorithms.Compression.None);
+```
+
+Inspect available compression algorithms:
+
+```csharp
+IReadOnlyList<string> compressions = server.Config.GetSupportedCompressionAlgorithms();
+```
+
+## Bandwidth & Advanced Properties
+
+Set any server property directly for features not exposed by a dedicated wrapper property (channel window sizes, max packet size, etc.):
+
+```csharp
+// Channel window and packet sizes
+server.Config.SetProperty("window-size", 2097152);     // 2 MB receive window
+server.Config.SetProperty("max-packet-size", 65536);    // 64 KB max packet
+
+// Read them back
+long windowSize = server.Config.GetLongProperty("window-size", 1048576);
+int packetSize = server.Config.GetIntProperty("max-packet-size", 32768);
+```
+
+Available property accessors:
+
+```csharp
+server.Config.SetProperty("key", value);
+string str = server.Config.GetProperty("key", "default");
+int    i   = server.Config.GetIntProperty("key", 0);
+long   l   = server.Config.GetLongProperty("key", 0L);
+bool   b   = server.Config.GetBoolProperty("key", false);
+```
+
 ## Server Identification
 
 ```csharp

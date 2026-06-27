@@ -9,6 +9,21 @@ var sftp = new AMNetSftpSubsystemFactory();
 server.setSubsystemFactories(sftp);
 ```
 
+## SFTP Version Control
+
+Negotiate a specific maximum SFTP protocol version with clients. Valid range is 3–6. The default is 6 (latest supported by Apache MINA SSHD).
+
+```csharp
+var sftp = new AMNetSftpSubsystemFactory();
+
+// Limit to SFTP v4 (useful when testing backward compatibility)
+sftp.MaximumVersion = 4;
+
+server.setSubsystemFactories(sftp);
+```
+
+Lowering the version disables newer protocol features. Set before calling `server.Start()`.
+
 ## Event Listeners
 
 Monitor all SFTP activity:

@@ -3,6 +3,14 @@
 ## [Unreleased]
 
 ### Added
+- **Host-based authentication** — `IAMNetHostBasedAuthenticator`, `AMNetDelegateHostBasedAuthenticator`, `setHostBasedAuthenticator()`, `SetHostBasedAuthenticator()`, `setDelegateHostBasedAuthenticator()`, `SetDelegateHostBasedAuthenticator()`
+- **GSSAPI/Kerberos authentication** — `IAMNetGssapiAuthenticator`, `AMNetDelegateGssapiAuthenticator`, `InternalGssapiAuthenticator` (extends `GSSAuthenticator`), `setGssapiAuthenticator()`, `SetGssapiAuthenticator()`, `setDelegateGssapiAuthenticator()`, `SetDelegateGssapiAuthenticator()`
+- **Shell/exec command handler** — `IAMNetCommandHandler`, `AMNetDelegateCommandHandler`, `AMNetCommandHandler`, `InternalCommandFactory`, `InternalCommand`, `setCommandHandler()`, `SetCommandHandler()`, `setDelegateCommandHandler()`, `SetDelegateCommandHandler()` for handling shell and exec requests from SSH clients
+- **SFTP version control** — `AMNetSftpSubsystemFactory.MaximumVersion` property (range 3–6) to negotiate max SFTP protocol version
+- **Compression configuration** — `AMNetSshAlgorithms.Compression` constants (`None`, `Zlib`, `ZlibDelayed`), `COMPRESSION` config property, `SetCompressionAlgorithms()`, `GetSupportedCompressionAlgorithms()`, `GetConfiguredCompressionAlgorithms()`
+- **Dynamic (SOCKS) forwarding** — `AMNetForwardingType.Dynamic`, `CanForwardDynamic()` on `IAMNetTcpForwardingFilter`, `IAMNetForwardingFilter`, `AMNetTcpForwardingFilter`, `AMNetDelegateTcpForwardingFilter`, `AMNetForwardingFilter`, `InternalForwardingFilter.canForwardDynamic()`
+- **Generic property configuration** — `SetProperty()`, `GetProperty()`, `GetIntProperty()`, `GetLongProperty()`, `GetBoolProperty()` on `AMNetSshServerConfig` for bandwidth and advanced settings
+- Authentication method constants: `AMNetSshAuthenticationMethods.Gssapi`, `AMNetSshAuthenticationMethods.HostBased`
 - TCP/Agent/X11 forwarding filter API with `AMNetTcpForwardingPolicy`, `ForwardedPortLocal`/`ForwardedPortRemote` support
 - `InternalForwardingFilter` Java bridge implementing `ForwardingFilter`
 - `FORWARDER_BUFFER_SIZE` and `FORWARD_REQUEST_TIMEOUT` config properties
@@ -15,6 +23,11 @@
 - Dependabot coverage expanded to all projects
 
 ### Changed
+- `setSubsystemFactories()` now accepts `params AMNetSftpSubsystemFactory[]` for multiple subsystem factories
+- `AMNetDelegateTcpForwardingFilter` accepts optional `canForwardDynamic` parameter
+- `IAMNetTcpForwardingFilter` adds `CanForwardDynamic()` method
+- `IAMNetForwardingFilter` adds `CanForwardDynamic()` method
+- `SshServerTests` mock filters updated with `CanForwardDynamic()` implementation
 - Heartbeat default from 0 to 45 seconds
 - Path traversal guard in `AMNetSimpleGeneratorHostKeyProvider` rejects `..` before `Path.GetFullPath`
 - NIO worker pool, socket backlog, keepalive, and TCP_NODELAY exposed with get/set + validation

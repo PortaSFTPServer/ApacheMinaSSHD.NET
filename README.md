@@ -72,6 +72,8 @@ interfaces directly or compose the built-in modules:
 - `AMNetAuthorizedKeysAuthenticator` for OpenSSH-style `authorized_keys` files.
 - `AMNetDelegatePublickeyAuthenticator` and `AMNetCompositePublickeyAuthenticator` for custom key policies.
 - `AMNetDelegateKeyboardInteractiveAuthenticator` and `AMNetFixedKeyboardInteractiveAuthenticator` for keyboard-interactive prompts.
+- `IAMNetHostBasedAuthenticator` / `AMNetDelegateHostBasedAuthenticator` for host-based (host key + hostname) authentication.
+- `IAMNetGssapiAuthenticator` / `AMNetDelegateGssapiAuthenticator` for Kerberos/SSO authentication.
 
 Keyboard-interactive authentication is also modular, but it is challenge-based
 rather than a single credential check. For advanced routing, use one delegate
@@ -116,8 +118,8 @@ to build complete workflows:
 - **Secure collaboration** — Give your team members and external partners a dedicated
   SFTP server for project files, accessible from any OpenSSH-compatible client.
 - **Custom authentication and access control** — Password, public key, `authorized_keys`,
-  virtual file systems, root jail, hidden-file filtering, SFTP/SCP event hooks, audit, and
-  SSH algorithm configuration.
+  host-based, Kerberos/GSSAPI, keyboard-interactive, virtual file systems, root jail,
+  hidden-file filtering, SFTP/SCP event hooks, audit, and SSH algorithm configuration.
 
 ## Version Compatibility
 
@@ -133,7 +135,7 @@ Browse ready-to-run C# SFTP server examples that demonstrate real scenarios:
 
 | Sample | What it shows |
 |--------|--------------|
-| [AuthenticationServer](Sample/AuthenticationServer) | Password, public key, fingerprint, authorized_keys, keyboard-interactive, and MFA auth — pick via CLI arg |
+| [AuthenticationServer](Sample/AuthenticationServer) | Password, public key, fingerprint, authorized_keys, host-based, GSSAPI/Kerberos, keyboard-interactive, and MFA auth — pick via CLI arg |
 | [AvaloniaSftpServer](Sample/AvaloniaSftpServer) | Cross-platform Avalonia UI SFTP server manager — start/stop, sessions, live log |
 | [BlazorSftpServer](Sample/BlazorSftpServer) | Blazor Server web app — manage SFTP server from any browser, sessions, live log |
 | [ConsoleSftpServer](Sample/ConsoleSftpServer) | Lightweight console-based SFTP server |
@@ -158,7 +160,7 @@ For complete, organized documentation on building SFTP/SCP servers with ApacheMi
 
 - [Quick Start](docs/guide/01-quickstart.md) — Build your first server in 5 minutes
 - [Server Configuration](docs/guide/02-configuration.md) — Timeouts, limits, algorithms
-- [Authentication](docs/guide/03-authentication.md) — Password, public key, MFA
+- [Authentication](docs/guide/03-authentication.md) — Password, public key, host-based, GSSAPI/Kerberos, MFA
 - [Virtual Filesystem](docs/guide/04-virtual-filesystem.md) — Root jail, path containment
 - [SFTP Subsystem](docs/guide/05-sftp-subsystem.md) — File operations, event hooks
 - [SCP Subsystem](docs/guide/06-scp-subsystem.md) — Secure copy, transfer events

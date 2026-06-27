@@ -176,6 +176,89 @@ server.SetAuthenticationMethodGroups(
     });
 ```
 
+## Host-Based Authentication
+
+Host-based authentication verifies a client by the host key and hostname from which the connection originates, in addition to the username.
+
+### Delegate (Callback)
+
+```csharp
+server.SetDelegateHostBasedAuthenticator(
+    (username, fingerprint, clientHostname, clientUsername, session) =>
+    {
+        // Validate the host key fingerprint and client hostname
+        return AllowedHosts.ContainsKey(clientHostname) &&
+               AllowedHosts[clientHostname] == fingerprint;
+    });
+```
+
+The callback receives:
+- `username` — The SSH username being authenticated
+- `fingerprint` — SHA-256 fingerprint of the client's host key
+- `clientHostname` — The hostname claimed by the client
+- `clientUsername` — The username on the client machine
+- `session` — Session metadata for audit context
+
+### Custom Implementation
+
+```csharp
+class MyHostBasedAuth : IAMNetHostBasedAuthenticator
+{
+    public bool Authenticate(string username, string fingerprint,
+        string clientHostname, string clientUsername, ISshSession session)
+    {
+        return HostDatabase.IsTrustedHost(clientHostname, fingerprint);
+    }
+}
+
+server.SetHostBasedAuthenticator(new MyHostBasedAuth());
+```
+
+Host-based authentication is typically combined with public key or password as a multi-factor method. Add it to an authentication chain:
+
+```csharp
+server.SetAuthenticationMethods(
+    AMNetSshAuthenticationMethods.PublicKey,
+    AMNetSshAuthenticationMethods.HostBased);
+```
+
+## GSSAPI/Kerberos Authentication
+
+GSSAPI (Generic Security Services API) enables Kerberos-based single sign-on authentication for SSH connections.
+
+### Delegate (Callback)
+
+```csharp
+server.SetDelegateGssapiAuthenticator(
+    (session, identity) =>
+    {
+        // identity is the Kerberos principal (e.g., user@REALM)
+        return KerberosService.ValidatePrincipal(identity);
+    });
+```
+
+### Custom Implementation
+
+```csharp
+class MyGssapiAuth : IAMNetGssapiAuthenticator
+{
+    public bool ValidateIdentity(ISshSession session, string identity)
+    {
+        // Validate the Kerberos principal
+        return identity.EndsWith("@YOUR-REALM.COM");
+    }
+}
+
+server.SetGssapiAuthenticator(new MyGssapiAuth());
+```
+
+GSSAPI is typically used alongside other methods:
+
+```csharp
+server.SetAuthenticationMethods(
+    AMNetSshAuthenticationMethods.Gssapi);
+```
+
 ## Session Event Callbacks
 
 Monitor authentication and session lifecycle:
