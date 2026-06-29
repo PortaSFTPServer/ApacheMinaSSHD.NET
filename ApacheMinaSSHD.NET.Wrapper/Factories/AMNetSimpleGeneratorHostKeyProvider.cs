@@ -12,12 +12,14 @@
 // limitations under the License.
 
 using ApacheMinaSSHD.NET.Wrapper.Abstractions;
+using ApacheMinaSSHD.NET.Wrapper.Helpers;
 using java.nio.file;
-using java.security;
-using org.apache.sshd.common.config.keys;
-using org.apache.sshd.common.config.keys.writer.openssh;
-using org.apache.sshd.common.util.io.resource;
-using org.apache.sshd.common.util.security;
+using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Crypto.Generators;
+using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.Math;
+using Org.BouncyCastle.OpenSsl;
+using Org.BouncyCastle.Security;
 using org.apache.sshd.server.keyprovider;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Factories
@@ -244,36 +246,68 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
                 ? PasswordProvider.GetPassword(ResolvedKeyPath, 0)
                 : Password;
 
-            bool isPuttyFormat = false;
-
-            if (!string.IsNullOrWhiteSpace(ResolvedKeyPath)
-                && System.IO.File.Exists(ResolvedKeyPath))
+            if (!string.IsNullOrWhiteSpace(ResolvedKeyPath))
             {
-                isPuttyFormat = DetectPuttyFormat(ResolvedKeyPath);
+                string? decryptedPath = null;
 
-                string? decryptedPath = TryDecryptHostKey(ResolvedKeyPath, primaryPassword ?? "");
-                if (decryptedPath == null && isPuttyFormat && !string.IsNullOrEmpty(_fallbackPassword))
+                if (System.IO.File.Exists(ResolvedKeyPath))
                 {
-                    System.Console.Error.WriteLine(
-                        $"[AMNetSimpleGeneratorHostKeyProvider] Primary password failed for PuTTY key, trying fallback...");
-                    decryptedPath = TryDecryptHostKey(ResolvedKeyPath, _fallbackPassword);
+                    if (!string.IsNullOrEmpty(primaryPassword))
+                    {
+                        decryptedPath = DecryptWithBouncyCastle(ResolvedKeyPath, primaryPassword);
+                    }
+
+                    if (decryptedPath == null && DetectPuttyFormat(ResolvedKeyPath))
+                    {
+                        if (!string.IsNullOrEmpty(primaryPassword))
+                        {
+                            string? puttyPem = PuttyKeyConverter.TryConvertToPem(ResolvedKeyPath, primaryPassword);
+                            if (puttyPem != null)
+                            {
+                                decryptedPath = DecryptWithBouncyCastle(puttyPem, primaryPassword);
+                                if (decryptedPath == null)
+                                    decryptedPath = puttyPem;
+                            }
+                        }
+
+                        if (decryptedPath == null && !string.IsNullOrEmpty(_fallbackPassword))
+                        {
+                            System.Console.Error.WriteLine(
+                                $"[AMNetSimpleGeneratorHostKeyProvider] Primary password failed for PuTTY key, trying fallback...");
+                            string? puttyPem = PuttyKeyConverter.TryConvertToPem(ResolvedKeyPath, _fallbackPassword);
+                            if (puttyPem != null)
+                            {
+                                decryptedPath = DecryptWithBouncyCastle(puttyPem, _fallbackPassword);
+                                if (decryptedPath == null)
+                                    decryptedPath = puttyPem;
+                            }
+                        }
+
+                        if (decryptedPath == null)
+                        {
+                            string diversionPath = System.IO.Path.Combine(
+                                System.IO.Path.GetTempPath(),
+                                "Porta_SSHD_generated_key_" + Guid.NewGuid() + ".openssh");
+                            System.Console.Error.WriteLine(
+                                $"[AMNetSimpleGeneratorHostKeyProvider] WARNING: PuTTY key could not be decrypted. " +
+                                $"SSHD will generate a new key at '{diversionPath}'.");
+                            decryptedPath = diversionPath;
+                        }
+                    }
+
+                    if (decryptedPath != null)
+                    {
+                        ResolvedKeyPath = decryptedPath;
+                    }
                 }
-
-                if (decryptedPath != null)
+                else if (!string.IsNullOrEmpty(primaryPassword))
                 {
-                    ResolvedKeyPath = decryptedPath;
-                }
-                else if (isPuttyFormat)
-                {
-                    string diversionPath = System.IO.Path.Combine(
-                        System.IO.Path.GetTempPath(),
-                        "Porta_SSHD_generated_key_" + Guid.NewGuid() + ".openssh");
-
-                    System.Console.Error.WriteLine(
-                        $"[AMNetSimpleGeneratorHostKeyProvider] WARNING: PuTTY key at '{ResolvedKeyPath}' could not be decrypted. " +
-                        $"SSHD will generate a new key at '{diversionPath}'. Original PuTTY key preserved.");
-
-                    ResolvedKeyPath = diversionPath;
+                    // Generate a new encrypted key
+                    GenerateEncryptedKey(ResolvedKeyPath, primaryPassword);
+                    // Decrypt to temp for the Java provider which has no setPassword access
+                    string? tempPath = DecryptWithBouncyCastle(ResolvedKeyPath, primaryPassword);
+                    if (tempPath != null)
+                        ResolvedKeyPath = tempPath;
                 }
             }
 
@@ -290,38 +324,80 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
             return provider;
         }
 
-        private static string? TryDecryptHostKey(string keyPath, string password)
+        private static string? DecryptWithBouncyCastle(string keyPath, string password)
         {
             try
             {
-                string pemPath = System.IO.Path.ChangeExtension(keyPath, ".pem");
-                if (System.IO.File.Exists(pemPath))
+                if (!System.IO.File.Exists(keyPath))
+                    return null;
+
+                // First try reading as unencrypted PEM
+                bool isEncrypted = false;
+                try
                 {
-                    var result = LoadAndWriteSshdKey(pemPath, password);
-                    if (result != null)
-                        return result;
+                    using var reader = new System.IO.StreamReader(keyPath);
+                    var pemReader = new PemReader(reader);
+                    var obj = pemReader.ReadObject();
+                    if (obj != null)
+                        return keyPath; // Unencrypted, use directly
+                }
+                catch
+                {
+                    isEncrypted = true;
                 }
 
-                var ppkResult = LoadAndWriteSshdKey(keyPath, password);
-                if (ppkResult != null)
-                    return ppkResult;
+                if (!isEncrypted)
+                    return keyPath;
 
-                string? puttyPem = ApacheMinaSSHD.NET.Wrapper.Helpers.PuttyKeyConverter.TryConvertToPem(keyPath, password);
-                if (puttyPem != null)
+                // Read with password
+                var passwordFinder = new FixedPasswordFinder(password);
+                using var encryptedReader = new System.IO.StreamReader(keyPath);
+                var encryptedPemReader = new PemReader(encryptedReader, passwordFinder);
+                var keyObj = encryptedPemReader.ReadObject();
+
+                AsymmetricKeyParameter? privateKey = null;
+                if (keyObj is AsymmetricCipherKeyPair akp)
+                    privateKey = akp.Private;
+                else if (keyObj is AsymmetricKeyParameter akp2)
+                    privateKey = akp2;
+
+                if (privateKey == null)
+                    return null;
+
+                // Write to temp unencrypted PEM
+                string tempFile = System.IO.Path.Combine(
+                    System.IO.Path.GetTempPath(),
+                    TempFilePrefix + Guid.NewGuid() + ".pem");
+
+                using (var writer = new System.IO.StreamWriter(tempFile))
                 {
-                    var result = LoadAndWriteSshdKey(puttyPem, password);
-                    if (result != null)
-                        return result;
+                    var pemWriter = new PemWriter(writer);
+                    pemWriter.WriteObject(privateKey);
                 }
 
-                return null;
+                RegisterTempFileCleanup(tempFile);
+                return tempFile;
             }
             catch (System.Exception ex)
             {
                 System.Console.Error.WriteLine(
-                    $"[AMNetSimpleGeneratorHostKeyProvider] Failed to decrypt host key '{keyPath}': {ex.Message}");
+                    $"[AMNetSimpleGeneratorHostKeyProvider] Failed to decrypt key '{keyPath}': {ex.Message}");
                 return null;
             }
+        }
+
+        private static void GenerateEncryptedKey(string keyPath, string password)
+        {
+            string algorithm = "RSA";
+            int keySize = 3072;
+
+            var keyGen = new RsaKeyPairGenerator();
+            keyGen.Init(new KeyGenerationParameters(new SecureRandom(), keySize));
+            var keyPair = keyGen.GenerateKeyPair();
+
+            using var writer = new System.IO.StreamWriter(keyPath);
+            var pemWriter = new PemWriter(writer);
+            pemWriter.WriteObject(keyPair.Private, "AES-256-CBC", password.ToCharArray(), new SecureRandom());
         }
 
         private static bool DetectPuttyFormat(string path)
@@ -338,52 +414,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
             }
         }
 
-        private static string? LoadAndWriteSshdKey(string keyPath, string password)
+        private sealed class FixedPasswordFinder : IPasswordFinder
         {
-            try
-            {
-                var path = Paths.get(keyPath);
-                var resourceKey = new PathResource(path);
-                var passwordProvider = FilePasswordProvider.of(password);
-
-                java.io.InputStream? inputStream = null;
-                java.io.OutputStream? os = null;
-                try
-                {
-                    inputStream = java.nio.file.Files.newInputStream(path);
-                    var keyPairs = SecurityUtils.loadKeyPairIdentities(
-                        null, resourceKey, inputStream, passwordProvider);
-
-                    if (keyPairs == null || !keyPairs.iterator().hasNext())
-                    {
-                        return null;
-                    }
-
-                    var kp = (KeyPair)keyPairs.iterator().next();
-                    string tempFile = System.IO.Path.Combine(
-                        System.IO.Path.GetTempPath(),
-                        TempFilePrefix + Guid.NewGuid() + ".openssh");
-
-                    var tempPath = Paths.get(tempFile);
-                    os = java.nio.file.Files.newOutputStream(tempPath);
-                    var writer = new OpenSSHKeyPairResourceWriter();
-                    writer.writePrivateKey(kp, "host key", null, os);
-
-                    RegisterTempFileCleanup(tempFile);
-                    return tempFile;
-                }
-                finally
-                {
-                    inputStream?.close();
-                    os?.close();
-                }
-            }
-            catch (System.Exception ex)
-            {
-                System.Console.Error.WriteLine(
-                    $"[AMNetSimpleGeneratorHostKeyProvider] Failed to load host key '{keyPath}': {ex.Message}");
-                return null;
-            }
+            private readonly char[] _password;
+            public FixedPasswordFinder(string password) => _password = password.ToCharArray();
+            public char[] GetPassword() => _password;
         }
 
         private static void RegisterTempFileCleanup(string path)
