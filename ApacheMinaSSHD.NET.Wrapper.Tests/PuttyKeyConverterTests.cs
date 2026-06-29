@@ -69,8 +69,8 @@ public class PuttyKeyConverterTests
         Assert.NotNull(pemPath);
         Assert.True(File.Exists(pemPath), "PEM file should exist");
         string pemContent = File.ReadAllText(pemPath);
-        Assert.StartsWith("-----BEGIN PRIVATE KEY-----", pemContent);
-        Assert.Contains("-----END PRIVATE KEY-----", pemContent);
+        Assert.StartsWith("-----BEGIN RSA PRIVATE KEY-----", pemContent);
+        Assert.Contains("-----END RSA PRIVATE KEY-----", pemContent);
 
         // Verify it can be parsed by .NET RSA
         using var rsa = RSA.Create();

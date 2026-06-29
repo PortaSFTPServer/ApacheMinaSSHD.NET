@@ -11,6 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using ApacheMinaSSHD.NET.Wrapper.Abstractions;
 using java.nio.file;
 using java.security;
 using org.apache.sshd.common.config.keys;
@@ -69,6 +70,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         public string? Password { get; private set; }
 
         /// <summary>
+        /// Gets the password provider used to resolve the host key passphrase dynamically.
+        /// </summary>
+        public IAMNetFilePasswordProvider? PasswordProvider { get; private set; }
+
+        /// <summary>
         /// Gets whether strict host key file permission checks are enabled.
         /// </summary>
         public bool StrictFilePermissions { get; private set; } = true;
@@ -124,6 +130,30 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         /// </summary>
         /// <returns>The passphrase, or <c>null</c> if no password is set.</returns>
         public string? getPassword() => Password;
+
+        /// <summary>
+        /// Sets a dynamic password provider for the host key file.
+        /// <para>
+        /// When set, <see cref="getPassword"/> and <see cref="setPassword"/> are ignored.
+        /// The provider is called during key loading to obtain the decryption passphrase.
+        /// </para>
+        /// </summary>
+        /// <param name="provider">The password provider, or <c>null</c> to clear.</param>
+        public void setPasswordProvider(IAMNetFilePasswordProvider? provider)
+        {
+            PasswordProvider = provider;
+        }
+
+        /// <summary>
+        /// Gets the dynamic password provider, if set.
+        /// </summary>
+        public IAMNetFilePasswordProvider? getPasswordProvider() => PasswordProvider;
+
+        /// <summary>
+        /// Sets a dynamic password provider for the host key file.
+        /// </summary>
+        public void SetPasswordProvider(IAMNetFilePasswordProvider? provider)
+            => setPasswordProvider(provider);
 
         /// <summary>
         /// Sets a fallback passphrase to try if the primary <see cref="Password"/> fails
@@ -210,6 +240,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
         {
             ResolveKeyPath();
 
+            string? primaryPassword = PasswordProvider != null
+                ? PasswordProvider.GetPassword(ResolvedKeyPath, 0)
+                : Password;
+
             bool isPuttyFormat = false;
 
             if (!string.IsNullOrWhiteSpace(ResolvedKeyPath)
@@ -217,7 +251,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
             {
                 isPuttyFormat = DetectPuttyFormat(ResolvedKeyPath);
 
-                string? decryptedPath = TryDecryptHostKey(ResolvedKeyPath, Password ?? "");
+                string? decryptedPath = TryDecryptHostKey(ResolvedKeyPath, primaryPassword ?? "");
                 if (decryptedPath == null && isPuttyFormat && !string.IsNullOrEmpty(_fallbackPassword))
                 {
                     System.Console.Error.WriteLine(

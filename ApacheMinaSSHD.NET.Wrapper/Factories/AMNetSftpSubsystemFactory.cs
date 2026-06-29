@@ -68,6 +68,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
 
         public void addSftpEventListener(IAMNetSftpEventListener? sftpEventListener)
         {
+            ArgumentNullException.ThrowIfNull(sftpEventListener);
             factory.addSftpEventListener(new InternalSftpEventListener(sftpEventListener));
         }
 

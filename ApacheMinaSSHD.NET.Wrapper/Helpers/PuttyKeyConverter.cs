@@ -325,10 +325,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Helpers
                 using var sw = new StreamWriter(ms);
                 var pemWriter = new PemWriter(sw);
 
-                if (!string.IsNullOrEmpty(password))
-                    pemWriter.WriteObject(rsaParams, "AES-256-CBC", password.ToCharArray(), new SecureRandom());
-                else
-                    pemWriter.WriteObject(rsaParams);
+                pemWriter.WriteObject(rsaParams);
 
                 sw.Flush();
                 return ms.ToArray();

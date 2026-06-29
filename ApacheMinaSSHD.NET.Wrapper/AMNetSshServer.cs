@@ -50,6 +50,8 @@ namespace ApacheMinaSSHD.NET.Wrapper
         private IAMNetCommandHandler? _commandHandler;
         private IAMNetServerProxyAcceptor? _serverProxyAcceptor;
         private AMNetSftpSubsystemFactory[]? _subsystemFactories;
+        private org.apache.sshd.common.io.IoServiceFactoryFactory? _ioServiceFactoryFactory;
+        private global::java.util.concurrent.ScheduledExecutorService? _scheduledExecutorService;
 
         private AMNetSshServer(SshServer server)
         {
@@ -1230,8 +1232,6 @@ namespace ApacheMinaSSHD.NET.Wrapper
                 throw new ArgumentException("At least one subsystem factory is required.", nameof(sftpFactories));
             _subsystemFactories = sftpFactories;
             if (sftpFactories.Length == 1)
-                throw new ArgumentException("At least one subsystem factory is required.", nameof(sftpFactories));
-            if (sftpFactories.Length == 1)
             {
                 server.setSubsystemFactories(Collections.singletonList(sftpFactories[0].JavaFactory));
                 return;
@@ -1366,6 +1366,77 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public bool RemoveChannelListener(IAMNetChannelListener listener)
             => removeChannelListener(listener);
 
+        // --- Service factories ---
+
+        /// <summary>
+        /// Sets the list of service factories.
+        /// </summary>
+        public void setServiceFactories(java.util.List? factories)
+            => server.setServiceFactories(factories);
+
+        /// <summary>
+        /// Gets the list of service factories.
+        /// </summary>
+        public java.util.List? getServiceFactories()
+            => server.getServiceFactories();
+
+        /// <summary>
+        /// Sets the list of user authentication factories.
+        /// </summary>
+        public void setUserAuthFactories(java.util.List? factories)
+            => server.setUserAuthFactories(factories);
+
+        /// <summary>
+        /// Gets the list of user authentication factories.
+        /// </summary>
+        public java.util.List? getUserAuthFactories()
+            => server.getUserAuthFactories();
+
+        // --- Server attributes ---
+
+        /// <summary>
+        /// Sets a server-level attribute.
+        /// </summary>
+        public void setAttribute(org.apache.sshd.common.AttributeRepository.AttributeKey key, object? value)
+            => server.setAttribute(key, value);
+
+        /// <summary>
+        /// Gets a server-level attribute.
+        /// </summary>
+        public object? getAttribute(org.apache.sshd.common.AttributeRepository.AttributeKey key)
+            => server.getAttribute(key);
+
+        // --- Simple Java interface getters/setters ---
+
+        /// <summary>
+        /// Sets the I/O service factory factory (for custom NIO/transport).
+        /// </summary>
+        public void setIoServiceFactoryFactory(org.apache.sshd.common.io.IoServiceFactoryFactory? factory)
+        {
+            _ioServiceFactoryFactory = factory;
+            server.setIoServiceFactoryFactory(factory);
+        }
+
+        /// <summary>
+        /// Gets the configured I/O service factory factory.
+        /// </summary>
+        public org.apache.sshd.common.io.IoServiceFactoryFactory? getIoServiceFactoryFactory()
+            => _ioServiceFactoryFactory;
+
+        /// <summary>
+        /// Sets the scheduled executor service used for background tasks.
+        /// </summary>
+        public void setScheduledExecutorService(global::java.util.concurrent.ScheduledExecutorService? executor)
+        {
+            _scheduledExecutorService = executor;
+            server.setScheduledExecutorService(executor, true);
+        }
+
+        /// <summary>
+        /// Gets the configured scheduled executor service.
+        /// </summary>
+        public global::java.util.concurrent.ScheduledExecutorService? getScheduledExecutorService()
+            => _scheduledExecutorService;
 
     }
 }
