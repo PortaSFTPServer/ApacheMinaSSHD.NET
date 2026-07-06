@@ -13,6 +13,10 @@ library aligned with its goal: a .NET-facing Apache MINA SSHD wrapper for SFTP
 and SCP server features that hides Java, IKVM, and Apache MINA types from normal
 application code.
 
+All bug reports, feature requests, and their responses are publicly archived in
+the [GitHub issue tracker](https://github.com/PortaSFTPServer/ApacheMinaSSHD.NET/issues)
+for later searching.
+
 ## Code Review Standards
 
 All proposed modifications undergo review before being merged. The review process checks:
