@@ -11,7 +11,13 @@
 
 **Do not open public GitHub issues for suspected vulnerabilities.**
 
-Please report security vulnerabilities to **[security@seralynx.com](mailto:security@seralynx.com)**.
+Please report security vulnerabilities **privately** to
+**[security@seralynx.com](mailto:security@seralynx.com)**.
+
+Email to this address is a **private reporting channel**:
+- Messages are encrypted in transit via STARTTLS (TLS).
+- Only the SERALYNX LLC security team has access to the mailbox.
+- Reports are never shared publicly without the reporter's consent.
 
 You should receive an acknowledgement within 48 hours. If you do not receive a
 response, please follow up to ensure the message was received.
