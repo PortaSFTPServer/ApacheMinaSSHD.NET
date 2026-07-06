@@ -2,6 +2,8 @@
 
 ApacheMinaSSHD.NET provides the building blocks for a secure SSH file transfer server. This guide covers hardening your deployment against common attack vectors.
 
+For a complete description of the project's hardening mechanisms, see the [Hardening reference](../hardening.md).
+
 ## Cryptographic Algorithms
 
 Start with modern algorithm preferences:

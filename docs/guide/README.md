@@ -34,6 +34,18 @@ This guide walks you through creating production-ready SSH file transfer servers
 | [Production Deployment](09-production-deployment.md) | Windows Service, Docker, high availability, monitoring |
 | [PROXY Protocol](10-proxy-protocol.md) | Load balancer integration, PROXY v1/v2, custom acceptors |
 
+## Reference Documents
+
+| Document | Description |
+|----------|-------------|
+| [Architecture](../architecture.md) | High-level design and component layering |
+| [Hardening](../hardening.md) | Compiler, runtime, and toolchain hardening mechanisms |
+| [Fuzzing](../fuzzing.md) | Fuzz testing strategy and integration test approach |
+| [Security Review](../security-review.md) | Security review process and cadence |
+| [Standards & Algorithms](../STANDARDS-AND-ALGORITHMS.md) | Supported RFC standards and algorithm constants |
+| [Governance](../../GOVERNANCE.md) | Project governance model and roles |
+| [Roadmap](../../ROADMAP.md) | Planned features and direction |
+
 ## Sample Projects
 
 The repository includes sample projects in the `Sample/` folder for every scenario:

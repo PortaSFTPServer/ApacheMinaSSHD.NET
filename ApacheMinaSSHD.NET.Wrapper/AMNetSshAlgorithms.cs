@@ -65,6 +65,8 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// </summary>
         public static class KeyExchange
         {
+            /// <summary>Post-quantum hybrid Streamlined NTRU Prime 761 + X25519 ECDH, available when BouncyCastle is on classpath.</summary>
+            public const string Sntrup761x25519Sha512 = "sntrup761x25519-sha512@openssh.com";
             /// <summary>Curve25519 SHA-256 key exchange for SSH, described by RFC 8731.</summary>
             public const string Curve25519Sha256 = "curve25519-sha256";
             /// <summary>Historical OpenSSH/libssh Curve25519 SHA-256 key exchange name.</summary>
@@ -166,6 +168,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
             /// </summary>
             public static IReadOnlyList<string> ModernKeyExchanges { get; } =
             [
+                KeyExchange.Sntrup761x25519Sha512,
                 KeyExchange.Curve25519Sha256,
                 KeyExchange.Curve25519Sha256LibSsh,
                 KeyExchange.EcdhNistp521,

@@ -1,3 +1,4 @@
+using System.Net.Sockets;
 using System.Text;
 using ApacheMinaSSHD.NET.Wrapper.Abstractions;
 using ApacheMinaSSHD.NET.Wrapper.Factories;
@@ -6,6 +7,10 @@ using Renci.SshNet.Common;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Tests;
 
+[CollectionDefinition("SequentialIntegration", DisableParallelization = true)]
+public sealed class SequentialIntegrationCollectionDefinition { }
+
+[Collection("SequentialIntegration")]
 [Trait("Category", "Integration")]
 public class SftpScpIntegrationTests : IDisposable
 {
@@ -35,6 +40,47 @@ public class SftpScpIntegrationTests : IDisposable
         _server.Start();
 
         _port = _server.Port;
+        WaitForPort(_port);
+    }
+
+    private static void WaitForPort(int port, int timeoutMs = 15_000)
+    {
+        var deadline = DateTime.UtcNow.AddMilliseconds(timeoutMs);
+        while (DateTime.UtcNow < deadline)
+        {
+            using var tcp = new TcpClient();
+            try
+            {
+                tcp.Connect("127.0.0.1", port);
+                tcp.Close();
+                // SSH handshake may not be ready even after TCP accept;
+                // try a quick SshClient connect to confirm the server is live.
+                using var probe = new SshClient("127.0.0.1", port, "testuser", "testpass");
+                probe.ConnectionInfo.Timeout = TimeSpan.FromSeconds(5);
+                probe.Connect();
+                probe.Disconnect();
+                return;
+            }
+            catch (SocketException)
+            {
+                Thread.Sleep(200);
+            }
+            catch (SshOperationTimeoutException)
+            {
+                Thread.Sleep(500);
+            }
+            catch (SshAuthenticationException)
+            {
+                // SSH handshake succeeded but auth failed (expected for probe
+                // if the server hasn't registered the fixed-password authenticator yet).
+                Thread.Sleep(500);
+            }
+            catch (SshConnectionException)
+            {
+                Thread.Sleep(500);
+            }
+        }
+        throw new InvalidOperationException($"Server on port {port} did not start accepting SSH connections within {timeoutMs}ms");
     }
 
     public void Dispose()

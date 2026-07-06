@@ -219,7 +219,8 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <returns>The bind address, or <c>null</c> if the server default is used.</returns>
         public string? getHost() => Host;
 
-        private static bool _shutdownHandlerInstalled;
+        private static volatile bool _shutdownHandlerInstalled;
+        private static readonly object _shutdownHandlerLock = new();
 
         /// <summary>
         /// Starts accepting SSH connections.
@@ -228,10 +229,16 @@ namespace ApacheMinaSSHD.NET.Wrapper
         {
             if (!_shutdownHandlerInstalled)
             {
-                var previous = java.lang.Thread.getDefaultUncaughtExceptionHandler();
-                java.lang.Thread.setDefaultUncaughtExceptionHandler(
-                    new Internals.SuppressShutdownExceptionHandler(previous));
-                _shutdownHandlerInstalled = true;
+                lock (_shutdownHandlerLock)
+                {
+                    if (!_shutdownHandlerInstalled)
+                    {
+                        var previous = java.lang.Thread.getDefaultUncaughtExceptionHandler();
+                        java.lang.Thread.setDefaultUncaughtExceptionHandler(
+                            new Internals.SuppressShutdownExceptionHandler(previous));
+                        _shutdownHandlerInstalled = true;
+                    }
+                }
             }
             server.start();
         }
@@ -283,9 +290,13 @@ namespace ApacheMinaSSHD.NET.Wrapper
                     System.Threading.Thread.Sleep(300);
                 }
             }
-            catch
+            catch (System.Exception ex) when (ex is System.Reflection.TargetInvocationException
+                or System.Reflection.TargetParameterCountException
+                or System.InvalidOperationException
+                or System.NullReferenceException)
             {
-                // Reflection errors are non-fatal; server.stop() handles the full sequence.
+                System.Diagnostics.Debug.WriteLine(
+                    $"[AMNetSshServer] Reflection error in CloseAcceptorFirst: {ex.Message}");
             }
         }
 
@@ -989,6 +1000,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public IAMNetX11ForwardingFilter? getX11ForwardingFilter() => _x11ForwardingFilter;
 
         private readonly System.Collections.Generic.List<InternalPortForwardingEventListener> _portForwardingEventListeners = new();
+        private readonly object _portForwardingLock = new();
 
         /// <summary>
         /// Registers a port forwarding event listener.
@@ -997,7 +1009,10 @@ namespace ApacheMinaSSHD.NET.Wrapper
         public void addPortForwardingEventListener(IAMNetPortForwardingEventListener listener)
         {
             var internalListener = new InternalPortForwardingEventListener(listener);
-            _portForwardingEventListeners.Add(internalListener);
+            lock (_portForwardingLock)
+            {
+                _portForwardingEventListeners.Add(internalListener);
+            }
             server.addPortForwardingEventListener(internalListener);
         }
 
@@ -1014,13 +1029,16 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <returns><c>true</c> if found and removed; otherwise <c>false</c>.</returns>
         public bool removePortForwardingEventListener(IAMNetPortForwardingEventListener listener)
         {
-            for (int i = _portForwardingEventListeners.Count - 1; i >= 0; i--)
+            lock (_portForwardingLock)
             {
-                if (_portForwardingEventListeners[i].WrappedListener == listener)
+                for (int i = _portForwardingEventListeners.Count - 1; i >= 0; i--)
                 {
-                    server.removePortForwardingEventListener(_portForwardingEventListeners[i]);
-                    _portForwardingEventListeners.RemoveAt(i);
-                    return true;
+                    if (_portForwardingEventListeners[i].WrappedListener == listener)
+                    {
+                        server.removePortForwardingEventListener(_portForwardingEventListeners[i]);
+                        _portForwardingEventListeners.RemoveAt(i);
+                        return true;
+                    }
                 }
             }
             return false;
@@ -1081,6 +1099,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <param name="sessionListener">The session listener to add.</param>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="sessionListener"/> is null.</exception>
         private readonly System.Collections.Generic.List<InternalSessionListener> _sessionListeners = new();
+        private readonly object _sessionListenerLock = new();
 
         /// <summary>
         /// Registers session lifecycle callbacks.
@@ -1091,7 +1110,10 @@ namespace ApacheMinaSSHD.NET.Wrapper
         {
             ArgumentNullException.ThrowIfNull(sessionListener);
             var internalListener = new InternalSessionListener(sessionListener);
-            _sessionListeners.Add(internalListener);
+            lock (_sessionListenerLock)
+            {
+                _sessionListeners.Add(internalListener);
+            }
             server.addSessionListener(internalListener);
         }
 
@@ -1102,13 +1124,16 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <returns><c>true</c> if the listener was found and removed; otherwise <c>false</c>.</returns>
         public bool removeSessionListener(IAMNetSessionListener sessionListener)
         {
-            for (int i = _sessionListeners.Count - 1; i >= 0; i--)
+            lock (_sessionListenerLock)
             {
-                if (_sessionListeners[i].WrappedListener == sessionListener)
+                for (int i = _sessionListeners.Count - 1; i >= 0; i--)
                 {
-                    server.removeSessionListener(_sessionListeners[i]);
-                    _sessionListeners.RemoveAt(i);
-                    return true;
+                    if (_sessionListeners[i].WrappedListener == sessionListener)
+                    {
+                        server.removeSessionListener(_sessionListeners[i]);
+                        _sessionListeners.RemoveAt(i);
+                        return true;
+                    }
                 }
             }
             return false;
@@ -1322,6 +1347,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         // --- Channel listeners ---
 
         private readonly System.Collections.Generic.List<InternalChannelListener> _channelListeners = new();
+        private readonly object _channelListenerLock = new();
 
         /// <summary>
         /// Registers a channel event listener.
@@ -1331,7 +1357,10 @@ namespace ApacheMinaSSHD.NET.Wrapper
         {
             ArgumentNullException.ThrowIfNull(listener);
             var internalListener = new InternalChannelListener(listener);
-            _channelListeners.Add(internalListener);
+            lock (_channelListenerLock)
+            {
+                _channelListeners.Add(internalListener);
+            }
             server.addChannelListener(internalListener);
         }
 
@@ -1348,13 +1377,16 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// <returns><c>true</c> if found and removed; otherwise <c>false</c>.</returns>
         public bool removeChannelListener(IAMNetChannelListener listener)
         {
-            for (int i = _channelListeners.Count - 1; i >= 0; i--)
+            lock (_channelListenerLock)
             {
-                if (_channelListeners[i].WrappedListener == listener)
+                for (int i = _channelListeners.Count - 1; i >= 0; i--)
                 {
-                    server.removeChannelListener(_channelListeners[i]);
-                    _channelListeners.RemoveAt(i);
-                    return true;
+                    if (_channelListeners[i].WrappedListener == listener)
+                    {
+                        server.removeChannelListener(_channelListeners[i]);
+                        _channelListeners.RemoveAt(i);
+                        return true;
+                    }
                 }
             }
             return false;

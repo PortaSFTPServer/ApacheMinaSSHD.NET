@@ -20,6 +20,7 @@ using Renci.SshNet.Common;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Tests;
 
+[Collection("SequentialIntegration")]
 [Trait("Category", "Integration")]
 public sealed class PortForwardingIntegrationTests : IDisposable
 {
@@ -57,6 +58,43 @@ public sealed class PortForwardingIntegrationTests : IDisposable
     {
         _server.Start();
         _port = _server.Port;
+        WaitForPort(_port);
+    }
+
+    private static void WaitForPort(int port, int timeoutMs = 15_000)
+    {
+        var deadline = DateTime.UtcNow.AddMilliseconds(timeoutMs);
+        while (DateTime.UtcNow < deadline)
+        {
+            using var tcp = new TcpClient();
+            try
+            {
+                tcp.Connect("127.0.0.1", port);
+                tcp.Close();
+                using var probe = new SshClient("127.0.0.1", port, "testuser", "testpass");
+                probe.ConnectionInfo.Timeout = TimeSpan.FromSeconds(5);
+                probe.Connect();
+                probe.Disconnect();
+                return;
+            }
+            catch (SocketException)
+            {
+                Thread.Sleep(200);
+            }
+            catch (SshOperationTimeoutException)
+            {
+                Thread.Sleep(500);
+            }
+            catch (SshAuthenticationException)
+            {
+                Thread.Sleep(500);
+            }
+            catch (SshConnectionException)
+            {
+                Thread.Sleep(500);
+            }
+        }
+        throw new InvalidOperationException($"Server on port {port} did not start accepting SSH connections within {timeoutMs}ms");
     }
 
     [Fact]

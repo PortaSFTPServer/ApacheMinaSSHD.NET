@@ -1,6 +1,7 @@
 # ApacheMinaSSHD.NET — The Best Open Source .NET SFTP Server Library
 
 [![NuGet](https://img.shields.io/nuget/v/ApacheMinaSSHD.NET.Wrapper)](https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13433/badge)](https://www.bestpractices.dev/projects/13433)
 
 > **🔒 FIPS 140-2/140-3 compliant** — Enable FIPS mode via `AMNSecurityUtils.SetFipsMode()` for NIST-approved cryptographic algorithms. Call once at application startup before creating any server instance.
 

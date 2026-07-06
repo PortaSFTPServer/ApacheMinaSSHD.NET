@@ -87,10 +87,10 @@ public class SshAlgorithmsTests
     }
 
     [Fact]
-    public void ModernKeyExchanges_prefers_curve25519()
+    public void ModernKeyExchanges_prefers_pq_hybrid()
     {
         var kex = AMNetSshAlgorithms.Presets.ModernKeyExchanges;
-        Assert.Equal("curve25519-sha256", kex[0]);
+        Assert.Equal("sntrup761x25519-sha512@openssh.com", kex[0]);
     }
 
     [Fact]
