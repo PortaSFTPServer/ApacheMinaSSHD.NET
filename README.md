@@ -5,6 +5,8 @@
 
 > **🔒 FIPS 140-2/140-3 compliant** — Enable FIPS mode via `AMNSecurityUtils.SetFipsMode()` for NIST-approved cryptographic algorithms. Call once at application startup before creating any server instance.
 
+> **🔐 Security contact:** Report vulnerabilities to **[security@seralynx.com](mailto:security@seralynx.com)** — see [SECURITY.md](SECURITY.md) for disclosure policy.
+>
 > **⚠️ Security disclaimer:** This is a wrapper library around Apache MINA SSHD — it wraps SFTP and SCP only. This is to support a secure transfer in transit by default. It does not implement FTP, FTPS, TFTP, or any other insecure protocol. Like any wrapper library, security depends on how you use it. You are responsible for configuring authentication, encryption algorithms, access controls, and limits appropriately for your environment. Review the [Security Best Practices guide](docs/guide/07-security.md) before deploying to production.
 
 **ApacheMinaSSHD.NET helps organizations — engineering firms, healthcare providers, and developers — build their own SFTP/SCP servers in .NET.** Use it alongside any SFTP/SCP client to enable secure file transfer and automation for your infrastructure.

@@ -81,4 +81,6 @@ One package. No Java dependencies. No manual IKVM setup.
 
 **ApacheMinaSSHD.NET** is maintained by **[SERALYNX LLC](https://seralynx.com/)** — building secure file transfer solutions for critical infrastructure since 2015. For a turnkey portable SFTP server with GUI management, visit [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).
 
+**Security contact:** Report vulnerabilities to **[security@seralynx.com](mailto:security@seralynx.com)** — see [SECURITY.md](../../SECURITY.md) for disclosure policy.
+
 
