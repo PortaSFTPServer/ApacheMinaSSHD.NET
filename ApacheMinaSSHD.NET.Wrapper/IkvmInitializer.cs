@@ -29,7 +29,8 @@ namespace ApacheMinaSSHD.NET.Wrapper
                 "org.apache.sshd.core",
                 "org.apache.sshd.sftp",
                 "org.apache.sshd.scp",
-                "org.apache.commons.logging"
+                "org.apache.commons.logging",
+                "bcprov.jdk18on"
             ];
 
             foreach (string name in ikvmAssemblies)

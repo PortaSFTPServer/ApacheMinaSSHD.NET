@@ -12,7 +12,7 @@ This document outlines the intended direction of ApacheMinaSSHD.NET for the next
 - SFTP/SCP event hooks and session monitoring
 - SSH port forwarding (local, remote, X11, dynamic)
 - Terrapin attack mitigation (kex-strict)
-- Post-quantum key exchange (`sntrup761x25519-sha512@openssh.com`)
+- Post-quantum key exchange (`sntrup761x25519-sha512@openssh.com`, available when the IKVM-transpiled `BouncyCastle` JCA provider is on the boot classpath)
 - FIPS 140-2/140-3 compliance
 
 ## Short-Term (Next 6 Months)
@@ -27,7 +27,7 @@ This document outlines the intended direction of ApacheMinaSSHD.NET for the next
 - Reduced IKVM overhead / native AOT compatibility investigation
 - Extended audit logging with structured output (JSON/CEF)
 - Certificate-based authentication (X.509) support
-- Expanded post-quantum algorithm support as NIST standards solidify
+- Expanded post-quantum algorithm support (ML-KEM, ML-DSA, SLH-DSA) as NIST standards solidify
 
 ## Out of Scope
 

@@ -30,9 +30,7 @@
 		</AssemblyAttribute>
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\ApacheMinaSSHD.NET.Bindings\ApacheMinaSSHD.NET.Bindings.csproj">
-	    <PrivateAssets>all</PrivateAssets>
-	  </ProjectReference>
+	  <ProjectReference Include="..\ApacheMinaSSHD.NET.Bindings\ApacheMinaSSHD.NET.Bindings.csproj" PrivateAssets="contentfiles;analyzers;build" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="IKVM" Version="8.15.0" />

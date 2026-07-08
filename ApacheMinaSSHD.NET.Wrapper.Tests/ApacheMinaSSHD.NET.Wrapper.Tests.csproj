@@ -17,10 +17,17 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApacheMinaSSHD.NET.Wrapper\ApacheMinaSSHD.NET.Wrapper.csproj" />
+    <ProjectReference Include="..\ApacheMinaSSHD.NET.Bindings\ApacheMinaSSHD.NET.Bindings.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
+
+  <Target Name="CopyBcProv" AfterTargets="Build">
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\..\ApacheMinaSSHD.NET.Bindings\bin\$(Configuration)\net10.0\bcprov.jdk18on.dll"
+          DestinationFolder="$(OutputPath)"
+          SkipUnchangedFiles="true" />
+  </Target>
 
 </Project>

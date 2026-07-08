@@ -81,6 +81,7 @@ after filtering out algorithms that are not supported by the current runtime.
 | `AMNetSshAlgorithms.KeyExchange.DiffieHellmanGroup18Sha512` | `diffie-hellman-group18-sha512` | MODP DH groups for SSH are described by RFC 8268. |
 | `AMNetSshAlgorithms.KeyExchange.DiffieHellmanGroup16Sha512` | `diffie-hellman-group16-sha512` | MODP DH groups for SSH are described by RFC 8268. |
 | `AMNetSshAlgorithms.KeyExchange.DiffieHellmanGroup14Sha256` | `diffie-hellman-group14-sha256` | MODP DH groups for SSH are described by RFC 8268. |
+| `AMNetSshAlgorithms.KeyExchange.Sntrup761x25519Sha512` | `sntrup761x25519-sha512@openssh.com` | Post-quantum hybrid Streamlined NTRU Prime 761 + X25519 ECDH. Available when the IKVM-transpiled BouncyCastle JCA provider is registered on the boot classpath (see `IkvmInitializer.cs`). |
 
 ## Host Key and Signature Constants
 

@@ -65,7 +65,7 @@ namespace ApacheMinaSSHD.NET.Wrapper
         /// </summary>
         public static class KeyExchange
         {
-            /// <summary>Post-quantum hybrid Streamlined NTRU Prime 761 + X25519 ECDH, available when BouncyCastle is on classpath.</summary>
+            /// <summary>Post-quantum hybrid Streamlined NTRU Prime 761 + X25519 ECDH, available when the IKVM-transpiled BouncyCastle JCA provider is on the boot classpath and registered with java.security.Security.</summary>
             public const string Sntrup761x25519Sha512 = "sntrup761x25519-sha512@openssh.com";
             /// <summary>Curve25519 SHA-256 key exchange for SSH, described by RFC 8731.</summary>
             public const string Curve25519Sha256 = "curve25519-sha256";
