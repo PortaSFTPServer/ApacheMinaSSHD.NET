@@ -31,6 +31,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                     var cert = (X509Certificate)iter.next();
                     try { certList.Add(cert.getEncoded()); } catch { }
                 }
+
             }
 
             string? keyAlgorithm = null;
