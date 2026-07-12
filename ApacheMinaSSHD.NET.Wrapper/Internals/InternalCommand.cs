@@ -73,9 +73,11 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                     System.Diagnostics.Debug.WriteLine($"[InternalCommand] Error: {ex.Message}");
                     _exitCallback?.onExit(1, ex.Message);
                 }
-            });
-            thread.Name = "command-" + (_commandString ?? "shell");
-            thread.IsBackground = true;
+            })
+            {
+                Name = "command-" + (_commandString ?? "shell"),
+                IsBackground = true
+            };
             thread.Start();
         }
 

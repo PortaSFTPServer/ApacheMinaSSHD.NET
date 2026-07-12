@@ -283,17 +283,13 @@ namespace ApacheMinaSSHD.NET.Wrapper.Helpers
 
         private static byte[]? ConvertToPemBytes(string algorithm, byte[] publicBlob, byte[] privateBlob, string comment, string password)
         {
-            switch (algorithm)
+            return algorithm switch
             {
-                case "ssh-rsa":
-                    return ConvertRsaToPem(publicBlob, privateBlob, password);
-                case "ssh-ed25519":
-                    return null;
-                case "ecdsa-sha2-nistp256":
-                    return null;
-                default:
-                    return null;
-            }
+                "ssh-rsa" => ConvertRsaToPem(publicBlob, privateBlob, password),
+                "ssh-ed25519" => null,
+                "ecdsa-sha2-nistp256" => null,
+                _ => null,
+            };
         }
 
         private static byte[]? ConvertRsaToPem(byte[] publicBlob, byte[] privateBlob, string password)

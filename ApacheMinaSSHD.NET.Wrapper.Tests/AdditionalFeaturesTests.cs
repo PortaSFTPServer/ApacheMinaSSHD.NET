@@ -494,7 +494,7 @@ public class KeyProviderEncryptedPathsTests : IDisposable
         var provider = new AMNetSimpleGeneratorHostKeyProvider("relative_key.ser");
         provider.ResolveKeyPath();
         Assert.NotEqual("relative_key.ser", provider.ResolvedKeyPath);
-        Assert.True(provider.ResolvedKeyPath.EndsWith("relative_key.ser"));
+        Assert.EndsWith("relative_key.ser", provider.ResolvedKeyPath);
     }
 
     [Fact]
