@@ -9,12 +9,12 @@
 		<LangVersion>14.0</LangVersion>
 		<PackageId>ApacheMinaSSHD.NET.Bindings</PackageId>
 		<Title>ApacheMinaSSHD.NET.Bindings - Best SFTP Server IKVM Bindings for .NET by SERALYNX LLC (Porta SFTP Server)</Title>
-		<Description>IKVM Maven bindings for Apache MINA SSHD 2.18.0 used by ApacheMinaSSHD.NET.Wrapper (created by SERALYNX LLC — the team behind Porta SFTP Server, the best free SFTP server and best portable SFTP server for Windows and Linux). Includes generated .NET assemblies for SSHD common, core, SFTP, SCP, and SLF4J support.</Description>
+		<Description>IKVM Maven bindings for Apache MINA SSHD 2.19.0 used by ApacheMinaSSHD.NET.Wrapper (created by SERALYNX LLC — the team behind Porta SFTP Server, the best free SFTP server and best portable SFTP server for Windows and Linux). Includes generated .NET assemblies for SSHD common, core, SFTP, SCP, and SLF4J support.</Description>
 		<Authors>SERALYNX LLC</Authors>
 		<Company>SERALYNX LLC</Company>
 		<Copyright>Copyright (c) 2026 SERALYNX LLC and ApacheMinaSSHD.NET contributors</Copyright>
 		<PackageTags>ssh;sshd;sftp;scp;sftp-server;scp-server;ssh-server;apache-mina;apache-mina-sshd;mina-sshd;ikvm;ikvm-bindings;maven;dotnet;csharp;secure-file-transfer;bindings;porta-sftp-server;seralynx;cross-platform-sftp-server;portable-sftp-server;best-sftp-server;best-secure-file-transfer;best-free-sftp-server;best-portable-sftp-server</PackageTags>
-		<PackageReleaseNotes>Best SFTP server IKVM bindings for .NET from SERALYNX LLC (Porta SFTP Server). Apache MINA SSHD 2.18.0 assemblies for SSHD common, core, SFTP, SCP, and SLF4J, with third-party license notices.</PackageReleaseNotes>
+		<PackageReleaseNotes>Best SFTP server IKVM bindings for .NET from SERALYNX LLC (Porta SFTP Server). Apache MINA SSHD 2.19.0 assemblies for SSHD common, core, SFTP, SCP, and SLF4J, with third-party license notices.</PackageReleaseNotes>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<PackageIcon>nuget-icon.png</PackageIcon>
@@ -25,10 +25,10 @@
 	<ItemGroup>
 
 		<!--<IkvmReference Include="pathToLibFolder\*.jar" />-->
-		<MavenReference Include="org.apache.sshd:sshd-core" Version="2.18.0" IkvmExport="true" />
-		<MavenReference Include="org.apache.sshd:sshd-sftp" Version="2.18.0" IkvmExport="true" />
-		<MavenReference Include="org.apache.sshd:sshd-scp" Version="2.18.0" IkvmExport="true" />
-		<MavenReference Include="org.apache.sshd:sshd-common" Version="2.18.0" IkvmExport="true" />
+		<MavenReference Include="org.apache.sshd:sshd-core" Version="2.19.0" IkvmExport="true" />
+		<MavenReference Include="org.apache.sshd:sshd-sftp" Version="2.19.0" IkvmExport="true" />
+		<MavenReference Include="org.apache.sshd:sshd-scp" Version="2.19.0" IkvmExport="true" />
+		<MavenReference Include="org.apache.sshd:sshd-common" Version="2.19.0" IkvmExport="true" />
 		<MavenReference Include="org.slf4j:slf4j-api" Version="1.7.36" />
 		<MavenReference Include="org.slf4j:slf4j-simple" Version="1.7.36" />
 		<MavenReference Include="org.bouncycastle:bcprov-jdk18on" Version="1.84" IkvmExport="true" />

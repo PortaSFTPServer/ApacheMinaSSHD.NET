@@ -36,6 +36,13 @@
 - NuGet packages attach to GitHub Releases instead of NuGet.org publish
 
 ### Security
+- **Upgraded Apache MINA SSHD from 2.18.0 to 2.19.0** to resolve CVE-2026-56624 (improper SSH certificate validation) and CVE-2026-48827 (path traversal in sshd-git)
+- `setUpDefaultServer()` now calls `ApplyModernAlgorithmDefaults()` automatically, restricting to strong ciphers/MACs/key exchanges by default
+- Host key temp files use `FileOptions.DeleteOnClose` to prevent unencrypted key material persisting on disk after crash
+- PuTTY key decrypt failure now throws `CryptographicException` instead of silently generating a new host key (which would enable MITM)
+- Command handler rejects exec/shell strings exceeding 32 KB to limit resource abuse
+- Command execution moved from raw `Thread` to `ThreadPool` to prevent thread exhaustion under load
+- Acceptor shutdown uses bounded wait (2s) instead of fixed 300ms sleep
 - Heartbeat default 45s to prevent idle session resource exhaustion
 - Host key path traversal validated at constructor time
 - Per-IP sliding-window connection rate limiter

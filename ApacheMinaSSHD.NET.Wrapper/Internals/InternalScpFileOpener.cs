@@ -411,6 +411,22 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             return openerDelegate.createScpTargetStreamResolver(session, file);
         }
 
+        public string checkRemoteFileName(JavaFileSystem fileSystem, string fileName)
+        {
+            string defaultValue = openerDelegate.checkRemoteFileName(fileSystem, fileName);
+            if (defaultValue == null)
+            {
+                return null;
+            }
+
+            var access = CreateAccess(
+                default!,
+                SshScpFileOperation.CheckRemoteFileName,
+                fileName: fileName);
+
+            return fileOpener.CheckRemoteFileName(access, defaultValue) ?? defaultValue;
+        }
+
         private void EnsurePathAllowed(ISshScpFileAccess access)
         {
             if (!fileOpener.IsPathAllowed(access))

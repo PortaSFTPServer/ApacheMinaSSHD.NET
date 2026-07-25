@@ -140,5 +140,13 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions
         /// <summary>Called when the server creates an incoming SCP target stream resolver.</summary>
         /// <param name="access">Operation metadata for the SCP request.</param>
         void CreateTargetStreamResolver(ISshScpFileAccess access) { }
+
+        /// <summary>
+        /// Validates a remote file name received via SCP.
+        /// </summary>
+        /// <param name="access">Operation metadata for the SCP request.</param>
+        /// <param name="fileName">The remote file name to validate.</param>
+        /// <returns>The accepted file name, or <c>null</c> to reject.</returns>
+        string? CheckRemoteFileName(ISshScpFileAccess access, string fileName) => fileName;
     }
 }

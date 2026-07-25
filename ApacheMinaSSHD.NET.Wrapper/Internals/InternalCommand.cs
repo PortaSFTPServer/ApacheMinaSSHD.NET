@@ -11,6 +11,8 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 {
     internal class InternalCommand : java.lang.Object, Command
     {
+        private const int MaxCommandLength = 32768;
+
         private readonly string? _commandString;
         private readonly IAMNetCommandHandler _handler;
         private InputStream? _inputStream;
@@ -18,7 +20,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         private OutputStream? _errorStream;
         private SshdExitCallback? _exitCallback;
         private ServerSession? _session;
-        private bool _started;
+        private volatile int _started;
 
         public InternalCommand(string? commandString, IAMNetCommandHandler handler)
         {
@@ -48,11 +50,18 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
 
         public void start(ChannelSession channelSession, SshdEnvironment env)
         {
-            if (_started) return;
-            _started = true;
+            if (Interlocked.CompareExchange(ref _started, 1, 0) != 0) return;
             _session = channelSession.getSession();
 
-            var thread = new Thread(() =>
+            if (!string.IsNullOrEmpty(_commandString) && _commandString.Length > MaxCommandLength)
+            {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[InternalCommand] Command rejected: exceeds {MaxCommandLength} character limit.");
+                _exitCallback?.onExit(126, "Command too long.");
+                return;
+            }
+
+            ThreadPool.QueueUserWorkItem(_ =>
             {
                 try
                 {
@@ -73,17 +82,12 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
                     System.Diagnostics.Debug.WriteLine($"[InternalCommand] Error: {ex.Message}");
                     _exitCallback?.onExit(1, ex.Message);
                 }
-            })
-            {
-                Name = "command-" + (_commandString ?? "shell"),
-                IsBackground = true
-            };
-            thread.Start();
+            });
         }
 
         public void destroy(ChannelSession channelSession)
         {
-            _started = false;
+            Interlocked.Exchange(ref _started, 0);
             try
             {
                 _inputStream?.close();

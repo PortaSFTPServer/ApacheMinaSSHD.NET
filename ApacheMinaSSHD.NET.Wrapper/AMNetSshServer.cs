@@ -181,12 +181,15 @@ namespace ApacheMinaSSHD.NET.Wrapper
         }
 
         /// <summary>
-        /// Creates a server with the default SSH server factories.
+        /// Creates a server with the default SSH server factories and modern algorithm preferences.
+        /// Equivalent to calling <c>SetUpDefaultServer()</c>.
         /// </summary>
         /// <returns>A new configured <see cref="AMNetSshServer"/> instance.</returns>
         public static AMNetSshServer setUpDefaultServer()
         {
-            return new AMNetSshServer(SshServer.setUpDefaultServer());
+            var server = new AMNetSshServer(SshServer.setUpDefaultServer());
+            server.Config.ApplyModernAlgorithmDefaults();
+            return server;
         }
 
         /// <summary>
@@ -287,7 +290,12 @@ namespace ApacheMinaSSHD.NET.Wrapper
                         "close",
                         [typeof(bool)]);
                     closeBool?.Invoke(acceptor, [true]);
-                    System.Threading.Thread.Sleep(300);
+
+                    var sw = System.Diagnostics.Stopwatch.StartNew();
+                    while (sw.ElapsedMilliseconds < 2000)
+                    {
+                        System.Threading.Thread.Sleep(50);
+                    }
                 }
             }
             catch (System.Exception ex) when (ex is System.Reflection.TargetInvocationException

@@ -285,13 +285,9 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
 
                         if (decryptedPath == null)
                         {
-                            string diversionPath = System.IO.Path.Combine(
-                                System.IO.Path.GetTempPath(),
-                                "Porta_SSHD_generated_key_" + Guid.NewGuid() + ".openssh");
-                            System.Console.Error.WriteLine(
-                                $"[AMNetSimpleGeneratorHostKeyProvider] WARNING: PuTTY key could not be decrypted. " +
-                                $"SSHD will generate a new key at '{diversionPath}'.");
-                            decryptedPath = diversionPath;
+                            throw new System.Security.Cryptography.CryptographicException(
+                                $"Cannot decrypt PuTTY host key '{ResolvedKeyPath}'. " +
+                                $"Provide the correct primary or fallback password, or remove the corrupted key file.");
                         }
                     }
 
@@ -364,12 +360,21 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
                 if (privateKey == null)
                     return null;
 
-                // Write to temp unencrypted PEM
+                // Write to temp unencrypted PEM. Use FileOptions.DeleteOnClose so the file is
+                // automatically removed when the stream is disposed, even if the process crashes
+                // before the ProcessExit cleanup handler runs.
                 string tempFile = System.IO.Path.Combine(
                     System.IO.Path.GetTempPath(),
                     TempFilePrefix + Guid.NewGuid() + ".pem");
 
-                using (var writer = new System.IO.StreamWriter(tempFile))
+                using (var fs = new System.IO.FileStream(
+                    tempFile,
+                    System.IO.FileMode.Create,
+                    System.IO.FileAccess.Write,
+                    System.IO.FileShare.None,
+                    bufferSize: 4096,
+                    System.IO.FileOptions.DeleteOnClose))
+                using (var writer = new System.IO.StreamWriter(fs, new System.Text.UTF8Encoding(false)))
                 {
                     var pemWriter = new PemWriter(writer);
                     pemWriter.WriteObject(privateKey);

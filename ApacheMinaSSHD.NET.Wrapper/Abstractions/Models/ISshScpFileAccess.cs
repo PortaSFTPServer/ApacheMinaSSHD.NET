@@ -49,7 +49,9 @@ namespace ApacheMinaSSHD.NET.Wrapper.Abstractions.Models
         /// <summary>Create an outgoing SCP source stream resolver.</summary>
         CreateSourceStreamResolver,
         /// <summary>Create an incoming SCP target stream resolver.</summary>
-        CreateTargetStreamResolver
+        CreateTargetStreamResolver,
+        /// <summary>Validate a remote SCP file name.</summary>
+        CheckRemoteFileName
     }
 
     /// <summary>
