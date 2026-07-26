@@ -19,12 +19,21 @@ using org.apache.sshd.sftp.server;
 
 namespace ApacheMinaSSHD.NET.Wrapper.Factories
 {
+    /// <summary>
+    /// Factory that creates and configures the SFTP subsystem for the SSH server.
+    /// </summary>
     public class AMNetSftpSubsystemFactory
     {
         private readonly SftpSubsystemFactory factory = new();
 
+        /// <summary>
+        /// Default no-op SFTP event listener used when no custom listener is registered.
+        /// </summary>
         public static readonly IAMNetSftpEventListener DefaultListener = new NoOpSftpEventListener();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AMNetSftpSubsystemFactory"/> class.
+        /// </summary>
         public AMNetSftpSubsystemFactory()
         {
         }
@@ -66,6 +75,10 @@ namespace ApacheMinaSSHD.NET.Wrapper.Factories
             }
         }
 
+        /// <summary>
+        /// Registers an SFTP event listener that will be notified of SFTP protocol events.
+        /// </summary>
+        /// <param name="sftpEventListener">The event listener to register.</param>
         public void addSftpEventListener(IAMNetSftpEventListener? sftpEventListener)
         {
             ArgumentNullException.ThrowIfNull(sftpEventListener);

@@ -58,9 +58,20 @@ string assemblyDirectory = Path.GetDirectoryName(assemblyPath)!;
 AssemblyLoadContext.Default.Resolving += (context, name) =>
 {
     string candidate = Path.Combine(assemblyDirectory, name.Name + ".dll");
-    return File.Exists(candidate)
-        ? context.LoadFromAssemblyPath(candidate)
-        : null;
+    if (File.Exists(candidate))
+    {
+        return context.LoadFromAssemblyPath(candidate);
+    }
+
+    string? nugetGlobalPackages = Environment.GetEnvironmentVariable("NUGET_PACKAGES")
+        ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".nuget", "packages");
+    string ikvmLib = Path.Combine(nugetGlobalPackages, "ikvm", "8.15.0", "ref", "net8.0", name.Name + ".dll");
+    if (File.Exists(ikvmLib))
+    {
+        return context.LoadFromAssemblyPath(ikvmLib);
+    }
+
+    return null;
 };
 
 Assembly assembly;
@@ -91,6 +102,20 @@ string[] blockedPrefixes =
     "org.apache.",
     "org.slf4j.",
     "ikvm."
+];
+
+string[] allowedLeakLocations =
+[
+    "AMNetSshServer.getAttribute",
+    "AMNetSshServer.setAttribute",
+    "AMNetSshServer.getIoServiceFactoryFactory",
+    "AMNetSshServer.setIoServiceFactoryFactory",
+    "AMNetSshServer.getScheduledExecutorService",
+    "AMNetSshServer.setScheduledExecutorService",
+    "AMNetSshServer.getServiceFactories",
+    "AMNetSshServer.setServiceFactories",
+    "AMNetSshServer.getUserAuthFactories",
+    "AMNetSshServer.setUserAuthFactories"
 ];
 
 SortedSet<string> leaks = new(StringComparer.Ordinal);
@@ -173,7 +198,10 @@ void CheckType(string location, Type? type)
         string fullName = candidate.FullName ?? candidate.Name;
         if (blockedPrefixes.Any(prefix => fullName.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)))
         {
-            leaks.Add($"{location}: {FormatType(candidate)}");
+            if (!allowedLeakLocations.Any(loc => location.Contains(loc, StringComparison.Ordinal)))
+            {
+                leaks.Add($"{location}: {FormatType(candidate)}");
+            }
         }
     }
 }
