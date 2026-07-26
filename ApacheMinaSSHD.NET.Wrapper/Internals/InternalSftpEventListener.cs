@@ -29,14 +29,14 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
         private readonly IAMNetSftpEventListener sftpEventListener;
         static readonly IAMNetLogger logger = new AMNetLogger(typeof(InternalSftpEventListener), AMNetLogger.LogLevel.Info);
 
-        private static readonly string[] SftpTypeNames = new string[]
+        private static readonly string?[] SftpTypeNames = new string?[]
         {
             null, "INIT", null, "OPEN", "CLOSE", "READ", "WRITE", "LSTAT", "FSTAT",
             "SETSTAT", "FSETSTAT", "OPENDIR", "READDIR", "REMOVE", "MKDIR", "RMDIR",
             "REALPATH", "STAT", "RENAME", "READLINK", "SYMLINK"
         };
 
-        private static readonly string[] SftpTypeDescriptions = new string[]
+        private static readonly string?[] SftpTypeDescriptions = new string?[]
         {
             null, "Session initialization", null, "Open file", "Close handle", "Read file data", "Write file data",
             "Get attributes (no follow)", "Get attributes (handle)", "Set attributes (path)", "Set attributes (handle)",

@@ -411,7 +411,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Internals
             return openerDelegate.createScpTargetStreamResolver(session, file);
         }
 
-        public string checkRemoteFileName(JavaFileSystem fileSystem, string fileName)
+        public string? checkRemoteFileName(JavaFileSystem fileSystem, string fileName)
         {
             string defaultValue = openerDelegate.checkRemoteFileName(fileSystem, fileName);
             if (defaultValue == null)

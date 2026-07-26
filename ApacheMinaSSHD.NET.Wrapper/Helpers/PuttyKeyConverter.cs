@@ -134,19 +134,19 @@ namespace ApacheMinaSSHD.NET.Wrapper.Helpers
 
                 int lineIdx = 0;
 
-                string algorithm = ParseHeader(lines[lineIdx++], "PuTTY-User-Key-File-2");
+                string? algorithm = ParseHeader(lines[lineIdx++], "PuTTY-User-Key-File-2");
                 if (algorithm == null) return null;
                 result["Algorithm"] = algorithm;
 
-                string encryption = ParseHeader(lines[lineIdx++], "Encryption");
+                string? encryption = ParseHeader(lines[lineIdx++], "Encryption");
                 if (encryption == null) return null;
                 result["Encryption"] = encryption;
 
-                string comment = ParseHeader(lines[lineIdx++], "Comment");
+                string? comment = ParseHeader(lines[lineIdx++], "Comment");
                 if (comment == null) return null;
                 result["Comment"] = comment;
 
-                string publicLines = ParseHeader(lines[lineIdx++], "Public-Lines");
+                string? publicLines = ParseHeader(lines[lineIdx++], "Public-Lines");
                 if (publicLines == null || !int.TryParse(publicLines, out int pubLines))
                     return null;
 
@@ -158,7 +158,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Helpers
                 }
                 result["PublicKey"] = Convert.FromBase64String(pubBase64.ToString());
 
-                string privateLines = ParseHeader(lines[lineIdx++], "Private-Lines");
+                string? privateLines = ParseHeader(lines[lineIdx++], "Private-Lines");
                 if (privateLines == null || !int.TryParse(privateLines, out int privLines))
                     return null;
 
@@ -170,7 +170,7 @@ namespace ApacheMinaSSHD.NET.Wrapper.Helpers
                 }
                 result["PrivateBlob"] = Convert.FromBase64String(privBase64.ToString());
 
-                string mac = ParseHeader(lines[lineIdx], "Private-MAC");
+                string? mac = ParseHeader(lines[lineIdx], "Private-MAC");
                 if (mac != null)
                     result["PrivateMAC"] = mac;
 
