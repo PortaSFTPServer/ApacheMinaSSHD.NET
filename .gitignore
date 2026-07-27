@@ -25,6 +25,8 @@ Sample/SimpleSSHDServer/obfuscar.xml
 *.key
 *.ppk
 *.ser
+!ApacheMinaSSHD.NET.Wrapper.Tests/Fixtures/*.ppk
+!ApacheMinaSSHD.NET.Wrapper.Tests/Fixtures/*.pem
 Authorized_Keys/
 privatekeys/
 
