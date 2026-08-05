@@ -10,7 +10,7 @@
     <Description>Cross-platform Avalonia UI SFTP server manager for .NET — start/stop, session monitoring, and live log viewer. The only free cross-platform GUI SFTP server manager — features beyond other GUI tools. By SERALYNX LLC (Porta SFTP Server).</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="12.1.0" />
+    <PackageReference Include="Avalonia" Version="12.1.1" />
     <PackageReference Include="Avalonia.Desktop" Version="12.1.0" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="12.1.0" />
     <PackageReference Include="Avalonia.Controls.DataGrid" Version="12.1.0" />
