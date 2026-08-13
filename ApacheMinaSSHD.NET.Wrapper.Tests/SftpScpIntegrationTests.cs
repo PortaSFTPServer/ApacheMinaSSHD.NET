@@ -268,7 +268,7 @@ public class SftpScpIntegrationTests : IDisposable
         var srcFile = Path.Combine(_tempDir, "scp-upload-src.txt");
         File.WriteAllText(srcFile, "SCP upload test content");
 
-        using var client = new ScpClient("127.0.0.1", _port, "testuser", "testpass");
+        using var client = new ScpClient("127.0.0.1", _port, "testuser", "testpass", RemotePathTransformation.None);
         client.Connect();
         try
         {
@@ -292,7 +292,7 @@ public class SftpScpIntegrationTests : IDisposable
         File.WriteAllText(Path.Combine(userDir, "scp-download.txt"), "SCP download test");
 
         var destFile = Path.Combine(_tempDir, "scp-download-dest.txt");
-        using var client = new ScpClient("127.0.0.1", _port, "testuser", "testpass");
+        using var client = new ScpClient("127.0.0.1", _port, "testuser", "testpass", RemotePathTransformation.None);
         client.Connect();
         try
         {

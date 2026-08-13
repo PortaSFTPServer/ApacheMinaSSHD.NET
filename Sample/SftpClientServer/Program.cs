@@ -80,7 +80,7 @@ Console.WriteLine();
 // SCP CLIENT DEMO
 // ══════════════════════════════════════════════════════════
 Console.WriteLine("═══ SCP Client ═══");
-using (var scp = new ScpClient("127.0.0.1", sshPort, "demo", "demo"))
+using (var scp = new ScpClient("127.0.0.1", sshPort, "demo", "demo", RemotePathTransformation.None))
 {
     scp.Connect();
     Console.WriteLine("Connected via SCP");
