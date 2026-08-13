@@ -316,4 +316,3 @@ ApacheMinaSSHD.NET is made possible by these exceptional open source projects:
 
 ApacheMinaSSHD.NET is maintained by SERALYNX LLC. For a ready-to-use portable SFTP server, see [Porta SFTP Server](https://portasftpserver.com/portable-sftp-server-community-edition/).
 
-> **Note:** Porta SFTP Server Free and Pro Edition uses the Apache Mina SSHD Server Java library. This wrapper exposes the Apache Mina SSHD (SFTP/SCP Server only) that has been adapted from the said library. SERALYNX LLC developed its own SFTP/SCP Server Protocols with the same best practices used in Apache Mina SSHD Server, in addition to the HACLEX™ (High-Acceleration & Cryptographic Layer Exchange) protocol for the Porta SFTP Server Business Edition / the upcoming Enterprise Edition.
