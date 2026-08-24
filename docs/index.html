@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://img.shields.io; font-src 'self'; script-src 'self' 'unsafe-inline'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://img.shields.io https://www.bestpractices.dev; font-src 'self'; script-src 'self' 'unsafe-inline'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
@@ -50,7 +50,7 @@
   },
   "image": "https://raw.githubusercontent.com/PortaSFTPServer/ApacheMinaSSHD.NET/main/docs/images/seralynx-banner.png",
   "downloadUrl": "https://www.nuget.org/packages/ApacheMinaSSHD.NET.Wrapper",
-  "softwareVersion": "1.0.0-beta",
+  "softwareVersion": "1.0.0.8",
   "keywords": ".NET SFTP server library, open source SFTP C#, Apache MINA SSHD .NET, secure file transfer, embed SFTP server",
   "offers": {
     "@type": "Offer",
@@ -225,8 +225,8 @@ footer a { color: #e94560; text-decoration: none; }
 <h3 style="color:#0f3460;margin-bottom:.8rem">Why .NET Developers Use This</h3>
 <div class="feature-row"><div class="icon-box">&#10003;</div><div class="text"><h3>No Java Imports in Your Code</h3><p>IKVM and Apache MINA SSHD assemblies are bundled inside the NuGet package. Your application code never imports Java, Apache MINA, or SLF4J types directly.</p></div></div>
 <div class="feature-row"><div class="icon-box">&#10003;</div><div class="text"><h3>Open Source &amp; Apache 2.0</h3><p>Full source on GitHub. Free for personal, commercial, and enterprise use. Contribute, fork, or customize.</p></div></div>
-<div class="feature-row"><div class="icon-box">&#10003;</div><div class="text"><h3>Cross-Platform</h3><p>Targets .NET 10. Runs on Windows, Linux, and macOS. Deploy as a console app, Windows Service, or Docker container.</p></div></div>
-<div class="feature-row"><div class="icon-box">&#10003;</div><div class="text"><h3>Real SSH Compatibility</h3><p>Tested against OpenSSH and WinSCP clients. Supports SFTP v3, SCP, and standard SSH authentication flows.</p></div></div>
+<div class="feature-row"><div class="icon-box">&#10003;</div><div class="text"><h3>Cross-Platform</h3><p>Targets .NET 9 and .NET 10. Runs on Windows, Linux, and macOS. Deploy as a console app, Windows Service, or Docker container.</p></div></div>
+<div class="feature-row"><div class="icon-box">&#10003;</div><div class="text"><h3>Real SSH Compatibility</h3><p>Tested against OpenSSH and WinSCP clients. Supports SFTP v3&ndash;6 (configurable maximum version), SCP, and standard SSH authentication flows.</p></div></div>
 <div class="feature-row"><div class="icon-box">&#9889;</div><div class="text"><h3>The Only Open Source Full Server</h3><p>ApacheMinaSSHD.NET is powered by <strong>Apache MINA SSHD</strong> from the Apache Software Foundation — the only open source library providing a full SSH/SFTP/SCP <em>server</em> for .NET. The .NET ecosystem has SSH client libraries but no other server. Build your server with this library; connect to it with any SFTP/SCP client (SSH.NET, WinSCP, Cyberduck, OpenSSH).</p></div></div>
 </div>
 </div>
@@ -237,7 +237,7 @@ footer a { color: #e94560; text-decoration: none; }
 <section id="features">
 <div class="section-label">Features</div>
 <h2>Best Open Source .NET SFTP Server Library — Actively Maintained</h2>
-<p class="section-sub">ApacheMinaSSHD.NET wraps Apache MINA SSHD 2.18.0 through IKVM — zero Java dependencies, no manual setup, just .NET APIs. The leading <strong>open source alternative to commercial SFTP libraries</strong> — actively maintained, Apache 2.0 licensed, and production-ready.</p>
+<p class="section-sub">ApacheMinaSSHD.NET wraps Apache MINA SSHD 2.19.0 through IKVM — zero Java dependencies, no manual setup, just .NET APIs. The leading <strong>open source alternative to commercial SFTP libraries</strong> — actively maintained, Apache 2.0 licensed, and production-ready.</p>
 <p style="max-width:720px;margin:1rem auto 0;font-size:.85rem;opacity:.7">Compatible with .NET 9.0 and 10.0 &bull; Bundles IKVM 8.15.0+</p>
 
 <div class="grid-3">
