@@ -31,7 +31,7 @@
 		<MavenReference Include="org.apache.sshd:sshd-common" Version="2.19.0" IkvmExport="true" />
 		<MavenReference Include="org.slf4j:slf4j-api" Version="1.7.36" />
 		<MavenReference Include="org.slf4j:slf4j-simple" Version="1.7.36" />
-		<MavenReference Include="org.bouncycastle:bcprov-jdk18on" Version="1.84" IkvmExport="true" />
+		<MavenReference Include="org.bouncycastle:bcprov-jdk18on" Version="1.85.2" IkvmExport="true" />
 		<!--<MavenReference Include="ch.qos.logback:logback-core:1.5.32" />
         <MavenReference Include="ch.qos.logback:logback-classic:1.5.32" />-->
 

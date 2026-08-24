@@ -36,6 +36,7 @@
 - NuGet packages attach to GitHub Releases instead of NuGet.org publish
 
 ### Security
+- **Upgraded BouncyCastle `bcprov-jdk18on` from 1.84 to 1.85.2** to clear ~15 advisories affecting versions < 1.85 (uncontrolled recursion, excessive memory allocation, signature verification, and integrity-check issues)
 - **Upgraded Apache MINA SSHD from 2.18.0 to 2.19.0** to resolve CVE-2026-56624 (improper SSH certificate validation) and CVE-2026-48827 (path traversal in sshd-git)
 - `setUpDefaultServer()` now calls `ApplyModernAlgorithmDefaults()` automatically, restricting to strong ciphers/MACs/key exchanges by default
 - Host key temp files use `FileOptions.DeleteOnClose` to prevent unencrypted key material persisting on disk after crash
