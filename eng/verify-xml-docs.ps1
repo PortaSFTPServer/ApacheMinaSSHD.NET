@@ -10,6 +10,21 @@ $ErrorActionPreference = "Stop"
 
 $RepoRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")).Path
 
+$NuGetGlobalPackages = $env:NUGET_PACKAGES
+if ([string]::IsNullOrWhiteSpace($NuGetGlobalPackages)) {
+    $NuGetGlobalPackages = Join-Path ([Environment]::GetFolderPath("UserProfile")) ".nuget\packages"
+}
+
+$IkvmVersionDir = Get-ChildItem -LiteralPath (Join-Path $NuGetGlobalPackages "ikvm") -Directory -ErrorAction SilentlyContinue |
+    Sort-Object { [version]($_.Name -replace "-.*$", "") } -Descending |
+    Select-Object -First 1
+
+$env:IKVM_REF_DIR = if ($null -ne $IkvmVersionDir) {
+    Join-Path (Join-Path $IkvmVersionDir.FullName "ref") "net8.0"
+} else {
+    ""
+}
+
 if ([string]::IsNullOrWhiteSpace($AssemblyPath)) {
     $AssemblyPath = Join-Path $RepoRoot "ApacheMinaSSHD.NET.Wrapper/bin/$Configuration/$TargetFramework/ApacheMinaSSHD.NET.Wrapper.dll"
 }
@@ -70,9 +85,15 @@ AssemblyLoadContext.Default.Resolving += (context, name) =>
         return context.LoadFromAssemblyPath(candidate);
     }
 
-    string? nugetGlobalPackages = Environment.GetEnvironmentVariable("NUGET_PACKAGES")
-        ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".nuget", "packages");
-    string ikvmLib = Path.Combine(nugetGlobalPackages, "ikvm", "8.15.0", "ref", "net8.0", name.Name + ".dll");
+    string? ikvmRefDir = Environment.GetEnvironmentVariable("IKVM_REF_DIR");
+    if (string.IsNullOrWhiteSpace(ikvmRefDir))
+    {
+        string? nugetGlobalPackages = Environment.GetEnvironmentVariable("NUGET_PACKAGES")
+            ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".nuget", "packages");
+        ikvmRefDir = Path.Combine(nugetGlobalPackages, "ikvm", "8.15.0", "ref", "net8.0");
+    }
+
+    string ikvmLib = Path.Combine(ikvmRefDir, name.Name + ".dll");
     if (File.Exists(ikvmLib))
     {
         return context.LoadFromAssemblyPath(ikvmLib);

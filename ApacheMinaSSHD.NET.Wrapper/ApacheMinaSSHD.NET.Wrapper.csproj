@@ -30,7 +30,9 @@
 		</AssemblyAttribute>
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\ApacheMinaSSHD.NET.Bindings\ApacheMinaSSHD.NET.Bindings.csproj" PrivateAssets="contentfiles;analyzers;build" />
+	  <ProjectReference Include="..\ApacheMinaSSHD.NET.Bindings\ApacheMinaSSHD.NET.Bindings.csproj">
+	    <PrivateAssets>all</PrivateAssets>
+	  </ProjectReference>
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="IKVM" Version="8.16.0" />
@@ -51,7 +53,6 @@
 	  <None Include="..\licenses\APACHE-2.0.txt" Pack="true" PackagePath="licenses\" />
 	  <None Include="..\licenses\SLF4J-MIT.txt" Pack="true" PackagePath="licenses\" />
 	  <None Include="..\nuget-icon.png" Pack="true" PackagePath="\" Visible="false" />
-	  <None Include="..\docs\images\seralynx-banner.png" Pack="true" PackagePath="docs\images\" />
 	</ItemGroup>
 
 	<Target Name="IncludeBindingsDlls" BeforeTargets="GenerateNuspec">
