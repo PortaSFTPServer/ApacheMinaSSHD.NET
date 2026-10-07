@@ -41,7 +41,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="IKVM" Version="8.16.0" />
-		<PackageReference Include="IKVM.Maven.Sdk" Version="1.12.1">
+		<PackageReference Include="IKVM.Maven.Sdk" Version="1.12.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
